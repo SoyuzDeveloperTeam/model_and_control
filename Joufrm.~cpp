@@ -1,0 +1,45 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Joufrm.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TJouForm *JouForm;
+//---------------------------------------------------------------------------
+__fastcall TJouForm::TJouForm(TComponent* Owner)
+        : TForm(Owner)
+{
+if(LogJou->Checked)
+Timer1->Enabled=true;
+}
+//---------------------------------------------------------------------------
+void __fastcall TJouForm::Button1Click(TObject *Sender)
+{
+AnsiString filenames=Now().FormatString("ddmmyy-hh_mm_ss_")+"JOU_log.txt";
+SaveJoyDg->FileName=filenames;
+SaveJoyDg->Options<<ofPathMustExist << ofOverwritePrompt;
+if(SaveJoyDg->Execute())
+JouM->Lines->SaveToFile(SaveJoyDg->FileName);
+JouM->Lines->Add("Лог сохранен");
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TJouForm::Timer1Timer(TObject *Sender)
+{
+// AutoLog on Timer
+//JouM->Lines->SaveToFile("salomandra");
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TJouForm::FormCreate(TObject *Sender)
+{
+JouM->Lines->Add("Журнал обмена - Начат "+Now().DateString()+" в "+Now().TimeString());
+JouM->Lines->Add("-------------------------------------------");
+}
+//---------------------------------------------------------------------------
+

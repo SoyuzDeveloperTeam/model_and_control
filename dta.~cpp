@@ -1,0 +1,199 @@
+//---------------------------------------------------------------------------
+#ifndef nu_data_h
+#define nu_data_h
+
+#pragma hdrstop
+
+#include "dta.h"
+
+//---------------------------------------------------------------------------
+
+//#pragma package(smart_init)
+
+//-------------------------
+//- О Б М Е Н   С   Б У М -
+//-------------------------
+
+struct {
+double dk_per[3];   // Массив времени работы ДПО на пермещение
+double dk_ori[3];   // Массив времени работы ДПО на ориентацию
+} dk_mass;          // Дополнительный параметр от ДК для БУМ
+
+struct {         //Структура араметров от БУМ
+unsigned long tk;
+unsigned long kl;
+unsigned long ji;
+double eqwe;
+double er;
+double ngf;
+double fbdb;
+double dfd;
+double erte;
+double bnvcb;
+double oiuo;
+double werer;
+double ryey;
+double enehegeh;
+double hjklh;
+double uopui;
+double zbnx;
+double xvbx;
+double yiuy;
+double shghfhgh;
+double cbvb5;
+double ytur6;
+double rmrhrg5;
+double vnmv4;
+double etre7;
+double etre9;
+double etre3;
+double etre21;
+double etredfg;
+double etre342;
+double dfsd98;
+double brf5;
+double o9o9;
+double tww76;
+unsigned long rwrw333;
+unsigned long mmmjjjhhh;
+unsigned long dsfsdfs;
+unsigned long ahhgf;
+unsigned long tnnnrbb;
+unsigned long tntnrnrnr;
+double tttkg;
+double fdd5433[28];
+}STR_temp;
+
+struct {    //Структура параметра НУ в БУМ
+//Переменные для команды в БУМ-МС
+unsigned long i;
+unsigned long s;
+unsigned long aa;
+unsigned long ddd;
+double ssaafd;
+//// Т И П  К О Р А Б Л Я ////
+unsigned long n_tr;                     // 1   Тип корабля (0 - ТГК, 1 - ТПК, 2 - МЛМ)
+//// Д А Т А ////
+unsigned long nu_day;                   // 2   Модельная дата - день
+unsigned long nu_month;                 // 3   Модельная дата - Месяц
+unsigned long nu_year;                  // 4   Модельная дата - Год
+unsigned long nu_hour;                  // 5   Модельное время - час
+unsigned long nu_min;                   // 6   Модельное время - Минуты
+unsigned long nu_sec;                   // 7   Модельное время - Секунды                  0  1  2
+//// М К С ////
+double vec_j2000_mks[3];                // 8   Массив вектора положения Ц.М. МКС в J2000 (X, Y, Z)
+double vel_j2000_mks[3];                // 11  Массив скорости    Ц.М.    МКС    в J2000 (X, Y, Z)
+double Q_mks[4];                        // 14  Массив коммпонентов кватерниона МКС                                              0  1  2
+double w_j2000_mks[3];                  // 18  Массив вектора угловой скорости МКС относительно J2000 в проекциях на ССК РС (Wx Wy Wz)
+double vec_mks_PC[3];                   // 21  Массив координат   Ц.М.    МКС    в  РС   (X, Y, Z)
+double m_mk;                            // 24  Масса МКС
+double mi_mks[3][3];                    // 25  Двумерный массив моментов инерции МКС (Jxx, Jxy, Jxz...)
+//// Т К ////
+double vec_j2000_tk[3];                 // 34  Массив вектора положения Ц.М. ТК в J2000 (X, Y, Z)
+double vel_j2000_tk[3];                 // 37  Массив скорости    Ц.М.    ТК    в J2000 (X, Y, Z)                   0   1   2   3
+double Q_tk[4];                         // 40  Массив коммпонентов кватерниона разворота ССК ТК относительно J2000 (Qs, Qx, Qy, Qz)
+double w_j2000_tk[3];                   // 44  Массив вектора угловой скорости ТК относительно J2000 в проекциях на ССК ТК (Wx Wy Wz)
+double vec_tk_TPK[3];                   // 47  Массив координат   Ц.М.    ТГК/ТПК    в  РС   (X, Y, Z)
+double m_tk;                            // 50  Масса ТК
+double mi_tk[3][3];                     // 51  Двумерный массив моментов инерции ТК (Jxx, Jxy, Jxz...)
+//// M I S C ////
+double vec_solar[3];                    // 60  Единичный вектор из центра J2000 на Солнце в проекциях на J2000 (ex, ey, ez)
+unsigned long r_st_mks;                 // 63  Режим стабилизации МКС (0 - свободный, 1 - ИСК, 2 - ОСК, 3 - Wconst)
+unsigned long nu_otor_switch_styk_dk;	// 65  № СУ, к которому пристыкован ТК (для задания состояния состыкованного ТК)
+double nu_com_zapas;                    // 66  Запас топлива ТК (?)
+unsigned long pr_doking;                // 67  Признак состыкованного состояния ТК и МКС по НУ	(0 - нет, 1 - есть)
+unsigned long nu_mlm_sost;              // 68  Признак наличия в составе РС МКС пристыкованного к СМ -Y модуля (0 - нет, 1 - СО1, 2 - МЛМ, 3- УМ)
+unsigned long nr_sudn;                  // 69  Начальный режим работы СУДН ТК (1 - Автом. сближ, 2 - РО АК (ТОРУ), 3 - РО ДК)
+} NU_temp;
+
+
+
+void NU_pack_for_bum (void) //упаковка НУ для БУМ
+{
+//double milli =0.001;
+
+}
+struct{
+unsigned long a;
+unsigned long tk_type;
+unsigned long model_sec;
+unsigned long milisec_ost;
+}fdd;
+
+struct {                                // Параметр от БУМ в МиУ (по интерфейсу Телеоператор)
+unsigned long fd_1;                     // Начальное смещение
+unsigned long fd_2;
+unsigned long fd_3;
+unsigned long fd_4;
+unsigned long fd_5;
+unsigned long fd_6;
+unsigned long tk_type;                  // Тип корабля
+unsigned long model_sec;                // Время от начала режима (секунды)
+unsigned long milisec_ost;              // Остаток времени (мс)
+//// М К С ////
+double vec_j2000_mks[3];                // 4   Массив вектора положения Ц.М. МКС в J2000 (X, Y, Z)
+double vel_j2000_mks[3];                // 7   Массив скорости    Ц.М.    МКС    в J2000 (X, Y, Z)
+double Q_mks[4];                        // 10  Массив коммпонентов кватерниона МКС
+double w_j2000_mks[3];                  // 14  Массив вектора угловой скорости МКС относительно J2000 в проекциях на ССК РС (Wx Wy Wz)
+double vec_mks_PC[3];                   // 17  Массив координат   Ц.М.    МКС    в  РС   (X, Y, Z)
+//// Т К ////
+double vec_j2000_tk[3];                 // 20  Массив вектора положения Ц.М. ТК в J2000 (X, Y, Z)
+double vel_j2000_tk[3];                 // 23  Массив скорости    Ц.М.    TK    в J2000 (X, Y, Z)
+double Q_tk[4];                         // 26  Массив коммпонентов кватерниона TK
+double w_j2000_tk[3];                   // 30  Массив вектора угловой скорости TK относительно J2000 в проекциях на ССК TK (Wx Wy Wz)
+double vec_tk_TPK[3];                   // 33  Массив координат   Ц.М.    TK   (X, Y, Z)
+/// M I S C ///
+unsigned long pr_t_pt;                  // 36  Признак свет/тень/полутень (0 - свет, 1 - тень, 2 - полутень)
+unsigned long t_to_pt;                  // 37  Время до входа в полутень (с)
+unsigned long t_ot_pt;                  // 38  Время до выхода из полутени (с)
+unsigned long fara_pr;                  // 39  Признак включения фары (0 - выкл, 1 вкл)
+unsigned long tv_pr;                    // 40  Признак ТВ (см. протокол табл. 4.3.1 "Структура параметра состояния МКС и ТК")
+unsigned long kas_pr;                   // 41  Признак физического касания объектов (0 - нет, 1 - есть касание)
+double dpo_ras_summ;                    // 42  Расход топлива суммарно по всем ДПО с начала режима
+double dpo_rash[28];                    // 43  Расход топлива по каждому ДПО с начала режима
+double lmu_a[3];                        // 44  Линейное мгновенное ускорение ц.м. ТК в ССК ТК (Ax, Ay, Az)
+double umu_a[3];                        // 47  Угловое мгновенное ускорение ц.м. ТК в ССК ТК (Ex, Ey, Ez)
+double dpo_h[28];                       // 50  Тяга каждого двигателя ДПО
+unsigned long promah_pr;                // 51  Признак промаха (0 - нет, 1 - есть промах)
+double sun_vec[3];                      // 52  Единичный вектор из центра J2000 на Солнце в проекциях на J2000
+short badpo_perm[3];                    // 53  Текущие значения команд в БАДПО на перемещение по каналам XYZ
+short badpo_orie[3];                    // 54  Текущие значения команд в БАДПО на вращение по каналам XYZ
+double skd_h;                           // 55  Текущее значение тяги СКД
+double skd_rash;                        // 56  Расход топлива СКД с начала режима
+unsigned long iss_tp_pr;                // 57  Признак завершения перехода МКС в ТП (для индикации на форматах инструктора)
+short osk_stab;                         // 58  включен режим СТАБИЛИЗАЦИИ в ОСК (Чего???)
+float CIFC_bt[3];                       // 59  CIFC_bt для индикации на формате РОДК
+float CIFC_Ug_bt[3];                    // 60  CIFC_Ug_bt для индикации на формате РОДК
+float CIFC_Wdis[3];                     // 61  CIFC_Wdis для индикации на формате РОДК
+unsigned char bsr_RUD;                  // 62  Сигналы РУД с БСР
+unsigned int bsr_RUO[3];                // 63  Сигналы РУО с БСР
+}PS_tk_iss;
+
+struct {
+unsigned long tk_type;
+unsigned long model_sec;
+unsigned long milisec_ost;
+//// М К С ////
+double vec_j2000_mks[3];                // 4   Массив вектора положения Ц.М. МКС в J2000 (X, Y, Z)
+double vel_j2000_mks[3];                // 7   Массив скорости    Ц.М.    МКС    в J2000 (X, Y, Z)
+double Q_mks[4];                        // 10  Массив коммпонентов кватерниона МКС
+double w_j2000_mks[3];                  // 14  Массив вектора угловой скорости МКС относительно J2000 в проекциях на ССК РС (Wx Wy Wz)
+double vec_mks_PC[3];                   // 17  Массив координат   Ц.М.    МКС    в  РС   (X, Y, Z)
+//// Т К ////
+double vec_j2000_tk[3];                 // 20  Массив вектора положения Ц.М. ТК в J2000 (X, Y, Z)
+double vel_j2000_tk[3];                 // 23  Массив скорости    Ц.М.    TK    в J2000 (X, Y, Z)
+double Q_tk[4];                         // 26  Массив коммпонентов кватерниона TK
+double w_j2000_tk[3];                   // 30  Массив вектора угловой скорости TK относительно J2000 в проекциях на ССК TK (Wx Wy Wz)
+double vec_tk_TPK[3];                   // 33  Массив координат   Ц.М.    TK   (X, Y, Z)
+}parpar;
+
+unsigned char pu_bps_rudo_st[53];       // Параметр квитанций от ПУ БПС, РУД и РУО
+
+#endif //nu_data_h
+
+/*
+По поводу PS_tk_iss.promah_pr
+Примечание: изменение признака из 0 в 1 соответствует моменту пересечения головкой штанги ССВП-А
+плоскости стыка вне приёмного конуса ССВП-П при значении промаха менее 1.5 м, а так же при пересечении
+головкой штанги АСА упрощённого контура корпуса МКС при значении промаха более 1.5 м
+*/

@@ -1,0 +1,223 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.06.00"/>
+    <PROJECT value="C:\1231231\Out\MiU.exe"/>
+    <OBJFILES value="MainFrm.obj ts_frm.obj bum_sett_frm.obj toru_frm.obj EnterNuFrm.obj 
+      kdu_data.obj clock_form.obj JouLogFrm.obj BkuCFrm.obj 
+      brvi_irvi\irvi_brfi_frm.obj KSPLForm.obj KSPPForm.obj sepform.obj 
+      cdn_clock_frm.obj graph_a1.obj USOFrm.obj bfi_formats.obj 
+      InstructorFormat_Form.obj zakon_upr.obj help_form.obj iss_per_tp.obj 
+      vku_graph.obj brus_form.obj debug_bum_frm.obj vived_frm.obj 
+      iss\sm_ssvp_PX.obj argon\argon_debug_frm.obj SOTR_frm.obj trassa.obj 
+      AboutFrm.obj otkazy.obj argon\bumconnect.obj MiU.obj dta.obj JouJPS.obj 
+      argon\arg_kdu_operations.obj argon\arg_prkrt.obj argon\arg_main.obj 
+      sotr_model.obj inpu_connect.obj MainCycle_PrObr.obj main_math.obj 
+      ks020\ks_main.obj argon\arg_pks.obj argon\arg_irvi.obj bum_connect.obj 
+      pults_tk.obj transit.obj"/>
+    <RESFILES value="MiU.res"/>
+    <IDLFILES value=""/>
+    <IDLGENFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) MainFrm.dfm ts_frm.dfm bum_sett_frm.dfm toru_frm.dfm 
+      EnterNuFrm.dfm kdu_data.dfm clock_form.dfm JouLogFrm.dfm BkuCFrm.dfm 
+      brvi_irvi\irvi_brfi_frm.dfm KSPLForm.dfm KSPPForm.dfm sepform.dfm 
+      cdn_clock_frm.dfm graph_a1.dfm USOFrm.dfm bfi_formats.dfm 
+      InstructorFormat_Form.dfm zakon_upr.dfm help_form.dfm iss_per_tp.dfm 
+      vku_graph.dfm brus_form.dfm debug_bum_frm.dfm vived_frm.dfm 
+      iss\sm_ssvp_PX.dfm argon\argon_debug_frm.dfm SOTR_frm.dfm trassa.dfm 
+      AboutFrm.dfm otkazy.dfm"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value="tee.lib bdertl.lib dbrtl.lib vcldb.lib inet.lib indy.lib rtl.lib vcl.lib"/>
+    <SPARELIBS value="vcl.lib rtl.lib indy.lib inet.lib vcldb.lib dbrtl.lib bdertl.lib tee.lib"/>
+    <PACKAGES value="vcl.bpi rtl.bpi dbrtl.bpi adortl.bpi vcldb.bpi vclx.bpi bdertl.bpi 
+      vcldbx.bpi ibxpress.bpi dsnap.bpi cds.bpi bdecds.bpi qrpt.bpi teeui.bpi 
+      teedb.bpi tee.bpi dss.bpi teeqr.bpi visualclx.bpi visualdbclx.bpi 
+      dsnapcrba.bpi dsnapcon.bpi bcbsmp.bpi vclie.bpi xmlrtl.bpi inet.bpi 
+      inetdbbde.bpi inetdbxpress.bpi inetdb.bpi nmfast.bpi webdsnap.bpi 
+      bcbie.bpi websnap.bpi soaprtl.bpi dclocx.bpi dbexpress.bpi dbxcds.bpi 
+      indy.bpi bcb2kaxserver.bpi"/>
+    <PATHCPP value=".;brvi_irvi;iss;argon;argon;argon;argon;argon;ks020;argon;argon"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value=""/>
+    <SYSDEFINES value="NO_STRICT"/>
+    <MAINSOURCE value="MiU.cpp"/>
+    <INCLUDEPATH value="ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <WARNINGS value="-w-par"/>
+    <OTHERFILES value=""/>
+  </MACROS>
+  <OPTIONS>
+    <IDLCFLAGS value="-Iks020 -Iargon -IC:\Users\Professional\Documents -Ibrvi_irvi -Iiss 
+      -I$(BCB)\Projects -I$(BCB)\Projects\miu -I$(BCB)\include 
+      -I$(BCB)\include\vcl -src_suffix cpp -boa"/>
+    <CFLAG1 value="-Od -w- -Vx -Ve -X- -a8 -b- -k- -vi -c -tW -tWM"/>
+    <PFLAGS value="-$Y- -$L- -$D- -$A8 -v -JPHNE -M"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w0 /zn"/>
+    <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -Gn"/>
+    <OTHERFILES value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0w32.obj sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib"/>
+    <OTHERFILES value=""/>
+  </LINKER>
+  <FILELIST>
+      <FILE FILENAME="MainFrm.cpp" FORMNAME="MainForm" UNITNAME="MainFrm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ts_frm.cpp" FORMNAME="ts_form" UNITNAME="ts_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="bum_sett_frm.cpp" FORMNAME="bum_settings" UNITNAME="bum_sett_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="toru_frm.cpp" FORMNAME="toru_pult" UNITNAME="toru_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="EnterNuFrm.cpp" FORMNAME="EnterNuForm" UNITNAME="EnterNuFrm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="kdu_data.cpp" FORMNAME="KDUform" UNITNAME="kdu_data" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="clock_form.cpp" FORMNAME="clock_frm" UNITNAME="clock_form" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="JouLogFrm.cpp" FORMNAME="JouLogForm" UNITNAME="JouLogFrm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="BkuCFrm.cpp" FORMNAME="BkuC" UNITNAME="BkuCFrm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="brvi_irvi\irvi_brfi_frm.cpp" FORMNAME="IrBrForm" UNITNAME="irvi_brfi_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="KSPLForm.cpp" FORMNAME="ksplfrm" UNITNAME="KSPLForm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="KSPPForm.cpp" FORMNAME="KSP_right" UNITNAME="KSPPForm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="sepform.cpp" FORMNAME="sep_form" UNITNAME="sepform" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="cdn_clock_frm.cpp" FORMNAME="CDN_CLOCK" UNITNAME="cdn_clock_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="graph_a1.cpp" FORMNAME="graphics" UNITNAME="graph_a1" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="USOFrm.cpp" FORMNAME="UsoForm" UNITNAME="USOFrm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="bfi_formats.cpp" FORMNAME="BFI_Simvol_form" UNITNAME="bfi_formats" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="InstructorFormat_Form.cpp" FORMNAME="InstructorFormat_FRM" UNITNAME="InstructorFormat_Form" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="zakon_upr.cpp" FORMNAME="zakon_upr_frm" UNITNAME="zakon_upr" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="help_form.cpp" FORMNAME="help_frm" UNITNAME="help_form" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="iss_per_tp.cpp" FORMNAME="iss_t_tp" UNITNAME="iss_per_tp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="vku_graph.cpp" FORMNAME="vkugraph" UNITNAME="vku_graph" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="brus_form.cpp" FORMNAME="brus_frm" UNITNAME="brus_form" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="debug_bum_frm.cpp" FORMNAME="bum_debug" UNITNAME="debug_bum_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="vived_frm.cpp" FORMNAME="liftoff_form" UNITNAME="vived_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="iss\sm_ssvp_PX.cpp" FORMNAME="sm_ssvp_plx_frm" UNITNAME="sm_ssvp_PX" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="argon\argon_debug_frm.cpp" FORMNAME="arg_deb" UNITNAME="argon_debug_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="SOTR_frm.cpp" FORMNAME="sotr" UNITNAME="SOTR_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="trassa.cpp" FORMNAME="trace" UNITNAME="trassa" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="AboutFrm.cpp" FORMNAME="AboutForm" UNITNAME="AboutFrm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="otkazy.cpp" FORMNAME="otkazy_frm" UNITNAME="otkazy" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="argon\bumconnect.cpp" FORMNAME="" UNITNAME="bumconnect" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="bfi_fmts_data.h" FORMNAME="" UNITNAME="bfi_fmts_data.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="MiU.res" FORMNAME="" UNITNAME="MiU.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="MiU.cpp" FORMNAME="" UNITNAME="MiU" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="dta.cpp" FORMNAME="" UNITNAME="dta" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="md_m.h" FORMNAME="" UNITNAME="md_m.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="JouJPS.cpp" FORMNAME="" UNITNAME="JouJPS" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="JouHeader.h" FORMNAME="" UNITNAME="JouHeader.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="JouStrings.h" FORMNAME="" UNITNAME="JouStrings.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="headh.h" FORMNAME="" UNITNAME="headh.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Out\miu_config.ini" FORMNAME="" UNITNAME="miu_config.ini" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="kdu_math.h" FORMNAME="" UNITNAME="kdu_math.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="SPSHead.h" FORMNAME="" UNITNAME="SPSHead.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="simdata.h" FORMNAME="" UNITNAME="simdata.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="argon\arg_kdu_operations.cpp" FORMNAME="" UNITNAME="arg_kdu_operations" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="argon\arg_prkrt.cpp" FORMNAME="" UNITNAME="arg_prkrt" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="argon\arg_main.cpp" FORMNAME="" UNITNAME="arg_main" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="sotr_model.cpp" FORMNAME="" UNITNAME="sotr_model" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="main_header.h" FORMNAME="" UNITNAME="main_header.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="inpu_connect.cpp" FORMNAME="" UNITNAME="inpu_connect" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="USOData.h" FORMNAME="" UNITNAME="USOData.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ICN_header.h" FORMNAME="" UNITNAME="ICN_header.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="MainCycle_PrObr.cpp" FORMNAME="" UNITNAME="MainCycle_PrObr" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="main_math.cpp" FORMNAME="" UNITNAME="main_math" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="argon\arg_header.h" FORMNAME="" UNITNAME="arg_header.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="argon\CtrlWord.h" FORMNAME="" UNITNAME="CtrlWord.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ks020\ks_main.cpp" FORMNAME="" UNITNAME="ks_main" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="sotr_data.h" FORMNAME="" UNITNAME="sotr_data.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="argon\arg_pks.cpp" FORMNAME="" UNITNAME="arg_pks" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="argon\arg_irvi.cpp" FORMNAME="" UNITNAME="arg_irvi" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="bum_connect.cpp" FORMNAME="" UNITNAME="bum_connect" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="pults_tk.cpp" FORMNAME="" UNITNAME="pults_tk" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="transit.cpp" FORMNAME="" UNITNAME="transit" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+  </FILELIST>
+  <BUILDTOOLS>
+  </BUILDTOOLS>
+
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=1
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=1
+Build=43
+Debug=1
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1049
+CodePage=1251
+
+[Version Info Keys]
+CompanyName=SoyuzDeveloperTeam
+FileDescription=
+FileVersion=1.0.1.43
+InternalName=
+LegalCopyright=SDT
+LegalTrademarks=
+OriginalFilename=
+ProductName=SoyuzSimulator
+ProductVersion=1.0.0.0
+Comments=СПО &quot;Моделирование и Управление&quot;
+S_SK=F334-M9
+
+[HistoryLists\hlIncludePath]
+Count=2
+Item0=ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+Item1=C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=2
+Item0=ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Item1=C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=1
+Item0=_DEBUG
+
+[HistoryLists\hlFinalOutputDir]
+Count=1
+Item0=C:\1231231\Out\
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+Launcher=
+UseLauncher=0
+DebugCWD=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteLauncher=
+RemoteCWD=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+
+[CORBA]
+AddServerUnit=1
+AddClientUnit=1
+PrecompiledHeaders=1
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+  </IDEOPTIONS>
+</PROJECT>

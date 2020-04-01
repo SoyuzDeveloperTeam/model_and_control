@@ -1,0 +1,71 @@
+static struct {
+unsigned long ttr;          //Spacecraft type (0-Progress, 1-Soyuz)    1
+unsigned long dnr;          //???? ?????? ?????? ??????                2
+unsigned long mnr;          //????? ?????? ??????                      3
+unsigned long ynr;          //Year                                     4
+unsigned long hnr;          //Hour                                     5
+unsigned long nnr;          //Minut                                    6
+unsigned long snr;          //Second                                   7
+double vp_mks_j2000_x;      //Vector MKS in J2000 (Vx)                 8
+double vp_mks_j2000_y;      //Vector MKS in J2000 (Vy)                 9
+double vp_mks_j2000_z;      //Vector MKS in J2000 (Vz)                10
+double vel_mks_j2000_x;     //Velocity MKS in J2000 (VelX)            11
+double vel_mks_j2000_y;     //Velocity MKS in J2000 (VelY)            12
+double vel_mks_j2000_z;     //Velocity MKS in J2000 (VelZ)            13
+double Qs_mks;              //                                        14
+double Qx_mks;              //Qent X RS MKS                           15
+double Qy_mks;              //Qent Y RS MKS                           16
+double Qz_mks;              //Qent Z RS MKS                           17
+double Wx_mks;              //Angle speed MKS on J2000 is RS (Omega)  18
+double Wy_mks;              //Angle speed MKS on J2000 is RS          19
+double Wz_mks;              //Angle speed MKS on J2000 is RS          20
+double cm_mks_pc_x;         //Coordinate C.M. X                       21
+double cm_mks_pc_y;         //Coordinate C.M. Y                       22
+double cm_mks_pc_z;         //Coordinate C.M. Z                       23
+double mks_mass;            //MKS mass                                24
+double jxx_mks;             //TenzorIn                                25
+double jxy_mks;             //                                        26
+double jxz_mks;             //                                        27
+double jyx_mks;             //                                        28
+double jyy_mks;             //                                        29
+double jyz_mks;             //                                        30
+double jzx_mks;             //                                        31
+double jzy_mks;             //                                        32
+double jzz_mks;             //                                        33
+double vp_tk_j2000_x;       //Vector TK in J2000 (Vx)                 34
+double vp_tk_j2000_y;       //Vector TK in J2000 (Vy)                 35
+double vp_tk_j2000_z;       //Vector TK in J2000 (Vz)                 36
+double vel_tk_j2000_x;      //                                        37
+double vel_tk_j2000_y;      //                                        38
+double vel_tk_j2000_z;      //                                        39
+double Qs_tk;               //                                        40
+double Qx_tk;               //Qent X in TK                            41
+double Qy_tk;               //Qent Y in TK                            42
+double Qz_tk;               //Qent Z in TK                            43
+double Wx_tk;               //                                        44
+double Wy_tk;               //                                        45
+double Wz_tk;               //                                        46
+double cm_x_tk;             //                                        47
+double cm_y_tk;             //                                        48
+double cm_z_tk;             //                                        49
+double tk_mass;             //                                        50
+double jxx_tk;              //TenzorIn                                51
+double jxy_tk;              //                                        52
+double jxz_tk;              //                                        53
+double jyx_tk;              //                                        54
+double jyy_tk;              //                                        55
+double jyz_tk;              //                                        56
+double jzx_tk;              //                                        57
+double jzy_tk;              //                                        58
+double jzz_tk;              //                                        59
+double ex;                  //                                        60
+double ey;                  //                                        61
+double ez;                  //                                        62
+unsigned long reg_stab;     //                                        63
+unsigned long styk_num;     //                                        64
+unsigned long styk_mun;     //                                        65
+double toplivo;             //                                        66
+unsigned long tk_mks_priznak_s;//                                     67
+unsigned long module_mks_t; //                                        68
+unsigned long reg_sudn;    //                                        69
+} nu_parametr;

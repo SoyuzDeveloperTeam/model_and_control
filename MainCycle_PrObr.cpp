@@ -1,0 +1,10 @@
+//void MainCycle (void) {
+// Признак загорания ЦО
+//if(co_pr) CentralLightBlink->Enabled=true; else
+////CentralLightBlink->Enabled=false;
+//if(USO_Booled){ // Выбор ДК
+
+//}
+
+//}
+ 

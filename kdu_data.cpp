@@ -1,0 +1,254 @@
+ //---------------------------------------------------------------------------
+#include <vcl.h>
+#pragma hdrstop
+
+#include "kdu_data.h"
+#include "kdu_math.h"
+//#include "math.hpp"
+#include "JouHeader.h"
+#include "JouStrings.h"
+#include "irvi_brfi_frm.cpp"
+#include "argon/arg_header.h"
+#include "argon/CtrlWord.h"
+#include "SPSHead.h"
+// Отладка поиска зависания:
+// Отключил таймеры таймер3, УСО_отр, спс_дата, маематика КДУ
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TKDUform *KDUform;
+//---------------------------------------------------------------------------
+static double skd_sec_ras = 0.535;
+static double rhb1_sim = 278.7;
+static double rhb2_sim = 277.9;
+static bool skd_on_pr;
+static innn;
+
+static double xxx;
+static TDateTime TimeSKD;
+static double v_p;
+static int upp;
+
+static bool SkdOnPr;
+static int timeed;
+
+static double v_tek;
+//---------------------------------------------------------------------------
+__fastcall TKDUform::TKDUform(TComponent* Owner)
+        : TForm(Owner)
+{
+KDUform->Position=poDesktopCenter;
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TKDUform::Timer1Timer(TObject *Sender)
+{
+// Включаем расход СКД
+dynamics.rasp = dynamics.rasp - 0.535; // Высчитываем каждый тик 0.535 кг
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TKDUform::SpeedButton1Click(TObject *Sender)
+{
+
+JPS(1,is_sudn,is_operator,"Включение СКД     ","");
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TKDUform::SpeedButton2Click(TObject *Sender)
+{
+Timer1->Enabled=false;
+Timer2->Enabled=false;
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TKDUform::Button2Click(TObject *Sender)
+{
+
+rhb1_sim = rhb1_sim - skd_sec_ras;
+rhb1->Caption=FloatToStr(rhb1_sim);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TKDUform::Button3Click(TObject *Sender)
+{
+rhb1_sim = 100;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TKDUform::Timer2Timer(TObject *Sender)
+{
+if(tpl>0.000){
+rash = rash + 1.0700006024;              // текущий расход топлива
+tk_mass = tk_mass - 1.0700006024;        // Расчет текущей массы корабля
+v_tek= v_tek + (2951.8016/StrToFloat(tk_mass));     // Расчет Vтек  2951.8016
+Label60->Caption=v_tek;
+v_tek_m = v_tek;
+timeed++;
+Label14->Caption=IntToStr(timeed);
+Label12->Caption=TimeSKD++;
+ data_vtek = v_tek;
+ data_num_t = timeed;
+Label38->Caption=rash;
+Label51->Caption=rash;
+upp--;
+Label68->Caption=upp;
+}
+if(v_tek>v_p){
+ JPS(1,is_sudn,is_operator,"Выключение СКД     ","");
+ Timer2->Enabled=false;
+ Timer1->Enabled=false;
+         // Вкл ТСЭ "РАБОТА СКД"
+        ts4_6->Color=clBlack;
+        ts4_6->Font->Color=clOlive; }
+if(IrBrForm->Panel1->Color==clLime){
+  IrBrForm->i1->Caption="0";
+  IrBrForm->i2->Caption="0";
+  IrBrForm->i3->Caption="3";
+}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TKDUform::BitBtn1Click(TObject *Sender)
+{
+Tskd->Date=OnboardModelTime.DateString();
+data_TSKD = Tskd->Time;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TKDUform::USO_Otr_TimerTimer(TObject *Sender)
+{
+
+fuel_ost->Caption=FloatToStr(dynamics.rasp);         // Формирование остатка топлива
+
+///////////////////
+// Fuel from RUD //
+///////////////////
+rud_rash->Caption=FloatToStr(dynamics.rudkg);
+
+if(USO_Booled[10][7]){
+ ts4_5->Color=clLime;
+ ts4_5->Font->Color=clBlack; } else {
+ ts4_5->Font->Color=clOlive;
+ ts4_5->Color=clBlack;
+}
+
+if(USO_Booled[0][1]){
+NadduvKdu->Color=clLime;
+NadduvKdu->Font->Color=clBlack; } else {
+NadduvKdu->Font->Color=clOlive;
+NadduvKdu->Color=clBlack;
+}
+if(ych_Rg15[0]){ // Если есть команда на включение СКД
+skd_on_pr=1;
+//cw_a4[0]=1;
+//cw_a4[2]=1;
+USO_Booled[10][10] = 1;
+
+ych_Rg15[0]=0;
+}
+// обработчик признака "Работа СКД"
+if(USO_Booled[10][10]) {
+if(skd_on_pr){
+JPS(2,is_miu,is_operator,"Работа СКД        ","ВКЛ");   // Надо выдавать один раз по факту
+work_st = true;
+SkdOnPr=true;                         // Признак "ВКЛ СКД"
+tk_mass = StrToFloat(Edit1->Text);    // Считываем Массу ТК
+mass_tpk->Caption=FloatToStr(tk_mass);// Выводим массу ТК в лейбл
+timeed = 0;                           // Обнуляем секунды
+Timer1->Enabled=true;
+Timer2->Enabled=true;
+TimeSKD = Tskd->Time;                 // Присваиваем время с ТСКД
+tpl =StrToFloat(fuel->Text);
+        // Вкл ТСЭ "РАБОТА СКД"
+
+v_p = StrToFloat(tormimp->Text);
+Label66->Caption=FloatToStr(v_p);
+upp = 1/(int)(v_p);
+Label68->Caption=upp;
+Label63->Caption = FloatToStr(tk_mass);  // Выводим массу корабля
+attitude = Edit2->Text.ToDouble();       // Высота
+
+g_tt =  fff*(e_mass/pow((Rz+attitude),2));                                 // Расчет ускорения свободного падения
+Label74->Caption=FloatToStr(g_tt);
+skd_H = 300*g_tt;
+skd_on_pr=0;
+} else {
+}
+ts4_6->Color=clLime;
+ts4_6->Font->Color=clBlack; } else {
+ts4_6->Font->Color=clOlive;
+ts4_6->Color=clBlack;
+}
+
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TKDUform::BitBtn2Click(TObject *Sender)
+{
+deltavt_1 = StrToFloat(tormimp->Text);
+// Пока так, пока не найдем как
+// обрабатывается уставка
+if(ArgonMemoryType[41]==0.0) ArgonMemoryType[41] = StrToFloat(tormimp->Text); else
+ArgonMemoryType[101] = StrToFloat(tormimp->Text);
+}
+//---------------------------------------------------------------------------
+
+
+
+void __fastcall TKDUform::FormCreate(TObject *Sender)
+{
+SDR1_label->Hint="Рнастр = 24 кгс/см2";
+SDR2_label->Hint="Рнастр = 24 кгс/см2";
+DRO1_label->Hint="Датчик Расхода Окислителя \nРасход: 000.00 кг";
+DRG1_label->Hint="Датчик Расхода Горючего \nРасход: 000.00 кг";
+}
+//---------------------------------------------------------------------------
+
+
+
+void __fastcall TKDUform::sps_dataTimer(TObject *Sender)
+{
+kdu_dhb1->Caption=FormatFloat("000.000",SpsDataSt.TSpsParam[21]);
+kdu_dhb2->Caption=FormatFloat("000.000",SpsDataSt.TSpsParam[22]);
+Label113->Caption=FormatFloat("000.000",SpsDataSt.TSpsParam[25]);
+Label116->Caption=FormatFloat("000.000",SpsDataSt.TSpsParam[26]);
+Label114->Caption=FormatFloat("000.000",SpsDataSt.TSpsParam[31]);
+Label115->Caption=FormatFloat("000.000",SpsDataSt.TSpsParam[32]);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TKDUform::kdu_math_tTimer(TObject *Sender)
+{
+// Тестовый алгоритм для реализации процесса Наддува О и Г
+// Штатно формируется по всем командам, которые готовят включение КДУ.
+// Добавить обработчик по секциям наддува
+if(USO_Booled[0][1]){ // Если есть признак выданной команды Наддув КДУ (ОК32), то...
+// Открываем ЭПКН выбранной секции
+if(SpsDataSt.TSpsParam[25]<14&&SpsDataSt.TSpsParam[31]<14){                         // Если давление в баках О и Г меньше заданного, то
+SpsDataSt.TSpsParam[21] = SpsDataSt.TSpsParam[21] - 0.01;        // Вычитаем из баков наддува
+SpsDataSt.TSpsParam[25] = SpsDataSt.TSpsParam[25] + 0.200745;
+//SpsDataSt.TSpsParam[25] = math_nad
+SpsDataSt.TSpsParam[31] = SpsDataSt.TSpsParam[31] + 0.200753;
+}
+}
+}
+//---------------------------------------------------------------------------
+
+
+
+////////////////////////////////////////////////
+// Различные параметры для моделирования КДУ  //
+////////////////////////////////////////////////
+/*
+
+   газовая постоянная гелия = 2078 (Джоуль / (Килограмм · Кельвин))
+
+   Плотность гелия	0.179 (????????? / ???? 3)
+
+   
+
+*/

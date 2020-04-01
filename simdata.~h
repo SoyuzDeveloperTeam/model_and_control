@@ -1,0 +1,17 @@
+/*
+  В этом документе рассматриваются общие данные симулятора, версия, модификация,
+  конфигурация под тип пользователя и т.д.
+*/
+#ifndef _simdata
+#define _simdata
+#define DEBUG
+#define RELEASE
+
+#define SERVER
+
+static AnsiString ActVer = "Debug";
+static AnsiString SimType = "Отладочная модель";
+
+static AnsiString MainDir = "C:\\Program Files\\SDT\\miu\\data";
+
+#endif

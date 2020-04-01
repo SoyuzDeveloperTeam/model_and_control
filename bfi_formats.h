@@ -1,0 +1,194 @@
+//---------------------------------------------------------------------------
+
+#ifndef bfi_formatsH
+#define bfi_formatsH
+//---------------------------------------------------------------------------
+#include <Classes.hpp>
+#include <Controls.hpp>
+#include <StdCtrls.hpp>
+#include <Forms.hpp>
+#include <ComCtrls.hpp>
+#include <ExtCtrls.hpp>
+//---------------------------------------------------------------------------
+class TBFI_Simvol_form : public TForm
+{
+__published:	// IDE-managed Components
+        TPageControl *formats;
+        TTabSheet *f_41;
+        TTabSheet *f_42;
+        TTabSheet *f_43;
+        TTabSheet *f_44;
+        TTabSheet *f_45;
+        TTabSheet *f_46;
+        TPanel *Panel3;
+        TPanel *Panel5;
+        TPanel *Panel4;
+        TPanel *Panel7;
+        TLabel *Label1;
+        TLabel *TMTPTime;
+        TLabel *act_str_1;
+        TLabel *act_str_2;
+        TLabel *Label3;
+        TLabel *Label5;
+        TLabel *Label6;
+        TLabel *Label7;
+        TLabel *Label8;
+        TLabel *Label9;
+        TLabel *Label10;
+        TLabel *Label11;
+        TLabel *Label12;
+        TLabel *Label13;
+        TLabel *Label14;
+        TLabel *Label15;
+        TLabel *Label16;
+        TLabel *Label17;
+        TLabel *Label18;
+        TLabel *Label19;
+        TLabel *Label20;
+        TLabel *Label21;
+        TLabel *Label22;
+        TLabel *Label23;
+        TLabel *Label24;
+        TLabel *Label25;
+        TLabel *reg_or;
+        TLabel *Label27;
+        TLabel *Label28;
+        TLabel *Label29;
+        TLabel *Label30;
+        TLabel *Label31;
+        TLabel *Label32;
+        TLabel *Label33;
+        TLabel *Label34;
+        TLabel *Label35;
+        TLabel *Label36;
+        TLabel *Label37;
+        TLabel *Label38;
+        TLabel *Label39;
+        TLabel *Label40;
+        TLabel *Label41;
+        TLabel *Label42;
+        TLabel *Label43;
+        TLabel *Label44;
+        TLabel *f43_emer;
+        TLabel *f43_emerN;
+        TLabel *Label47;
+        TLabel *Label48;
+        TLabel *f43_X_plus;
+        TLabel *Label50;
+        TLabel *f43_Y_plus;
+        TLabel *f43_Z_plus;
+        TLabel *gso;
+        TTimer *BFIDATATIMER;
+        TPanel *Panel6;
+        TLabel *Label2;
+        TLabel *f41_time;
+        TLabel *Label26;
+        TLabel *Label54;
+        TLabel *f41_B1;
+        TLabel *f41_B6;
+        TLabel *Label71;
+        TLabel *Label72;
+        TLabel *Label101;
+        TLabel *f41_kurstime;
+        TLabel *Label55;
+        TLabel *Label57;
+        TLabel *f41_B10;
+        TLabel *f41_A20;
+        TLabel *f41_A21;
+        TLabel *Label61;
+        TLabel *Label65;
+        TLabel *Label76;
+        TLabel *f41_A22;
+        TLabel *f41_v1v;
+        TLabel *Label63;
+        TLabel *f41_A30;
+        TLabel *Label67;
+        TLabel *Label68;
+        TLabel *Label69;
+        TLabel *f41_R6;
+        TLabel *f41_R1;
+        TLabel *Label74;
+        TLabel *Label75;
+        TLabel *Label80;
+        TLabel *Label81;
+        TLabel *Label82;
+        TLabel *Label83;
+        TLabel *f41_emer;
+        TLabel *f41_emerN;
+        TLabel *Label86;
+        TLabel *f41_instr;
+        TLabel *Label88;
+        TLabel *Label90;
+        TLabel *Label91;
+        TLabel *Label92;
+        TLabel *Label93;
+        TLabel *Label94;
+        TLabel *Label95;
+        TLabel *Label96;
+        TLabel *Label97;
+        TLabel *Label98;
+        TLabel *Label99;
+        TLabel *f41_42;
+        TLabel *f41_43;
+        TLabel *f41_44;
+        TLabel *f41_45;
+        TLabel *f41_46;
+        TLabel *f41_106;
+        TLabel *f41_105;
+        TLabel *f41_104;
+        TLabel *f41_103;
+        TLabel *f41_102;
+        TLabel *f41_101;
+        TLabel *Label53;
+        TPanel *Panel1;
+        TLabel *Label45;
+        TLabel *Label46;
+        TLabel *Label56;
+        TLabel *Label59;
+        TLabel *Label62;
+        TLabel *Label66;
+        TLabel *Label85;
+        TLabel *f45_kvc_1;
+        TLabel *f45_kvc_3;
+        TLabel *Label116;
+        TLabel *Label129;
+        TLabel *Label130;
+        TLabel *Label131;
+        TLabel *Label132;
+        TLabel *Label133;
+        TLabel *Label134;
+        TLabel *Label135;
+        TLabel *Label136;
+        TLabel *Label137;
+        TLabel *Label138;
+        TLabel *Label139;
+        TLabel *f45_kvc_4;
+        TLabel *f45_kvc_2;
+        TLabel *Label151;
+        TLabel *Label152;
+        TLabel *Label153;
+        TLabel *Label155;
+        TLabel *Label156;
+        TLabel *Label58;
+        TLabel *Label157;
+        TLabel *Label60;
+        TLabel *Label64;
+        TLabel *Label70;
+        TLabel *Label73;
+        TLabel *f46_vtek;
+        TLabel *Label84;
+        TLabel *Label87;
+        TLabel *f46_tvc;
+        TLabel *Label111;
+        TPanel *Panel2;
+        TLabel *Label4;
+        TLabel *Label49;
+        void __fastcall BFIDATATIMERTimer(TObject *Sender);
+private:	// User declarations
+public:		// User declarations
+        __fastcall TBFI_Simvol_form(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TBFI_Simvol_form *BFI_Simvol_form;
+//---------------------------------------------------------------------------
+#endif

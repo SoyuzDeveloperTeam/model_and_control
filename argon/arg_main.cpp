@@ -1,0 +1,220 @@
+#ifndef _ARG_MAIN
+#define _ARG_MAIN
+
+#include "JouHeader.h"
+#include "JouStrings.h"
+
+#include "CtrlWord.h" // Управляющие Слова
+#include "arg_header.h"
+#include "arg_irvi.cpp"
+/*
+   +--------------------------+
+   |   Модель БЦВК Аргон-16   |
+   +--------------------------+
+
+   Активируется при выдаче команды на включение БЦВК
+
+   +------------------------------------------+
+   | N.N. Программа включения акселерометра   |
+   +------------------------------------------+
+*/
+
+void arg_aks_on (void) {
+A2:
+if(i==2)
+        {
+        e3:
+        cw_K3[3] = true; // Формирование команды "Включение акселерометра"
+        dt = 50;         // Delta t = 50"
+        // Япоп = А3 (яч <437>)
+        Yz1[9] = 0;      // Снятие заявки с программы
+        // Запуск Сч И5 - Масштаб 0,2
+        } else i++;
+}
+
+/*
+   +------------------------------------+
+   | N.N. СПП выключения датчиков ИКВ   |
+   +------------------------------------+
+*/
+
+void arg_spp_ikv_off (void) {
+cw_K2[2] = true;   // Выключение ИКВ-1
+cw_K2[6] = true;   // Выключение ИКВ-2
+cw_Y32[2] = false; // Включение ИКВ-1
+cw_Y32[3] = false; // Включение ИКВ-2
+// В основную программу <001>
+}
+
+/*
+   +------------------------------------+
+   | N.N. Подпрограмма вывода на ИРВИ   |
+   +------------------------------------+
+*/
+
+void SetItvi (byte Mode, unsigned short Addr, unsigned short value, char z) {
+irvi_string.SubString(1,2) = IntToStr(Mode).SubString(1,1);
+irvi_string.SubString(3,5) = IntToStr(Addr);
+irvi_string.SubString(8,7) = IntToStr(value);
+irvi_string.SubString(15,1) = z;
+}
+
+/*
+   +---------------------------------------------------------------+
+   | B.    О Р Г А Н И З А Ц И Я   А В Т О М А Т И Ч Е С К О Г О   |
+   | К О Н Т У Р А   У П Р А В Л Е Н И Я   О Р И Е Н Т А Ц И Е Й   |
+   +---------------------------------------------------------------+
+*/
+
+void ku_podgot (void) {
+// +----------------+
+// +-- 63 секунды --+
+// +----------------+
+// Подготовка БДУС-1
+// Формируем команду "Включение электроники БДУС-1" выбранного комплекта;
+// Через 0,6 сек анализируем наличие квитанции о включении питания;
+// При наличии квитанции и разрешенном тесте БДУС-1 - ЧЭ БДУС в среднее положение
+// задержка 2,4 секунды (тесты БДУС которые стоит описывать только при вводе НшС)
+// задержка 60 секунд реализуем Контур Управления
+// Если cw_b1[9] = 1, то +0,6 сек к задержке
+
+}
+
+// Программа динамического контура управления ориентацией
+void DKUO (void) {
+
+
+}
+
+void mode_31 (int addr, int val){
+switch (addr) {   // Обработчик режима
+        case 40: cw_b1[val]=1; break;
+        case 47: cw_b6[val]=1; break;
+        case 50: cw_b10[val]=1; break;
+        case 100: cw_r1[val]=1; break;
+        case 107: cw_r6[val]=1; break;
+        case 110: cw_a20[val]=1; break;
+        case 111: cw_a21[val]=1; break;
+        case 112: cw_a22[val]=1; break;
+        case 246: cw_a30[val]=1; break;
+        case 250: cw_a35[val]=1; break;
+        case 277: cw_a19[val]=1; break;
+        default: JPS(3,is_miu,is_operator,"Нет такой буквы!",""); break; } }
+
+void mode_30 (int addr, int val){
+switch (addr) {   // Обработчик режима
+        case 40: cw_b1[val]=0; break;
+        case 47: cw_b6[val]=0; break;
+        case 50: cw_b10[val]=0; break;
+        case 100: cw_r1[val]=0; break;
+        case 107: cw_r6[val]=0; break;
+        case 110: cw_a20[val]=0; break;
+        case 111: cw_a21[val]=0; break;
+        case 112: cw_a22[val]=0; break;
+        case 246: cw_a30[val]=0; break;
+        case 250: cw_a35[val]=0; break;
+        case 277: cw_a19[val]=0; break;
+        default: JPS(3,is_miu,is_operator,"Нет такой буквы!",""); break; } }
+
+/*
+   +--------------------------------------------+
+   | N.N. Подпрограмма проверки значения ИРВИ   |
+   +--------------------------------------------+
+*/
+
+void ChekIrvi (AnsiString irvi_str){
+irvi_type.mode = StrToInt(irvi_str.SubString(1,2)); // Вырезаем первые два символа строки ирви "режим"
+switch (irvi_type.mode) {   // Обработчик режима
+        case 00: /* Приоритетный или принудительный режим выдачи пр-м 1 - 4 */ break;
+        case 04: /* Динамический вывод 10-х чисел */ break;
+        case 05: /* Динамический вывод 8-х чисел */ break;
+        case 10: /* Ввод уставки РУС */   break;
+        case 11: /* Ввод уставки АУС 1-й группы */  break;
+        case 12: /* Ввод уставки АУС 2-й группы */  break;
+        case 14: /* Одиночный ввод 10-х чисел */                       // Если режим 14, то
+                 irvi_type.addr = StrToInt(irvi_str.SubString(3,5));   // Присваиваем значение адреса
+                 if(CorrectAddr(irvi_type.addr)) {                     // Проверяем корректность адреса, если корректен, то
+                 irvi_type.value = StrToInt(irvi_str.SubString(8,7));  // Присваиваем значение
+                 ArgonMemoryType[irvi_type.addr] = irvi_type.value;    // Записываем его в ячейку памяти Аргона
+                 SetItvi(irvi_type.mode,irvi_type.addr,ArgonMemoryType[irvi_type.addr], irvi_type.z );   // Выставляем результат на ИРВИ
+                 JPS(4,is_argon,is_irvi,"Запись числа "+               // Логируем результат (от имени Аргона)
+                 IntToStr(irvi_type.value)+" по адресу "+IntToStr(irvi_type.addr),"");}
+                 else {                                                 // Если адрес не корректен ,то
+                 irvi_err = true;
+                 JPS(3,is_argon,is_operator,arg_addr_error,"");     }   // Логируем превышение допустимого значения памяти А16
+                 break;
+        case 15: /* Одиночный ввод 8-х чисел */  break;
+        case 17: /* Групповой ввод 10-х чисел */ break;
+        case 18: /* Групповой ввод 8-х чисел */ break;
+        case 21: /* Вывод уставки АУС 1-й группы */ break;
+        case 22: /* Вывод уставки АУС 2-й группы */ break;
+        case 24: /* Одиночный вывод 10-х чисел */                      // Если режим 24, то
+                 irvi_type.addr = StrToInt(irvi_str.SubString(3,5));   // Присваиваем значение адреса временной переменной
+                 if(CorrectAddr(irvi_type.addr)) {                     // Проверяем корректность адреса, если корректен, то
+                 SetItvi(irvi_type.mode,irvi_type.addr,ArgonMemoryType[irvi_type.addr], irvi_type.z ); }  // Выставляем результат на ИРВИ
+                 else   {                                               // Если адрес не корректен ,то
+                 irvi_err = true;
+                 JPS(3,is_argon,is_operator,arg_addr_error,"");   }     // Логируем превышение допустимого значения памяти А16
+                 break;
+        case 25: /* Одиночный вывод 8-х чисел */ break;
+        case 27: /* Групповой вывод 10-х чисел */ break;
+        case 28: /* Групповой вывод 8-х чисел  */break;
+        case 30: /* Изменение состояния признака в слове - запись единицы */
+                 irvi_type.addr = StrToInt(irvi_str.SubString(3,5));   // Присваиваем значение адреса временной переменной
+                 if(CorrectAddr(irvi_type.addr)) {                     // Проверяем корректность адреса, если корректен, то
+                 irvi_type.value = StrToInt(irvi_str.SubString(8,7));  // Присваиваем значение
+                 mode_30(irvi_type.addr,irvi_type.value); }             // Выставляем результат на ИРВИ
+                 else   {                                              // Если адрес не корректен ,то
+                 irvi_err = true;
+                 JPS(3,is_argon,is_operator,arg_addr_error,"");   }    // Логируем превышение допустимого значения памяти А16
+                 break;
+        case 31: /* Изменение состояния признака в слове - запись нуля */
+                 irvi_type.addr = StrToInt(irvi_str.SubString(3,5));   // Присваиваем значение адреса временной переменной
+                 if(CorrectAddr(irvi_type.addr)) {                     // Проверяем корректность адреса, если корректен, то
+                 irvi_type.value = StrToInt(irvi_str.SubString(8,7));  // Присваиваем значение
+                 mode_31(irvi_type.addr,irvi_type.value); }             // Выставляем результат на ИРВИ
+                 else   {                                              // Если адрес не корректен ,то
+                 irvi_err = true;
+                 JPS(3,is_argon,is_operator,arg_addr_error,"");   }    // Логируем превышение допустимого значения памяти А16
+                 break;
+        case 40: /*  */ break;
+        case 41: /*  */ break;
+        case 42: /*  */ break;
+        case 43: /*  */ break;
+        case 44: /*  */ break;
+        case 45: /*  */ break;
+        case 46: /*  */ break;
+        case 48: /* Сверка времени */ break;
+        default: irvi_err = true;       // Флаг ошибки (для индикации на ИРВИ)
+                 JPS(3,is_argon,is_irvi,"АА","");        // Логируем ошибку о несуществующием режиме
+                 JPS(3,is_miu,is_operator,"Несуществующий режим!","");
+
+        break;
+}
+
+}
+
+class JP {
+
+/* void blok_3 () {
+if(cw_a7[1]) cw_b1[7]=1;
+else {
+        if(cw_C7[1]) {
+                if(!cw_a14[9]&&!cw_a8[7]) cw_b1[7]=1;
+                else
+                     }
+     }
+if(cw_C3[0]&&cw_C3[2])
+
+}; */
+
+void blok_10 () {
+cw_b1[11]=1;
+cw_A4[0]=0; cw_A4[1]=0; cw_A4[2]=0; cw_A4[3]=0;
+cw_A4[4]=0; cw_A4[6]=0; cw_A4[7]=0; cw_A4[8]=0;
+cw_A4[9]=0; cw_A4[10]=0; cw_A4[13]=0; cw_A4[14]=0;
+cw_A4[15]=0; cw_A9[0-15]=0; cw_A5[0-15]=0; };
+
+};
+
+#endif //_ARG_MAIN
