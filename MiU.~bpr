@@ -57,7 +57,7 @@
     <IDLCFLAGS value="-Iks020 -Iargon -IC:\Users\Professional\Documents -Ibrvi_irvi -Iiss 
       -I$(BCB)\Projects -I$(BCB)\Projects\miu -I$(BCB)\include 
       -I$(BCB)\include\vcl -src_suffix cpp -boa"/>
-    <CFLAG1 value="-Od -w- -Vx -Ve -X- -a8 -b- -k- -vi -c -tW -tWM"/>
+    <CFLAG1 value="-Od -w- -Vx -Ve -X- -a1 -b- -k- -vi -c -tW -tWM"/>
     <PFLAGS value="-$Y- -$L- -$D- -$A8 -v -JPHNE -M"/>
     <RFLAGS value=""/>
     <AFLAGS value="/mx /w0 /zn"/>

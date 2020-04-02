@@ -9,7 +9,7 @@ MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
 DCC = $(ROOT)\bin\dcc32.exe $**
 BRCC = $(ROOT)\bin\brcc32.exe $**
 #------------------------------------------------------------------------------
-PROJECTS = MiU.exe SIVO.exe MiU.exe Planirovanie.exe
+PROJECTS = MiU.exe SIVO.exe MiU.exe Planirovanie.exe BumConnect.exe
 #------------------------------------------------------------------------------
 default: $(PROJECTS)
 #------------------------------------------------------------------------------
@@ -27,6 +27,10 @@ MiU.exe: MiU.bpr
   $(ROOT)\bin\make -$(MAKEFLAGS) -f$*.mak
 
 Planirovanie.exe: PO_Planirovanie\Planirovanie.bpr
+  $(ROOT)\bin\bpr2mak $**
+  $(ROOT)\bin\make -$(MAKEFLAGS) -f$*.mak
+
+BumConnect.exe: ..\Users\Professional\Documents\BumConnect\BumConnect.bpr
   $(ROOT)\bin\bpr2mak $**
   $(ROOT)\bin\make -$(MAKEFLAGS) -f$*.mak
 

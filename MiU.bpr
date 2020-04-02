@@ -3,7 +3,7 @@
 <PROJECT>
   <MACROS>
     <VERSION value="BCB.06.00"/>
-    <PROJECT value="C:\1231231\Out\MiU.exe"/>
+    <PROJECT value="&quot;C:\Users\Professional\Desktop\Моделирование и Управление\miu_debug\MiU.exe&quot;"/>
     <OBJFILES value="MainFrm.obj ts_frm.obj bum_sett_frm.obj toru_frm.obj EnterNuFrm.obj 
       kdu_data.obj clock_form.obj JouLogFrm.obj BkuCFrm.obj 
       brvi_irvi\irvi_brfi_frm.obj KSPLForm.obj KSPPForm.obj sepform.obj 
@@ -187,8 +187,10 @@ Count=1
 Item0=_DEBUG
 
 [HistoryLists\hlFinalOutputDir]
-Count=1
-Item0=C:\1231231\Out\
+Count=3
+Item0=C:\Users\Professional\Desktop\Моделирование и Управление\miu_debug\
+Item1=C:\Users\Professional\Desktop\Моделирование и Управление\miu_debug
+Item2=C:\1231231\Out\
 
 [Debugging]
 DebugSourceDirs=$(BCB)\source\vcl

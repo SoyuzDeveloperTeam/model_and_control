@@ -172,7 +172,7 @@ void __fastcall TMainForm::pusk_btnClick(TObject *Sender)
 {
 if(!WithoutBum->Checked){
 SendToBum(0x00000301, 2, 1);       //Пуск динамики - команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,StrToInt(Edit2->Text), 0  );   // Посылаем команду в БУМ на запуск динамики
+iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   // Посылаем команду в БУМ на запуск динамики (уточнить размер)
 if (iResult == SOCKET_ERROR) { GetWsaError(WSAGetLastError()); } else {  }  // Если нет ошибки отправки, то...
 dk_to_bum->Enabled=true;           // Разрешение отправки параметров ДК в БУМ
 }
@@ -194,10 +194,10 @@ void __fastcall TMainForm::N3Click(TObject *Sender)
 ts_form->Show();  //Запуск формы "ТС"
 }
 //---------------------------------------------------------------------------
-void GetStructFromBUM(struct STR_temp* s)   // Получить от БУМа структуру параметров
-{
-memcpy((void *)s,(void *)&DATA_FROM_MS_mas[n_act_str],sizeof(STR_temp));
-}
+//void GetStructFromBUM(struct STR_temp* s)   // Получить от БУМа структуру параметров
+//{
+//memcpy((void *)s,(void *)&DATA_FROM_MS_mas[n_act_str],sizeof(STR_temp));
+//}
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::N14Click(TObject *Sender)
 {
@@ -249,7 +249,7 @@ void __fastcall TMainForm::Button4Click(TObject *Sender)
 if(!WithoutBum->Checked){
 start_priz = false;
 SendToBum(0x00000301, 2, 0);       //Пуск динамики - команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,StrToInt(Edit2->Text), 0  );   // Посылаем команду в БУМ на запуск динамики
+iResult = send( TeleSocket,(char *)&send_tru,StrToInt(Edit2->Text), 0  );   // Посылаем команду в БУМ на паузу динамики
 if (iResult == SOCKET_ERROR) { GetWsaError(WSAGetLastError()); } else {  } } // Если нет ошибки отправки, то...
 PuskPr = false;
 ModelDateTime_Timer->Enabled=false;
@@ -258,8 +258,8 @@ ArgonTakt->Enabled=false;
 Timer6->Enabled=false;
 pusk_btn->Enabled=true;
 dk_to_bum->Enabled=false;           // Запрет отправки параметров ДК в БУМ
-JPS(1,is_operator,is_miu,"Стоп моделирования","");
-StatusBar->Panels->Items[0]->Text="Процесс моделирования остановлен.";
+JPS(1,is_operator,is_miu,"Пауза моделирования","");
+StatusBar->Panels->Items[0]->Text="Пауза процесса моделирования.";
 }
 //---------------------------------------------------------------------------
 
@@ -277,11 +277,6 @@ BkuC->Show();
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMainForm::SpeedButton2Click(TObject *Sender)
-{
-IrBrForm->Show();
-}
-//---------------------------------------------------------------------------
 void __fastcall TMainForm::N12Click(TObject *Sender)
 {
 AboutForm->Show();
@@ -541,9 +536,9 @@ UsoForm->Show();
 
 void __fastcall TMainForm::Timer2Timer(TObject *Sender)
 {
-if(con){
-if(!WithoutBum->Checked){
-bum_status_pic->Invalidate();
+if(con){                        // Если есть признак подключения
+if(!WithoutBum->Checked){       // Если нет влага "Без БУМ"
+bum_status_pic->Invalidate();   // Обновляем иконку-статус БУМ
 bum_status_pic->Invalidate();
 bum_status_pic->Invalidate();
 ModelStatusPicList->GetBitmap(1, bum_status_pic->Picture->Bitmap);
@@ -554,8 +549,8 @@ Timer2->Enabled=false; }
 
 void __fastcall TMainForm::FormCreate(TObject *Sender)
 {
-ver_num=" 1.0.1.43";
-Label15->Caption=sizeof(PS_tk_iss)-24;
+ver_num=" 1.0.1.43";              // Переделать - выводить версию из атрибутов
+// --- Выставляем начальное состояние иконок моделей --- //
 ModelStatusPicList->GetBitmap(0, bum_status_pic->Picture->Bitmap);
 ModelStatusPicList->GetBitmap(0, inpu_status_pic->Picture->Bitmap);
 ModelStatusPicList->GetBitmap(0, argon_status_pic->Picture->Bitmap);
@@ -564,7 +559,7 @@ ModelStatusPicList->GetBitmap(0, bum_status_pic->Picture->Bitmap);
 image_index = 0;
 IdCanSend = false;
 PuskPr = false;  
-CO_light->Color=StringToColor("0x45607B");
+CO_light->Color=StringToColor("0x45607B");     // Цвет фона ЦО
 StatusBar->Panels->Items[0]->Text="МиУ запущен. Ожидание инициализации...";
 }
 //---------------------------------------------------------------------------
@@ -612,10 +607,10 @@ JPS(1,is_operator,is_miu,"Выдана команда - отработка НУ.","");
   onboardTimeLabel->Caption=OnboardModelTime.FormatString("hh:nn:ss");
   // ntohl
   // Тип корабля (тренажёра)
-  if(EnterNuForm->obj_tgk->Checked) NU_temp.n_tr=0; else
-  if(EnterNuForm->obj_tpk->Checked) NU_temp.n_tr=1; else {
+  if(EnterNuForm->obj_tgk->Checked) NU_temp.n_tr=ntohl(0); else
+  if(EnterNuForm->obj_tpk->Checked) NU_temp.n_tr=ntohl(1); else {
   JPS(1,is_miu,"Коле       Ты серьёзно? Решил выбрать МЛМ? Хе-хе...","","");
-  if(EnterNuForm->obj_mlm->Checked) NU_temp.n_tr=2;  }
+  if(EnterNuForm->obj_mlm->Checked) NU_temp.n_tr=ntohl(2);  }
   // Параметр Дата-время (модельное)
   NU_temp.nu_day  =ntohl(StrToInt(OnboardModelTime.FormatString("d")));
   NU_temp.nu_month=ntohl(StrToInt(OnboardModelTime.FormatString("m")));
@@ -710,6 +705,9 @@ JPS(1,is_operator,is_miu,"Выдана команда - отработка НУ.","");
   // Номер СУ к которому пристыкован ТК (при состыкованом состоянии)
   NU_temp.nu_otor_switch_styk_dk=ntohl(EnterNuForm->docking_uz->ItemIndex);
 
+  // Номер СУ к которому выполняется причаливание (для ДК)
+  NU_temp.n_su_4_dk=ntohl(EnterNuForm->dk_su->ItemIndex);
+
   // Признак состыкованного состояния ТК и МКС
   if(EnterNuForm->docking_pr->Checked) NU_temp.pr_doking=ntohl(1); else NU_temp.pr_doking=ntohl(0);
 
@@ -722,7 +720,7 @@ JPS(1,is_operator,is_miu,"Выдана команда - отработка НУ.","");
   if(EnterNuForm->rodk_pr->Checked)   NU_temp.nr_sudn =ntohl(3);
   //NU_temp.vec_solar[0] = ntohl(555);      // Вектор на солнце в J2000 - расчитывать при отработке  (получаем в алгоритме расчета элементов)
   //NU_temp.vec_solar[1] = ntohl(555);
-  //NU_temp.vec_solar[2] = ntohl(555);
+  NU_temp.vec_solar[2] = 555;
 
 //iResult = send( TeleSocket,(char *)&NU_temp,500, 0  );        // В К Л Ю Ч И Т Ь
 
@@ -773,7 +771,7 @@ NU_temp.ddd = ntohl(500);
 //SendToBum(0x00100101, 500, 0);
 //iResult = send( TeleSocket,(char *)&send_tru,50, 0  );   // Посылаем заголовк (?)
 //iResult = send( TeleSocket,(char *)&assa,sizeof(assa), 0  );
-iResult = send( TeleSocket,(char *)&NU_temp,sizeof(NU_temp), 0  );        //
+iResult = send( TeleSocket,(char *)&NU_temp,524, 0  );        //
 if (iResult == SOCKET_ERROR) { GetWsaError(WSAGetLastError()); } else {
 StatusBar->Panels->Items[0]->Text="Выдана команда - отработка НУ! Ожидание запуска моделирования...";  }
 iResult = recv( TeleSocket,(char *)&PS_tk_iss,1025, 0  );   //
@@ -913,14 +911,6 @@ void __fastcall TMainForm::N5Click(TObject *Sender)   // KSP Right
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMainForm::Timer4Timer(TObject *Sender)
-{
-//if(send_tru.i==255) send_trus.x++;
-//send_trus.i++;
-//Label8->Caption=IntToStr(send_trus.i)+"  "+IntToStr(send_trus.x);
-//iResult = send( TeleSocket,(char *)&send_trus,2, 0  );   // Посылаем команду
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TMainForm::CentralLightBlinkTimer(TObject *Sender)  // Таймер промигивания ЦО
 {
@@ -1459,6 +1449,7 @@ cw_b6[11] = 1; // Docking integer flag
 cw_b6[14] = 0; // Разрешение сближения по концу ГЦ
 cw_b6[8] = 1;  // Разрешение сближения
 GSO_types=2;
+JPS(3,is_operator,is_miu,"ОТЛАДОЧНОЕ - КУРС - Причаливание","");
 }
 //---------------------------------------------------------------------------
 
@@ -1507,13 +1498,6 @@ iss_t_tp->Show();
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMainForm::DebugTimerTimer(TObject *Sender)
-{
-//sskd();
-Label21->Caption=IntToStr(i_012);
-Label22->Caption=irvi_string;
-}
-//---------------------------------------------------------------------------
 
 
 
@@ -1576,17 +1560,6 @@ iResult = send(SPSSocket_ch1,(char *)&packett,2, 0  );   }
 
 
 
-void __fastcall TMainForm::Button17Click(TObject *Sender)
-{
-struct{
-int i;
-int s;
-}send_tru;
-iResult = recv( TeleSocket,(char *)&send_tru,StrToInt(Edit2->Text), 0  );
-Label76->Caption=IntToStr(send_tru.i);
-Label77->Caption=IntToStr(send_tru.s);
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TMainForm::N161Click(TObject *Sender)
 {
@@ -1669,8 +1642,14 @@ SendToBum(0x00000301, 2, 0);       //Пуск динамики - команда в БУМ ()
 iResult = send( TeleSocket,(char *)&send_tru,StrToInt(Edit2->Text), 0  );   // Посылаем команду в БУМ на запуск динамики
 if (iResult == SOCKET_ERROR) { GetWsaError(WSAGetLastError()); } else {  } } // Если нет ошибки отправки, то...
 dk_to_bum->Enabled=false;           // Запрет отправки параметров ДК в БУМ
-JPS(1,is_operator,is_miu,"Пауза моделирования","");
-StatusBar->Panels->Items[0]->Text="Пауза процесса моделирования.";
+JPS(1,is_operator,is_miu,"Стоп моделирования","");
+StatusBar->Panels->Items[0]->Text="Процесс моделирования остановлен.";
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::N38Click(TObject *Sender)
+{
+IrBrForm->Show();  // Форма ПРВИ
 }
 //---------------------------------------------------------------------------
 

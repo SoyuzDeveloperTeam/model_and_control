@@ -53,7 +53,7 @@ JPS(1,is_operator,is_miu,is_ksp,"ПЕРЕСВЕТКА");  // Резерв
 
 if (KSP_Let[5]){  // И                             Если выбранна буква И
 KSP_Booled[6][0]=true;                          // Тогда выставляем признак И1 - правда
-SendToBum(0x000002A2, 1, 1);       //Команда в БУМ ()
+SendToBum(0x000002BA, 1, 0);       //Команда в БУМ ()
 iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
 if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 JPS(1,is_operator,is_miu,is_ksp,"И1"); } else   // Логируем выдачу команды
@@ -147,7 +147,7 @@ JPS(1,is_operator,is_miu,is_ksp,"Ж2"); } else   */
 
 if (KSP_Let[5]){  // И
 KSP_Booled[6][1]=true;                          // Тогда выставляем признак И2 - правда
-SendToBum(0x000002A2, 0, 0);       //Команда в БУМ ()
+SendToBum(0x000002BA, 0, 0);       //Команда в БУМ ()
 iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
 if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 JPS(1,is_operator,is_miu,is_ksp,"И2"); } else   // Логируем выдачу команды
@@ -920,6 +920,9 @@ JPS(1,is_operator,is_miu,is_ksp,"В3"); } else   // Логируем выдачу команды
 
 if (KSP_Let[2]){  // Г                             Если выбранна буква Г
 KSP_Booled[3][2]=true;                          // Тогда выставляем признак Г3 - правда
+SendToBum(0x00000296, 1, 0);       //Команда в БУМ ()
+iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
+if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 JPS(1,is_operator,is_miu,is_ksp,"Г3"); } else   // Логируем выдачу команды
 
 if (KSP_Let[3]){  // Д                             Если выбранна буква Д
@@ -932,6 +935,9 @@ JPS(1,is_operator,is_miu,is_ksp,"Ж3"); } else   // Логируем выдачу команды
 
 if (KSP_Let[5]){  // И
 KSP_Booled[6][2]=true;                          // Тогда выставляем признак И3 - правда
+SendToBum(0x000002AE, 1, 0);       //Команда в БУМ ()
+iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
+if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 JPS(1,is_operator,is_miu,is_ksp,"И3"); } else   // Логируем выдачу команды
 
 if (KSP_Let[6]){  // К
@@ -1062,6 +1068,9 @@ JPS(1,is_operator,is_miu,is_ksp,"Ж4"); } else   // Логируем выдачу команды
 
 if (KSP_Let[5]){  // И
 KSP_Booled[6][3]=true;                          // Тогда выставляем признак И4 - правда
+SendToBum(0x000002AE, 0, 0);       //Команда в БУМ ()
+iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
+if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 JPS(1,is_operator,is_miu,is_ksp,"И4"); } else   // Логируем выдачу команды
 
 if (KSP_Let[6]){  // К
@@ -1316,10 +1325,16 @@ JPS(1,is_operator,is_miu,is_ksp,"Д7"); } else   // Логируем выдачу команды
 
 if (KSP_Let[4]){  // Ж
 KSP_Booled[5][6]=true;                          // Тогда выставляем признак Ж7 - правда
+SendToBum(0x00000293, 1, 0);       //Команда в БУМ ()
+iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
+if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 JPS(1,is_operator,is_miu,is_ksp,"Ж7"); } else   // Логируем выдачу команды
 
 if (KSP_Let[5]){  // И
 KSP_Booled[6][6]=true;                          // Тогда выставляем признак И7 - правда
+SendToBum(0x0000029F, 1, 0);       //Команда в БУМ ()
+iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
+if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 JPS(1,is_operator,is_miu,is_ksp,"И7"); } else   // Логируем выдачу команды
 
 if (KSP_Let[6]){  // К
@@ -1405,6 +1420,9 @@ JPS(1,is_operator,is_miu,is_ksp,"Ж8"); } else   // Логируем выдачу команды
 
 if (KSP_Let[5]){  // И
 KSP_Booled[6][7]=true;                          // Тогда выставляем признак И8 - правда
+SendToBum(0x0000029F, 0, 0);                    //Команда в БУМ (Выбор ДК)
+iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
+if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 JPS(1,is_operator,is_miu,is_ksp,"И8"); } else   // Логируем выдачу команды
 
 if (KSP_Let[6]){  // К
@@ -1811,22 +1829,28 @@ JPS(1,is_operator,is_miu,is_ksp,"В13"); } else   // Логируем выдачу команды
 
 if (KSP_Let[2]){  // Г                             Если выбранна буква Г
 KSP_Booled[3][12]=true;                          // Тогда выставляем признак Г13 - правда
+SendToBum(0x000002AA, 1, 0);       //Команда в БУМ ()
+iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
+if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 JPS(1,is_operator,is_miu,is_ksp,"Г13"); } else   // Логируем выдачу команды
 
 if (KSP_Let[3]){  // Д                             Если выбранна буква Д
 KSP_Booled[4][12]=true;                          // Тогда выставляем признак Д13 - правда
+SendToBum(0x000002A6, 1, 0);       //Команда в БУМ ()
+iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
+if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 JPS(1,is_operator,is_miu,is_ksp,"Д13"); } else   // Логируем выдачу команды
 
 if (KSP_Let[4]){  // Ж
 KSP_Booled[5][12]=true;                          // Тогда выставляем признак Ж13 - правда
-SendToBum(0x000002B7, 1, 1);       //Команда в БУМ ()
+SendToBum(0x000002B7, 1, 0);       //Команда в БУМ ()
 iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
 if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 JPS(1,is_operator,is_miu,is_ksp,"Ж13"); } else   // Логируем выдачу команды
 
 if (KSP_Let[5]){  // И
 KSP_Booled[6][12]=true;                          // Тогда выставляем признак И13 - правда
-SendToBum(0x000002A1, 1, 1);       //Команда в БУМ ()
+SendToBum(0x000002A1, 1, 0);                     //Команда в БУМ ()
 iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
 if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 JPS(1,is_operator,is_miu,is_ksp,"И13"); } else   // Логируем выдачу команды
@@ -1977,6 +2001,9 @@ JPS(1,is_operator,is_miu,is_ksp,"А15"); } else   // Логируем выдачу команды
 
 if (KSP_Let[1]){ // В                              Если выбранна буква B
 KSP_Booled[2][14]=true;                          // Тогда выставляем признак B15 - правда
+SendToBum(0x00000297, 1, 0);       //Команда в БУМ ()
+iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
+if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 JPS(1,is_operator,is_miu,is_ksp,"В15"); } else   // Логируем выдачу команды
 
 if (KSP_Let[2]){  // Г                             Если выбранна буква Г
@@ -2157,6 +2184,9 @@ JPS(1,is_operator,is_miu,is_ksp,"В17"); } else   // Логируем выдачу команды
 
 if (KSP_Let[2]){  // Г                             Если выбранна буква Г
 KSP_Booled[3][16]=true;                          // Тогда выставляем признак Г16 - правда
+SendToBum(0x000002A6, 0, 0);       //Команда в БУМ ()
+iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
+if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 JPS(1,is_operator,is_miu,is_ksp,"Г17"); } else   // Логируем выдачу команды
 
 if (KSP_Let[3]){  // Д                             Если выбранна буква Д
@@ -2165,10 +2195,16 @@ JPS(1,is_operator,is_miu,is_ksp,"Д17"); } else   // Логируем выдачу команды
 
 if (KSP_Let[4]){  // Ж
 KSP_Booled[5][16]=true;                          // Тогда выставляем признак Ж16 - правда
+SendToBum(0x000002BB, 1, 0);       //Команда в БУМ ()
+iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
+if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 JPS(1,is_operator,is_miu,is_ksp,"Ж17"); } else   // Логируем выдачу команды
 
 if (KSP_Let[5]){  // И
 KSP_Booled[6][16]=true;                          // Тогда выставляем признак И17 - правда
+SendToBum(0x000002BC, 1, 0);       //Команда в БУМ ()
+iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
+if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 JPS(1,is_operator,is_miu,is_ksp,"И17"); } else   // Логируем выдачу команды
 
 if (KSP_Let[6]){  // К
@@ -2253,10 +2289,16 @@ JPS(1,is_operator,is_miu,is_ksp,"Д18"); } else   // Логируем выдачу команды
 
 if (KSP_Let[4]){  // Ж
 KSP_Booled[5][17]=true;                          // Тогда выставляем признак Ж16 - правда
+SendToBum(0x000002BB, 0, 0);       //Команда в БУМ ()
+iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
+if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 JPS(1,is_operator,is_miu,is_ksp,"Ж18"); } else   // Логируем выдачу команды
 
 if (KSP_Let[5]){  // И
 KSP_Booled[6][17]=true;                          // Тогда выставляем признак И16 - правда
+SendToBum(0x000002BC, 0, 0);       //Команда в БУМ ()
+iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
+if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 JPS(1,is_operator,is_miu,is_ksp,"И18"); } else   // Логируем выдачу команды
 
 if (KSP_Let[6]){  // К

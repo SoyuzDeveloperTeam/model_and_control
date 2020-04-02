@@ -19,6 +19,7 @@ static AnsiString is_brvi     = "БРВИ              ";
 static AnsiString is_irvi     = "ИРВИ              ";
 static AnsiString is_prvi     = "ПРВИ              ";
 static AnsiString is_brus     = "БРУС              ";
+static AnsiString is_argon    = "Аргон              ";
 
 // Команды
 static AnsiString cmd_LoadToArgon = "Загрузка уставок на борт   ";
@@ -29,7 +30,8 @@ static AnsiString cmd_BumLoad     = "Подключен БУМ              ";
 static AnsiString cmd_loadmiu     = "Загрузка МиУ               ";
 static AnsiString cmd_readcmdb    = "Команда с сервера          ";
   // Команды БРВИ
-AnsiString cmd_brvi_error  = "ОШИБКА! БРВИ Выключен!     ";
+static AnsiString cmd_brvi_error  = "ОШИБКА! БРВИ Выключен!     ";
+static AnsiString arg_addr_error  = "Неверный адрес Аргона!";
   // Команды с ПУ БПС
 static AnsiString cmd_201 = "Сеть                       \"ВКЛ\"";
 static AnsiString cmd_202 = "Сеть                       \"ОТКЛ\"";
