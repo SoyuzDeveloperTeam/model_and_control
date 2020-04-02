@@ -116,21 +116,9 @@ bool iniread;
 int qwe;
 
 //---------------------------------------------------------------------------
-#define DEFAULT_BUFLEN 5
-//int iResult;
-char recvbuf[DEFAULT_BUFLEN];
-//WSADATA wsaData;
-//SOCKET ConnectSocket;           // Сокет интерфейса "Телеоператор"  перенесен в bumcon and rename to TeleSocket
 SOCKET SPSSocket_ch1;           // Сокет канала 1 СПС
 SOCKET SPSSocket_ch2;           // Сокет канала 2 СПС
 sockaddr_in clientInPU_COM2;      // Структура адреса сервера ИнПУ 1
-
-int recvbuflen = DEFAULT_BUFLEN;
-char adr1[4];
-//int BumCmdD[] = {0x301, 2, 1};            // Стартовая команда
-int BumCmd_INIT = 1048833;
-char bufere = (char)BumCmd_INIT;
-//const char *sendbuf = "0x301";
 
 const int MAX_BUF_SIZE = 1024;
 
@@ -139,8 +127,6 @@ int err;
 bool con;             // Признак удачного подключения для активации кнопок
 bool inpu_com2_connect_pr; // Признак связи с ИнПУ
 WORD wVersionRequested;
-
-
 
 //---------------------------------------------------------------------------
 struct STR_temp *DATA_FROM_MS_mas[12];
@@ -170,12 +156,9 @@ err = WSAStartup(wVersionRequested, &wsaData);
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::pusk_btnClick(TObject *Sender)
 {
-if(!WithoutBum->Checked){
-SendToBum(0x00000301, 2, 1);       //Пуск динамики - команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   // Посылаем команду в БУМ на запуск динамики (уточнить размер)
-if (iResult == SOCKET_ERROR) { GetWsaError(WSAGetLastError()); } else {  }  // Если нет ошибки отправки, то...
+if(!WithoutBum->Checked)
 dk_to_bum->Enabled=true;           // Разрешение отправки параметров ДК в БУМ
-}
+SendToBum(0x00000301, 2, 1);       //Пуск динамики - команда в БУМ ()
 PuskPr = true;                     // Вводим признак "Пуск динамики"
 start_priz = true;                 // признак для бум
 ModelDateTime_Timer->Enabled=true; // Запускаем таймер модельного времени (он и задает модельное время при отсутствии БУМ - иначе выводим от БУМа)
@@ -246,11 +229,8 @@ JouLogForm->Show();
 
 void __fastcall TMainForm::Button4Click(TObject *Sender)
 {
-if(!WithoutBum->Checked){
-start_priz = false;
 SendToBum(0x00000301, 2, 0);       //Пауза динамики - команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   // Посылаем команду в БУМ на паузу динамики
-if (iResult == SOCKET_ERROR) { GetWsaError(WSAGetLastError()); } else {  } } // Если нет ошибки отправки, то...
+start_priz = false;
 PuskPr = false;
 ModelDateTime_Timer->Enabled=false;
 MainTimer->Enabled=false;
@@ -337,6 +317,7 @@ JPS(1,is_operator,is_miu,"Запущен процесс инициализации.","");
 Config_init(ExtractFilePath(Application->ExeName)+"miu_config.ini");  // Инициализация файла конфигурации
 
 if(!WithoutBum->Checked){ // Если нет признака "Без БУМ"
+bum_pr = true;
 /*
   Операция попытки подключения должна повторятся
   циклично до момента установки соеденения с БУМ.
@@ -768,9 +749,6 @@ NU_temp.i = 0x02000700;
 NU_temp.s = 0x00001500;
 NU_temp.aa = ntohl(0x00100101);
 NU_temp.ddd = ntohl(500);
-//SendToBum(0x00100101, 500, 0);
-//iResult = send( TeleSocket,(char *)&send_tru,50, 0  );   // Посылаем заголовк (?)
-//iResult = send( TeleSocket,(char *)&assa,sizeof(assa), 0  );
 iResult = send( TeleSocket,(char *)&NU_temp,524, 0  );        //
 if (iResult == SOCKET_ERROR) { GetWsaError(WSAGetLastError()); } else {
 StatusBar->Panels->Items[0]->Text="Выдана команда - отработка НУ! Ожидание запуска моделирования...";  }
@@ -1412,8 +1390,6 @@ if(cw_b6[13]) { // "Разрешение причаливания"
 if(!WithoutBum->Checked&&!arg_half_false[1]){
 JPS(4,"ОТЛАДОЧНОЕ: Прошла команда в СУБК \"Причаливание\", запуск процедуры...","","","");
 SendToBum(0x0000029D, 1, 1);
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 arg_half_false[1]=true;}
 }
 
@@ -1569,11 +1545,6 @@ bum_debug->Show();
 void __fastcall TMainForm::dk_to_bumTimer(TObject *Sender)
 {
 SendToBum(0x00102101, 907, 0);       //Команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
-iResult = recv( TeleSocket,(char *)&PS_tk_iss,1025, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
-Label14->Caption=ntohl(PS_tk_iss.tv_pr);
 }
 //---------------------------------------------------------------------------
 
@@ -1616,8 +1587,6 @@ if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 void __fastcall TMainForm::Button10Click(TObject *Sender)
 {
 SendToBum(StrToInt(Edit5->Text),StrToInt(Edit6->Text),StrToInt(Edit7->Text));       //Команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 }
 //---------------------------------------------------------------------------
 
@@ -1629,11 +1598,8 @@ otkazy_frm->Show();
 
 void __fastcall TMainForm::Button2Click(TObject *Sender)
 {
-if(!WithoutBum->Checked){
 start_priz = false;
 SendToBum(0x00000301, 0, 0);       //Стоп динамики - команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   // Посылаем команду в БУМ на запуск динамики
-if (iResult == SOCKET_ERROR) { GetWsaError(WSAGetLastError()); } else {  } } // Если нет ошибки отправки, то..
 PuskPr = false;
 ModelDateTime_Timer->Enabled=false;
 MainTimer->Enabled=false;
@@ -1651,4 +1617,6 @@ void __fastcall TMainForm::N38Click(TObject *Sender)
 IrBrForm->Show();  // Форма ПРВИ
 }
 //---------------------------------------------------------------------------
+
+
 

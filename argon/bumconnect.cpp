@@ -17,6 +17,8 @@ TDateTime onboard_dt, dest_s, ob_cur;
 
 static bool start_priz;
 
+static bool bum_pr;             // Признак "С БУМ"
+
 static TIniFile *MiuConf;       // Файл конфигурации
 
 static AnsiString WsaIpAddr;    // IP адрес из конфигурации
@@ -100,5 +102,7 @@ send_tru.s = 0x00001500;
 send_tru.aa = ntohl(Cmd);
 send_tru.zr = ntohl(p1);
 send_tru.c = ntohl(p2);
+iResult = send( TeleSocket,(char *)&send_tru,20, 0);   //
+if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 }
 #endif bum_connect

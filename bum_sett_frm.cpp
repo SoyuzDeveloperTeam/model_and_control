@@ -6,6 +6,7 @@
 #include "md_m.h"              // Модельные переменные (структура m_math)
 #include "stdio.h"
 #include "dta.cpp"
+
 // Отладка поиска зависания:
 // Отключил таймеры Таймер 2, бум деск, таймер 1
 //---------------------------------------------------------------------------
@@ -142,6 +143,17 @@ Label61->Caption=IntToStr(sssqqq);
 void __fastcall Tbum_settings::Button2Click(TObject *Sender)
 {
 ddss=StrToInt(Edit1->Text);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall Tbum_settings::Button3Click(TObject *Sender)
+{
+;
+if(hhm->ItemIndex==0) PS_tk_iss.skd_rash=htons(0x3f80aa3d5b614084); else
+if(hhm->ItemIndex==1) PS_tk_iss.skd_rash=htonl(0x3f80aa3d5b614084); else
+if(hhm->ItemIndex==2) PS_tk_iss.skd_rash=ntohs(0x3f80aa3d5b614084); else
+if(hhm->ItemIndex==3) PS_tk_iss.skd_rash=ntohl(0x3f80aa3d5b614084); else
+if(hhm->ItemIndex==4) PS_tk_iss.skd_rash=0x3f80aa3d5b614084;
 }
 //---------------------------------------------------------------------------
 

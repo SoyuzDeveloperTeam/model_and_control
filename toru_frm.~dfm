@@ -1,6 +1,6 @@
 object toru_pult: Ttoru_pult
-  Left = 206
-  Top = 126
+  Left = 177
+  Top = 122
   BorderIcons = [biSystemMenu, biMinimize, biHelp]
   BorderStyle = bsSingle
   Caption = #1058#1054#1056#1059' - '#1055#1059' '#1041#1055#1057

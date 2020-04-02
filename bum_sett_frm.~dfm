@@ -1,11 +1,11 @@
 object bum_settings: Tbum_settings
-  Left = 148
-  Top = 151
+  Left = -7
+  Top = 125
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1057#1086#1089#1090#1086#1103#1085#1080#1077' '#1041#1059#1052
   ClientHeight = 551
-  ClientWidth = 1214
+  ClientWidth = 1020
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -874,14 +874,14 @@ object bum_settings: Tbum_settings
       Caption = 'Z'
     end
     object Label152: TLabel
-      Left = 280
+      Left = 352
       Top = 176
       Width = 61
       Height = 13
       Caption = #1055#1088#1080#1079#1085#1072#1082' '#1058#1042
     end
     object Label153: TLabel
-      Left = 352
+      Left = 424
       Top = 176
       Width = 44
       Height = 13
@@ -995,7 +995,7 @@ object bum_settings: Tbum_settings
     object GroupBox5: TGroupBox
       Left = 8
       Top = 168
-      Width = 161
+      Width = 233
       Height = 49
       TabOrder = 0
       object Label139: TLabel
@@ -1006,7 +1006,7 @@ object bum_settings: Tbum_settings
         Caption = #1058#1103#1075#1072' '#1057#1050#1044':'
       end
       object Label140: TLabel
-        Left = 72
+        Left = 96
         Top = 16
         Width = 24
         Height = 13
@@ -1028,7 +1028,7 @@ object bum_settings: Tbum_settings
       end
     end
     object GroupBox6: TGroupBox
-      Left = 167
+      Left = 239
       Top = 168
       Width = 106
       Height = 65
@@ -1680,6 +1680,40 @@ object bum_settings: Tbum_settings
       Height = 13
       Caption = #1053#1045#1058
     end
+  end
+  object hhm: TComboBox
+    Left = 328
+    Top = 490
+    Width = 97
+    Height = 19
+    Style = csOwnerDrawFixed
+    ItemHeight = 13
+    ItemIndex = 0
+    TabOrder = 9
+    Text = 'htons'
+    Items.Strings = (
+      'htons'
+      'htonl'
+      'ntohs'
+      'ntohl'
+      'none')
+  end
+  object Button3: TButton
+    Left = 448
+    Top = 512
+    Width = 75
+    Height = 25
+    Caption = 'Button3'
+    TabOrder = 10
+    OnClick = Button3Click
+  end
+  object Button4: TButton
+    Left = 544
+    Top = 504
+    Width = 75
+    Height = 25
+    Caption = 'Button4'
+    TabOrder = 11
   end
   object bum_desc: TTimer
     Interval = 5

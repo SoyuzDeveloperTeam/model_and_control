@@ -223,11 +223,15 @@ __published:	// IDE-managed Components
         TLabel *Label172;
         TLabel *Label173;
         TLabel *Label174;
+        TComboBox *hhm;
+        TButton *Button3;
+        TButton *Button4;
         void __fastcall bum_descTimer(TObject *Sender);
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall Timer1Timer(TObject *Sender);
         void __fastcall Timer2Timer(TObject *Sender);
         void __fastcall Button2Click(TObject *Sender);
+        void __fastcall Button3Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall Tbum_settings(TComponent* Owner);

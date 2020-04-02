@@ -116,21 +116,9 @@ bool iniread;
 int qwe;
 
 //---------------------------------------------------------------------------
-#define DEFAULT_BUFLEN 5
-//int iResult;
-char recvbuf[DEFAULT_BUFLEN];
-//WSADATA wsaData;
-//SOCKET ConnectSocket;           // Сокет интерфейса "Телеоператор"  перенесен в bumcon and rename to TeleSocket
 SOCKET SPSSocket_ch1;           // Сокет канала 1 СПС
 SOCKET SPSSocket_ch2;           // Сокет канала 2 СПС
 sockaddr_in clientInPU_COM2;      // Структура адреса сервера ИнПУ 1
-
-int recvbuflen = DEFAULT_BUFLEN;
-char adr1[4];
-//int BumCmdD[] = {0x301, 2, 1};            // Стартовая команда
-int BumCmd_INIT = 1048833;
-char bufere = (char)BumCmd_INIT;
-//const char *sendbuf = "0x301";
 
 const int MAX_BUF_SIZE = 1024;
 
@@ -139,8 +127,6 @@ int err;
 bool con;             // Признак удачного подключения для активации кнопок
 bool inpu_com2_connect_pr; // Признак связи с ИнПУ
 WORD wVersionRequested;
-
-
 
 //---------------------------------------------------------------------------
 struct STR_temp *DATA_FROM_MS_mas[12];
@@ -170,12 +156,9 @@ err = WSAStartup(wVersionRequested, &wsaData);
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::pusk_btnClick(TObject *Sender)
 {
-if(!WithoutBum->Checked){
-SendToBum(0x00000301, 2, 1);       //Пуск динамики - команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   // Посылаем команду в БУМ на запуск динамики (уточнить размер)
-if (iResult == SOCKET_ERROR) { GetWsaError(WSAGetLastError()); } else {  }  // Если нет ошибки отправки, то...
+if(!WithoutBum->Checked)
 dk_to_bum->Enabled=true;           // Разрешение отправки параметров ДК в БУМ
-}
+SendToBum(0x00000301, 2, 1);       //Пуск динамики - команда в БУМ ()
 PuskPr = true;                     // Вводим признак "Пуск динамики"
 start_priz = true;                 // признак для бум
 ModelDateTime_Timer->Enabled=true; // Запускаем таймер модельного времени (он и задает модельное время при отсутствии БУМ - иначе выводим от БУМа)
@@ -246,11 +229,8 @@ JouLogForm->Show();
 
 void __fastcall TMainForm::Button4Click(TObject *Sender)
 {
-if(!WithoutBum->Checked){
+SendToBum(0x00000301, 2, 0);       //Пауза динамики - команда в БУМ ()
 start_priz = false;
-SendToBum(0x00000301, 2, 0);       //Пуск динамики - команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,StrToInt(Edit2->Text), 0  );   // Посылаем команду в БУМ на паузу динамики
-if (iResult == SOCKET_ERROR) { GetWsaError(WSAGetLastError()); } else {  } } // Если нет ошибки отправки, то...
 PuskPr = false;
 ModelDateTime_Timer->Enabled=false;
 MainTimer->Enabled=false;
@@ -768,9 +748,6 @@ NU_temp.i = 0x02000700;
 NU_temp.s = 0x00001500;
 NU_temp.aa = ntohl(0x00100101);
 NU_temp.ddd = ntohl(500);
-//SendToBum(0x00100101, 500, 0);
-//iResult = send( TeleSocket,(char *)&send_tru,50, 0  );   // Посылаем заголовк (?)
-//iResult = send( TeleSocket,(char *)&assa,sizeof(assa), 0  );
 iResult = send( TeleSocket,(char *)&NU_temp,524, 0  );        //
 if (iResult == SOCKET_ERROR) { GetWsaError(WSAGetLastError()); } else {
 StatusBar->Panels->Items[0]->Text="Выдана команда - отработка НУ! Ожидание запуска моделирования...";  }
@@ -1166,10 +1143,7 @@ USO_Booled[3][7]=false;
 
 if(KSP_Booled[6][8]) {  // И9 ПИТАНИЕ ЧАЙКИ
 KSP_Booled[6][8] = false;
-send_tru.i = 0x02000700;
-send_tru.s = 0x00001500;
-send_tru.aa = ntohl(0x029E);
-iResult = send( TeleSocket,(char *)&send_tru,StrToInt(Edit2->Text), 0  );   // Посылаем заголовк (?)
+// Посылаем команду в БУМ
 //USO_Booled[0][8]=false;
 USO_Booled[3][10]=true; // Признак питание чайки
 USO_Booled[0][1]=true;  // Наддув КДУ по питанию Чайки
@@ -1232,11 +1206,15 @@ BFI_Simvol_form->Show();
 // Т а к т   А р г о н а
 void __fastcall TMainForm::ArgonTaktTimer(TObject *Sender)
 {
-if(!arg_work_pr){  // Если нет признака работы Аргона (состояние самопроверки)
-// Проводим самопроверку
-arg_work_pr = true; // Запускаем Аргон вводом признака. Этот признак - факт работы Аргона
+if(!arg_work_pr){        // Если нет признака работы Аргона (состояние самопроверки)
+// Проводим самопроверку. Если результат удвлетворительный, выставляем соответствующие признаки
+arg_work_pr = true;      // Признак работы Аргона (по нему происходит запуск)
+USO_Booled[11][6]=true;  // Выставляем признак БЦВК Готов на ТСЭ
+
+
+ USO_Booled[11][7]=true;     // Выставляем "ОСК" для ТСЭ (от кого?)
+ test_test_tse=0;
 } else {
-i_ot_pusk++;
 /*****************************************/
 // Б Л О К   И Н Т Е Г Р И Р О В А Н И Я //
 // П А Р А М Е Т Р О В   Д В И Ж Е Н И Я //
@@ -1390,15 +1368,7 @@ if(YzS1[0]&&YzS1[1]==0){ // Если есть заявка на "Присваивание"
 vill_test=1;
 // Start integer if I9 and I11 = true
 //i_takt++;
-if(!USO_Booled[11][6]){      // If not Argon Ready flag, then...
-if(test_test_tse==25){       // Delay 5 s. for autotest
- // Start Argon Test cycle
- // if good result then
- USO_Booled[11][6]=true;     // Init flag "Argon Ready"
- USO_Booled[11][7]=true;     // Set flag OSK orient (ind. in TS)
- test_test_tse=0;
-} else test_test_tse++;
-}
+
 
 ///////////////////////////////
 // Обработчик ввода признака //
@@ -1419,8 +1389,6 @@ if(cw_b6[13]) { // "Разрешение причаливания"
 if(!WithoutBum->Checked&&!arg_half_false[1]){
 JPS(4,"ОТЛАДОЧНОЕ: Прошла команда в СУБК \"Причаливание\", запуск процедуры...","","","");
 SendToBum(0x0000029D, 1, 1);
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 arg_half_false[1]=true;}
 }
 
@@ -1449,7 +1417,7 @@ cw_b6[11] = 1; // Docking integer flag
 cw_b6[14] = 0; // Разрешение сближения по концу ГЦ
 cw_b6[8] = 1;  // Разрешение сближения
 GSO_types=2;
-JPS(3,is_operator,is_miu,"ОТЛАДОЧНОЕ - КУРС - Причаливание","");
+JPS(4,is_operator,is_miu,"ОТЛАДОЧНОЕ - КУРС - Причаливание","");
 }
 //---------------------------------------------------------------------------
 
@@ -1576,11 +1544,6 @@ bum_debug->Show();
 void __fastcall TMainForm::dk_to_bumTimer(TObject *Sender)
 {
 SendToBum(0x00102101, 907, 0);       //Команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
-iResult = recv( TeleSocket,(char *)&PS_tk_iss,1025, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
-Label14->Caption=ntohl(PS_tk_iss.tv_pr);
 }
 //---------------------------------------------------------------------------
 
@@ -1623,8 +1586,6 @@ if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 void __fastcall TMainForm::Button10Click(TObject *Sender)
 {
 SendToBum(StrToInt(Edit5->Text),StrToInt(Edit6->Text),StrToInt(Edit7->Text));       //Команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 }
 //---------------------------------------------------------------------------
 
@@ -1636,12 +1597,15 @@ otkazy_frm->Show();
 
 void __fastcall TMainForm::Button2Click(TObject *Sender)
 {
-if(!WithoutBum->Checked){
 start_priz = false;
-SendToBum(0x00000301, 2, 0);       //Пуск динамики - команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,StrToInt(Edit2->Text), 0  );   // Посылаем команду в БУМ на запуск динамики
-if (iResult == SOCKET_ERROR) { GetWsaError(WSAGetLastError()); } else {  } } // Если нет ошибки отправки, то...
-dk_to_bum->Enabled=false;           // Запрет отправки параметров ДК в БУМ
+SendToBum(0x00000301, 0, 0);       //Стоп динамики - команда в БУМ ()
+PuskPr = false;
+ModelDateTime_Timer->Enabled=false;
+MainTimer->Enabled=false;
+ArgonTakt->Enabled=false;
+Timer6->Enabled=false;
+pusk_btn->Enabled=true;
+dk_to_bum->Enabled=false;           // Запрет отправки параметров ДК в БУМ.
 JPS(1,is_operator,is_miu,"Стоп моделирования","");
 StatusBar->Panels->Items[0]->Text="Процесс моделирования остановлен.";
 }
@@ -1652,4 +1616,6 @@ void __fastcall TMainForm::N38Click(TObject *Sender)
 IrBrForm->Show();  // Форма ПРВИ
 }
 //---------------------------------------------------------------------------
+
+
 
