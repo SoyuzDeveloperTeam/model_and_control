@@ -1,2 +1,3 @@
-# model_and_control
+# Model and Control
 СПО "Моделирование и Управление"
+---
