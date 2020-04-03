@@ -1,6 +1,6 @@
 object BFI_Simvol_form: TBFI_Simvol_form
-  Left = 179
-  Top = 122
+  Left = 228
+  Top = 118
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1060#1086#1088#1084#1072#1090#1099' '#1041#1062#1042#1050' '#1040#1088#1075#1086#1085'-16'
@@ -34,7 +34,7 @@ object BFI_Simvol_form: TBFI_Simvol_form
     Top = 0
     Width = 502
     Height = 429
-    ActivePage = f_41
+    ActivePage = f_43
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -43,7 +43,7 @@ object BFI_Simvol_form: TBFI_Simvol_form
     Font.Style = []
     ParentFont = False
     Style = tsButtons
-    TabIndex = 0
+    TabIndex = 2
     TabOrder = 0
     object f_41: TTabSheet
       Caption = '41'

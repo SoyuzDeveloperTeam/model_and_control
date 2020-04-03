@@ -19,51 +19,6 @@ double dk_per[3];   // Массив времени работы ДПО на пермещение
 double dk_ori[3];   // Массив времени работы ДПО на ориентацию
 } dk_mass;          // Дополнительный параметр от ДК для БУМ
 
-struct {         //Структура араметров от БУМ
-unsigned long tk;
-unsigned long kl;
-unsigned long ji;
-double eqwe;
-double er;
-double ngf;
-double fbdb;
-double dfd;
-double erte;
-double bnvcb;
-double oiuo;
-double werer;
-double ryey;
-double enehegeh;
-double hjklh;
-double uopui;
-double zbnx;
-double xvbx;
-double yiuy;
-double shghfhgh;
-double cbvb5;
-double ytur6;
-double rmrhrg5;
-double vnmv4;
-double etre7;
-double etre9;
-double etre3;
-double etre21;
-double etredfg;
-double etre342;
-double dfsd98;
-double brf5;
-double o9o9;
-double tww76;
-unsigned long rwrw333;
-unsigned long mmmjjjhhh;
-unsigned long dsfsdfs;
-unsigned long ahhgf;
-unsigned long tnnnrbb;
-unsigned long tntnrnrnr;
-double tttkg;
-double fdd5433[28];
-}STR_temp;
-
 struct {    //Структура параметра НУ в БУМ
 //Переменные для команды в БУМ-МС
 unsigned long i;
@@ -99,6 +54,7 @@ double mi_tk[3][3];                     // 51  Двумерный массив моментов инерции
 //// M I S C ////
 double vec_solar[3];                    // 60  Единичный вектор из центра J2000 на Солнце в проекциях на J2000 (ex, ey, ez)
 unsigned long r_st_mks;                 // 63  Режим стабилизации МКС (0 - свободный, 1 - ИСК, 2 - ОСК, 3 - Wconst)
+unsigned long n_su_4_dk;                // 64  Номер стыковочного узла МКС, к которому выполняется причаливание ТК (резерв, не используется)
 unsigned long nu_otor_switch_styk_dk;	// 65  № СУ, к которому пристыкован ТК (для задания состояния состыкованного ТК)
 double nu_com_zapas;                    // 66  Запас топлива ТК (?)
 unsigned long pr_doking;                // 67  Признак состыкованного состояния ТК и МКС по НУ	(0 - нет, 1 - есть)

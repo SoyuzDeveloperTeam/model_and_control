@@ -38,8 +38,6 @@ static bool KSP_Let[16];
 //------------------------------------
 // Для ПРВИ
 
-
-
 static unsigned short USO_BitType[20][4];
 static bool USO_Booled[20][16];      // Основной массив для работы с УСО - Факт-квитанция о исполнении команды
 static bool KSP_Booled[16][9];      // Массив выдачи команд с КСП (факт выдачи команды с КСП [LETTER] [NUMBER])

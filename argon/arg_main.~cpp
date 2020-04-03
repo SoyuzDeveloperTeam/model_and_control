@@ -7,6 +7,8 @@
 #include "CtrlWord.h" // Управляющие Слова
 #include "arg_header.h"
 #include "arg_irvi.cpp"
+#include "USOData.h"
+#include "neptun_main.h"
 /*
    +--------------------------+
    |   Модель БЦВК Аргон-16   |
@@ -86,6 +88,35 @@ void DKUO (void) {
 
 }
 
+void mode_31 (int addr, int val){
+switch (addr) {   // Обработчик режима
+        case 40: cw_b1[val]=1; break;
+        case 47: cw_b6[val]=1; break;
+        case 50: cw_b10[val]=1; break;
+        case 100: cw_r1[val]=1; break;
+        case 107: cw_r6[val]=1; break;
+        case 110: cw_a20[val]=1; break;
+        case 111: cw_a21[val]=1; break;
+        case 112: cw_a22[val]=1; break;
+        case 246: cw_a30[val]=1; break;
+        case 250: cw_a35[val]=1; break;
+        case 277: cw_a19[val]=1; break;
+        default: JPS(3,is_miu,is_operator,"Нет такой буквы!",""); break; } }
+
+void mode_30 (int addr, int val){
+switch (addr) {   // Обработчик режима
+        case 40: cw_b1[val]=0; break;
+        case 47: cw_b6[val]=0; break;
+        case 50: cw_b10[val]=0; break;
+        case 100: cw_r1[val]=0; break;
+        case 107: cw_r6[val]=0; break;
+        case 110: cw_a20[val]=0; break;
+        case 111: cw_a21[val]=0; break;
+        case 112: cw_a22[val]=0; break;
+        case 246: cw_a30[val]=0; break;
+        case 250: cw_a35[val]=0; break;
+        case 277: cw_a19[val]=0; break;
+        default: JPS(3,is_miu,is_operator,"Нет такой буквы!",""); break; } }
 
 /*
    +--------------------------------------------+
@@ -130,8 +161,24 @@ switch (irvi_type.mode) {   // Обработчик режима
         case 25: /* Одиночный вывод 8-х чисел */ break;
         case 27: /* Групповой вывод 10-х чисел */ break;
         case 28: /* Групповой вывод 8-х чисел  */break;
-        case 30: /* Изменение состояния признака в слове - запись единицы */ break;
-        case 31: /* Изменение состояния признака в слове - запись нуля */ break;
+        case 30: /* Изменение состояния признака в слове - запись единицы */
+                 irvi_type.addr = StrToInt(irvi_str.SubString(3,5));   // Присваиваем значение адреса временной переменной
+                 if(CorrectAddr(irvi_type.addr)) {                     // Проверяем корректность адреса, если корректен, то
+                 irvi_type.value = StrToInt(irvi_str.SubString(8,7));  // Присваиваем значение
+                 mode_30(irvi_type.addr,irvi_type.value); }             // Выставляем результат на ИРВИ
+                 else   {                                              // Если адрес не корректен ,то
+                 irvi_err = true;
+                 JPS(3,is_argon,is_operator,arg_addr_error,"");   }    // Логируем превышение допустимого значения памяти А16
+                 break;
+        case 31: /* Изменение состояния признака в слове - запись нуля */
+                 irvi_type.addr = StrToInt(irvi_str.SubString(3,5));   // Присваиваем значение адреса временной переменной
+                 if(CorrectAddr(irvi_type.addr)) {                     // Проверяем корректность адреса, если корректен, то
+                 irvi_type.value = StrToInt(irvi_str.SubString(8,7));  // Присваиваем значение
+                 mode_31(irvi_type.addr,irvi_type.value); }             // Выставляем результат на ИРВИ
+                 else   {                                              // Если адрес не корректен ,то
+                 irvi_err = true;
+                 JPS(3,is_argon,is_operator,arg_addr_error,"");   }    // Логируем превышение допустимого значения памяти А16
+                 break;
         case 40: /*  */ break;
         case 41: /*  */ break;
         case 42: /*  */ break;
@@ -171,5 +218,26 @@ cw_A4[9]=0; cw_A4[10]=0; cw_A4[13]=0; cw_A4[14]=0;
 cw_A4[15]=0; cw_A9[0-15]=0; cw_A5[0-15]=0; };
 
 };
+
+int self_test_long () { // Проведение самотестирования - длинное
+ // тут должен быть алгоритм тестирования
+ // Проверяем ОЗУ, ДЗУ, процессор и все устройства обмена (УО-1 - УО-7)
+ return 0; }
+
+int self_test_short () { // Проведение самотестирования - короткое
+ // тут должен быть алгоритм тестирования
+ // Проверяем ОЗУ, ДЗУ, процессор и устройства обмена (УО-1, 2, 4, 5, 6)
+ return 0; }
+
+void arg_acc_handler(int Result) {
+// Выставляем признаки -  + ЦО +
+// Так же выставляем признак Срочной Аварии (в зависимости от результата теста)
+USO_Booled[10][1]=1; // "Авария БЦВК" на ТСЭ
+USO_Booled[9][7]=1;  // "Авария ДК" (разделять???)
+USO_Booled[3][10]=0;
+USO_Booled[3][11]=0;
+co_priz =1;
+arg_work_pr=0;
+}
 
 #endif //_ARG_MAIN

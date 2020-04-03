@@ -3,7 +3,7 @@
 <PROJECT>
   <MACROS>
     <VERSION value="BCB.06.00"/>
-    <PROJECT value="C:\1231231\Out\MiU.exe"/>
+    <PROJECT value="&quot;C:\Users\Professional\Desktop\Моделирование и Управление\miu_debug\MiU.exe&quot;"/>
     <OBJFILES value="MainFrm.obj ts_frm.obj bum_sett_frm.obj toru_frm.obj EnterNuFrm.obj 
       kdu_data.obj clock_form.obj JouLogFrm.obj BkuCFrm.obj 
       brvi_irvi\irvi_brfi_frm.obj KSPLForm.obj KSPPForm.obj sepform.obj 
@@ -15,7 +15,7 @@
       argon\arg_kdu_operations.obj argon\arg_prkrt.obj argon\arg_main.obj 
       sotr_model.obj inpu_connect.obj MainCycle_PrObr.obj main_math.obj 
       ks020\ks_main.obj argon\arg_pks.obj argon\arg_irvi.obj bum_connect.obj 
-      pults_tk.obj transit.obj"/>
+      pults_tk.obj transit.obj neptun\neptun_main.obj"/>
     <RESFILES value="MiU.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -38,7 +38,7 @@
       inetdbbde.bpi inetdbxpress.bpi inetdb.bpi nmfast.bpi webdsnap.bpi 
       bcbie.bpi websnap.bpi soaprtl.bpi dclocx.bpi dbexpress.bpi dbxcds.bpi 
       indy.bpi bcb2kaxserver.bpi"/>
-    <PATHCPP value=".;brvi_irvi;iss;argon;argon;argon;argon;argon;ks020;argon;argon"/>
+    <PATHCPP value=".;brvi_irvi;iss;argon;argon;argon;argon;argon;ks020;argon;argon;neptun"/>
     <PATHPAS value=".;"/>
     <PATHRC value=".;"/>
     <PATHASM value=".;"/>
@@ -48,14 +48,14 @@
     <USERDEFINES value=""/>
     <SYSDEFINES value="NO_STRICT"/>
     <MAINSOURCE value="MiU.cpp"/>
-    <INCLUDEPATH value="ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl"/>
-    <LIBPATH value="ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <INCLUDEPATH value="neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par"/>
     <OTHERFILES value=""/>
   </MACROS>
   <OPTIONS>
-    <IDLCFLAGS value="-Iks020 -Iargon -IC:\Users\Professional\Documents -Ibrvi_irvi -Iiss 
-      -I$(BCB)\Projects -I$(BCB)\Projects\miu -I$(BCB)\include 
+    <IDLCFLAGS value="-Ineptun -Iks020 -Iargon -IC:\Users\Professional\Documents -Ibrvi_irvi 
+      -Iiss -I$(BCB)\Projects -I$(BCB)\Projects\miu -I$(BCB)\include 
       -I$(BCB)\include\vcl -src_suffix cpp -boa"/>
     <CFLAG1 value="-Od -w- -Vx -Ve -X- -a1 -b- -k- -vi -c -tW -tWM"/>
     <PFLAGS value="-$Y- -$L- -$D- -$A8 -v -JPHNE -M"/>
@@ -135,6 +135,7 @@
       <FILE FILENAME="bum_connect.cpp" FORMNAME="" UNITNAME="bum_connect" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="pults_tk.cpp" FORMNAME="" UNITNAME="pults_tk" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="transit.cpp" FORMNAME="" UNITNAME="transit" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="neptun\neptun_main.cpp" FORMNAME="" UNITNAME="neptun_main" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>
@@ -187,8 +188,10 @@ Count=1
 Item0=_DEBUG
 
 [HistoryLists\hlFinalOutputDir]
-Count=1
-Item0=C:\1231231\Out\
+Count=3
+Item0=C:\Users\Professional\Desktop\Моделирование и Управление\miu_debug\
+Item1=C:\Users\Professional\Desktop\Моделирование и Управление\miu_debug
+Item2=C:\1231231\Out\
 
 [Debugging]
 DebugSourceDirs=$(BCB)\source\vcl

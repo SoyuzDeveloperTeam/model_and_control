@@ -89,7 +89,6 @@ __published:	// IDE-managed Components
         TTimer *CentralLightBlink;
         TTimer *MainTimer;
         TTimer *arg_tst;
-        TIdUDPClient *kl;
         TComboBox *hhm;
         TTimer *ModelDateTime_Timer;
         TMenuItem *N26;
@@ -123,7 +122,7 @@ __published:	// IDE-managed Components
         TMenuItem *N34;
         TMenuItem *N161;
         TMenuItem *N35;
-        TTimer *dk_to_bum;
+        TTimer *p_sost_from_bum;
         TTimer *Timer6;
         TGroupBox *GroupBox3;
         TCheckBox *sps_model;
@@ -159,6 +158,15 @@ __published:	// IDE-managed Components
         TSpeedButton *SpeedButton1;
         TButton *Button7;
         TButton *Button1;
+        TEdit *Edit2;
+        TEdit *Edit4;
+        TEdit *Edit8;
+        TEdit *Edit9;
+        TEdit *Edit10;
+        TEdit *Edit11;
+        TButton *Button11;
+        TTimer *dk_to_bum;
+        TButton *Button13;
         void __fastcall pusk_btnClick(TObject *Sender);
         void __fastcall N3Click(TObject *Sender);
         void __fastcall N14Click(TObject *Sender);
@@ -175,7 +183,6 @@ __published:	// IDE-managed Components
         void __fastcall LocalTimeTimerTimer(TObject *Sender);
         void __fastcall kspl_loadClick(TObject *Sender);
         void __fastcall init_Click(TObject *Sender);
-        void __fastcall SPSClientConnected(TObject *Sender);
         void __fastcall SPSClientDisconnected(TObject *Sender);
         void __fastcall N22Click(TObject *Sender);
         void __fastcall N4Click(TObject *Sender);
@@ -209,12 +216,15 @@ __published:	// IDE-managed Components
         void __fastcall Button16Click(TObject *Sender);
         void __fastcall N161Click(TObject *Sender);
         void __fastcall N35Click(TObject *Sender);
-        void __fastcall dk_to_bumTimer(TObject *Sender);
+        void __fastcall p_sost_from_bumTimer(TObject *Sender);
         void __fastcall Button1Click(TObject *Sender);
         void __fastcall Button10Click(TObject *Sender);
         void __fastcall N37Click(TObject *Sender);
         void __fastcall Button2Click(TObject *Sender);
         void __fastcall N38Click(TObject *Sender);
+        void __fastcall Button11Click(TObject *Sender);
+        void __fastcall dk_to_bumTimer(TObject *Sender);
+        void __fastcall Button13Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TMainForm(TComponent* Owner);

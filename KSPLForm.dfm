@@ -1,6 +1,6 @@
 object ksplfrm: Tksplfrm
-  Left = 324
-  Top = 345
+  Left = 721
+  Top = 279
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1050#1057#1055' '#1083#1077#1074#1086#1077

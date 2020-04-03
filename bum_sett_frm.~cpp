@@ -6,9 +6,7 @@
 #include "md_m.h"              // Модельные переменные (структура m_math)
 #include "stdio.h"
 #include "dta.cpp"
-
-// Отладка поиска зависания:
-// Отключил таймеры Таймер 2, бум деск, таймер 1
+#include <math.hpp>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -40,9 +38,13 @@ Label169->Caption=PS_tk_iss.CIFC_Wdis[0];
 
 Label156->Caption=htonl(PS_tk_iss.promah_pr);
 // Вектор на Солнце
+if(IsNan(PS_tk_iss.sun_vec[0]))sun_vector_x->Caption="***"; else
 sun_vector_x->Caption=FloatToStr(PS_tk_iss.sun_vec[0]);
+if(IsNan(PS_tk_iss.sun_vec[1]))sun_vector_y->Caption="***"; else
 sun_vector_y->Caption=FloatToStr(PS_tk_iss.sun_vec[1]);
+if(IsNan(PS_tk_iss.sun_vec[2]))sun_vector_z->Caption="***"; else
 sun_vector_z->Caption=FloatToStr(PS_tk_iss.sun_vec[2]);
+// Шаг отображения
 bum_desc->Interval=StrToInt(desc->Text);
 // Свето-теневая обстановка
 if(ntohl(PS_tk_iss.pr_t_pt)==0)Label134->Caption="СВЕТ"; else
@@ -65,8 +67,11 @@ if(ntohl(PS_tk_iss.fara_pr)==1) Label155->Caption="Включена";
 // Признак ТВ
 Label153->Caption=ntohl(PS_tk_iss.tv_pr);
 // Скорость МКС
+if(IsNan(PS_tk_iss.vel_j2000_mks[0]))Label107->Caption="***"; else
 Label107->Caption=FloatToStr(PS_tk_iss.vel_j2000_mks[0]);
+if(IsNan(PS_tk_iss.vel_j2000_mks[1]))Label106->Caption="***"; else
 Label106->Caption=FloatToStr(PS_tk_iss.vel_j2000_mks[1]);
+if(IsNan(PS_tk_iss.vel_j2000_mks[2]))Label105->Caption="***"; else
 Label105->Caption=FloatToStr(PS_tk_iss.vel_j2000_mks[2]);
 // Положение МКС в 2000
 Label104->Caption=FloatToStr(PS_tk_iss.vec_j2000_mks[0]/1000);

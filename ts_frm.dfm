@@ -1,6 +1,6 @@
 object ts_form: Tts_form
-  Left = 985
-  Top = 258
+  Left = 181
+  Top = 158
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1058#1057
@@ -227,7 +227,7 @@ object ts_form: Tts_form
     Alignment = taCenter
     AutoSize = False
     BorderStyle = sbsSingle
-    Caption = #1072#1074#1072#1088#1080#1103'   '#1044#1050
+    Caption = '  '#1040#1042#1040#1056#1048#1071'   '#1044#1050
     Color = clMaroon
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clSilver

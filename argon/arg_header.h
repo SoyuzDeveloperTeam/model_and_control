@@ -3,6 +3,8 @@
 #include <vcl.h>
 
 static bool arg_work_pr; // Признак работы Аргона
+static bool sp_d_k;      // Тип самопроверки (1 - длинная, 0 - короткая)
+static int tResult;
 
 static double ArgonMemoryType[4096];
 
@@ -92,7 +94,7 @@ static bool dpo_status_bit;
 
 static byte ht = 1;
 
-static int i, j, K, k;  // Такты БЦВК
+static int i, j, K, k, t;  // Такты БЦВК
 static long i_ot_pusk;  // Такты БЦКВ от Пуска
 static double dt;       // Delta t
 

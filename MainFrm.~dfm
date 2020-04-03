@@ -1,10 +1,10 @@
 object MainForm: TMainForm
-  Left = 1020
-  Top = 271
+  Left = 985
+  Top = 147
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  ClientHeight = 569
-  ClientWidth = 744
+  ClientHeight = 571
+  ClientWidth = 748
   Color = clBtnFace
   DefaultMonitor = dmDesktop
   Font.Charset = RUSSIAN_CHARSET
@@ -441,8 +441,8 @@ object MainForm: TMainForm
   end
   object StatusBar: TStatusBar
     Left = 0
-    Top = 552
-    Width = 744
+    Top = 554
+    Width = 748
     Height = 17
     Panels = <
       item
@@ -886,6 +886,63 @@ object MainForm: TMainForm
       TabOrder = 10
       OnClick = Button1Click
     end
+    object Edit2: TEdit
+      Left = 584
+      Top = 258
+      Width = 137
+      Height = 22
+      TabOrder = 11
+      Text = '0'
+    end
+    object Edit4: TEdit
+      Left = 584
+      Top = 234
+      Width = 137
+      Height = 22
+      TabOrder = 12
+      Text = '0'
+    end
+    object Edit8: TEdit
+      Left = 584
+      Top = 210
+      Width = 137
+      Height = 22
+      TabOrder = 13
+      Text = '0'
+    end
+    object Edit9: TEdit
+      Left = 584
+      Top = 186
+      Width = 137
+      Height = 22
+      TabOrder = 14
+      Text = '0'
+    end
+    object Edit10: TEdit
+      Left = 584
+      Top = 162
+      Width = 137
+      Height = 22
+      TabOrder = 15
+      Text = '0'
+    end
+    object Edit11: TEdit
+      Left = 584
+      Top = 138
+      Width = 137
+      Height = 22
+      TabOrder = 16
+      Text = '0'
+    end
+    object Button11: TButton
+      Left = 584
+      Top = 110
+      Width = 137
+      Height = 25
+      Caption = #1047#1072#1087#1080#1089#1100' '#1044#1050
+      TabOrder = 17
+      OnClick = Button11Click
+    end
   end
   object GroupBox6: TGroupBox
     Left = 48
@@ -977,7 +1034,7 @@ object MainForm: TMainForm
   end
   object CO_light: TPanel
     Left = 360
-    Top = 16
+    Top = 8
     Width = 57
     Height = 33
     BorderStyle = bsSingle
@@ -1041,6 +1098,15 @@ object MainForm: TMainForm
     Height = 22
     TabOrder = 9
     Text = '0'
+  end
+  object Button13: TButton
+    Left = 552
+    Top = 72
+    Width = 185
+    Height = 25
+    Caption = #1057#1073#1088#1086#1089' '#1072#1074#1072#1088#1080#1081#1085#1086#1075#1086' '#1089#1080#1075#1085#1072#1083#1072
+    TabOrder = 10
+    OnClick = Button13Click
   end
   object MainMenu1: TMainMenu
     Left = 432
@@ -2247,7 +2313,6 @@ object MainForm: TMainForm
     Top = 520
   end
   object CentralLightBlink: TTimer
-    Enabled = False
     Interval = 385
     OnTimer = CentralLightBlinkTimer
     Left = 488
@@ -2259,13 +2324,6 @@ object MainForm: TMainForm
     OnTimer = MainTimerTimer
     Left = 584
     Top = 512
-  end
-  object kl: TIdUDPClient
-    BufferSize = 0
-    Host = '192.168.92.1'
-    Port = 12710
-    Left = 472
-    Top = 440
   end
   object ModelDateTime_Timer: TTimer
     Enabled = False
@@ -2292,10 +2350,10 @@ object MainForm: TMainForm
     Left = 328
     Top = 472
   end
-  object dk_to_bum: TTimer
+  object p_sost_from_bum: TTimer
     Enabled = False
     Interval = 10
-    OnTimer = dk_to_bumTimer
+    OnTimer = p_sost_from_bumTimer
     Left = 600
     Top = 472
   end
@@ -2304,5 +2362,12 @@ object MainForm: TMainForm
     Interval = 10
     Left = 296
     Top = 520
+  end
+  object dk_to_bum: TTimer
+    Enabled = False
+    Interval = 100
+    OnTimer = dk_to_bumTimer
+    Left = 568
+    Top = 472
   end
 end

@@ -102,7 +102,8 @@ send_tru.s = 0x00001500;
 send_tru.aa = ntohl(Cmd);
 send_tru.zr = ntohl(p1);
 send_tru.c = ntohl(p2);
+if(bum_pr){
 iResult = send( TeleSocket,(char *)&send_tru,20, 0);   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
+if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());}
 }
 #endif bum_connect

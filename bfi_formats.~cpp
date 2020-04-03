@@ -41,7 +41,7 @@ __fastcall TBFI_Simvol_form::TBFI_Simvol_form(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TBFI_Simvol_form::BFIDATATIMERTimer(TObject *Sender)
 {
-
+if(cw_b6[13]) act_str_1->Caption=BFI_action_str1[2];  // if prichal...
 f41_42->Caption=FormatFloat("0000",ArgonMemoryType[42]);
 f41_102->Caption=FormatFloat("0000",ArgonMemoryType[102]);
 //f41_A22->Caption=FloatToStr(ArgonMemoryType[112]);
@@ -117,10 +117,7 @@ if(GSO_types==3) GSO_String="  3"; else
 if(GSO_types==4) GSO_String="   4"; else
 if(GSO_types==5) GSO_String="    5";
 gso->Caption=GSO_String;
-if(i_takt_asd[0]==4){
- TMTPTime->Caption="TN="+OnboardModelTime.FormatString("hh:nn:ss");
- i_takt_asd[0]=0;
-} else i_takt_asd[0]++;
+TMTPTime->Caption="TN="+OnboardModelTime.FormatString("hh:nn:ss");
 
 if(i_takt_asd[1]==2){
 cw_B1_string +=(byte)cw_b1[0];

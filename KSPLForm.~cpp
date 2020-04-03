@@ -745,6 +745,7 @@ if(USO_Booled[5][1]){    // Бит 05Е - КСП Л17: РО АК
 */
 void __fastcall Tksplfrm::KSPTMRTimer(TObject *Sender)
 {
+// Индикация транспарантов КСП
 if(USO_Booled[0][0]){  // KSP A1
 A1_LABEL->Color=clLime;
 A1_LABEL->Font->Color=clBlack;  } else {
@@ -887,6 +888,12 @@ J15_LABEL->Color=clLime;
 J15_LABEL->Font->Color=clBlack;  } else {
 J15_LABEL->Color=clGreen;
 J15_LABEL->Font->Color=clYellow; }
+
+if(USO_Booled[4][8]){  // KSP К17
+K17_LABEL->Color=clLime;
+K17_LABEL->Font->Color=clBlack;  } else {
+K17_LABEL->Color=clGreen;
+K17_LABEL->Font->Color=clYellow; }
 }
 //---------------------------------------------------------------------------
 

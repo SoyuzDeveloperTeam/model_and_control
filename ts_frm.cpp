@@ -69,11 +69,11 @@ if(USO_Booled[9][13])
          ts2_6->Color=clRed;
         } else ts2_6->Color=clMaroon;
 // ря3
-if(TS3_pr[0])
+if(USO_Booled[9][14])
         {
          ts3_1->Color=clYellow;
         } else ts3_1->Color=clOlive;
-if(TS3_pr[1])
+if(USO_Booled[10][1])
         {
          ts3_2->Color=clYellow;
         } else ts3_2->Color=clOlive;

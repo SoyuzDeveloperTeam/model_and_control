@@ -26,7 +26,7 @@
 */
 #ifndef _USO_data
 #define _USO_data
-unsigned short USO_BT[20];    // Array
+static unsigned short USO_BT[20];    // Array
 
 static bool ruo_pr[6];
 static bool rud_pr[6];
@@ -85,7 +85,7 @@ static bool KSP_Booled[16][9];      // Массив выдачи команд с КСП (факт выдачи к
 19
 */
 
-char TableMask[2] = {'.','I'};        // Mask for USO Table Matrix    //
+static char TableMask[2] = {'.','I'};        // Mask for USO Table Matrix    //
 
 
 

@@ -17,6 +17,8 @@ TDateTime onboard_dt, dest_s, ob_cur;
 
 static bool start_priz;
 
+static bool bum_pr;             // Признак "С БУМ"
+
 static TIniFile *MiuConf;       // Файл конфигурации
 
 static AnsiString WsaIpAddr;    // IP адрес из конфигурации

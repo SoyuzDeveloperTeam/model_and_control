@@ -41,6 +41,7 @@ __fastcall TBFI_Simvol_form::TBFI_Simvol_form(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TBFI_Simvol_form::BFIDATATIMERTimer(TObject *Sender)
 {
+
 if(cw_b6[13]) act_str_1->Caption=BFI_action_str1[2];  // if prichal...
 f41_42->Caption=FormatFloat("0000",ArgonMemoryType[42]);
 f41_102->Caption=FormatFloat("0000",ArgonMemoryType[102]);
