@@ -1,6 +1,6 @@
 object KSP_right: TKSP_right
-  Left = 355
-  Top = 234
+  Left = 1546
+  Top = 264
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1050#1057#1055' '#1087#1088#1072#1074#1086#1077
@@ -110,6 +110,7 @@ object KSP_right: TKSP_right
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
+    OnClick = ksp_1Click
   end
   object ksp_2: TSpeedButton
     Left = 67
@@ -366,7 +367,7 @@ object KSP_right: TKSP_right
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object A1_LABEL: TLabel
+  object N1_LABEL: TLabel
     Left = 32
     Top = 60
     Width = 68
@@ -386,7 +387,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object A3_LABEL: TLabel
+  object N3_LABEL: TLabel
     Left = 101
     Top = 60
     Width = 68
@@ -406,7 +407,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object A5_LABEL: TLabel
+  object N5_LABEL: TLabel
     Left = 170
     Top = 60
     Width = 68
@@ -426,7 +427,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object A7_LABEL: TLabel
+  object N7_LABEL: TLabel
     Left = 239
     Top = 60
     Width = 68
@@ -446,7 +447,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object A9_LABEL: TLabel
+  object N9_LABEL: TLabel
     Left = 308
     Top = 60
     Width = 68
@@ -466,7 +467,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object A11_LABEL: TLabel
+  object N11_LABEL: TLabel
     Left = 377
     Top = 60
     Width = 68
@@ -486,7 +487,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object A13_LABEL: TLabel
+  object N13_LABEL: TLabel
     Left = 446
     Top = 60
     Width = 68
@@ -506,7 +507,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object A15_LABEL: TLabel
+  object N15_LABEL: TLabel
     Left = 515
     Top = 60
     Width = 68
@@ -526,7 +527,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object A17_LABEL: TLabel
+  object N17_LABEL: TLabel
     Left = 584
     Top = 60
     Width = 68
@@ -725,7 +726,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object G1_LABEL: TLabel
+  object P1_LABEL: TLabel
     Left = 32
     Top = 112
     Width = 68
@@ -745,7 +746,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object G3_LABEL: TLabel
+  object P3_LABEL: TLabel
     Left = 101
     Top = 112
     Width = 68
@@ -765,7 +766,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object G5_LABEL: TLabel
+  object P5_LABEL: TLabel
     Left = 170
     Top = 112
     Width = 68
@@ -785,7 +786,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object G7_LABEL: TLabel
+  object P7_LABEL: TLabel
     Left = 239
     Top = 112
     Width = 68
@@ -805,7 +806,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object G9_LABEL: TLabel
+  object P9_LABEL: TLabel
     Left = 308
     Top = 112
     Width = 68
@@ -825,7 +826,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object G11_LABEL: TLabel
+  object P11_LABEL: TLabel
     Left = 377
     Top = 112
     Width = 68
@@ -845,7 +846,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object G13_LABEL: TLabel
+  object P13_LABEL: TLabel
     Left = 446
     Top = 112
     Width = 68
@@ -865,7 +866,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object G15_LABEL: TLabel
+  object P15_LABEL: TLabel
     Left = 515
     Top = 112
     Width = 68
@@ -884,7 +885,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object G17_LABEL: TLabel
+  object P17_LABEL: TLabel
     Left = 584
     Top = 112
     Width = 68
@@ -903,7 +904,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object D1_LABEL: TLabel
+  object R1_LABEL: TLabel
     Left = 32
     Top = 164
     Width = 68
@@ -913,7 +914,7 @@ object KSP_right: TKSP_right
     AutoSize = False
     Color = clGreen
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clYellow
+    Font.Color = clBlack
     Font.Height = -11
     Font.Name = 'MS Sans Serif'
     Font.Style = []
@@ -922,7 +923,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object D3_LABEL: TLabel
+  object R3_LABEL: TLabel
     Left = 101
     Top = 164
     Width = 68
@@ -942,7 +943,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object D5_LABEL: TLabel
+  object R5_LABEL: TLabel
     Left = 170
     Top = 164
     Width = 68
@@ -962,7 +963,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object D7_LABEL: TLabel
+  object R7_LABEL: TLabel
     Left = 239
     Top = 164
     Width = 68
@@ -982,7 +983,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object D9_LABEL: TLabel
+  object R9_LABEL: TLabel
     Left = 308
     Top = 164
     Width = 68
@@ -1002,7 +1003,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object D11_LABEL: TLabel
+  object R11_LABEL: TLabel
     Left = 377
     Top = 164
     Width = 68
@@ -1022,7 +1023,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object D13_LABEL: TLabel
+  object R13_LABEL: TLabel
     Left = 446
     Top = 164
     Width = 68
@@ -1042,7 +1043,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object D15_LABEL: TLabel
+  object R15_LABEL: TLabel
     Left = 515
     Top = 164
     Width = 68
@@ -1061,7 +1062,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object D17_LABEL: TLabel
+  object R17_LABEL: TLabel
     Left = 584
     Top = 164
     Width = 68
@@ -1081,7 +1082,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object J1_LABEL: TLabel
+  object S1_LABEL: TLabel
     Left = 32
     Top = 216
     Width = 68
@@ -1101,7 +1102,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object J3_LABEL: TLabel
+  object S3_LABEL: TLabel
     Left = 101
     Top = 216
     Width = 68
@@ -1121,7 +1122,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object J5_LABEL: TLabel
+  object S5_LABEL: TLabel
     Left = 170
     Top = 216
     Width = 68
@@ -1141,7 +1142,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object J7_LABEL: TLabel
+  object S7_LABEL: TLabel
     Left = 239
     Top = 216
     Width = 68
@@ -1161,7 +1162,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object J9_LABEL: TLabel
+  object S9_LABEL: TLabel
     Left = 308
     Top = 216
     Width = 68
@@ -1181,7 +1182,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object J11_LABEL: TLabel
+  object S11_LABEL: TLabel
     Left = 377
     Top = 216
     Width = 68
@@ -1201,7 +1202,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object J13_LABEL: TLabel
+  object S13_LABEL: TLabel
     Left = 446
     Top = 216
     Width = 68
@@ -1221,7 +1222,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object J15_LABEL: TLabel
+  object S15_LABEL: TLabel
     Left = 515
     Top = 216
     Width = 68
@@ -1241,7 +1242,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object J17_LABEL: TLabel
+  object S17_LABEL: TLabel
     Left = 584
     Top = 216
     Width = 68
@@ -1261,7 +1262,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object I1_LABEL: TLabel
+  object T1_LABEL: TLabel
     Left = 32
     Top = 268
     Width = 68
@@ -1281,7 +1282,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object I3_LABEL: TLabel
+  object T3_LABEL: TLabel
     Left = 101
     Top = 268
     Width = 68
@@ -1301,7 +1302,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object I5_LABEL: TLabel
+  object T5_LABEL: TLabel
     Left = 170
     Top = 268
     Width = 68
@@ -1321,7 +1322,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object I7_LABEL: TLabel
+  object T7_LABEL: TLabel
     Left = 239
     Top = 268
     Width = 68
@@ -1341,7 +1342,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object I9_LABEL: TLabel
+  object T9_LABEL: TLabel
     Left = 308
     Top = 268
     Width = 68
@@ -1360,7 +1361,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object I11_LABEL: TLabel
+  object T11_LABEL: TLabel
     Left = 377
     Top = 268
     Width = 68
@@ -1379,7 +1380,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object I13_LABEL: TLabel
+  object T13_LABEL: TLabel
     Left = 446
     Top = 268
     Width = 68
@@ -1399,7 +1400,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object I15_LABEL: TLabel
+  object T15_LABEL: TLabel
     Left = 515
     Top = 268
     Width = 68
@@ -1418,7 +1419,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object I17_LABEL: TLabel
+  object T17_LABEL: TLabel
     Left = 584
     Top = 268
     Width = 68
@@ -1438,7 +1439,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object K1_LABEL: TLabel
+  object U1_LABEL: TLabel
     Left = 32
     Top = 320
     Width = 68
@@ -1457,7 +1458,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object K3_LABEL: TLabel
+  object U3_LABEL: TLabel
     Left = 101
     Top = 320
     Width = 68
@@ -1477,7 +1478,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object K5_LABEL: TLabel
+  object U5_LABEL: TLabel
     Left = 170
     Top = 320
     Width = 68
@@ -1497,7 +1498,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object K7_LABEL: TLabel
+  object U7_LABEL: TLabel
     Left = 239
     Top = 320
     Width = 68
@@ -1517,7 +1518,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object K9_LABEL: TLabel
+  object U9_LABEL: TLabel
     Left = 308
     Top = 320
     Width = 68
@@ -1537,7 +1538,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object K11_LABEL: TLabel
+  object U11_LABEL: TLabel
     Left = 377
     Top = 320
     Width = 68
@@ -1557,7 +1558,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object K13_LABEL: TLabel
+  object U13_LABEL: TLabel
     Left = 446
     Top = 320
     Width = 68
@@ -1577,7 +1578,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object K15_LABEL: TLabel
+  object U15_LABEL: TLabel
     Left = 515
     Top = 320
     Width = 68
@@ -1597,7 +1598,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object K17_LABEL: TLabel
+  object U17_LABEL: TLabel
     Left = 584
     Top = 320
     Width = 68
@@ -1617,7 +1618,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object L1_LABEL: TLabel
+  object F1_LABEL: TLabel
     Left = 32
     Top = 372
     Width = 68
@@ -1637,7 +1638,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object L3_LABEL: TLabel
+  object F3_LABEL: TLabel
     Left = 101
     Top = 372
     Width = 68
@@ -1657,7 +1658,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object L5_LABEL: TLabel
+  object F5_LABEL: TLabel
     Left = 170
     Top = 372
     Width = 68
@@ -1677,7 +1678,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object L7_LABEL: TLabel
+  object F7_LABEL: TLabel
     Left = 239
     Top = 372
     Width = 68
@@ -1697,7 +1698,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object L9_LABEL: TLabel
+  object F9_LABEL: TLabel
     Left = 308
     Top = 372
     Width = 68
@@ -1717,7 +1718,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object L11_LABEL: TLabel
+  object F11_LABEL: TLabel
     Left = 377
     Top = 372
     Width = 68
@@ -1736,7 +1737,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object L13_LABEL: TLabel
+  object F13_LABEL: TLabel
     Left = 446
     Top = 372
     Width = 68
@@ -1756,7 +1757,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object L15_LABEL: TLabel
+  object F15_LABEL: TLabel
     Left = 515
     Top = 372
     Width = 68
@@ -1776,7 +1777,7 @@ object KSP_right: TKSP_right
     Layout = tlCenter
     WordWrap = True
   end
-  object L17_LABEL: TLabel
+  object F17_LABEL: TLabel
     Left = 584
     Top = 372
     Width = 68
@@ -1851,7 +1852,7 @@ object KSP_right: TKSP_right
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    object Image2: TImage
+    object KSP_R_N_image: TImage
       Left = 0
       Top = 0
       Width = 19
@@ -1922,6 +1923,7 @@ object KSP_right: TKSP_right
         0000000000000000000000000000000001000001010101010101010101010101
         010101010000}
       Transparent = True
+      OnClick = KSP_R_N_imageClick
     end
   end
   object KSP_R_B: TPanel
@@ -1940,7 +1942,7 @@ object KSP_right: TKSP_right
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    object Image1: TImage
+    object KSP_R_B_image: TImage
       Left = 0
       Top = 0
       Width = 19
@@ -2012,6 +2014,7 @@ object KSP_right: TKSP_right
         0000000000000000000000000000000001000001010101010101010101010101
         010101010000}
       Transparent = True
+      OnClick = KSP_R_B_imageClick
     end
   end
   object KSP_R_R: TPanel
@@ -2101,6 +2104,7 @@ object KSP_right: TKSP_right
         0000000000000000000000000000000001000001010101010101010101010101
         010101010000}
       Transparent = True
+      OnClick = KSP_R_R_imageClick
     end
   end
   object KSP_R_P: TPanel
@@ -2119,7 +2123,7 @@ object KSP_right: TKSP_right
     Font.Style = []
     ParentFont = False
     TabOrder = 3
-    object Image4: TImage
+    object KSP_R_P_image: TImage
       Left = 0
       Top = 0
       Width = 19
@@ -2190,6 +2194,7 @@ object KSP_right: TKSP_right
         0000000000000000000000000000000001000001010101010101010101010101
         010101010000}
       Transparent = True
+      OnClick = KSP_R_P_imageClick
     end
   end
   object KSP_R_T: TPanel
@@ -2279,6 +2284,7 @@ object KSP_right: TKSP_right
         0000000000000000000000000000000001000001010101010101010101010101
         010101010000}
       Transparent = True
+      OnClick = KSP_R_T_imageClick
     end
   end
   object KSP_R_S: TPanel
@@ -2368,6 +2374,7 @@ object KSP_right: TKSP_right
         0000000000000000000000000000000001000001010101010101010101010101
         010101010000}
       Transparent = True
+      OnClick = KSP_R_S_imageClick
     end
   end
   object KSP_R_F: TPanel
@@ -2457,6 +2464,7 @@ object KSP_right: TKSP_right
         0000000000000000000000000000000001000001010101010101010101010101
         010101010000}
       Transparent = True
+      OnClick = KSP_R_F_imageClick
     end
   end
   object KSP_R_U: TPanel
@@ -2546,6 +2554,7 @@ object KSP_right: TKSP_right
         0000000000000000000000000000000001000001010101010101010101010101
         010101010000}
       Transparent = True
+      OnClick = KSP_R_U_imageClick
     end
   end
   object KSPTMR: TTimer

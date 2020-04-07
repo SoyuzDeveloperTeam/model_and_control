@@ -1,6 +1,6 @@
 object EnterNuForm: TEnterNuForm
-  Left = 206
-  Top = 210
+  Left = 983
+  Top = 199
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1042#1074#1086#1076' '#1053#1091
@@ -3247,7 +3247,7 @@ object EnterNuForm: TEnterNuForm
         Height = 57
         Caption = ' '#1057#1090#1099#1082#1086#1074#1086#1095#1085#1099#1081' '#1091#1079#1077#1083' '#1044#1050'  '
         TabOrder = 14
-        object ComboBox1: TComboBox
+        object dk_su: TComboBox
           Left = 16
           Top = 24
           Width = 129

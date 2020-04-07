@@ -15,7 +15,8 @@
       argon\arg_kdu_operations.obj argon\arg_prkrt.obj argon\arg_main.obj 
       sotr_model.obj inpu_connect.obj MainCycle_PrObr.obj main_math.obj 
       ks020\ks_main.obj argon\arg_pks.obj argon\arg_irvi.obj bum_connect.obj 
-      pults_tk.obj transit.obj neptun\neptun_main.obj"/>
+      pults_tk.obj transit.obj neptun\neptun_main.obj unity_connect.obj 
+      winsock_ed.obj"/>
     <RESFILES value="MiU.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -136,6 +137,9 @@
       <FILE FILENAME="pults_tk.cpp" FORMNAME="" UNITNAME="pults_tk" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="transit.cpp" FORMNAME="" UNITNAME="transit" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="neptun\neptun_main.cpp" FORMNAME="" UNITNAME="neptun_main" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="neptun\neptun_main.h" FORMNAME="" UNITNAME="neptun_main.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="unity_connect.cpp" FORMNAME="" UNITNAME="unity_connect" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="winsock_ed.cpp" FORMNAME="" UNITNAME="winsock_ed" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>

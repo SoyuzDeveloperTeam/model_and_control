@@ -200,7 +200,7 @@ void __fastcall Tksplfrm::KSP_L_A_imageClick(TObject *Sender)
 {
 KSP_Let[0]=true;
 byte i;
-for(i=1; i<=15; i++){
+for(i=1; i<=16; i++){
  KSP_Let[i]=false;
 }
 KSP_L_A->Color=clYellow;
@@ -239,7 +239,7 @@ void __fastcall Tksplfrm::KSP_L_V_imageClick(TObject *Sender)
 KSP_Let[0]=false;
 KSP_Let[1]=true;
 byte i;
-for(i=2; i<=15; i++){
+for(i=2; i<=16; i++){
  KSP_Let[i]=false;
 }
 KSP_L_V->Color=clYellow;
@@ -279,7 +279,7 @@ KSP_Let[0]=false;
 KSP_Let[1]=false;
 KSP_Let[2]=true;
 byte i;
-for(i=3; i<=15; i++){
+for(i=3; i<=16; i++){
  KSP_Let[i]=false;
 }
 KSP_L_G->Color=clYellow;
@@ -320,7 +320,7 @@ KSP_Let[1]=false;
 KSP_Let[2]=false;
 KSP_Let[3]=true;
 byte i;
-for(i=4; i<=15; i++){
+for(i=4; i<=16; i++){
  KSP_Let[i]=false;
 }
 KSP_L_D->Color=clYellow;
@@ -363,7 +363,7 @@ KSP_Let[2]=false;
 KSP_Let[3]=false;
 KSP_Let[4]=true;
 byte i;
-for(i=5; i<=15; i++){
+for(i=5; i<=16; i++){
  KSP_Let[i]=false;
 }
 KSP_L_J->Color=clYellow;
@@ -406,7 +406,7 @@ KSP_Let[3]=false;
 KSP_Let[4]=false;
 KSP_Let[5]=true;
 byte i;
-for(i=6; i<=15; i++){
+for(i=6; i<=16; i++){
  KSP_Let[i]=false;
 }
 KSP_L_I->Color=clYellow;
@@ -454,7 +454,7 @@ KSP_Let[4]=false;
 KSP_Let[5]=false;
 KSP_Let[6]=true;
 byte i;
-for(i=7; i<=15; i++){
+for(i=7; i<=16; i++){
  KSP_Let[i]=false;
 }
 KSP_L_K->Color=clYellow;
@@ -993,7 +993,7 @@ KSP_Let[5]=false;
 KSP_Let[6]=false;
 KSP_Let[7]=true;
 byte i;
-for(i=8; i<=15; i++){
+for(i=8; i<=16; i++){
  KSP_Let[i]=false;
 }
 KSP_L_L->Color=clYellow;

@@ -227,7 +227,7 @@ __published:	// IDE-managed Components
         TGroupBox *GroupBox30;
         TComboBox *docking_uz;
         TGroupBox *GroupBox31;
-        TComboBox *ComboBox1;
+        TComboBox *dk_su;
         TGroupBox *GroupBox32;
         TLabel *Label100;
         TEdit *Edit78;

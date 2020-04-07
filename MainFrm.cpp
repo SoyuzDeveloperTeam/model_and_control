@@ -39,6 +39,7 @@
 #include "argon/arg_pks.cpp"            // Программы Аргона
 #include "bumconnect.cpp"               // Обмен с БУМ
 #include "neptun_main.cpp"              // Основные процедуры ПСА "Нептун-МЭ"
+#include "unity_connect.cpp"            // Обмен с Юнити 
 //---------------------------------------------------------------------------
 /* Формы */
 #include "vived_frm.cpp"                // Форма Выведение (график)
@@ -147,10 +148,10 @@ void __fastcall TMainForm::pusk_btnClick(TObject *Sender)
 {
 if(bum_pr){
 p_sost_from_bum->Enabled=true;
-dk_to_bum->Enabled=true;            // Разрешение отправки параметров ДК в БУМ
-SendToBum(0x00000301, 2, 1); }      //Пуск динамики - команда в БУМ ()
+dk_to_bum->Enabled=true;           // Разрешение отправки параметров ДК в БУМ
+start_priz = true;                 // признак запуска для бум
+SendToBum(0x00000301, 2, 1); }     //Пуск динамики - команда в БУМ ()
 PuskPr = true;                     // Вводим признак "Пуск динамики"
-start_priz = true;                 // признак для бум
 ModelDateTime_Timer->Enabled=true; // Запускаем таймер модельного времени (он и задает модельное время при отсутствии БУМ - иначе выводим от БУМа)
 MainTimer->Enabled=true;           // Запуск глобального обработчика команд. Разрешение КСП, УСО и т.д.
 ChekTSKD->Enabled=true;            // Обработчик операций СКД
@@ -191,6 +192,7 @@ KDUform->Show();
 //----------------------------------------//
 void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
 {
+un_serv->Active=false;
 if(PuskPr){ // Если на момент закрытия введен признак "Пуск динамики", то...
 if(         // Выводим MessageBox
 Application->MessageBox(
@@ -220,10 +222,10 @@ JouLogForm->Show();
 void __fastcall TMainForm::Button4Click(TObject *Sender)
 {
 if(bum_pr){
-SendToBum(0x00000301, 2, 0);       //Пауза динамики - команда в БУМ ()
+SendToBum(0x00000301, 2, 0);       // Пауза динамики - команда в БУМ ()
+start_priz = false;                // Снимаем признак запуска БУМа
 dk_to_bum->Enabled=true;           // Разрешение отправки параметров ДК в БУМ
 p_sost_from_bum->Enabled=false;}
-start_priz = false;
 PuskPr = false;
 ModelDateTime_Timer->Enabled=false;
 MainTimer->Enabled=false;
@@ -267,6 +269,9 @@ void __fastcall TMainForm::Button6Click(TObject *Sender)
         if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
         bum_pr = 0;
         init_->Enabled=true;
+        if(with_unity->Checked){  // Если введен признак "With Unity"
+        unity_s_h->Enabled=false;
+        } // with_unity
         JPS(3, "Внимание: Сокеты обмена с БУМ закрыт!", "", "", "");
 }
 //---------------------------------------------------------------------------
@@ -410,6 +415,11 @@ if(WithoutBum->Checked){
  init=true;
  con=true;
 }
+
+if(with_unity->Checked){  // Если введен признак "With Unity"
+unity_server_init ();
+unity_s_h->Enabled=true;
+} // with_unity
 
 JPS(1,"Подготовка начальных параметров СУБК","","","");
 //  Расчет парабол для закона управления
@@ -796,7 +806,7 @@ ModelStatusPicList->GetBitmap(1, inpu_status_pic->Picture->Bitmap);
 
 void __fastcall TMainForm::Button7Click(TObject *Sender)
 {
-CentralLightBlink->Enabled=true;
+send_to_unity(5);
 }
 //---------------------------------------------------------------------------
 
@@ -868,7 +878,7 @@ S_00[i]="0";
 
 void __fastcall TMainForm::N5Click(TObject *Sender)   // KSP Right
 {
-//ksppfrm->Show();
+KSP_right->Show();
 }
 //---------------------------------------------------------------------------
 
@@ -1621,7 +1631,7 @@ otkazy_frm->Show();
 void __fastcall TMainForm::Button2Click(TObject *Sender)
 {
 if(bum_pr){
-SendToBum(0x00000301, 0, 0);       //Пауза динамики - команда в БУМ ()
+SendToBum(0x00000301, 0, 0);       // Останов динамики - команда в БУМ (останов БММ)
 dk_to_bum->Enabled=true;           // Разрешение отправки параметров ДК в БУМ
 p_sost_from_bum->Enabled=false;}
 start_priz = false;
@@ -1665,6 +1675,38 @@ if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 void __fastcall TMainForm::Button13Click(TObject *Sender)
 {
 co_priz=0;        
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::unity_s_hTimer(TObject *Sender)
+{
+handle();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::un_servExecute(TIdPeerThread *AThread)
+{
+un_serv->Bindings->Items[0]->Recv(&unity_arr,sizeof(&unity_arr),0);
+if(unity_arr.signature==0xD8A73F93)JPS(2,"Пакет удачно получен!","","","");
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::un_servConnect(TIdPeerThread *AThread)
+{
+JPS(1,"Клиент Юнити подключен... Ожидаю квитанции инициализации клиента.","","","");
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::un_servDisconnect(TIdPeerThread *AThread)
+{
+JPS(1,"Клиент Юнити отключён...","","","");
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::Button14Click(TObject *Sender)
+{
+unity_arr.signature=0xD8A73F93;
+un_serv->Bindings->Items[0]->Send((char *)&unity_arr,sizeof(&unity_arr),0);
 }
 //---------------------------------------------------------------------------
 

@@ -8,6 +8,7 @@
 #include "bumconnect.h"
 #include "JouHeader.h"          // Заголовок для журнала
 #include "JouStrings.h"         // Строковые переменные для журнала
+#include "winsock_ed.cpp"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 
@@ -69,32 +70,7 @@ inpu_con_data[2] = MiuConf->ReadString("INPU","inpu1_port_com2","0000");
 
 }
 
-//////////////////////////////////
-// Обработчик ошибок соеденения //
-//////////////////////////////////
-void GetWsaError (int GetLastError) {
-      if (GetLastError==8)     JPS(3,"Недостаточно доступной памяти!","","","");
- else if (GetLastError==87)    JPS(3,"Один или несколько параметров недействительны!","","","");
- else if (GetLastError==995)   JPS(3,"Перекрывающая операция была отменена из-за закрытия сокета!","","","");
- else if (GetLastError==10013) JPS(3,"В доступе отказанно! ","","","");
- else if (GetLastError==10036) JPS(3,"Операция уже в процессе! ","","","");
- else if (GetLastError==10037) JPS(3,"Операция уже выполняется! ","","","");
- else if (GetLastError==10038) JPS(3,"Операция с сокетом на не-сокете! Возможно, что сокет уже закрыт.","","","");
- else if (GetLastError==10048) JPS(3,"Адрес уже используется! ","","","");
- else if (GetLastError==10049) JPS(3,"Неверное значение IP адреса! Проверь main_ip в miu_conf.ini","","","");
- else if (GetLastError==10051) JPS(3,"Была предпринята попытка операции с сокетом в недоступной сети.","","","");
- else if (GetLastError==10054) JPS(3,"Соединение принудительно закрыто удаленным хостом!","","","");
- else if (GetLastError==10057) JPS(3,"Операция невозможна, т.к. сокет не подключен!","","","");
- else if (GetLastError==10058) JPS(3,"Отправка невозможна, т.к. сокет уже закрыт!","","","");
- else if (GetLastError==10060) JPS(3,"Попытка подключения не удалась, потому что время подключения истекло!","","","");
- else if (GetLastError==10061) JPS(3,"В подключении отказанно, так как БУМ не ответил. БУМ запущен?","","","");
- else if (GetLastError==10062) JPS(3,"Не могу перевести имя!","","","");
- else if (GetLastError==11001) JPS(3,"Хост не найден!","","","");
- else if (GetLastError==11003) JPS(3,"Неисправимая ошибка!","","","");
- else if (GetLastError==11004) JPS(3,"Допустимое имя, нет записи данных запрощенного типа.","","","");
- else if (GetLastError==11017) JPS(3,"QSOS - ошибка! В QOS обнаружен неверный или несовместимый поток данных.","","","");
- else if (GetLastError==11018) JPS(3,"Недопустимый буфер, зависящий от провайдера QoS.","","","");
- else JPS(3,"Ошибка подключения! Код: "+IntToStr(GetLastError),"","",""); }
+
 
 void SendToBum (int Cmd,int p1, int p2){
 send_tru.i = 0x02000700;
@@ -104,6 +80,6 @@ send_tru.zr = ntohl(p1);
 send_tru.c = ntohl(p2);
 if(bum_pr){
 iResult = send( TeleSocket,(char *)&send_tru,20, 0);   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());}
+if (iResult == SOCKET_ERROR) GetWsaError(iResult);}
 }
 #endif bum_connect

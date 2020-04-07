@@ -92,112 +92,84 @@ p_69->Caption=IntToStr(htonl(NU_temp.nr_sudn));
 void __fastcall Tbum_debug::Button2Click(TObject *Sender)
 {
 SendToBum(0x00000310, 1, 1);       //Команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 }
 //---------------------------------------------------------------------------
 
 void __fastcall Tbum_debug::Button3Click(TObject *Sender)
 {
 SendToBum(0x00000311, 1, 0);       //Команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 }
 //---------------------------------------------------------------------------
 
 void __fastcall Tbum_debug::Button4Click(TObject *Sender)
 {
 SendToBum(0x00000311, 1, 1);       //Команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 }
 //---------------------------------------------------------------------------
 
 void __fastcall Tbum_debug::Button5Click(TObject *Sender)
 {
 SendToBum(0x00000311, 1, 2);       //Команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 }
 //---------------------------------------------------------------------------
 
 void __fastcall Tbum_debug::Button6Click(TObject *Sender)
 {
 SendToBum(0x00000311, 1, 3);       //Команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 }
 //---------------------------------------------------------------------------
 
 void __fastcall Tbum_debug::Button7Click(TObject *Sender)
 {
 SendToBum(0x00000311, 2, 0);       //Команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 }
 //---------------------------------------------------------------------------
 
 void __fastcall Tbum_debug::Button8Click(TObject *Sender)
 {
 SendToBum(0x00000311, 2, 1);       //Команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 }
 //---------------------------------------------------------------------------
 
 void __fastcall Tbum_debug::Button9Click(TObject *Sender)
 {
 SendToBum(0x00200101, 48, 0x11221100);       //Команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 }
 //---------------------------------------------------------------------------
 
 void __fastcall Tbum_debug::Button10Click(TObject *Sender)
 {
 SendToBum(0x00000312, 1, 1);       //Команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 }
 //---------------------------------------------------------------------------
 
 void __fastcall Tbum_debug::Button11Click(TObject *Sender)
 {
 SendToBum(0x00000313, 1, 1);       //Команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 }
 //---------------------------------------------------------------------------
 
 void __fastcall Tbum_debug::Button12Click(TObject *Sender)
 {
 SendToBum(0x0000028E, 1, 1);       //Команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 }
 //---------------------------------------------------------------------------
 
 void __fastcall Tbum_debug::Button13Click(TObject *Sender)
 {
 SendToBum(0x0000029D, 1, 1);       //Команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 }
 //---------------------------------------------------------------------------
 
 void __fastcall Tbum_debug::Button14Click(TObject *Sender)
 {
 SendToBum(0x0000029B, 1, 1);       //Команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 }
 //---------------------------------------------------------------------------
 
 void __fastcall Tbum_debug::Button15Click(TObject *Sender)
 {
 SendToBum(0x00000185, 2, 1);       //Команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 }
 //---------------------------------------------------------------------------
 
@@ -214,16 +186,12 @@ ListBox1->Perform(WM_VSCROLL,SB_LINEDOWN,0);
 void __fastcall Tbum_debug::Button16Click(TObject *Sender)
 {
 SendToBum(0x0000029B, 0, 0);       //Команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 }
 //---------------------------------------------------------------------------
 
 void __fastcall Tbum_debug::Button17Click(TObject *Sender)
 {
 SendToBum(0x00000185, 0, 0);       //Команда в БУМ ()
-iResult = send( TeleSocket,(char *)&send_tru,20, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
 }
 //---------------------------------------------------------------------------
 

@@ -15,7 +15,8 @@
       argon\arg_kdu_operations.obj argon\arg_prkrt.obj argon\arg_main.obj 
       sotr_model.obj inpu_connect.obj MainCycle_PrObr.obj main_math.obj 
       ks020\ks_main.obj argon\arg_pks.obj argon\arg_irvi.obj bum_connect.obj 
-      pults_tk.obj transit.obj neptun\neptun_main.obj"/>
+      pults_tk.obj transit.obj neptun\neptun_main.obj unity_connect.obj 
+      winsock_ed.obj"/>
     <RESFILES value="MiU.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -57,7 +58,7 @@
     <IDLCFLAGS value="-Ineptun -Iks020 -Iargon -IC:\Users\Professional\Documents -Ibrvi_irvi 
       -Iiss -I$(BCB)\Projects -I$(BCB)\Projects\miu -I$(BCB)\include 
       -I$(BCB)\include\vcl -src_suffix cpp -boa"/>
-    <CFLAG1 value="-Od -w- -Vx -Ve -X- -a1 -b- -k- -vi -c -tW -tWM"/>
+    <CFLAG1 value="-O2 -w- -Vx -Ve -X- -a1 -b- -k- -vi -c -tW -tWM"/>
     <PFLAGS value="-$Y- -$L- -$D- -$A8 -v -JPHNE -M"/>
     <RFLAGS value=""/>
     <AFLAGS value="/mx /w0 /zn"/>
@@ -137,6 +138,8 @@
       <FILE FILENAME="transit.cpp" FORMNAME="" UNITNAME="transit" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="neptun\neptun_main.cpp" FORMNAME="" UNITNAME="neptun_main" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="neptun\neptun_main.h" FORMNAME="" UNITNAME="neptun_main.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="unity_connect.cpp" FORMNAME="" UNITNAME="unity_connect" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="winsock_ed.cpp" FORMNAME="" UNITNAME="winsock_ed" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>
@@ -171,14 +174,16 @@ Comments=СПО &quot;Моделирование и Управление&quot;
 S_SK=F334-M9
 
 [HistoryLists\hlIncludePath]
-Count=2
-Item0=ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
-Item1=C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+Count=3
+Item0=neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+Item1=ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+Item2=C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
 
 [HistoryLists\hlLibraryPath]
-Count=2
-Item0=ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
-Item1=C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Count=3
+Item0=neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Item1=ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Item2=C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
 
 [HistoryLists\hlDebugSourcePath]
 Count=1

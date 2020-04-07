@@ -1,1 +1,0 @@
-start "" c:\BMM\Release\model.exe c:\BMM\Release\config_bmm_ms1.xml [-help]

@@ -1,6 +1,6 @@
 object ksplfrm: Tksplfrm
-  Left = 721
-  Top = 279
+  Left = 1474
+  Top = 537
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1050#1057#1055' '#1083#1077#1074#1086#1077
@@ -1114,7 +1114,7 @@ object ksplfrm: Tksplfrm
     AutoSize = False
     Color = clGreen
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clYellow
+    Font.Color = clBlack
     Font.Height = -11
     Font.Name = 'MS Sans Serif'
     Font.Style = []

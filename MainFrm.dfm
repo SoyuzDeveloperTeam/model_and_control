@@ -1,9 +1,9 @@
 object MainForm: TMainForm
-  Left = 693
-  Top = 118
+  Left = 625
+  Top = 379
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  ClientHeight = 571
+  ClientHeight = 573
   ClientWidth = 748
   Color = clBtnFace
   DefaultMonitor = dmDesktop
@@ -441,7 +441,7 @@ object MainForm: TMainForm
   end
   object StatusBar: TStatusBar
     Left = 0
-    Top = 554
+    Top = 556
     Width = 748
     Height = 17
     Panels = <
@@ -670,8 +670,8 @@ object MainForm: TMainForm
       Height = 81
       TabOrder = 4
       object sps_model: TCheckBox
-        Left = 8
-        Top = 56
+        Left = 128
+        Top = 61
         Width = 105
         Height = 17
         Caption = #1054#1073#1084#1077#1085' '#1089' '#1048#1085#1055#1059
@@ -679,7 +679,7 @@ object MainForm: TMainForm
       end
       object init_: TButton
         Left = 8
-        Top = 16
+        Top = 11
         Width = 117
         Height = 33
         Cursor = crHandPoint
@@ -695,7 +695,7 @@ object MainForm: TMainForm
       end
       object WithoutBum: TCheckBox
         Left = 128
-        Top = 57
+        Top = 42
         Width = 69
         Height = 17
         Caption = #1041#1077#1079' '#1041#1059#1052
@@ -703,13 +703,21 @@ object MainForm: TMainForm
       end
       object Button6: TButton
         Left = 128
-        Top = 16
+        Top = 11
         Width = 113
         Height = 25
         Caption = #1047#1072#1082#1088#1099#1090#1100' '#1089#1086#1082#1077#1090#1099
         Enabled = False
         TabOrder = 3
         OnClick = Button6Click
+      end
+      object with_unity: TCheckBox
+        Left = 8
+        Top = 56
+        Width = 97
+        Height = 17
+        Caption = 'With Unity'
+        TabOrder = 4
       end
     end
     object GroupBox7: TGroupBox
@@ -942,6 +950,15 @@ object MainForm: TMainForm
       Caption = #1047#1072#1087#1080#1089#1100' '#1044#1050
       TabOrder = 17
       OnClick = Button11Click
+    end
+    object Button14: TButton
+      Left = 402
+      Top = 190
+      Width = 151
+      Height = 25
+      Caption = #1054#1090#1087#1088#1072#1074#1080#1090#1100' '#1079#1072#1075#1086#1083#1086#1074#1086#1082
+      TabOrder = 18
+      OnClick = Button14Click
     end
   end
   object GroupBox6: TGroupBox
@@ -2369,5 +2386,26 @@ object MainForm: TMainForm
     OnTimer = dk_to_bumTimer
     Left = 568
     Top = 472
+  end
+  object unity_s_h: TTimer
+    Enabled = False
+    Interval = 100
+    OnTimer = unity_s_hTimer
+    Left = 392
+    Top = 504
+  end
+  object un_serv: TIdTCPServer
+    Active = True
+    Bindings = <
+      item
+        IP = '192.168.92.1'
+        Port = 25436
+      end>
+    DefaultPort = 0
+    OnConnect = un_servConnect
+    OnExecute = un_servExecute
+    OnDisconnect = un_servDisconnect
+    Left = 432
+    Top = 8
   end
 end
