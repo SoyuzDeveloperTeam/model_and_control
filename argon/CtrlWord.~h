@@ -13,15 +13,15 @@ static bool cw_r1[16];  // 100
 static bool cw_r6[16];  //
 static bool cw_b10[16]; // 050
 static bool cw_a4[16];  //
-static bool cw_A4[16];
+static bool cw_A4[16];  //
 static bool cw_a5[16];  //
-static bool cw_A5[16];
+static bool cw_A5[16];  //
 static bool cw_a6[16];  //
 static bool cw_a7[16];  //
 static bool cw_a8[16];  //
-static bool cw_A9[16];
+static bool cw_A9[16];  //
 static bool cw_a10[16]; //
-static bool cw_a16[16];  //
+static bool cw_a16[16]; //
 static bool cw_a14[16]; //
 static bool cw_a19[16]; // 227
 static bool cw_a20[16]; // 110

@@ -135,6 +135,24 @@ __published:	// IDE-managed Components
         void __fastcall KSP_R_U_imageClick(TObject *Sender);
         void __fastcall KSP_R_F_imageClick(TObject *Sender);
         void __fastcall ksp_1Click(TObject *Sender);
+        void __fastcall ksp_2Click(TObject *Sender);
+        void __fastcall ksp_3Click(TObject *Sender);
+        void __fastcall ksp_4Click(TObject *Sender);
+        void __fastcall ksp_5Click(TObject *Sender);
+        void __fastcall ksp_6Click(TObject *Sender);
+        void __fastcall ksp_7Click(TObject *Sender);
+        void __fastcall ksp_8Click(TObject *Sender);
+        void __fastcall ksp_9Click(TObject *Sender);
+        void __fastcall ksp_10Click(TObject *Sender);
+        void __fastcall ksp_11Click(TObject *Sender);
+        void __fastcall ksp_12Click(TObject *Sender);
+        void __fastcall ksp_13Click(TObject *Sender);
+        void __fastcall ksp_14Click(TObject *Sender);
+        void __fastcall ksp_15Click(TObject *Sender);
+        void __fastcall ksp_16Click(TObject *Sender);
+        void __fastcall ksp_17Click(TObject *Sender);
+        void __fastcall ksp_18Click(TObject *Sender);
+        void __fastcall KSPTMRTimer(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TKSP_right(TComponent* Owner);

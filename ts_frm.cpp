@@ -268,7 +268,18 @@ if(DOP2_pr[5])
         {
          tsb6->Color=clLime;
         } else tsb6->Color=clGreen;
+// дно3
+if(USO_Booled[3][15])
+        {
+         tsc1->Color=clLime;
+        } else tsc1->Color=clGreen;
+if(USO_Booled[7][15])
+        {
+         tsc2->Color=clLime;
+        } else tsc2->Color=clGreen;
 }
 //---------------------------------------------------------------------------
-
+/*
+USO_Booled[9][3] - H1-2
+*/
 

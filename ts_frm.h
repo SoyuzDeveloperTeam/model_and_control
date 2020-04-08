@@ -81,6 +81,18 @@ __published:	// IDE-managed Components
         TStaticText *tsb5;
         TStaticText *tsb6;
         TTimer *Timer1;
+        TStaticText *StaticText1;
+        TStaticText *tsc2;
+        TStaticText *StaticText3;
+        TStaticText *tsc1;
+        TStaticText *StaticText5;
+        TStaticText *StaticText6;
+        TStaticText *StaticText7;
+        TStaticText *StaticText8;
+        TStaticText *StaticText9;
+        TStaticText *StaticText10;
+        TStaticText *StaticText11;
+        TStaticText *StaticText12;
         void __fastcall Timer1Timer(TObject *Sender);
 private:	// User declarations
 public:		// User declarations

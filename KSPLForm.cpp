@@ -38,11 +38,11 @@ KSP_Booled[3][0]=true;                          // Тогда выставляем признак Г1 -
 JPS(1,is_operator,is_miu,is_ksp,"Г1"); } else   // Логируем выдачу команды
 
 if (KSP_Let[3]){  // Д                             Если выбранна буква Д
-USO_Booled[4][0]=true;                          // Тогда выставляем признак Д1 - правда
+KSP_Booled[4][0]=true;                          // Тогда выставляем признак Д1 - правда
 JPS(1,is_operator,is_miu,is_ksp,"Д1"); } else   // Логируем выдачу команды
 
 if (KSP_Let[4]){  // Ж
-USO_Booled[5][0]=true;
+KSP_Booled[5][0]=true;
 SendToBum(0x0000029A, 1, 0);       //Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"ПЕРЕСВЕТКА");  // Резерв
 } else
@@ -488,261 +488,6 @@ ksp_18->Enabled=true;
 }
 //---------------------------------------------------------------------------
 // ТАЙМЕР ИНДИКАЦИИ ТРАНСПАРАНТОВ КСП
-
-
-
-/*
-
-
-if(USO_Booled[0][2]){  // KSP A5
-A5_LABEL->Color=clLime;
-A5_LABEL->Font->Color=clBlack;  } else {
-A5_LABEL->Color=clGreen;
-A5_LABEL->Font->Color=clYellow;
-if(USO_Booled[0][3]){  // KSP A7
-A7_LABEL->Color=clLime;
-A7_LABEL->Font->Color=clBlack;  } else {
-A7_LABEL->Color=clGreen;
-A7_LABEL->Font->Color=clYellow;
-if(USO_Booled[0][4]){  // KSP A9
-
-} else
-if(USO_Booled[0][5]){  // KSP A11
-
-} else
-if(USO_Booled[0][6]){   // KSP A13
-
-} else
-if(USO_Booled[0][7]){   // KSP A15
-
-} else
-if(USO_Booled[0][8]){   // KSP A17
-
-} else
-if(USO_Booled[0][9]){   // KSP b1
-
-} else
-if(USO_Booled[0][10]){
-
-} else
-if(USO_Booled[0][11]){
-
-} else
-if(USO_Booled[0][12]){
-
-} else
-if(USO_Booled[0][13]){
-
-} else
-if(USO_Booled[0][14]){
-
-} else
-if(USO_Booled[0][15]){
-
-} else
-if(USO_Booled[1][0]){
-
-} else
-if(USO_Booled[1][1]){
-
-} else
-if(USO_Booled[1][2]){
-
-} else
-if(USO_Booled[1][3]){
-
-} else
-if(USO_Booled[1][4]){
-
-} else
-if(USO_Booled[1][5]){
-
-} else
-if(USO_Booled[1][6]){
-
-} else
-if(USO_Booled[1][7]){
-
-} else
-if(USO_Booled[1][8]){
-
-} else
-if(USO_Booled[1][9]){
-
-} else
-if(USO_Booled[1][10]){
-
-} else
-if(USO_Booled[1][11]){
-G1_LABEL->Color=clLime;
-G1_LABEL->Font->Color=clBlack;  } else {
-G1_LABEL->Color=clGreen;
-G1_LABEL->Font->Color=clYellow; }
-if(USO_Booled[1][12]){
-
-} else
-if(USO_Booled[1][13]){
-
-} else
-if(USO_Booled[1][14]){
-
-} else
-if(USO_Booled[1][15]){
-
-} else
-if(USO_Booled[2][0]){
-
-} else
-if(USO_Booled[2][1]){
-
-} else
-if(USO_Booled[2][2]){
-
-} else
-if(USO_Booled[2][3]){
-
-} else
-if(USO_Booled[2][4]){
-D1_LABEL->Color=clLime;
-D1_LABEL->Font->Color=clBlack; } else {
-D1_LABEL->Color=clGreen;
-D1_LABEL->Font->Color=clYellow;}
-if(USO_Booled[2][5]){
-
-} else
-if(USO_Booled[2][6]){
-
-} else
-if(USO_Booled[2][7]){
-
-} else
-if(USO_Booled[2][8]){
-
-} else
-if(USO_Booled[2][9]){
-
-} else
-if(USO_Booled[2][10]){
-
-} else
-if(USO_Booled[2][11]){
-
-} else
-if(USO_Booled[2][12]){
-
-} else
-if(USO_Booled[2][13]){
-
-} else
-if(USO_Booled[2][14]){
-
-} else
-if(USO_Booled[2][15]){
-
-} else
-if(USO_Booled[3][0]){
-
-} else
-if(USO_Booled[3][1]){
-
-} else
-if(USO_Booled[3][2]){
-
-} else
-if(USO_Booled[3][3]){
-
-} else
-if(USO_Booled[3][4]){
-
-} else
-if(USO_Booled[3][5]){
-
-} else
-if(USO_Booled[3][6]){  // KSP И1
-I1_LABEL->Color=clLime;
-I1_LABEL->Font->Color=clBlack; } else
-if(USO_Booled[3][7]){
-
-} else
-if(USO_Booled[3][8]){
-
-} else
-if(USO_Booled[3][9]){
-
-} else
-if(USO_Booled[3][10]){
-
-} else
-if(USO_Booled[3][11]){
-
-} else
-if(USO_Booled[3][12]){
-
-} else
-if(USO_Booled[3][13]){
-
-} else
-if(USO_Booled[3][14]){
-
-} else
-if(USO_Booled[3][15]){
-
-} else
-if(USO_Booled[4][0]){
-
-} else
-if(USO_Booled[4][1]){
-
-} else
-if(USO_Booled[4][2]){
-
-} else
-if(USO_Booled[4][3]){
-
-} else
-if(USO_Booled[4][4]){
-
-} else
-if(USO_Booled[4][5]){
-
-} else
-if(USO_Booled[4][6]){
-
-} else
-if(USO_Booled[4][7]){
-
-} else
-if(USO_Booled[4][8]){
-
-} else
-if(USO_Booled[4][9]){
-
-} else
-if(USO_Booled[4][10]){
-
-} else
-if(USO_Booled[4][11]){
-
-} else
-if(USO_Booled[4][12]){
-
-} else
-if(USO_Booled[4][13]){
-
-} else
-if(USO_Booled[4][14]){   // КСП Л11
-
-} else
-if(USO_Booled[4][15]){   // КСП Л13
-
-} else
-if(USO_Booled[5][0]){
-
-} else
-if(USO_Booled[5][1]){    // Бит 05Е - КСП Л17: РО АК
-
-}
-*/
 void __fastcall Tksplfrm::KSPTMRTimer(TObject *Sender)
 {
 // Индикация транспарантов КСП
@@ -781,11 +526,6 @@ A13_LABEL->Color=clLime;
 A13_LABEL->Font->Color=clBlack;  } else {
 A13_LABEL->Color=clGreen;
 A13_LABEL->Font->Color=clYellow; }
-if(USO_Booled[0][7]){  // KSP A15
-A15_LABEL->Color=clLime;
-A15_LABEL->Font->Color=clBlack;  } else {
-A15_LABEL->Color=clGreen;
-A15_LABEL->Font->Color=clYellow; }
 if(USO_Booled[0][8]){  // KSP A17
 A17_LABEL->Color=clLime;
 A17_LABEL->Font->Color=clBlack;  } else {
@@ -812,67 +552,134 @@ V7_LABEL->Color=clLime;
 V7_LABEL->Font->Color=clBlack;  } else {
 V7_LABEL->Color=clGreen;
 V7_LABEL->Font->Color=clYellow; }
-
+if(USO_Booled[1][7]){  // KSP B11
+V11_LABEL->Color=clLime;
+V11_LABEL->Font->Color=clBlack;  } else {
+V11_LABEL->Color=clGreen;
+V11_LABEL->Font->Color=clYellow; }
+if(USO_Booled[1][8]){  // KSP B13
+V13_LABEL->Color=clLime;
+V13_LABEL->Font->Color=clBlack;  } else {
+V13_LABEL->Color=clGreen;
+V13_LABEL->Font->Color=clYellow; }
+if(USO_Booled[1][9]){  // KSP B15
+V15_LABEL->Color=clLime;
+V15_LABEL->Font->Color=clBlack;  } else {
+V15_LABEL->Color=clGreen;
+V15_LABEL->Font->Color=clYellow; }
+if(USO_Booled[1][10]){  // KSP B17
+V17_LABEL->Color=clLime;
+V17_LABEL->Font->Color=clBlack;  } else {
+V17_LABEL->Color=clGreen;
+V17_LABEL->Font->Color=clYellow; }
 
 if(USO_Booled[1][11]){  // KSP Г1
 G1_LABEL->Color=clLime;
 G1_LABEL->Font->Color=clBlack;  } else {
 G1_LABEL->Color=clGreen;
 G1_LABEL->Font->Color=clYellow; }
+if(USO_Booled[1][12]){  // KSP Г3
+G3_LABEL->Color=clLime;
+G3_LABEL->Font->Color=clBlack;  } else {
+G3_LABEL->Color=clGreen;
+G3_LABEL->Font->Color=clYellow; }
 if(USO_Booled[1][13]){  // KSP Г5
 G5_LABEL->Color=clLime;
 G5_LABEL->Font->Color=clBlack;  } else {
 G5_LABEL->Color=clGreen;
 G5_LABEL->Font->Color=clYellow; }
-
 if(USO_Booled[1][14]){  // KSP Г7
 G7_LABEL->Color=clLime;
 G7_LABEL->Font->Color=clBlack;  } else {
 G7_LABEL->Color=clGreen;
 G7_LABEL->Font->Color=clYellow; }
-
 if(USO_Booled[1][15]){  // KSP Г9
 G9_LABEL->Color=clLime;
 G9_LABEL->Font->Color=clBlack;  } else {
 G9_LABEL->Color=clGreen;
 G9_LABEL->Font->Color=clYellow; }
-
 if(USO_Booled[2][0]){  // KSP Г11
 G11_LABEL->Color=clLime;
 G11_LABEL->Font->Color=clBlack;  } else {
 G11_LABEL->Color=clGreen;
 G11_LABEL->Font->Color=clYellow; }
+if(USO_Booled[2][3]){  // KSP Г17
+G17_LABEL->Color=clLime;
+G17_LABEL->Font->Color=clBlack;  } else {
+G17_LABEL->Color=clGreen;
+G17_LABEL->Font->Color=clYellow; }
 
-if(USO_Booled[3][6]){  // KSP И1
-I1_LABEL->Color=clLime;
-I1_LABEL->Font->Color=clBlack;  } else {
-I1_LABEL->Color=clGreen;
-I1_LABEL->Font->Color=clYellow; }
+if(USO_Booled[2][4]){  // KSP Д1
+D1_LABEL->Color=clLime;
+D1_LABEL->Font->Color=clBlack;  } else {
+D1_LABEL->Color=clGreen;
+D1_LABEL->Font->Color=clYellow; }
+if(USO_Booled[2][5]){  // KSP Д3
+D3_LABEL->Color=clLime;
+D3_LABEL->Font->Color=clBlack;  } else {
+D3_LABEL->Color=clGreen;
+D3_LABEL->Font->Color=clYellow; }
+if(USO_Booled[2][6]){  // KSP Д5
+D5_LABEL->Color=clLime;
+D5_LABEL->Font->Color=clBlack;  } else {
+D5_LABEL->Color=clGreen;
+D5_LABEL->Font->Color=clYellow; }
+if(USO_Booled[2][7]){  // KSP Д7
+D7_LABEL->Color=clLime;
+D7_LABEL->Font->Color=clBlack;  } else {
+D7_LABEL->Color=clGreen;
+D7_LABEL->Font->Color=clYellow; }
+if(USO_Booled[2][8]){  // KSP Д9
+D9_LABEL->Color=clLime;
+D9_LABEL->Font->Color=clBlack;  } else {
+D9_LABEL->Color=clGreen;
+D9_LABEL->Font->Color=clYellow; }
+if(USO_Booled[2][9]){  // KSP Д11
+D11_LABEL->Color=clLime;
+D11_LABEL->Font->Color=clBlack;  } else {
+D11_LABEL->Color=clGreen;
+D11_LABEL->Font->Color=clYellow; }
+if(USO_Booled[2][10]){  // KSP Д13
+D13_LABEL->Color=clLime;
+D13_LABEL->Font->Color=clBlack;  } else {
+D13_LABEL->Color=clGreen;
+D13_LABEL->Font->Color=clYellow; }
+if(USO_Booled[2][11]){  // KSP Д15
+D15_LABEL->Color=clLime;
+D15_LABEL->Font->Color=clBlack;  } else {
+D15_LABEL->Color=clGreen;
+D15_LABEL->Font->Color=clYellow; }
+if(USO_Booled[2][12]){  // KSP Д17
+D17_LABEL->Color=clLime;
+D17_LABEL->Font->Color=clBlack;  } else {
+D17_LABEL->Color=clGreen;
+D17_LABEL->Font->Color=clYellow; }
 
-if(USO_Booled[3][7]){  // KSP И3
-I3_LABEL->Color=clLime;
-I3_LABEL->Font->Color=clBlack;  } else {
-I3_LABEL->Color=clGreen;
-I3_LABEL->Font->Color=clYellow; }
-
-if(USO_Booled[3][10]){  // KSP И9
-I9_LABEL->Color=clLime;
-I9_LABEL->Font->Color=clBlack;  } else {
-I9_LABEL->Color=clGreen;
-I9_LABEL->Font->Color=clYellow; }
-
-if(USO_Booled[3][11]){  // KSP И11
-I11_LABEL->Color=clLime;
-I11_LABEL->Font->Color=clBlack;  } else {
-I11_LABEL->Color=clGreen;
-I11_LABEL->Font->Color=clYellow; }
-
-if(USO_Booled[3][13]){  // KSP И15
-I15_LABEL->Color=clLime;
-I15_LABEL->Font->Color=clBlack;  } else {
-I15_LABEL->Color=clGreen;
-I15_LABEL->Font->Color=clYellow; }
-
+if(USO_Booled[2][13]){  // KSP Ж1
+J1_LABEL->Color=clLime;
+J1_LABEL->Font->Color=clBlack;  } else {
+J1_LABEL->Color=clGreen;
+J1_LABEL->Font->Color=clYellow; }
+if(USO_Booled[2][14]){  // KSP Ж3
+J3_LABEL->Color=clLime;
+J3_LABEL->Font->Color=clBlack;  } else {
+J3_LABEL->Color=clGreen;
+J3_LABEL->Font->Color=clYellow; }
+if(USO_Booled[2][15]){  // KSP Ж5
+J5_LABEL->Color=clLime;
+J5_LABEL->Font->Color=clBlack;  } else {
+J5_LABEL->Color=clGreen;
+J5_LABEL->Font->Color=clYellow; }
+if(USO_Booled[3][0]){  // KSP Ж7
+J7_LABEL->Color=clLime;
+J7_LABEL->Font->Color=clBlack;  } else {
+J7_LABEL->Color=clGreen;
+J7_LABEL->Font->Color=clYellow; }
+if(USO_Booled[3][1]){  // KSP Ж9
+J9_LABEL->Color=clLime;
+J9_LABEL->Font->Color=clBlack;  } else {
+J9_LABEL->Color=clGreen;
+J9_LABEL->Font->Color=clYellow; }
 if(USO_Booled[3][2]){  // KSP Ж11
 J11_LABEL->Color=clLime;
 J11_LABEL->Font->Color=clBlack;  } else {
@@ -888,12 +695,134 @@ J15_LABEL->Color=clLime;
 J15_LABEL->Font->Color=clBlack;  } else {
 J15_LABEL->Color=clGreen;
 J15_LABEL->Font->Color=clYellow; }
+if(USO_Booled[3][5]){  // KSP Ж17
+J17_LABEL->Color=clLime;
+J17_LABEL->Font->Color=clBlack;  } else {
+J17_LABEL->Color=clGreen;
+J17_LABEL->Font->Color=clYellow; }
 
+if(USO_Booled[3][6]){  // KSP И1
+I1_LABEL->Color=clLime;
+I1_LABEL->Font->Color=clBlack;  } else {
+I1_LABEL->Color=clGreen;
+I1_LABEL->Font->Color=clYellow; }
+if(USO_Booled[3][7]){  // KSP И3
+I3_LABEL->Color=clLime;
+I3_LABEL->Font->Color=clBlack;  } else {
+I3_LABEL->Color=clGreen;
+I3_LABEL->Font->Color=clYellow; }
+if(USO_Booled[3][8]){  // KSP И5
+I5_LABEL->Color=clLime;
+I5_LABEL->Font->Color=clBlack;  } else {
+I5_LABEL->Color=clGreen;
+I5_LABEL->Font->Color=clYellow; }
+if(USO_Booled[3][9]){  // KSP И7
+I7_LABEL->Color=clLime;
+I7_LABEL->Font->Color=clBlack;  } else {
+I7_LABEL->Color=clGreen;
+I7_LABEL->Font->Color=clYellow; }
+if(USO_Booled[3][10]){  // KSP И9
+I9_LABEL->Color=clLime;
+I9_LABEL->Font->Color=clBlack;  } else {
+I9_LABEL->Color=clGreen;
+I9_LABEL->Font->Color=clYellow; }
+if(USO_Booled[3][11]){  // KSP И11
+I11_LABEL->Color=clLime;
+I11_LABEL->Font->Color=clBlack;  } else {
+I11_LABEL->Color=clGreen;
+I11_LABEL->Font->Color=clYellow; }
+if(USO_Booled[3][13]){  // KSP И15
+I15_LABEL->Color=clLime;
+I15_LABEL->Font->Color=clBlack;  } else {
+I15_LABEL->Color=clGreen;
+I15_LABEL->Font->Color=clYellow; }
+if(USO_Booled[3][14]){  // KSP И17
+I17_LABEL->Color=clLime;
+I17_LABEL->Font->Color=clBlack;  } else {
+I17_LABEL->Color=clGreen;
+I17_LABEL->Font->Color=clYellow; }
+
+if(USO_Booled[4][0]){  // KSP К1
+K1_LABEL->Color=clLime;
+K1_LABEL->Font->Color=clBlack;  } else {
+K1_LABEL->Color=clGreen;
+K1_LABEL->Font->Color=clYellow; }
+if(USO_Booled[4][1]){  // KSP К3
+K3_LABEL->Color=clLime;
+K3_LABEL->Font->Color=clBlack;  } else {
+K3_LABEL->Color=clGreen;
+K3_LABEL->Font->Color=clYellow; }
+if(USO_Booled[4][2]){  // KSP К5
+K5_LABEL->Color=clLime;
+K5_LABEL->Font->Color=clBlack;  } else {
+K5_LABEL->Color=clGreen;
+K5_LABEL->Font->Color=clYellow; }
+if(USO_Booled[4][3]){  // KSP К7
+K7_LABEL->Color=clLime;
+K7_LABEL->Font->Color=clBlack;  } else {
+K7_LABEL->Color=clGreen;
+K7_LABEL->Font->Color=clYellow; }
+if(USO_Booled[4][5]){  // KSP К11
+K11_LABEL->Color=clLime;
+K11_LABEL->Font->Color=clBlack;  } else {
+K11_LABEL->Color=clGreen;
+K11_LABEL->Font->Color=clYellow; }
+if(USO_Booled[4][6]){  // KSP К13
+K13_LABEL->Color=clLime;
+K13_LABEL->Font->Color=clBlack;  } else {
+K13_LABEL->Color=clGreen;
+K13_LABEL->Font->Color=clYellow; }
+if(USO_Booled[4][7]){  // KSP К15
+K15_LABEL->Color=clLime;
+K15_LABEL->Font->Color=clBlack;  } else {
+K15_LABEL->Color=clGreen;
+K15_LABEL->Font->Color=clYellow; }
 if(USO_Booled[4][8]){  // KSP К17
 K17_LABEL->Color=clLime;
 K17_LABEL->Font->Color=clBlack;  } else {
 K17_LABEL->Color=clGreen;
 K17_LABEL->Font->Color=clYellow; }
+
+if(USO_Booled[1][1]){  // KSP Л1
+L1_LABEL->Color=clLime;
+L1_LABEL->Font->Color=clBlack;  } else {
+L1_LABEL->Color=clGreen;
+L1_LABEL->Font->Color=clYellow; }
+if(USO_Booled[4][10]){  // KSP Л3
+L3_LABEL->Color=clLime;
+L3_LABEL->Font->Color=clBlack;  } else {
+L3_LABEL->Color=clGreen;
+L3_LABEL->Font->Color=clYellow; }
+if(USO_Booled[4][11]){  // KSP Л5
+L5_LABEL->Color=clLime;
+L5_LABEL->Font->Color=clBlack;  } else {
+L5_LABEL->Color=clGreen;
+L5_LABEL->Font->Color=clYellow; }
+if(USO_Booled[4][12]){  // KSP Л7
+L7_LABEL->Color=clLime;
+L7_LABEL->Font->Color=clBlack;  } else {
+L7_LABEL->Color=clGreen;
+L7_LABEL->Font->Color=clYellow; }
+if(USO_Booled[4][13]){  // KSP Л9
+L9_LABEL->Color=clLime;
+L9_LABEL->Font->Color=clBlack;  } else {
+L9_LABEL->Color=clGreen;
+L9_LABEL->Font->Color=clYellow; }
+if(USO_Booled[4][15]){  // KSP Л13
+L13_LABEL->Color=clLime;
+L13_LABEL->Font->Color=clBlack;  } else {
+L13_LABEL->Color=clGreen;
+L13_LABEL->Font->Color=clYellow; }
+if(USO_Booled[5][0]){  // KSP Л15
+L15_LABEL->Color=clLime;
+L15_LABEL->Font->Color=clBlack;  } else {
+L15_LABEL->Color=clGreen;
+L15_LABEL->Font->Color=clYellow; }
+if(USO_Booled[5][1]){  // KSP Л17
+L17_LABEL->Color=clLime;
+L17_LABEL->Font->Color=clBlack;  } else {
+L17_LABEL->Color=clGreen;
+L17_LABEL->Font->Color=clYellow; }
 }
 //---------------------------------------------------------------------------
 
@@ -1058,10 +987,6 @@ if (KSP_Let[6]){  // К
 KSP_Booled[7][3]=true;                          // Тогда выставляем признак К4 - правда
 JPS(1,is_operator,is_miu,is_ksp,"К4"); } else   // Логируем выдачу команды
 
-if (KSP_Let[7]){  // Л
-KSP_Booled[8][3]=true;                          // Тогда выставляем признак Л4 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Л4"); }        // Логируем выдачу команды
-
 // Возвращаем цвет буквам КСП
 KSP_L_A->Color=clBlack;
 KSP_L_A->Font->Color=clYellow;
@@ -1118,7 +1043,7 @@ JPS(1,is_operator,is_miu,is_ksp,"А5"); } else   // Логируем выдачу команды
 
 if (KSP_Let[1]){ // В                              Если выбранна буква B
 KSP_Booled[2][4]=true;                          // Тогда выставляем признак B5 - правда
-SendToBum(0x00000295, 1, 0);                    //Команда в БУМ (АО-ВКА закр - резерв)
+SendToBum(0x00000295, 1, 0);                    // Команда в БУМ (АО-ВКА закр - резерв)
 JPS(1,is_operator,is_miu,is_ksp,"В5"); } else   // Логируем выдачу команды
 
 if (KSP_Let[2]){  // Г                             Если выбранна буква Г
@@ -1205,17 +1130,9 @@ KSP_Booled[2][5]=true;                          // Тогда выставляем признак B6 -
 SendToBum(0x00000295, 1, 1);                    //Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"В6"); } else   // Логируем выдачу команды
 
-if (KSP_Let[2]){  // Г                             Если выбранна буква Г
-KSP_Booled[3][5]=true;                          // Тогда выставляем признак Г6 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Г6"); } else   // Логируем выдачу команды
-
 if (KSP_Let[3]){  // Д                             Если выбранна буква Д
 KSP_Booled[4][5]=true;                          // Тогда выставляем признак Д6 - правда
 JPS(1,is_operator,is_miu,is_ksp,"Д6"); } else   // Логируем выдачу команды
-
-if (KSP_Let[4]){  // Ж
-KSP_Booled[5][5]=true;                          // Тогда выставляем признак Ж6 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Ж6"); } else   // Логируем выдачу команды
 
 if (KSP_Let[5]){  // И
 KSP_Booled[6][5]=true;                          // Тогда выставляем признак И6 - правда
@@ -1373,10 +1290,6 @@ KSP_Booled[2][7]=true;                          // Тогда выставляем признак B8 -
 SendToBum(0x00000283, 1, 0);                    // Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"В8"); } else   // Логируем выдачу команды
 
-if (KSP_Let[2]){  // Г                             Если выбранна буква Г
-KSP_Booled[3][7]=true;                          // Тогда выставляем признак Г8 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Г8"); } else   // Логируем выдачу команды
-
 if (KSP_Let[3]){  // Д                             Если выбранна буква Д
 KSP_Booled[4][7]=true;                          // Тогда выставляем признак Д8 - правда
 JPS(1,is_operator,is_miu,is_ksp,"Д8"); } else   // Логируем выдачу команды
@@ -1387,7 +1300,7 @@ JPS(1,is_operator,is_miu,is_ksp,"Ж8"); } else   // Логируем выдачу команды
 
 if (KSP_Let[5]){  // И
 KSP_Booled[6][7]=true;                          // Тогда выставляем признак И8 - правда
-SendToBum(0x0000029F, 0, 0);                    //Команда в БУМ (Выбор ДК)
+SendToBum(0x0000029F, 0, 0);                    // Команда в БУМ (Выбор ДК)
 JPS(1,is_operator,is_miu,is_ksp,"И8"); } else   // Логируем выдачу команды
 
 if (KSP_Let[6]){  // К
@@ -1698,7 +1611,7 @@ KSP_L_L_image->Enabled=true;
 
 void __fastcall Tksplfrm::ksp_12Click(TObject *Sender)
 {
-if (KSP_Let[0]){ // А                              Если выбранна буква А
+/* if (KSP_Let[0]){ // А                              Если выбранна буква А
 KSP_Booled[0][11]=true;                          // Тогда выставляем признак А12 - правда
 JPS(1,is_operator,is_miu,is_ksp,"А12"); } else   // Логируем выдачу команды
 
@@ -1729,7 +1642,7 @@ JPS(1,is_operator,is_miu,is_ksp,"К12"); } else   // Логируем выдачу команды
 if (KSP_Let[7]){  // Л
 KSP_Booled[8][11]=true;                          // Тогда выставляем признак Л12 - правда
 JPS(1,is_operator,is_miu,is_ksp,"Л12"); }        // Логируем выдачу команды
-
+*/
 // Возвращаем цвет буквам КСП
 KSP_L_A->Color=clBlack;
 KSP_L_A->Font->Color=clYellow;
@@ -1866,7 +1779,7 @@ KSP_L_L_image->Enabled=true;
 
 void __fastcall Tksplfrm::ksp_14Click(TObject *Sender)
 {
-if (KSP_Let[0]){ // А                              Если выбранна буква А
+/* if (KSP_Let[0]){ // А                              Если выбранна буква А
 KSP_Booled[0][13]=true;                          // Тогда выставляем признак А14 - правда
 JPS(1,is_operator,is_miu,is_ksp,"А14"); } else   // Логируем выдачу команды
 
@@ -1897,7 +1810,7 @@ JPS(1,is_operator,is_miu,is_ksp,"К14"); } else   // Логируем выдачу команды
 if (KSP_Let[7]){  // Л
 KSP_Booled[8][13]=true;                          // Тогда выставляем признак Л14 - правда
 JPS(1,is_operator,is_miu,is_ksp,"Л14"); }        // Логируем выдачу команды
-
+*/
 // Возвращаем цвет буквам КСП
 KSP_L_A->Color=clBlack;
 KSP_L_A->Font->Color=clYellow;
@@ -2034,7 +1947,7 @@ KSP_L_L_image->Enabled=true;
 
 void __fastcall Tksplfrm::ksp_16Click(TObject *Sender)
 {
-if (KSP_Let[0]){ // А                              Если выбранна буква А
+/* if (KSP_Let[0]){ // А                              Если выбранна буква А
 KSP_Booled[0][15]=true;                          // Тогда выставляем признак А16 - правда
 JPS(1,is_operator,is_miu,is_ksp,"А16"); } else   // Логируем выдачу команды
 
@@ -2065,7 +1978,7 @@ JPS(1,is_operator,is_miu,is_ksp,"К16"); } else   // Логируем выдачу команды
 if (KSP_Let[7]){  // Л
 KSP_Booled[8][15]=true;                          // Тогда выставляем признак Л16 - правда
 JPS(1,is_operator,is_miu,is_ksp,"Л16"); }        // Логируем выдачу команды
-
+*/
 // Возвращаем цвет буквам КСП
 KSP_L_A->Color=clBlack;
 KSP_L_A->Font->Color=clYellow;
@@ -2203,22 +2116,10 @@ KSP_L_L_image->Enabled=true;
 
 void __fastcall Tksplfrm::ksp_18Click(TObject *Sender)
 {
-if (KSP_Let[0]){ // А                               Если выбранна буква А
-KSP_Booled[0][17]=true;                          // Тогда выставляем признак А16 - правда
-JPS(1,is_operator,is_miu,is_ksp,"А18"); } else   // Логируем выдачу команды
-
 if (KSP_Let[1]){ // В                               Если выбранна буква B
 KSP_Booled[2][17]=true;                          // Тогда выставляем признак B16 - правда
 SendToBum(0x00000280, 0, 0);                     // Команда в БУМ (ВСК - причал)
 JPS(1,is_operator,is_miu,is_ksp,"В18"); } else   // Логируем выдачу команды
-
-if (KSP_Let[2]){  // Г                              Если выбранна буква Г
-KSP_Booled[3][17]=true;                          // Тогда выставляем признак Г16 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Г18"); } else   // Логируем выдачу команды
-
-if (KSP_Let[3]){  // Д                              Если выбранна буква Д
-KSP_Booled[4][17]=true;                          // Тогда выставляем признак Д16 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Д18"); } else   // Логируем выдачу команды
 
 if (KSP_Let[4]){  // Ж
 KSP_Booled[5][17]=true;                          // Тогда выставляем признак Ж16 - правда

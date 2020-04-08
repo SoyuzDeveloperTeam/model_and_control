@@ -1,6 +1,6 @@
 object ts_form: Tts_form
-  Left = 985
-  Top = 258
+  Left = 268
+  Top = 225
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1058#1057
@@ -227,7 +227,7 @@ object ts_form: Tts_form
     Alignment = taCenter
     AutoSize = False
     BorderStyle = sbsSingle
-    Caption = #1072#1074#1072#1088#1080#1103'   '#1044#1050
+    Caption = '  '#1040#1042#1040#1056#1048#1071'   '#1044#1050
     Color = clMaroon
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clSilver
@@ -1319,10 +1319,245 @@ object ts_form: Tts_form
     TabOrder = 59
     TabStop = True
   end
+  object StaticText1: TStaticText
+    Left = 456
+    Top = 352
+    Width = 73
+    Height = 33
+    Alignment = taCenter
+    AutoSize = False
+    BorderStyle = sbsSingle
+    Caption = #1050#1054#1053#1058#1056' '#1057#1058#1067#1050' 4'
+    Color = clGreen
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 60
+    TabStop = True
+  end
+  object tsc2: TStaticText
+    Left = 456
+    Top = 312
+    Width = 73
+    Height = 33
+    Alignment = taCenter
+    AutoSize = False
+    BorderStyle = sbsSingle
+    Caption = #1050#1054#1053#1058#1056' '#1057#1058#1067#1050' 2'
+    Color = clGreen
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 61
+    TabStop = True
+  end
+  object StaticText3: TStaticText
+    Left = 376
+    Top = 352
+    Width = 73
+    Height = 33
+    Alignment = taCenter
+    AutoSize = False
+    BorderStyle = sbsSingle
+    Caption = #1050#1054#1053#1058#1056' '#1057#1058#1067#1050' 3'
+    Color = clGreen
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 62
+    TabStop = True
+  end
+  object tsc1: TStaticText
+    Left = 376
+    Top = 312
+    Width = 73
+    Height = 33
+    Alignment = taCenter
+    AutoSize = False
+    BorderStyle = sbsSingle
+    Caption = #1050#1054#1053#1058#1056' '#1057#1058#1067#1050' 1'
+    Color = clGreen
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 63
+    TabStop = True
+  end
+  object StaticText5: TStaticText
+    Left = 376
+    Top = 392
+    Width = 73
+    Height = 33
+    Alignment = taCenter
+    AutoSize = False
+    BorderStyle = sbsSingle
+    Caption = #1056#1040#1047#1056#1045#1064' '#1047#1040#1050#1056#1059#1058
+    Color = clGreen
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 64
+    TabStop = True
+  end
+  object StaticText6: TStaticText
+    Left = 456
+    Top = 392
+    Width = 73
+    Height = 33
+    Alignment = taCenter
+    AutoSize = False
+    BorderStyle = sbsSingle
+    Caption = #1056#1040#1047#1056' '#1042#1050#1051' '#1057#1050#1044' '#1042' '#1043#1062
+    Color = clGreen
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 65
+    TabStop = True
+  end
+  object StaticText7: TStaticText
+    Left = 376
+    Top = 456
+    Width = 73
+    Height = 33
+    Alignment = taCenter
+    AutoSize = False
+    BorderStyle = sbsSingle
+    Caption = ' '#1050#1054
+    Color = clGreen
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 66
+    TabStop = True
+  end
+  object StaticText8: TStaticText
+    Left = 456
+    Top = 456
+    Width = 73
+    Height = 33
+    Alignment = taCenter
+    AutoSize = False
+    BorderStyle = sbsSingle
+    Caption = #1047#1040#1055#1056#1045#1058' '#1048#1050#1042
+    Color = clGreen
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 67
+    TabStop = True
+  end
+  object StaticText9: TStaticText
+    Left = 376
+    Top = 496
+    Width = 73
+    Height = 33
+    Alignment = taCenter
+    AutoSize = False
+    BorderStyle = sbsSingle
+    Color = clGreen
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 68
+    TabStop = True
+  end
+  object StaticText10: TStaticText
+    Left = 456
+    Top = 496
+    Width = 73
+    Height = 33
+    Alignment = taCenter
+    AutoSize = False
+    BorderStyle = sbsSingle
+    Color = clGreen
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 69
+    TabStop = True
+  end
+  object StaticText11: TStaticText
+    Left = 376
+    Top = 536
+    Width = 73
+    Height = 33
+    Alignment = taCenter
+    AutoSize = False
+    BorderStyle = sbsSingle
+    Color = clGreen
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 70
+    TabStop = True
+  end
+  object StaticText12: TStaticText
+    Left = 456
+    Top = 536
+    Width = 73
+    Height = 33
+    Alignment = taCenter
+    AutoSize = False
+    BorderStyle = sbsSingle
+    Color = clGreen
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 71
+    TabStop = True
+  end
   object Timer1: TTimer
     Interval = 200
     OnTimer = Timer1Timer
-    Left = 504
-    Top = 544
+    Left = 512
   end
 end

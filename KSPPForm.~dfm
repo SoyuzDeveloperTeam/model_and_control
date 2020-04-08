@@ -1,6 +1,6 @@
 object KSP_right: TKSP_right
-  Left = 1546
-  Top = 264
+  Left = 343
+  Top = 85
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1050#1057#1055' '#1087#1088#1072#1074#1086#1077
@@ -126,6 +126,7 @@ object KSP_right: TKSP_right
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
+    OnClick = ksp_2Click
   end
   object ksp_3: TSpeedButton
     Left = 104
@@ -141,6 +142,7 @@ object KSP_right: TKSP_right
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
+    OnClick = ksp_3Click
   end
   object ksp_4: TSpeedButton
     Left = 137
@@ -156,6 +158,7 @@ object KSP_right: TKSP_right
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
+    OnClick = ksp_4Click
   end
   object ksp_5: TSpeedButton
     Left = 173
@@ -171,6 +174,7 @@ object KSP_right: TKSP_right
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
+    OnClick = ksp_5Click
   end
   object ksp_6: TSpeedButton
     Left = 206
@@ -186,6 +190,7 @@ object KSP_right: TKSP_right
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
+    OnClick = ksp_6Click
   end
   object ksp_7: TSpeedButton
     Left = 243
@@ -201,6 +206,7 @@ object KSP_right: TKSP_right
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
+    OnClick = ksp_7Click
   end
   object ksp_8: TSpeedButton
     Left = 276
@@ -216,6 +222,7 @@ object KSP_right: TKSP_right
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
+    OnClick = ksp_8Click
   end
   object ksp_9: TSpeedButton
     Left = 311
@@ -231,6 +238,7 @@ object KSP_right: TKSP_right
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
+    OnClick = ksp_9Click
   end
   object ksp_10: TSpeedButton
     Left = 344
@@ -246,6 +254,7 @@ object KSP_right: TKSP_right
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
+    OnClick = ksp_10Click
   end
   object ksp_11: TSpeedButton
     Left = 380
@@ -261,6 +270,7 @@ object KSP_right: TKSP_right
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
+    OnClick = ksp_11Click
   end
   object ksp_12: TSpeedButton
     Left = 413
@@ -276,6 +286,7 @@ object KSP_right: TKSP_right
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
+    OnClick = ksp_12Click
   end
   object ksp_13: TSpeedButton
     Left = 449
@@ -291,6 +302,7 @@ object KSP_right: TKSP_right
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
+    OnClick = ksp_13Click
   end
   object ksp_14: TSpeedButton
     Left = 482
@@ -306,6 +318,7 @@ object KSP_right: TKSP_right
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
+    OnClick = ksp_14Click
   end
   object ksp_15: TSpeedButton
     Left = 518
@@ -321,6 +334,7 @@ object KSP_right: TKSP_right
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
+    OnClick = ksp_15Click
   end
   object ksp_16: TSpeedButton
     Left = 551
@@ -336,6 +350,7 @@ object KSP_right: TKSP_right
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
+    OnClick = ksp_16Click
   end
   object ksp_17: TSpeedButton
     Left = 588
@@ -351,6 +366,7 @@ object KSP_right: TKSP_right
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
+    OnClick = ksp_17Click
   end
   object ksp_18: TSpeedButton
     Left = 621
@@ -366,6 +382,7 @@ object KSP_right: TKSP_right
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
+    OnClick = ksp_18Click
   end
   object N1_LABEL: TLabel
     Left = 32
@@ -2560,6 +2577,7 @@ object KSP_right: TKSP_right
   object KSPTMR: TTimer
     Enabled = False
     Interval = 20
+    OnTimer = KSPTMRTimer
     Top = 424
   end
 end

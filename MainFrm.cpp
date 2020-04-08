@@ -224,7 +224,7 @@ void __fastcall TMainForm::Button4Click(TObject *Sender)
 if(bum_pr){
 SendToBum(0x00000301, 2, 0);       // Пауза динамики - команда в БУМ ()
 start_priz = false;                // Снимаем признак запуска БУМа
-dk_to_bum->Enabled=true;           // Разрешение отправки параметров ДК в БУМ
+dk_to_bum->Enabled=false;           // Разрешение отправки параметров ДК в БУМ
 p_sost_from_bum->Enabled=false;}
 PuskPr = false;
 ModelDateTime_Timer->Enabled=false;
@@ -965,11 +965,13 @@ i_test++;
 }
 
 if(KSP_Booled[0][2]) {  // A 3   Наддув КДУ - ВКЛ
+// Вкл. пит. клапана наддува ЭПКН1 и ЭПКН2
 KSP_Booled[0][2] = false;
 USO_Booled[0][1]=true;
 }
 
 if(KSP_Booled[0][3]) {  // A 4   Наддув КДУ - ВЫКЛ
+// Откл. пит. клап. наддува ЭПКН1, ЭПКН2
 KSP_Booled[0][3] = false;
 USO_Booled[0][1]=false;
 }
@@ -990,42 +992,40 @@ KSP_Booled[0][6] = false;
 USO_Booled[0][3]=true;
 }
 
-if(KSP_Booled[0][7])  // A 8
+if(KSP_Booled[0][7]) { // A 8
+KSP_Booled[0][7] = false;
 USO_Booled[0][3]=false;
+}
 
-if(KSP_Booled[0][8])  // A 9
+if(KSP_Booled[0][8]) { // A 9 - Выбор ДПО-Б
+// Команда в БА ДПО "Выбор ДПО-Б"
+KSP_Booled[0][8] = false;
 USO_Booled[0][4]=true;
+}
 
-if(KSP_Booled[0][9])  // A 10
-USO_Booled[0][4]=false;
-
-if(KSP_Booled[0][10]) { // A 11
+if(KSP_Booled[0][10]) { // A 11 - Выбор ДПО-М1
 KSP_Booled[0][10] = false;
 USO_Booled[0][5]=true;
 }
 
-if(KSP_Booled[0][11]) { // A 12
-KSP_Booled[0][11] = false;
-USO_Booled[0][5]=false;
+if(KSP_Booled[0][12]) {  // A 13
+// Включаем ДПО №№ 2,4,6,8.10,12;
+dpo_v_pr[2,4,6,8,10,12]=1;
+USO_Booled[0][6]=true;
 }
 
-if(KSP_Booled[0][12])  // A 13
-USO_Booled[0][6]=true;
-
-if(KSP_Booled[0][13])  // A 14
-USO_Booled[0][6]=false;
-
-if(KSP_Booled[0][14])  // A 15
+if(KSP_Booled[0][14]) { // A 15
+KSP_Booled[0][14] = false;
+// Вводим в СУБК признак 100 "Объединение секций КДУ",
+// что обеспечит в последующем работу двигателей ДПО и
+// СКД от двух топливных секций КДУ одновременно
 USO_Booled[0][7]=true;
+}
 
-if(KSP_Booled[0][15])  // A 16
-USO_Booled[0][7]=false;
-
-if(KSP_Booled[0][16])  // A 17
+if(KSP_Booled[0][16]) {  // A 17
+KSP_Booled[0][16]=false;
 USO_Booled[0][8]=true;
-
-if(KSP_Booled[0][17])  // A 18
-USO_Booled[0][8]=false;
+}
 
 if(KSP_Booled[2][0]) { // В 1
 KSP_Booled[2][0] = false;
@@ -1046,31 +1046,87 @@ KSP_Booled[2][2] = false;
 USO_Booled[1][3]=true;
 USO_Booled[11][10]=false;  // Гасим ТС-7 "2 секция КДУ"
 }
-
-if(KSP_Booled[2][2]) { // В 4
-KSP_Booled[2][2] = false;
-USO_Booled[1][3]=false;
-USO_Booled[11][10]=true;  // PЗажигаем ТС-7 "2 секция КДУ"
+if(KSP_Booled[2][3]) { // В 4
+KSP_Booled[2][3]  = false;
+USO_Booled[1][3]  = false;
+USO_Booled[11][10]= true;  // Зажигаем ТС-7 "2 секция КДУ"
+}
+if(KSP_Booled[2][4]) { // В 5 // Закрываем АО-ВКА
+KSP_Booled[2][4]  = false;
+USO_Booled[1][4]  = true;
+}
+if(KSP_Booled[2][5]) { // В 6 // Открываем АО-ВКА
+KSP_Booled[2][5]  = false;
+USO_Booled[1][4]  = false;
+}
+if(KSP_Booled[2][6]) { // В 7
+KSP_Booled[2][6]  = false;
+USO_Booled[1][5]  = true;
+}
+if(KSP_Booled[2][7]) { // В 8
+KSP_Booled[2][7]  = false;
+USO_Booled[1][5]  = false;
+}
+if(KSP_Booled[2][8]) { // В 9
+KSP_Booled[2][8]  = false;
+USO_Booled[1][6]  = true;
+}
+if(KSP_Booled[2][10]) { // В 11
+KSP_Booled[2][10]  = false;
+USO_Booled[1][7]  = true;
+}
+if(KSP_Booled[2][12]) { // В 13
+// 17.26 Команда в БСУ "ВКЛ ТЕСТ ДИСПЛЕЙ"
+KSP_Booled[2][12]  = false;
+USO_Booled[1][8]  = true;
+USO_Booled[1][12]  = false; // Откл Дисплей
+USO_Booled[1][9]  = false;  // Откл Дисплей ТВ
+}
+if(KSP_Booled[2][14]) { // В 15
+KSP_Booled[2][14]  = false;
+USO_Booled[1][9]  = true;
+USO_Booled[1][12]  = false;
+USO_Booled[1][8]  = false;
+}
+if(KSP_Booled[2][16]) { // В 17
+KSP_Booled[2][16]  = false;
+USO_Booled[1][10]  = true;
+}
+if(KSP_Booled[2][17]) { // В 18
+KSP_Booled[2][17]  = false;
+USO_Booled[1][10]  = false;
 }
 
-if(KSP_Booled[3][0]) { // Г 1
+if(KSP_Booled[3][0]) { // Г 1  Обогрев антен ВКЛ
 KSP_Booled[3][0] = false;
+// Так же выдаем по КО - перенести в операции по КО
+// включается термостат обогрева антенн, который поддерживает
+// заданный температурный режим механики антенн 2АО,АСФ1,АСФ2.
 USO_Booled[1][11]=true;
 }
-
-if(KSP_Booled[3][1]) { // Г 2
-KSP_Booled[3][1] = false;
+if(KSP_Booled[3][1]) { // Г 2  Обогрев антен ВЫКЛ
+KSP_Booled[3][1] =false;
 USO_Booled[1][11]=false;
 }
-
+if(KSP_Booled[3][2]) { // Г 3  Дисплей
+KSP_Booled[3][2] =false;
+USO_Booled[1][12]=true;
+USO_Booled[1][8] =false;
+USO_Booled[1][9] =false;  // Откл Дисплей ТВ
+}
+if(KSP_Booled[3][3]) { // Г 4  Дисплей
+KSP_Booled[3][3] =false;
+USO_Booled[1][12]=false;
+USO_Booled[1][8] =false;
+USO_Booled[1][9] =false;  // Откл Дисплей ТВ
+}
 if(KSP_Booled[3][4]) {  // Г 5
-KSP_Booled[3][4] = false;
+KSP_Booled[3][4] =false;
 //5.18 Подготовка к вкл ДПО-Б1 (17, 18)
 USO_Booled[1][13]=true;
 // и откл подготовки ДПО-Б2 (27, 28)
 USO_Booled[1][14]=false;
 }
-
 if(KSP_Booled[3][6]) {  // Г 7
 KSP_Booled[3][6] = false;
 //5.19 Подготовка к вкл ДПО-Б2 (27, 28)
@@ -1078,7 +1134,6 @@ USO_Booled[1][14]=true;
 // и откл подготовки ДПО-Б1 (17, 18)
 USO_Booled[1][13]=false;
 }
-
 if(KSP_Booled[3][8]) {  // Г 9  КУРС-1
 KSP_Booled[3][8] = false;
 //27.1 Вкл РП1 (реж пит 1 компл), квитанция в БСУ-7 "ВКЛ РП1"
@@ -1088,7 +1143,6 @@ USO_Booled[2][0]=false; // Снимаем признак выбора КУРС-2
 //27.3 Вкл РП3 (реж пит общ устр), квит в БСУ-7 "ВКЛ РП3"
 //27.9 Перекл на 1 комплект РПК
 }
-
 if(KSP_Booled[3][10]) {  // Г 11 КУРС-2
 KSP_Booled[3][10] = false;
 //-27.1 Откл РП1, квитанция в БСУ-7 "ОТКЛ РП1"
@@ -1099,7 +1153,6 @@ USO_Booled[2][0]=true;
 //-27.9 Перекл на 2 комплект РПК
 KSP_Booled[3][10] = false;
 }
-
 if(KSP_Booled[3][12]) {  // Г 13 ОТКЛ КУРС
 KSP_Booled[3][12] = false;
 //-27.1 Откл РП1, квитанция в БСУ-7 "ОТКЛ РП1"
@@ -1109,7 +1162,6 @@ USO_Booled[2][0]=false;
 //-27.3 Откл РП3 , квит в БСУ-7 "ОТКЛ РП3"
 KSP_Booled[3][12] = false;
 }
-
 if(KSP_Booled[3][14]) { // Г15
 KSP_Booled[3][14] = false;
 USO_Booled[1][13]=true;
@@ -1154,8 +1206,13 @@ USO_Booled[3][11]=true;
 // Операции по пуску чайки //
 // 1 - Проверка (в аргоне) и по результатам - запуск или НшС
 ArgonTakt->Enabled=true;  // запуск
-
 }
+if(KSP_Booled[6][14]) { // И 15
+KSP_Booled[6][14] = false;
+USO_Booled[3][2]=false;
+USO_Booled[3][3]=false;
+USO_Booled[3][4]=false;
+USO_Booled[3][13]=true;  }
 
 if(KSP_Booled[5][10]){  // KSP Ж11
 KSP_Booled[5][10] = false;
@@ -1175,13 +1232,6 @@ USO_Booled[3][2] = false;
 USO_Booled[3][3] = false;
 USO_Booled[3][4] = true;
 USO_Booled[3][13] = false; }
-if(KSP_Booled[6][14]) { // И 15
-KSP_Booled[6][14] = false;
-USO_Booled[3][2]=false;
-USO_Booled[3][3]=false;
-USO_Booled[3][4]=false;
-USO_Booled[3][13]=true;  }
-
 
 if(KSP_Booled[7][16]) { // К 17
 KSP_Booled[7][16] = false;
@@ -1193,6 +1243,19 @@ if(KSP_Booled[7][17]) { // К 18
 KSP_Booled[7][17] = false;
 USO_Booled[4][8]=false;
 sp_d_k = 0; // Короткая самопроверка БЦВК
+}
+
+
+if(KSP_Booled[13][0]) { // Т 1
+KSP_Booled[13][0] = false;
+USO_Booled[7][6]=true;
+JPS(1,"\"Рассвет-М\" подключается к СЗИ.","","","");
+}
+
+if(KSP_Booled[13][2]) { // Н 3
+KSP_Booled[13][2] = false;
+USO_Booled[5][3]=true;
+JPS(1,"Подано питание на УКВ ПРМд","","","");
 }
 
 }
@@ -1632,7 +1695,7 @@ void __fastcall TMainForm::Button2Click(TObject *Sender)
 {
 if(bum_pr){
 SendToBum(0x00000301, 0, 0);       // Останов динамики - команда в БУМ (останов БММ)
-dk_to_bum->Enabled=true;           // Разрешение отправки параметров ДК в БУМ
+dk_to_bum->Enabled=false;           // Разрешение отправки параметров ДК в БУМ
 p_sost_from_bum->Enabled=false;}
 start_priz = false;
 PuskPr = false;

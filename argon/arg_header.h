@@ -2,11 +2,14 @@
 #define A16_HDR
 #include <vcl.h>
 
-static bool arg_work_pr; // Признак работы Аргона
-static bool sp_d_k;      // Тип самопроверки (1 - длинная, 0 - короткая)
+static bool arg_work_pr; // Признак работы Аргона // Argon work flag
+static bool sp_d_k;      // Тип самопроверки (1 - длинная, 0 - короткая) // Argon Self-test type (1-long, 0-short)
 static int tResult;
 
 static double ArgonMemoryType[4096];
+
+static bool dpo_v_pr[29]; // Признак выбранных в работу ДПО (счёт с 1) // DPO flags
+static bool subk_pr[1000];// SUBK flags // Признаки СУБК
 
 static struct {
 byte mode;
@@ -98,11 +101,12 @@ static int i, j, K, k, t;  // Такты БЦВК
 static long i_ot_pusk;  // Такты БЦКВ от Пуска
 static double dt;       // Delta t
 
-static int GSO_types;
+static int GSO_types;   // GSO type (for ArgMath result)
 static double deltavt_1, deltavt_2;
 
 //\\\//\\\//\\\//\\\//\\\//\\\//\\\//\\\//\\\
 // Отладочные - неиспользовать в симуляторе!
+// Debug data's - DON'T use in sim
 static int a_debugger; // Отладочная по основным программам и циклам.
 static int i_012;
 //\\\//\\\//\\\//\\\//\\\//\\\//\\\//\\\//\\\//\\\//\\\//\\\
