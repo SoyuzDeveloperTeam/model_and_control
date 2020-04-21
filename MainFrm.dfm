@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 720
-  Top = 208
+  Left = 501
+  Top = 118
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   ClientHeight = 573
@@ -288,24 +288,11 @@ object MainForm: TMainForm
     F7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
   Menu = MainMenu1
   OldCreateOrder = False
+  Position = poDesktopCenter
   OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 14
-  object Label21: TLabel
-    Left = 360
-    Top = 112
-    Width = 49
-    Height = 14
-    Caption = 'Label21'
-  end
-  object Label22: TLabel
-    Left = 360
-    Top = 128
-    Width = 49
-    Height = 14
-    Caption = 'Label22'
-  end
   object SpeedButton1: TSpeedButton
     Left = 5
     Top = 4
@@ -878,7 +865,7 @@ object MainForm: TMainForm
     end
     object Button7: TButton
       Left = 400
-      Top = 104
+      Top = 100
       Width = 57
       Height = 25
       Caption = 'SPS_S'
@@ -887,7 +874,7 @@ object MainForm: TMainForm
     end
     object Button1: TButton
       Left = 400
-      Top = 136
+      Top = 131
       Width = 25
       Height = 25
       Caption = #1061#1059
@@ -959,6 +946,15 @@ object MainForm: TMainForm
       Caption = #1054#1090#1087#1088#1072#1074#1080#1090#1100' '#1079#1072#1075#1086#1083#1086#1074#1086#1082
       TabOrder = 18
       OnClick = Button14Click
+    end
+    object Button17: TButton
+      Left = 408
+      Top = 160
+      Width = 145
+      Height = 25
+      Caption = #1042#1077#1088#1077#1092#1080#1082#1072#1094#1080#1103' '#1053#1059
+      TabOrder = 19
+      OnClick = Button17Click
     end
   end
   object GroupBox6: TGroupBox
@@ -2287,21 +2283,9 @@ object MainForm: TMainForm
       0000000000000000000000000000000000000000000000000000000000000000
       00000000000000000000000000000000000000000000}
   end
-  object Timer3: TTimer
-    Enabled = False
-    Interval = 1
-    Left = 368
-    Top = 440
-  end
   object LocalTimeTimer: TTimer
     OnTimer = LocalTimeTimerTimer
     Left = 360
-    Top = 520
-  end
-  object SocketTeleConnect: TTimer
-    Enabled = False
-    Interval = 50
-    Left = 648
     Top = 520
   end
   object PuskRgPr: TTimer
@@ -2321,12 +2305,6 @@ object MainForm: TMainForm
     Interval = 500
     OnTimer = arg_tstTimer
     Left = 712
-    Top = 520
-  end
-  object Timer4: TTimer
-    Enabled = False
-    Interval = 50
-    Left = 616
     Top = 520
   end
   object CentralLightBlink: TTimer
@@ -2363,6 +2341,7 @@ object MainForm: TMainForm
   end
   object SpsSend: TTimer
     Enabled = False
+    Interval = 500
     OnTimer = SpsSendTimer
     Left = 328
     Top = 472
@@ -2373,12 +2352,6 @@ object MainForm: TMainForm
     OnTimer = p_sost_from_bumTimer
     Left = 600
     Top = 472
-  end
-  object Timer6: TTimer
-    Enabled = False
-    Interval = 10
-    Left = 296
-    Top = 520
   end
   object dk_to_bum: TTimer
     Enabled = False
@@ -2395,7 +2368,6 @@ object MainForm: TMainForm
     Top = 504
   end
   object un_serv: TIdTCPServer
-    Active = True
     Bindings = <
       item
         IP = '192.168.92.1'
@@ -2407,5 +2379,11 @@ object MainForm: TMainForm
     OnDisconnect = un_servDisconnect
     Left = 432
     Top = 8
+  end
+  object InpuRecv: TTimer
+    Interval = 10
+    OnTimer = InpuRecvTimer
+    Left = 360
+    Top = 472
   end
 end

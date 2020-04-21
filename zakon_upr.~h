@@ -39,6 +39,7 @@ __published:	// IDE-managed Components
         TGroupBox *GroupBox1;
         TLabel *Label1;
         TButton *Button1;
+        TFastLineSeries *Series10;
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall N2Click(TObject *Sender);
         void __fastcall FormShow(TObject *Sender);

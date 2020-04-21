@@ -35,3 +35,39 @@ void __fastcall Tbrus_frm::epkrd_osn_onClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall Tbrus_frm::epkrd_rez_offClick(TObject *Sender)
+{
+ brus_key.epkrd_rez=true;
+ epkrd_rez_off->Visible=false;
+ epkrd_rez_on->Visible=true;
+  JPS(1,is_operator,is_brus,"Ïèòàíèå İÏÊĞÄ ĞÅÇ          ","ÂÊË");
+}
+//---------------------------------------------------------------------------
+
+void __fastcall Tbrus_frm::epkrd_rez_onClick(TObject *Sender)
+{
+ brus_key.epkrd_rez=false;
+ epkrd_rez_off->Visible=true;
+ epkrd_rez_on->Visible=false;
+  JPS(1,is_operator,is_brus,"Ïèòàíèå İÏÊĞÄ ĞÅÇ          ","ÂÛÊË");
+}
+//---------------------------------------------------------------------------
+
+void __fastcall Tbrus_frm::vsa_offClick(TObject *Sender)
+{
+ brus_key.vsa=true;
+ vsa_off->Visible=false;
+ vsa_on->Visible=true;
+  JPS(1,is_operator,is_brus,"ÂÑÀ                        ","ÂÊË");
+}
+//---------------------------------------------------------------------------
+
+void __fastcall Tbrus_frm::vsa_onClick(TObject *Sender)
+{
+ brus_key.vsa=false;
+ vsa_off->Visible=true;
+ vsa_on->Visible=false;
+  JPS(1,is_operator,is_brus,"ÂÑÀ                        ","ÂÛÊË");
+}
+//---------------------------------------------------------------------------
+

@@ -4,6 +4,7 @@
 #pragma hdrstop
 //---------------------------------------------------------------------------
 USEFORM("main_form.cpp", mainform);
+USEFORM("work_form.cpp", workf);
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
@@ -11,6 +12,7 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
         {
                  Application->Initialize();
                  Application->CreateForm(__classid(Tmainform), &mainform);
+                 Application->CreateForm(__classid(Tworkf), &workf);
                  Application->Run();
         }
         catch (Exception &exception)

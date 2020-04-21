@@ -252,3 +252,13 @@ SpsDataSt.TSpsParam[31] = SpsDataSt.TSpsParam[31] + 0.200753;
    
 
 */
+
+void __fastcall TKDUform::kdu_timerTimer(TObject *Sender)
+{
+Label38->Caption=FormatFloat("000.000",dynamics.rasp);
+Label42->Caption=FormatFloat("000.000000000000000",dynamics.rudkg);
+Label49->Caption=FormatFloat("000.000000000000000",dynamics.kvkg);
+}
+//---------------------------------------------------------------------------
+
+

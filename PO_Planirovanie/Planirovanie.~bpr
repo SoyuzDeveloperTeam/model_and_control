@@ -4,7 +4,7 @@
   <MACROS>
     <VERSION value="BCB.06.00"/>
     <PROJECT value="Planirovanie.exe"/>
-    <OBJFILES value="Planirovanie.obj main_form.obj"/>
+    <OBJFILES value="Planirovanie.obj main_form.obj check_pass.obj"/>
     <RESFILES value="Planirovanie.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -57,6 +57,7 @@
       <FILE FILENAME="Planirovanie.res" FORMNAME="" UNITNAME="Planirovanie.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Planirovanie.cpp" FORMNAME="" UNITNAME="Planirovanie" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="main_form.cpp" FORMNAME="mainform" UNITNAME="main_form" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="check_pass.cpp" FORMNAME="" UNITNAME="check_pass" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>

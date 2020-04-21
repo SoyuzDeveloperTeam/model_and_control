@@ -7,6 +7,7 @@ object AboutForm: TAboutForm
   ClientHeight = 224
   ClientWidth = 505
   Color = clBtnFace
+  DefaultMonitor = dmDesktop
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -58,6 +59,7 @@ object AboutForm: TAboutForm
     0000F80F0000E0030000C0010000800100000000000000000000000000000000
     0000000100008001000080030000C0070000F01F0000}
   OldCreateOrder = False
+  Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
   object aboutlabel: TLabel

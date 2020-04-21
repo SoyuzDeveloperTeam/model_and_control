@@ -107,12 +107,16 @@ void __fastcall Tzakon_upr_frm::Timer1Timer(TObject *Sender)
 //dopusk_zu.sred = zakon_uprav->Series[4]->YValue;
 //dopusk_zu.niz = zakon_uprav->Series[5]->YValue;
 Series8->Clear();
-zakon_uprav->Series[7]->AddXY(dynamics.rs, -dynamics.sks, clGreen);
-//zakon_uprav->Series[8]->AddXY(dynamics.rs, dynamics.sks, clGreen);
+if(dynamics.sks>0,00001)
+zakon_uprav->Series[7]->AddXY(dynamics.rs, dynamics.sks, clGreen); else  // Трасса ТК (при ск на сближение)
+zakon_uprav->Series[10]->AddXY(dynamics.rs, dynamics.sks, clGreen);      // Трасса ТК (при ск на расхождение)
+zakon_uprav->Series[8]->AddXY(dynamics.rs, dynamics.sks, clGreen);       // Маркер ТК
 }
 //---------------------------------------------------------------------------
 void __fastcall Tzakon_upr_frm::Button1Click(TObject *Sender)
 {
 Series7->Clear();
+Series9->Clear();
+Series10->Clear();
 }
 //---------------------------------------------------------------------------

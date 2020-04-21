@@ -32,6 +32,10 @@ __published:	// IDE-managed Components
         TImage *epkrd_rez_on;
         void __fastcall epkrd_osn_offClick(TObject *Sender);
         void __fastcall epkrd_osn_onClick(TObject *Sender);
+        void __fastcall epkrd_rez_offClick(TObject *Sender);
+        void __fastcall epkrd_rez_onClick(TObject *Sender);
+        void __fastcall vsa_offClick(TObject *Sender);
+        void __fastcall vsa_onClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall Tbrus_frm(TComponent* Owner);

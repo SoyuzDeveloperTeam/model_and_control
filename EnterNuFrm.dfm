@@ -71,9 +71,9 @@ object EnterNuForm: TEnterNuForm
     Top = 0
     Width = 507
     Height = 641
-    ActivePage = complex_tab
+    ActivePage = ParAndOr
     Align = alTop
-    TabIndex = 0
+    TabIndex = 2
     TabOrder = 0
     object complex_tab: TTabSheet
       Caption = #1050#1086#1084#1087#1083#1077#1082#1089#1085#1099#1081

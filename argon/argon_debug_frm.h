@@ -29,7 +29,7 @@ __published:	// IDE-managed Components
         TLabel *Label1;
         TPanel *Panel1;
         TGroupBox *GroupBox2;
-        TListBox *ListBox1;
+        TListBox *ArgonJou;
         TGroupBox *GroupBox9;
         TLabel *Label30;
         TEdit *addr_ozu;
@@ -63,6 +63,8 @@ __published:	// IDE-managed Components
         TLabel *Label50;
         TTimer *argon_dt;
         TLabel *Label5;
+        TLabel *Label6;
+        TLabel *Label7;
         void __fastcall Button11Click(TObject *Sender);
         void __fastcall Button13Click(TObject *Sender);
         void __fastcall Timer1Timer(TObject *Sender);

@@ -121,6 +121,8 @@ __published:	// IDE-managed Components
         TCheckBox *CheckBox3;
         TCheckBox *CheckBox4;
         TMemo *Memo1;
+        TLabel *Label67;
+        TLabel *t_pr;
         void __fastcall Image3MouseDown(TObject *Sender,
           TMouseButton Button, TShiftState Shift, int X, int Y);
         void __fastcall Timer1Timer(TObject *Sender);

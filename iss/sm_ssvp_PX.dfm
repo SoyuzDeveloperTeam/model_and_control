@@ -1,16 +1,19 @@
 object sm_ssvp_plx_frm: Tsm_ssvp_plx_frm
   Left = 875
   Top = 131
-  Width = 409
-  Height = 398
+  BorderStyle = bsSingle
   Caption = #1057#1052':'#1057#1057#1042#1055':+'#1061
+  ClientHeight = 359
+  ClientWidth = 393
   Color = clAppWorkSpace
+  DefaultMonitor = dmDesktop
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel

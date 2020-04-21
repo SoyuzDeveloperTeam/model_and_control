@@ -1,10 +1,10 @@
 object graphics: Tgraphics
-  Left = 432
-  Top = 528
+  Left = -2
+  Top = 860
   BorderStyle = bsSingle
   Caption = 'graphics'
   ClientHeight = 672
-  ClientWidth = 1008
+  ClientWidth = 1010
   Color = clBackground
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,16 +12,17 @@ object graphics: Tgraphics
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 1008
+    Width = 1010
     Height = 672
-    ActivePage = TabSheet8
+    ActivePage = TabSheet9
     Align = alClient
-    TabIndex = 5
+    TabIndex = 8
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = #1050#1044#1059
@@ -996,8 +997,512 @@ object graphics: Tgraphics
           '120')
       end
     end
+    object TabSheet9: TTabSheet
+      Caption = 'TabSheet9'
+      ImageIndex = 8
+      object Chart7: TChart
+        Left = -8
+        Top = 0
+        Width = 473
+        Height = 481
+        AllowPanning = pmNone
+        AllowZoom = False
+        BackWall.Brush.Color = clWhite
+        BackWall.Brush.Style = bsClear
+        Foot.Visible = False
+        Title.AdjustFrame = False
+        Title.Text.Strings = (
+          'TChart')
+        Title.Visible = False
+        BottomAxis.LabelsFont.Charset = RUSSIAN_CHARSET
+        BottomAxis.LabelsFont.Color = clWhite
+        BottomAxis.LabelsFont.Height = -11
+        BottomAxis.LabelsFont.Name = 'Consolas'
+        BottomAxis.LabelsFont.Style = []
+        BottomAxis.Title.Caption = 'Z'
+        BottomAxis.Title.Font.Charset = RUSSIAN_CHARSET
+        BottomAxis.Title.Font.Color = clWhite
+        BottomAxis.Title.Font.Height = -13
+        BottomAxis.Title.Font.Name = 'Consolas'
+        BottomAxis.Title.Font.Style = []
+        BottomAxis.TitleSize = 1
+        DepthAxis.Title.Caption = '5456456456456'
+        LeftAxis.LabelsFont.Charset = RUSSIAN_CHARSET
+        LeftAxis.LabelsFont.Color = clWhite
+        LeftAxis.LabelsFont.Height = -11
+        LeftAxis.LabelsFont.Name = 'Consolas'
+        LeftAxis.LabelsFont.Style = []
+        LeftAxis.Title.Angle = 0
+        LeftAxis.Title.Caption = 'Y'
+        LeftAxis.Title.Font.Charset = RUSSIAN_CHARSET
+        LeftAxis.Title.Font.Color = clWhite
+        LeftAxis.Title.Font.Height = -13
+        LeftAxis.Title.Font.Name = 'Consolas'
+        LeftAxis.Title.Font.Style = []
+        Legend.Visible = False
+        RightAxis.LabelsFont.Charset = RUSSIAN_CHARSET
+        RightAxis.LabelsFont.Color = clWhite
+        RightAxis.LabelsFont.Height = -11
+        RightAxis.LabelsFont.Name = 'Consolas'
+        RightAxis.LabelsFont.Style = []
+        TopAxis.Title.Caption = '545 '
+        TopAxis.Title.Font.Charset = RUSSIAN_CHARSET
+        TopAxis.Title.Font.Color = clWhite
+        TopAxis.Title.Font.Height = -11
+        TopAxis.Title.Font.Name = 'Consolas'
+        TopAxis.Title.Font.Style = []
+        TopAxis.TitleSize = 3
+        View3D = False
+        BevelOuter = bvNone
+        Color = -1
+        TabOrder = 0
+        object Series11: TChartShape
+          Marks.ArrowLength = 8
+          Marks.Visible = False
+          SeriesColor = clWhite
+          Brush.Color = clWhite
+          Brush.Style = bsClear
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Pen.Color = clBlue
+          X0 = 50
+          X1 = 50
+          Y0 = 50
+          Y1 = 50
+          XValues.DateTime = False
+          XValues.Name = 'X'
+          XValues.Multiplier = 1
+          XValues.Order = loAscending
+          YValues.DateTime = False
+          YValues.Name = 'Y'
+          YValues.Multiplier = 1
+          YValues.Order = loNone
+        end
+        object Series5: TLineSeries
+          Active = False
+          Marks.ArrowLength = 8
+          Marks.Visible = False
+          SeriesColor = clRed
+          Pointer.InflateMargins = True
+          Pointer.Style = psRectangle
+          Pointer.Visible = False
+          XValues.DateTime = False
+          XValues.Name = 'X'
+          XValues.Multiplier = 1
+          XValues.Order = loAscending
+          YValues.DateTime = False
+          YValues.Name = 'Y'
+          YValues.Multiplier = 1
+          YValues.Order = loNone
+        end
+        object Series6: TPointSeries
+          Marks.ArrowLength = 0
+          Marks.Visible = False
+          SeriesColor = clGreen
+          Pointer.Brush.Color = clGreen
+          Pointer.HorizSize = 3
+          Pointer.InflateMargins = True
+          Pointer.Pen.Color = clGreen
+          Pointer.Style = psCircle
+          Pointer.VertSize = 3
+          Pointer.Visible = True
+          XValues.DateTime = False
+          XValues.Name = 'X'
+          XValues.Multiplier = 1
+          XValues.Order = loAscending
+          YValues.DateTime = False
+          YValues.Name = 'Y'
+          YValues.Multiplier = 1
+          YValues.Order = loNone
+        end
+        object Series7: TPointSeries
+          Active = False
+          Marks.ArrowLength = 0
+          Marks.Visible = False
+          SeriesColor = clYellow
+          Pointer.HorizSize = 65
+          Pointer.InflateMargins = True
+          Pointer.Style = psCross
+          Pointer.VertSize = 65
+          Pointer.Visible = True
+          XValues.DateTime = False
+          XValues.Name = 'X'
+          XValues.Multiplier = 1
+          XValues.Order = loAscending
+          YValues.DateTime = False
+          YValues.Name = 'Y'
+          YValues.Multiplier = 1
+          YValues.Order = loNone
+        end
+        object Series10: TArrowSeries
+          Marks.ArrowLength = 0
+          Marks.Frame.Visible = False
+          Marks.Transparent = True
+          Marks.Visible = False
+          SeriesColor = clBlue
+          Pointer.InflateMargins = False
+          Pointer.Style = psRectangle
+          Pointer.Visible = True
+          XValues.DateTime = True
+          XValues.Name = 'X'
+          XValues.Multiplier = 1
+          XValues.Order = loAscending
+          YValues.DateTime = False
+          YValues.Name = 'Y'
+          YValues.Multiplier = 1
+          YValues.Order = loNone
+          EndXValues.DateTime = True
+          EndXValues.Name = 'EndX'
+          EndXValues.Multiplier = 1
+          EndXValues.Order = loNone
+          EndYValues.DateTime = False
+          EndYValues.Name = 'EndY'
+          EndYValues.Multiplier = 1
+          EndYValues.Order = loNone
+          StartXValues.DateTime = True
+          StartXValues.Name = 'X'
+          StartXValues.Multiplier = 1
+          StartXValues.Order = loAscending
+          StartYValues.DateTime = False
+          StartYValues.Name = 'Y'
+          StartYValues.Multiplier = 1
+          StartYValues.Order = loNone
+        end
+      end
+      object GroupBox1: TGroupBox
+        Left = 352
+        Top = 504
+        Width = 273
+        Height = 113
+        TabOrder = 1
+        object RadioButton1: TRadioButton
+          Left = 72
+          Top = 88
+          Width = 52
+          Height = 17
+          Caption = '500'
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clWhite
+          Font.Height = -12
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+        end
+        object RadioButton2: TRadioButton
+          Left = 72
+          Top = 60
+          Width = 57
+          Height = 25
+          Caption = '300'
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clWhite
+          Font.Height = -12
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 1
+        end
+        object RadioButton3: TRadioButton
+          Left = 72
+          Top = 40
+          Width = 52
+          Height = 17
+          Caption = '150'
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clWhite
+          Font.Height = -12
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 2
+        end
+        object RadioButton4: TRadioButton
+          Left = 72
+          Top = 16
+          Width = 52
+          Height = 17
+          Caption = '100'
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clWhite
+          Font.Height = -12
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 3
+        end
+        object RadioButton5: TRadioButton
+          Left = 8
+          Top = 88
+          Width = 52
+          Height = 17
+          Caption = '50'
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clWhite
+          Font.Height = -12
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 4
+        end
+        object RadioButton6: TRadioButton
+          Left = 8
+          Top = 64
+          Width = 52
+          Height = 17
+          Caption = '10'
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clWhite
+          Font.Height = -12
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 5
+        end
+        object RadioButton7: TRadioButton
+          Left = 8
+          Top = 40
+          Width = 52
+          Height = 17
+          Caption = '5'
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clWhite
+          Font.Height = -12
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 6
+        end
+        object RadioButton8: TRadioButton
+          Left = 8
+          Top = 16
+          Width = 52
+          Height = 17
+          Caption = '1'
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clWhite
+          Font.Height = -12
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 7
+        end
+        object RadioButton9: TRadioButton
+          Left = 208
+          Top = 16
+          Width = 62
+          Height = 17
+          Caption = '10000'
+          Checked = True
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clWhite
+          Font.Height = -12
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 8
+          TabStop = True
+        end
+        object RadioButton10: TRadioButton
+          Left = 208
+          Top = 40
+          Width = 58
+          Height = 17
+          Caption = '15000'
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clWhite
+          Font.Height = -12
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 9
+        end
+        object RadioButton11: TRadioButton
+          Left = 208
+          Top = 64
+          Width = 57
+          Height = 17
+          Caption = '30000'
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clWhite
+          Font.Height = -12
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 10
+        end
+        object RadioButton13: TRadioButton
+          Left = 144
+          Top = 16
+          Width = 52
+          Height = 17
+          Caption = '1000'
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clWhite
+          Font.Height = -12
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 11
+        end
+        object RadioButton14: TRadioButton
+          Left = 144
+          Top = 40
+          Width = 52
+          Height = 17
+          Caption = '2500'
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clWhite
+          Font.Height = -12
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 12
+        end
+        object RadioButton15: TRadioButton
+          Left = 144
+          Top = 64
+          Width = 52
+          Height = 17
+          Caption = '5000'
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clWhite
+          Font.Height = -12
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 13
+        end
+        object RadioButton16: TRadioButton
+          Left = 144
+          Top = 88
+          Width = 52
+          Height = 17
+          Caption = '6000'
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clWhite
+          Font.Height = -12
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 14
+        end
+      end
+      object Chart8: TChart
+        Left = 480
+        Top = 0
+        Width = 473
+        Height = 481
+        AllowPanning = pmNone
+        AllowZoom = False
+        BackWall.Brush.Color = clWhite
+        BackWall.Brush.Style = bsClear
+        Foot.Visible = False
+        Title.AdjustFrame = False
+        Title.Text.Strings = (
+          'TChart')
+        Title.Visible = False
+        BottomAxis.LabelsFont.Charset = RUSSIAN_CHARSET
+        BottomAxis.LabelsFont.Color = clWhite
+        BottomAxis.LabelsFont.Height = -11
+        BottomAxis.LabelsFont.Name = 'Consolas'
+        BottomAxis.LabelsFont.Style = []
+        BottomAxis.Title.Caption = 'Z'
+        BottomAxis.Title.Font.Charset = RUSSIAN_CHARSET
+        BottomAxis.Title.Font.Color = clWhite
+        BottomAxis.Title.Font.Height = -13
+        BottomAxis.Title.Font.Name = 'Consolas'
+        BottomAxis.Title.Font.Style = []
+        BottomAxis.TitleSize = 1
+        DepthAxis.Title.Caption = '5456456456456'
+        LeftAxis.LabelsFont.Charset = RUSSIAN_CHARSET
+        LeftAxis.LabelsFont.Color = clWhite
+        LeftAxis.LabelsFont.Height = -11
+        LeftAxis.LabelsFont.Name = 'Consolas'
+        LeftAxis.LabelsFont.Style = []
+        LeftAxis.Title.Caption = #1044#1072#1083#1100#1085#1086#1089#1090#1100
+        LeftAxis.Title.Font.Charset = RUSSIAN_CHARSET
+        LeftAxis.Title.Font.Color = clWhite
+        LeftAxis.Title.Font.Height = -13
+        LeftAxis.Title.Font.Name = 'Consolas'
+        LeftAxis.Title.Font.Style = []
+        Legend.Visible = False
+        RightAxis.LabelsFont.Charset = RUSSIAN_CHARSET
+        RightAxis.LabelsFont.Color = clWhite
+        RightAxis.LabelsFont.Height = -11
+        RightAxis.LabelsFont.Name = 'Consolas'
+        RightAxis.LabelsFont.Style = []
+        TopAxis.Title.Caption = '545 '
+        TopAxis.Title.Font.Charset = RUSSIAN_CHARSET
+        TopAxis.Title.Font.Color = clWhite
+        TopAxis.Title.Font.Height = -11
+        TopAxis.Title.Font.Name = 'Consolas'
+        TopAxis.Title.Font.Style = []
+        TopAxis.TitleSize = 3
+        View3D = False
+        BevelOuter = bvNone
+        Color = -1
+        TabOrder = 2
+        object Series8: TPointSeries
+          Marks.ArrowLength = 0
+          Marks.Visible = False
+          SeriesColor = clRed
+          Pointer.HorizSize = 40
+          Pointer.InflateMargins = True
+          Pointer.Style = psCross
+          Pointer.VertSize = 40
+          Pointer.Visible = True
+          XValues.DateTime = False
+          XValues.Name = 'X'
+          XValues.Multiplier = 1
+          XValues.Order = loAscending
+          YValues.DateTime = False
+          YValues.Name = 'Y'
+          YValues.Multiplier = 1
+          YValues.Order = loNone
+        end
+        object Series9: TPointSeries
+          Marks.ArrowLength = 0
+          Marks.Visible = False
+          SeriesColor = clGreen
+          Pointer.InflateMargins = True
+          Pointer.Style = psCircle
+          Pointer.Visible = True
+          XValues.DateTime = False
+          XValues.Name = 'X'
+          XValues.Multiplier = 1
+          XValues.Order = loAscending
+          YValues.DateTime = False
+          YValues.Name = 'Y'
+          YValues.Multiplier = 1
+          YValues.Order = loNone
+        end
+      end
+      object sled: TCheckBox
+        Left = 648
+        Top = 512
+        Width = 129
+        Height = 17
+        Caption = #1057#1083#1077#1076' '#1086#1090' '#1090#1088#1072#1089#1089#1099
+        Font.Charset = RUSSIAN_CHARSET
+        Font.Color = clWhite
+        Font.Height = -13
+        Font.Name = 'Consolas'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 3
+      end
+    end
+    object TabSheet10: TTabSheet
+      Caption = #1060#1072#1079#1072'2'
+      ImageIndex = 9
+    end
   end
   object Timer1: TTimer
+    Enabled = False
     OnTimer = Timer1Timer
     Left = 976
     Top = 24
@@ -1010,19 +1515,23 @@ object graphics: Tgraphics
     end
   end
   object PopupMenu2: TPopupMenu
-    Left = 8
-    Top = 592
+    Top = 600
     object MenuItem1: TMenuItem
       Caption = #1050#1086#1087#1080#1088#1086#1074#1072#1090#1100' '#1074' '#1073#1091#1092#1077#1088'...'
       OnClick = MenuItem1Click
     end
   end
   object PopupMenu3: TPopupMenu
-    Left = 56
-    Top = 608
+    Top = 568
     object MenuItem2: TMenuItem
       Caption = #1050#1086#1087#1080#1088#1086#1074#1072#1090#1100' '#1074' '#1073#1091#1092#1077#1088'...'
       OnClick = N1Click
     end
+  end
+  object Timer2: TTimer
+    Interval = 100
+    OnTimer = Timer2Timer
+    Left = 976
+    Top = 56
   end
 end

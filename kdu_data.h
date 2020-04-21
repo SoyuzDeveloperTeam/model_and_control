@@ -195,6 +195,37 @@ __published:	// IDE-managed Components
         TLabel *Label134;
         TTimer *sps_data;
         TTimer *kdu_math_t;
+        TTimer *kdu_timer;
+        TLabel *Label42;
+        TLabel *Label49;
+        TImage *dpo28;
+        TImage *dpo27;
+        TImage *dpo13;
+        TImage *dpo14;
+        TImage *dpo15;
+        TImage *dpo16;
+        TImage *dpo17;
+        TImage *dpo18;
+        TImage *dpo19;
+        TImage *dpo20;
+        TImage *dpo21;
+        TImage *dpo22;
+        TImage *dpo23;
+        TImage *dpo24;
+        TImage *dpo26;
+        TImage *dpo25;
+        TImage *dpo1;
+        TImage *dpo3;
+        TImage *dpo5;
+        TImage *dpo7;
+        TImage *dpo9;
+        TImage *dpo11;
+        TImage *dpo2;
+        TImage *dpo4;
+        TImage *dpo6;
+        TImage *dpo8;
+        TImage *dpo10;
+        TImage *dpo12;
         void __fastcall Timer1Timer(TObject *Sender);
         void __fastcall SpeedButton1Click(TObject *Sender);
         void __fastcall SpeedButton2Click(TObject *Sender);
@@ -207,6 +238,7 @@ __published:	// IDE-managed Components
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall sps_dataTimer(TObject *Sender);
         void __fastcall kdu_math_tTimer(TObject *Sender);
+        void __fastcall kdu_timerTimer(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TKDUform(TComponent* Owner);

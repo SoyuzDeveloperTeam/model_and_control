@@ -1,16 +1,18 @@
 object InstructorFormat_FRM: TInstructorFormat_FRM
-  Left = 818
-  Top = 81
+  Left = 378
+  Top = 990
   Width = 934
   Height = 543
   Caption = #1048#1085#1089#1090#1088#1091#1082#1090#1086#1088#1089#1082#1080#1081' '#1092#1086#1088#1084#1072#1090
   Color = clBtnFace
+  DefaultMonitor = dmDesktop
   Font.Charset = RUSSIAN_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
   Font.Name = 'Consolas'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 15
   object GroupBox1: TGroupBox
@@ -1517,6 +1519,32 @@ object InstructorFormat_FRM: TInstructorFormat_FRM
       Width = 21
       Height = 15
       Caption = #1084'/'#1089
+    end
+    object Label67: TLabel
+      Left = 542
+      Top = 20
+      Width = 27
+      Height = 17
+      Caption = #1058#1087#1088
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Anonymous Pro'
+      Font.Style = []
+      ParentFont = False
+    end
+    object t_pr: TLabel
+      Left = 582
+      Top = 20
+      Width = 72
+      Height = 19
+      Caption = '00:00:00'
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Consolas'
+      Font.Style = []
+      ParentFont = False
     end
   end
   object GroupBox2: TGroupBox

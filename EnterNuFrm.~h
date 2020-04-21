@@ -315,6 +315,8 @@ __published:	// IDE-managed Components
         TRadioButton *avtsbl_pr;
         TRadioButton *rodk_pr;
         TRadioButton *roak_pr;
+        TLabel *Label110;
+        TComboBox *iss_config;
         void __fastcall LoadFromFileBtnClick(TObject *Sender);
         void __fastcall BitBtn1Click(TObject *Sender);
         //void __fastcall TabControl1Change(TObject *Sender);

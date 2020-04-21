@@ -16,6 +16,10 @@
 #include <TeeProcs.hpp>
 #include <ComCtrls.hpp>
 #include <Menus.hpp>
+#include <BubbleCh.hpp>
+#include <Graphics.hpp>
+#include <ArrowCha.hpp>
+#include <TeeShape.hpp>
 //---------------------------------------------------------------------------
 class Tgraphics : public TForm
 {
@@ -65,9 +69,40 @@ __published:	// IDE-managed Components
         TLineSeries *LineSeries7;
         TLineSeries *LineSeries8;
         TLineSeries *LineSeries9;
+        TTabSheet *TabSheet9;
+        TChart *Chart7;
+        TLineSeries *Series5;
+        TPointSeries *Series6;
+        TTimer *Timer2;
+        TPointSeries *Series7;
+        TGroupBox *GroupBox1;
+        TRadioButton *RadioButton1;
+        TRadioButton *RadioButton2;
+        TRadioButton *RadioButton3;
+        TRadioButton *RadioButton4;
+        TRadioButton *RadioButton5;
+        TRadioButton *RadioButton6;
+        TRadioButton *RadioButton7;
+        TRadioButton *RadioButton8;
+        TTabSheet *TabSheet10;
+        TChart *Chart8;
+        TPointSeries *Series8;
+        TArrowSeries *Series10;
+        TChartShape *Series11;
+        TPointSeries *Series9;
+        TRadioButton *RadioButton9;
+        TRadioButton *RadioButton10;
+        TRadioButton *RadioButton11;
+        TRadioButton *RadioButton13;
+        TRadioButton *RadioButton14;
+        TRadioButton *RadioButton15;
+        TRadioButton *RadioButton16;
+        TCheckBox *sled;
         void __fastcall Timer1Timer(TObject *Sender);
         void __fastcall N1Click(TObject *Sender);
         void __fastcall MenuItem1Click(TObject *Sender);
+        void __fastcall Timer2Timer(TObject *Sender);
+        void __fastcall FormShow(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall Tgraphics(TComponent* Owner);

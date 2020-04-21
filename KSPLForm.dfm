@@ -1,12 +1,13 @@
 object ksplfrm: Tksplfrm
-  Left = 1226
-  Top = 145
+  Left = 664
+  Top = 174
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1050#1057#1055' '#1083#1077#1074#1086#1077
   ClientHeight = 452
   ClientWidth = 661
   Color = clDefault
+  DefaultMonitor = dmDesktop
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -94,6 +95,7 @@ object ksplfrm: Tksplfrm
     0000000000000000000000000000000000000000000000000000000000000000
     00000000000000000000000000000000000000000000}
   OldCreateOrder = False
+  Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
   object ksp_1: TSpeedButton

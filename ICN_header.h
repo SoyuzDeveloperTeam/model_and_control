@@ -15,6 +15,16 @@ unsigned short Size;    // Размер пакета
 byte PacketID;          // PacketID - b
 }PacketHeaderType;
 
+typedef struct {
+long Signature;         // Сигнатура пакета
+unsigned short No;      // Номер пакета
+unsigned short Size;    // Размер пакета
+byte PacketID;          // PacketID - b
+byte CodeType;
+byte DataType1;
+byte DataType2;
+}TPacketHeader;
+
 static struct {
 int i;
 byte a;
@@ -109,6 +119,15 @@ enum{       wpCodeNone,
     /* 38 */  wpCalibrAcq,
     /* 39 */  wpLockPelengOff,
     /* 40 */  wpDoCopyCalibr,
+    /* 41 */  wpBfiFormat,
           wpLast} wpControlCodeTypeN;
+
+enum{
+bfiFormatNone, // Отсутствие формата
+bfiFormat41,bfiFormat42,bfiFormat43, // Штатные форматы
+bfiFormat44,bfiFormat45,bfiFormat46, // Штатные форматы
+bfiFormatRus, // Формат РУС
+bfiFormatBlack // Черный экран
+}bfiFormatType;
 
 #endif

@@ -1,6 +1,6 @@
 object sm_ssvp_plx_frm: Tsm_ssvp_plx_frm
-  Left = 179
-  Top = 124
+  Left = 875
+  Top = 131
   Width = 409
   Height = 398
   Caption = #1057#1052':'#1057#1057#1042#1055':+'#1061

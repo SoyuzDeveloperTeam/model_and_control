@@ -5,29 +5,33 @@
 #include "bfi_formats.h"
 #include "bfi_fmts_data.h"
 #include "argon/arg_header.h"  // Загогловок А16
+#include "kurs_main.cpp"
 #include "argon/CtrlWord.h"
 #include "main_header.h"
 #include "inpu_connect.cpp"
+#include "inpuconnect.cpp"
+#include "ICN_header.h"
+#include "bumconnect.cpp"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 TBFI_Simvol_form *BFI_Simvol_form;
-int i_takt_asd[10];
+static int i_takt_asd[10];
 //--- Временные переменные для вывода параметров на ВКУ ---------------------
-String cw_B1_string;
-String B1_string[5];
-String B1_forDBG[5];
-String B1_bfi;
+static String cw_B1_string;
+static String B1_string[5];
+static String B1_forDBG[5];
+static String B1_bfi;
 
-String cw_B6_string;
-String B6_string[5];
-String B6_forDBG[5];
-String B6_bfi;
+static String cw_B6_string;
+static String B6_string[5];
+static String B6_forDBG[5];
+static String B6_bfi;
 
-String cw_a19_string;
-String a19_string[5];
-String a19_forDBG[5];
-String a19_bfi;
+static String cw_a19_string;
+static String a19_string[5];
+static String a19_forDBG[5];
+static String a19_bfi;
 //---------------------------------------------------------------------------
 __fastcall TBFI_Simvol_form::TBFI_Simvol_form(TComponent* Owner)
         : TForm(Owner)
@@ -41,8 +45,47 @@ __fastcall TBFI_Simvol_form::TBFI_Simvol_form(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TBFI_Simvol_form::BFIDATATIMERTimer(TObject *Sender)
 {
+////////////////
+// EmerString //
+if(cw_TA1[0]){ // Если нет аварий, то...
+ f41_emer->Caption=BFI_EmerStr[0];
+ f41_emerN->Caption="00";
+ f43_emer->Caption=BFI_EmerStr[0];
+ f43_emerN->Caption="00"; } else
+if(cw_TA1[1]){ // Если есть авария ИКВ-1
+ f41_emer->Caption=BFI_EmerStr[1];
+ f41_emerN->Caption="01";
+ f43_emer->Caption=BFI_EmerStr[1];
+ f43_emerN->Caption="01"; } else
+if(cw_TA1[2]){ // Если есть авария
+ f41_emer->Caption=BFI_EmerStr[2];
+ f41_emerN->Caption="02";
+ f43_emer->Caption=BFI_EmerStr[2];
+ f43_emerN->Caption="02"; }
+//////////////////////
+// Обработчик astr2 //
+if(USO_Booled[1][15]) {  // Если есть признак КУРС1...
+f43_astr2->Caption=BFI_action_str2[6];
+f44_astr2->Caption=BFI_action_str2[6];
+/* f46_4615*/}else
+if(USO_Booled[2][0])  {  // Если есть признак КУРС2...
+f43_astr2->Caption=BFI_action_str2[7];
+f44_astr2->Caption=BFI_action_str2[6];
+/* f46_4616*/} else
+if(cw_b6[13]) {          // Если введен признак "ПРИЧАЛ"
+f43_astr2->Caption=BFI_action_str2[2]; }else{
+f43_astr2->Caption=""; f44_astr2->Caption=""; } // При отсутствии признаков из группы 8 - знакоместо пустое "ПРОБЕЛ"
 
-if(cw_b6[13]) act_str_1->Caption=BFI_action_str1[2];  // if prichal...
+//////////////////////////////////////
+// Обработчик "Полуавтомат/Автомат" //
+if(av_pav_pr==2) f43_p_a->Caption=BFI_Aut[1]; else
+if(av_pav_pr==1) f43_p_a->Caption=BFI_Aut[0]; else f43_p_a->Caption="";
+
+// Обработчик знакоместа 43.10 (КУРС_1)
+if(kurs_zap_t==0) f43_kurs->Caption="";         else if(kurs_zap_t==1) f43_kurs->Caption=BFI_Zap[0]; else
+if(kurs_zap_t==3) f43_kurs->Caption=BFI_Zap[2]; else if(kurs_zap_t==3) f43_kurs->Caption=BFI_Zap[3]; else
+if(kurs_zap_t==4) f43_kurs->Caption=BFI_Zap[4]; else if(kurs_1_pr[0])  f43_kurs->Caption=BFI_Zap[1];
+
 f41_42->Caption=FormatFloat("0000",ArgonMemoryType[42]);
 f41_102->Caption=FormatFloat("0000",ArgonMemoryType[102]);
 //f41_A22->Caption=FloatToStr(ArgonMemoryType[112]);
@@ -63,44 +106,34 @@ if(USO_Booled[3][7]=false&&dynamics.rs<1000){
  cw_b6[11]=1;
  cw_b6[8]=1;
  bfi_strings.str_1=7;
- if(dynamics.sks<0.001&&dynamics.rs<100)bfi_strings.str_1=8;
-}
+ if(dynamics.sks<0.001&&dynamics.rs<100)bfi_strings.str_1=8; }
 
-if(bfi_strings.str_1==1) Label3->Caption=BFI_action_str1[0]; else
-if(bfi_strings.str_1==1) Label3->Caption=BFI_action_str1[1]; else
-if(bfi_strings.str_1==1) Label3->Caption=BFI_action_str1[2]; else
-if(bfi_strings.str_1==1) Label3->Caption=BFI_action_str1[3]; else
-if(bfi_strings.str_1==1) Label3->Caption=BFI_action_str1[4]; else
-if(bfi_strings.str_1==1) Label3->Caption=BFI_action_str1[5]; else
-if(bfi_strings.str_1==1) Label3->Caption=BFI_action_str1[6]; else
-if(bfi_strings.str_1==1) Label3->Caption=BFI_action_str1[7]; else
-if(bfi_strings.str_1==1) Label3->Caption=BFI_action_str1[8]; else
-if(bfi_strings.str_1==1) Label3->Caption=BFI_action_str1[9]; else
-if(bfi_strings.str_1==1) Label3->Caption=BFI_action_str1[10]; else
-Label3->Caption="";
-
-if(bfi_strings.str_2==1) Label5->Caption=BFI_action_str2[0]; else
-if(bfi_strings.str_2==2) Label5->Caption=BFI_action_str2[1]; else
-if(bfi_strings.str_2==3) Label5->Caption=BFI_action_str2[2]; else
-if(bfi_strings.str_2==4) Label5->Caption=BFI_action_str2[3]; else
-if(bfi_strings.str_2==5) Label5->Caption=BFI_action_str2[4]; else
-if(bfi_strings.str_2==6) Label5->Caption=BFI_action_str2[5]; else
-if(bfi_strings.str_2==7) Label5->Caption=BFI_action_str2[6]; else
-if(bfi_strings.str_2==8) Label5->Caption=BFI_action_str2[7]; else
-Label5->Caption="";
-
+////////////////////////
+// Обработчик ВКЛ ДПО //
 if(USO_Booled[10][7]) Label27->Caption=BFI_oper2str[0]; else
 if(bfi_strings.str_3==2) Label27->Caption=BFI_oper2str[1]; else
 if(bfi_strings.str_3==3) Label27->Caption=BFI_oper2str[2]; else
 if(bfi_strings.str_3==4) Label27->Caption=BFI_oper2str[3]; else
 Label27->Caption="";
 
-Label9->Caption=FloatToStr(dynamics.rasp).sprintf("%07.03f",dynamics.rasp);
-Label36->Caption=FloatToStr(dynamics.omzf).sprintf("%06.03f",dynamics.omzf);
-Label37->Caption=FloatToStr(dynamics.omyf).sprintf("%06.03f",dynamics.omyf);
-//dpo_status_bit =
-Label43->Caption=FloatToStr(-dynamics.sks).sprintf("%07.03f",(-dynamics.sks));
-Label41->Caption=FloatToStr(dynamics.rs).sprintf("%06.03f",(dynamics.rs));
+/////////////////////////////////
+// Обработчик знакоместа 43.13 //
+if(bezop_bfi==0) f43_bezop->Caption=""; else if(bezop_bfi==1) f43_bezop->Caption=BFI_Bezop[0]; else
+if(bezop_bfi==2) f43_bezop->Caption=BFI_Bezop[1]; else if(bezop_bfi==3) f43_bezop->Caption=BFI_Bezop[2]; else
+if(bezop_bfi==4) f43_bezop->Caption=BFI_Bezop[3]; else if(bezop_bfi==5) f43_bezop->Caption=BFI_Bezop[4]; else
+if(bezop_bfi==6) f43_bezop->Caption=BFI_Bezop[5]; else if(bezop_bfi==7) f43_bezop->Caption=BFI_Bezop[6];
+
+////////////////
+// Формат Ф43 //
+f43_ro->Caption=FormatFloat("00.000",dynamics.rs/1000);                        // Дальность для формата Ф43
+if(dynamics.sks<0)
+f43_rod->Caption=FormatFloat(" 000.00",-dynamics.sks); else                    // Скорость для формата Ф43
+if(dynamics.sks>0)f43_rod->Caption=FormatFloat("000.00",-dynamics.sks); else
+if(dynamics.sks==0,000000)f43_rod->Caption=" 000.00";
+f43_resurs->Caption=FormatFloat("000.0",dynamics.rasp);                        // Ресур
+f43_omzf->Caption=FloatToStr(dynamics.omzf).sprintf("%06.03f",dynamics.omzf);
+f43_omyf->Caption=FloatToStr(dynamics.omyf).sprintf("%06.03f",dynamics.omyf);
+
 f46_vtek->Caption=FloatToStr(v_tek_m).sprintf("%06.05f",v_tek_m);
 if(cw_b1[12]) f46_tvc->Caption=gc1_time.FormatString("hh.nn.ss"); else
 f46_tvc->Caption="00.00.00";
@@ -110,53 +143,47 @@ f41_43->Caption=FormatFloat("0.00000",ArgonMemoryType[43]);
 f41_44->Caption=FormatFloat("0.00000",ArgonMemoryType[44]);
 f41_45->Caption=FormatFloat("0.00000",ArgonMemoryType[45]);
 f41_46->Caption=FormatFloat("0.00000",ArgonMemoryType[46]);
-act_str_1->Caption=BFI_action_str1[4];
-if(GSO_types==0) GSO_String=""; else
-if(GSO_types==1) GSO_String="1"; else
-if(GSO_types==2) GSO_String=" 2"; else
-if(GSO_types==3) GSO_String="  3"; else
-if(GSO_types==4) GSO_String="   4"; else
-if(GSO_types==5) GSO_String="    5";
-gso->Caption=GSO_String;
-TMTPTime->Caption="TN="+OnboardModelTime.FormatString("hh:nn:ss");
 
+// Обработчик строки ГСО (пересмотреть)
+if(GSO_types==0) GSO_String="     "; else
+if(GSO_types==1) GSO_String="1    "; else
+if(GSO_types==2) GSO_String=" 2   "; else
+if(GSO_types==3) GSO_String="  3  "; else
+if(GSO_types==4) GSO_String="   4 "; else
+if(GSO_types==5) GSO_String="    5";
+f42_gso->Caption=GSO_String; f43_gso->Caption=GSO_String;
+f44_gso->Caption=GSO_String; f45_gso->Caption=GSO_String;
+
+//////////////////////////////////
+// Время Московское (модельное) //
+BFI_TimeString = "TN="+OnboardModelTime.FormatString("hh:nn:ss");
+f41_time->Caption=BFI_TimeString; f42_time->Caption=BFI_TimeString;
+f43_time->Caption=BFI_TimeString; f44_time->Caption=BFI_TimeString;
+f45_time->Caption=BFI_TimeString; f46_time->Caption=BFI_TimeString;
+
+/////////////////////////
+// Перевод УС из 2 в 8 //
 if(i_takt_asd[1]==2){
-cw_B1_string +=(byte)cw_b1[0];
-cw_B1_string +=(byte)cw_b1[1];
-cw_B1_string +=(byte)cw_b1[2];
-cw_B1_string +=(byte)cw_b1[3];
- B1_forDBG[0] += "0";
- B1_forDBG[0] +=(byte)cw_b1[1];
- B1_forDBG[0] +=(byte)cw_b1[2];
- B1_forDBG[0] +=(byte)cw_b1[3];
-cw_B1_string +=(byte)cw_b1[4];
-cw_B1_string +=(byte)cw_b1[5];
+cw_B1_string +=(byte)cw_b1[0];  cw_B1_string +=(byte)cw_b1[1];
+cw_B1_string +=(byte)cw_b1[2];  cw_B1_string +=(byte)cw_b1[3];
+ B1_forDBG[0] += "0";           B1_forDBG[0] +=(byte)cw_b1[1];
+ B1_forDBG[0] +=(byte)cw_b1[2]; B1_forDBG[0] +=(byte)cw_b1[3];
+cw_B1_string +=(byte)cw_b1[4];  cw_B1_string +=(byte)cw_b1[5];
 cw_B1_string +=(byte)cw_b1[6];
- B1_forDBG[1] += "0";
- B1_forDBG[1] +=(byte)cw_b1[4];
- B1_forDBG[1] +=(byte)cw_b1[5];
- B1_forDBG[1] +=(byte)cw_b1[6];
-cw_B1_string +=(byte)cw_b1[7];
-cw_B1_string +=(byte)cw_b1[8];
+ B1_forDBG[1] += "0";           B1_forDBG[1] +=(byte)cw_b1[4];
+ B1_forDBG[1] +=(byte)cw_b1[5]; B1_forDBG[1] +=(byte)cw_b1[6];
+cw_B1_string +=(byte)cw_b1[7];  cw_B1_string +=(byte)cw_b1[8];
 cw_B1_string +=(byte)cw_b1[9];
- B1_forDBG[2] += "0";
- B1_forDBG[2] +=(byte)cw_b1[7];
- B1_forDBG[2] +=(byte)cw_b1[8];
- B1_forDBG[2] +=(byte)cw_b1[9];
-cw_B1_string +=(byte)cw_b1[10];
-cw_B1_string +=(byte)cw_b1[11];
+ B1_forDBG[2] += "0";           B1_forDBG[2] +=(byte)cw_b1[7];
+ B1_forDBG[2] +=(byte)cw_b1[8]; B1_forDBG[2] +=(byte)cw_b1[9];
+cw_B1_string +=(byte)cw_b1[10]; cw_B1_string +=(byte)cw_b1[11];
 cw_B1_string +=(byte)cw_b1[12];
- B1_forDBG[3] += "0";
- B1_forDBG[3] +=(byte)cw_b1[10];
- B1_forDBG[3] +=(byte)cw_b1[11];
- B1_forDBG[3] +=(byte)cw_b1[12];
-cw_B1_string +=(byte)cw_b1[13];
-cw_B1_string +=(byte)cw_b1[14];
+ B1_forDBG[3] += "0";           B1_forDBG[3] +=(byte)cw_b1[10];
+ B1_forDBG[3] +=(byte)cw_b1[11];B1_forDBG[3] +=(byte)cw_b1[12];
+cw_B1_string +=(byte)cw_b1[13]; cw_B1_string +=(byte)cw_b1[14];
 cw_B1_string +=(byte)cw_b1[15];
- B1_forDBG[4] += "0";
- B1_forDBG[4] +=(byte)cw_b1[13];
- B1_forDBG[4] +=(byte)cw_b1[14];
- B1_forDBG[4] +=(byte)cw_b1[15];
+ B1_forDBG[4] += "0";           B1_forDBG[4] +=(byte)cw_b1[13];
+ B1_forDBG[4] +=(byte)cw_b1[14];B1_forDBG[4] +=(byte)cw_b1[15];
 B1_string[0] = (byte)cw_b1[0];
 B1_string[1] = XtoY(Trim(B1_forDBG[0]), StrToIntDef(2, 10), StrToIntDef(16, 10));
 B1_string[2] = XtoY(Trim(B1_forDBG[1]), StrToIntDef(2, 10), StrToIntDef(16, 10));
@@ -255,35 +282,31 @@ a19_string[2] = XtoY(Trim(a19_forDBG[1]), StrToIntDef(2, 10), StrToIntDef(16, 10
 a19_string[3] = XtoY(Trim(a19_forDBG[2]), StrToIntDef(2, 10), StrToIntDef(16, 10));
 a19_string[4] = XtoY(Trim(a19_forDBG[3]), StrToIntDef(2, 10), StrToIntDef(16, 10));
 a19_string[5] = XtoY(Trim(a19_forDBG[4]), StrToIntDef(2, 10), StrToIntDef(16, 10));
-Label16->Caption=a19_string[0]+"."+a19_string[1]+""+a19_string[2]+""+a19_string[3]+""+a19_string[4]+""+a19_string[5];
+f43_c->Caption=a19_string[0]+"."+a19_string[1]+""+a19_string[2]+""+a19_string[3]+""+a19_string[4]+""+a19_string[5];
 a19_string[0] = "";a19_string[1] = "";a19_string[2] = "";a19_string[3] = "";a19_string[4] = "";a19_string[5] = "";
 a19_forDBG[0] = "";a19_forDBG[1] = "";a19_forDBG[2] = "";a19_forDBG[3] = "";a19_forDBG[4] = "";cw_a19_string = "";
 
 i_takt_asd[1]=0;
 } else i_takt_asd[1]++;
-// EmerString
-if(cw_TA1[0]){ // Если нет аварий, то...
- f41_emer->Caption=BFI_EmerStr[0];
- f41_emerN->Caption="00";
- f43_emer->Caption=BFI_EmerStr[0];
- f43_emerN->Caption="00"; } else
-if(cw_TA1[1]){ // Если есть авария ИКВ-1
- f41_emer->Caption=BFI_EmerStr[1];
- f41_emerN->Caption="01";
- f43_emer->Caption=BFI_EmerStr[1];
- f43_emerN->Caption="01"; } else
-if(cw_TA1[2]){ // Если есть авария
- f41_emer->Caption=BFI_EmerStr[2];
- f41_emerN->Caption="02";
- f43_emer->Caption=BFI_EmerStr[2];
- f43_emerN->Caption="02"; }
+
 }
 //---------------------------------------------------------------------------
-
-
-
-
-
-
-
+void __fastcall TBFI_Simvol_form::formatsChange(TObject *Sender)
+{
+// Send to InPU cmd 41 change format BFI
+struct{
+byte CodeType;
+unsigned short DataType;
+}packet;
+CounterNo++;                                        // Номер пакета +1
+PacketHeaderType.Signature = PacketSignatureR;      // Сигнатура пакета
+PacketHeaderType.No = CounterNo;                    // Номер пакета
+PacketHeaderType.Size = sizeof(wpControlCodeTypeN); // Размер пакета = размер буфера УСО
+PacketHeaderType.PacketID = PacketIDtype(idControl);    // USO
+packet.CodeType = wpControlCodeTypeN(wpBfiFormat);
+packet.DataType = 1;
+nResult = send(SPSSocket_ch1,(char *)&PacketHeaderType,9, 0  );
+nResult = send(SPSSocket_ch1,(char *)&packet,6, 0  );
+}
+//---------------------------------------------------------------------------
 

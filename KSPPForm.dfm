@@ -7,6 +7,7 @@ object KSP_right: TKSP_right
   ClientHeight = 453
   ClientWidth = 660
   Color = clBlack
+  DefaultMonitor = dmDesktop
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -94,6 +95,7 @@ object KSP_right: TKSP_right
     0000000000000000000000000000000000000000000000000000000000000000
     00000000000000000000000000000000000000000000}
   OldCreateOrder = False
+  Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
   object ksp_1: TSpeedButton

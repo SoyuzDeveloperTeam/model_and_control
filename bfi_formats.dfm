@@ -1,6 +1,6 @@
 object BFI_Simvol_form: TBFI_Simvol_form
-  Left = 104
-  Top = 93
+  Left = 921
+  Top = 182
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1060#1086#1088#1084#1072#1090#1099' '#1041#1062#1042#1050' '#1040#1088#1075#1086#1085'-16'
@@ -13,6 +13,7 @@ object BFI_Simvol_form: TBFI_Simvol_form
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
   object Label30: TLabel
@@ -34,7 +35,7 @@ object BFI_Simvol_form: TBFI_Simvol_form
     Top = 0
     Width = 502
     Height = 429
-    ActivePage = f_43
+    ActivePage = f_41
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -43,8 +44,9 @@ object BFI_Simvol_form: TBFI_Simvol_form
     Font.Style = []
     ParentFont = False
     Style = tsButtons
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 0
+    OnChange = formatsChange
     object f_41: TTabSheet
       Caption = '41'
       object Panel6: TPanel
@@ -533,6 +535,417 @@ object BFI_Simvol_form: TBFI_Simvol_form
         Align = alClient
         Color = clBlack
         TabOrder = 0
+        object Panel10: TPanel
+          Left = 1
+          Top = 1
+          Width = 492
+          Height = 396
+          Align = alClient
+          Color = clBackground
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'TMAVKU12'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 0
+          object Label104: TLabel
+            Left = 9
+            Top = 8
+            Width = 210
+            Height = 14
+            Caption = 'V42 PRJFOTAXJg'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clYellow
+            Font.Height = -19
+            Font.Name = 'TMAVKU12'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object f42_time: TLabel
+            Left = 309
+            Top = 8
+            Width = 180
+            Height = 14
+            Caption = 'TN=23:17:35 '
+          end
+          object Label106: TLabel
+            Left = 9
+            Top = 32
+            Width = 90
+            Height = 14
+            Caption = 'RFHJN:'
+          end
+          object Label107: TLabel
+            Left = 129
+            Top = 32
+            Width = 105
+            Height = 14
+            AutoSize = False
+            Caption = 'HHH'
+          end
+          object Label108: TLabel
+            Left = 323
+            Top = 56
+            Width = 120
+            Height = 14
+            Caption = 'HHHHHHHH'
+          end
+          object Label109: TLabel
+            Left = 400
+            Top = 32
+            Width = 15
+            Height = 14
+          end
+          object Label190: TLabel
+            Left = 54
+            Top = 128
+            Width = 180
+            Height = 14
+            Caption = 'UDM.SLPRPSTd'
+          end
+          object Label194: TLabel
+            Left = 25
+            Top = 368
+            Width = 15
+            Height = 14
+            Caption = 'A'
+          end
+          object f42_emer: TLabel
+            Left = 54
+            Top = 368
+            Width = 90
+            Height = 14
+            Caption = 'HHHHHH'
+          end
+          object Label196: TLabel
+            Left = 159
+            Top = 368
+            Width = 30
+            Height = 14
+            Caption = '00'
+          end
+          object Label197: TLabel
+            Left = 249
+            Top = 368
+            Width = 30
+            Height = 14
+            Caption = 'JO'
+          end
+          object Label198: TLabel
+            Left = 295
+            Top = 368
+            Width = 90
+            Height = 14
+            Caption = 'HHHHHH'
+          end
+          object Label199: TLabel
+            Left = 80
+            Top = 344
+            Width = 30
+            Height = 14
+            Caption = 'CK'
+          end
+          object Label206: TLabel
+            Left = 189
+            Top = 104
+            Width = 45
+            Height = 14
+            Caption = 'SPI'
+          end
+          object Label212: TLabel
+            Left = 9
+            Top = 56
+            Width = 135
+            Height = 14
+            Caption = 'PQFRAXJJ:'
+          end
+          object Label213: TLabel
+            Left = 159
+            Top = 56
+            Width = 105
+            Height = 14
+            AutoSize = False
+            Caption = 'HHH'
+          end
+          object f42_gso: TLabel
+            Left = 400
+            Top = 32
+            Width = 75
+            Height = 14
+            Caption = '12345'
+          end
+          object Label215: TLabel
+            Left = 339
+            Top = 32
+            Width = 45
+            Height = 14
+            Caption = 'DSP'
+          end
+          object Label5: TLabel
+            Left = 69
+            Top = 80
+            Width = 75
+            Height = 14
+            AutoSize = False
+            Caption = '-0,00'
+          end
+          object Label36: TLabel
+            Left = 40
+            Top = 80
+            Width = 30
+            Height = 14
+            Caption = 'i='
+          end
+          object Label60: TLabel
+            Left = 144
+            Top = 80
+            Width = 15
+            Height = 14
+            Caption = 'D'
+          end
+          object Label105: TLabel
+            Left = 69
+            Top = 104
+            Width = 75
+            Height = 14
+            AutoSize = False
+            Caption = '-0,00'
+          end
+          object Label148: TLabel
+            Left = 144
+            Top = 104
+            Width = 15
+            Height = 14
+            Caption = 'D'
+          end
+          object Label214: TLabel
+            Left = 41
+            Top = 104
+            Width = 30
+            Height = 14
+            Caption = 'l='
+          end
+          object Label223: TLabel
+            Left = 233
+            Top = 80
+            Width = 180
+            Height = 14
+            Caption = 'EATYJLJ:BEUS'
+          end
+          object Label224: TLabel
+            Left = 264
+            Top = 104
+            Width = 120
+            Height = 14
+            Caption = 'A.F.B.X.'
+          end
+          object Label191: TLabel
+            Left = 398
+            Top = 104
+            Width = 45
+            Height = 14
+            Caption = 'SPI'
+          end
+          object Label192: TLabel
+            Left = 54
+            Top = 152
+            Width = 45
+            Height = 14
+            Caption = 'oW='
+          end
+          object f42_wx: TLabel
+            Left = 99
+            Top = 152
+            Width = 90
+            Height = 14
+            AutoSize = False
+            Caption = '-0,000'
+          end
+          object f42_wy: TLabel
+            Left = 99
+            Top = 176
+            Width = 90
+            Height = 14
+            AutoSize = False
+            Caption = '-0,000'
+          end
+          object Label201: TLabel
+            Left = 54
+            Top = 176
+            Width = 45
+            Height = 14
+            Caption = 'oy='
+          end
+          object Label202: TLabel
+            Left = 54
+            Top = 200
+            Width = 45
+            Height = 14
+            Caption = 'oz='
+          end
+          object f42_wz: TLabel
+            Left = 99
+            Top = 200
+            Width = 90
+            Height = 14
+            AutoSize = False
+            Caption = '-0,000'
+          end
+          object Label204: TLabel
+            Left = 84
+            Top = 224
+            Width = 120
+            Height = 14
+            Caption = 'p LPRRFL'
+          end
+          object Label207: TLabel
+            Left = 54
+            Top = 296
+            Width = 45
+            Height = 14
+            Caption = 'pz='
+          end
+          object f42_omz: TLabel
+            Left = 99
+            Top = 296
+            Width = 90
+            Height = 14
+            AutoSize = False
+            Caption = '-0,000'
+          end
+          object f42_omy: TLabel
+            Left = 99
+            Top = 272
+            Width = 90
+            Height = 14
+            AutoSize = False
+            Caption = '-0,000'
+          end
+          object Label210: TLabel
+            Left = 54
+            Top = 272
+            Width = 45
+            Height = 14
+            Caption = 'py='
+          end
+          object Label211: TLabel
+            Left = 54
+            Top = 248
+            Width = 45
+            Height = 14
+            Caption = 'pW='
+          end
+          object f42_omx: TLabel
+            Left = 99
+            Top = 248
+            Width = 90
+            Height = 14
+            AutoSize = False
+            Caption = '-0,000'
+          end
+          object Label217: TLabel
+            Left = 189
+            Top = 152
+            Width = 45
+            Height = 14
+            Caption = 'D/S'
+          end
+          object Label218: TLabel
+            Left = 189
+            Top = 176
+            Width = 45
+            Height = 14
+            Caption = 'D/S'
+          end
+          object Label219: TLabel
+            Left = 189
+            Top = 200
+            Width = 45
+            Height = 14
+            Caption = 'D/S'
+          end
+          object Label220: TLabel
+            Left = 189
+            Top = 296
+            Width = 45
+            Height = 14
+            Caption = 'D/S'
+          end
+          object Label221: TLabel
+            Left = 189
+            Top = 272
+            Width = 45
+            Height = 14
+            Caption = 'D/S'
+          end
+          object Label222: TLabel
+            Left = 189
+            Top = 248
+            Width = 45
+            Height = 14
+            Caption = 'D/S'
+          end
+          object Label225: TLabel
+            Left = 9
+            Top = 320
+            Width = 30
+            Height = 14
+            Caption = 'GP'
+          end
+          object f42_go: TLabel
+            Left = 38
+            Top = 320
+            Width = 75
+            Height = 14
+            AutoSize = False
+            Caption = '000,0'
+          end
+          object Label227: TLabel
+            Left = 114
+            Top = 320
+            Width = 30
+            Height = 14
+            Caption = 'LD'
+          end
+          object Label226: TLabel
+            Left = 114
+            Top = 344
+            Width = 75
+            Height = 14
+            AutoSize = False
+            Caption = '000,0'
+          end
+          object Label228: TLabel
+            Left = 189
+            Top = 344
+            Width = 30
+            Height = 14
+            Caption = 'LD'
+          end
+          object Label229: TLabel
+            Left = 160
+            Top = 320
+            Width = 30
+            Height = 14
+            Caption = 'GP'
+          end
+          object Label230: TLabel
+            Left = 189
+            Top = 320
+            Width = 75
+            Height = 14
+            AutoSize = False
+            Caption = '000,0'
+          end
+          object Label231: TLabel
+            Left = 265
+            Top = 320
+            Width = 30
+            Height = 14
+            Caption = 'LD'
+          end
+        end
       end
     end
     object f_43: TTabSheet
@@ -579,35 +992,35 @@ object BFI_Simvol_form: TBFI_Simvol_form
             Font.Style = [fsBold]
             ParentFont = False
           end
-          object TMTPTime: TLabel
+          object f43_time: TLabel
             Left = 309
             Top = 8
             Width = 180
             Height = 14
             Caption = 'TN=23:17:35 '
           end
-          object act_str_1: TLabel
+          object f43_astr1: TLabel
             Left = 9
             Top = 32
             Width = 105
             Height = 14
             Caption = 'RFCFYBT'
           end
-          object act_str_2: TLabel
+          object f43_astr2: TLabel
             Left = 144
             Top = 32
             Width = 120
             Height = 14
             Caption = 'HJKJVFDS'
           end
-          object Label3: TLabel
+          object f43_p_a: TLabel
             Left = 9
             Top = 56
             Width = 45
             Height = 14
             Caption = 'HHH'
           end
-          object Label5: TLabel
+          object f43_kurs: TLabel
             Left = 84
             Top = 56
             Width = 90
@@ -635,14 +1048,14 @@ object BFI_Simvol_form: TBFI_Simvol_form
             Height = 14
             Caption = 'R'
           end
-          object Label9: TLabel
+          object f43_resurs: TLabel
             Left = 39
             Top = 104
             Width = 75
             Height = 14
             Caption = '000,0'
           end
-          object Label10: TLabel
+          object f43_bezop: TLabel
             Left = 129
             Top = 104
             Width = 90
@@ -684,7 +1097,7 @@ object BFI_Simvol_form: TBFI_Simvol_form
             Height = 14
             Caption = 'S'
           end
-          object Label16: TLabel
+          object f43_c: TLabel
             Left = 24
             Top = 128
             Width = 105
@@ -810,14 +1223,14 @@ object BFI_Simvol_form: TBFI_Simvol_form
             Height = 14
             Caption = 'jhz'
           end
-          object Label36: TLabel
+          object f43_omzf: TLabel
             Left = 204
             Top = 320
             Width = 90
             Height = 14
             Caption = '-0,000'
           end
-          object Label37: TLabel
+          object f43_omyf: TLabel
             Left = 204
             Top = 344
             Width = 90
@@ -845,7 +1258,7 @@ object BFI_Simvol_form: TBFI_Simvol_form
             Height = 14
             Caption = 'm'
           end
-          object Label41: TLabel
+          object f43_ro: TLabel
             Left = 54
             Top = 320
             Width = 90
@@ -860,13 +1273,13 @@ object BFI_Simvol_form: TBFI_Simvol_form
             Height = 14
             Caption = 'n'
           end
-          object Label43: TLabel
-            Left = 54
+          object f43_rod: TLabel
+            Left = 39
             Top = 344
-            Width = 90
+            Width = 106
             Height = 14
             AutoSize = False
-            Caption = '000,00'
+            Caption = ' 000,00'
           end
           object Label44: TLabel
             Left = 25
@@ -896,7 +1309,7 @@ object BFI_Simvol_form: TBFI_Simvol_form
             Height = 14
             Caption = 'JO'
           end
-          object Label48: TLabel
+          object f43_instr: TLabel
             Left = 295
             Top = 368
             Width = 90
@@ -911,7 +1324,7 @@ object BFI_Simvol_form: TBFI_Simvol_form
             Caption = 'id'
             Visible = False
           end
-          object Label50: TLabel
+          object f43_14: TLabel
             Left = 174
             Top = 152
             Width = 105
@@ -934,11 +1347,12 @@ object BFI_Simvol_form: TBFI_Simvol_form
             Caption = '+z'
             Visible = False
           end
-          object gso: TLabel
+          object f43_gso: TLabel
             Left = 400
             Top = 32
-            Width = 15
+            Width = 75
             Height = 14
+            Caption = '00000'
           end
         end
       end
@@ -954,6 +1368,340 @@ object BFI_Simvol_form: TBFI_Simvol_form
         Align = alClient
         Color = clBlack
         TabOrder = 0
+        object Panel8: TPanel
+          Left = 1
+          Top = 1
+          Width = 492
+          Height = 396
+          Align = alClient
+          Color = clBackground
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'TMAVKU12'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 0
+          object Label3: TLabel
+            Left = 9
+            Top = 8
+            Width = 150
+            Height = 14
+            Caption = 'V44 QRJYAM'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clYellow
+            Font.Height = -19
+            Font.Name = 'TMAVKU12'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object f44_time: TLabel
+            Left = 309
+            Top = 8
+            Width = 180
+            Height = 14
+            Caption = 'TN=23:17:35 '
+          end
+          object Label9: TLabel
+            Left = 9
+            Top = 32
+            Width = 105
+            Height = 14
+            Caption = 'RFCFYBT'
+          end
+          object f44_astr2: TLabel
+            Left = 144
+            Top = 32
+            Width = 120
+            Height = 14
+            Caption = 'HJKJVFDS'
+          end
+          object Label16: TLabel
+            Left = 9
+            Top = 56
+            Width = 45
+            Height = 14
+            Caption = 'HHH'
+          end
+          object f44_kurs: TLabel
+            Left = 84
+            Top = 56
+            Width = 90
+            Height = 14
+            Caption = 'HHHHHH'
+          end
+          object Label37: TLabel
+            Left = 129
+            Top = 80
+            Width = 90
+            Height = 14
+            Caption = 'HHHHHH'
+          end
+          object Label41: TLabel
+            Left = 39
+            Top = 80
+            Width = 60
+            Height = 14
+            Caption = 'WPYU'
+          end
+          object Label43: TLabel
+            Left = 9
+            Top = 104
+            Width = 15
+            Height = 14
+            Caption = 'R'
+          end
+          object Label46: TLabel
+            Left = 39
+            Top = 104
+            Width = 75
+            Height = 14
+            Caption = '000,0'
+          end
+          object Label48: TLabel
+            Left = 129
+            Top = 104
+            Width = 90
+            Height = 14
+            Caption = 'HHHHHH'
+          end
+          object Label51: TLabel
+            Left = 339
+            Top = 32
+            Width = 45
+            Height = 14
+            Caption = 'DSP'
+          end
+          object Label52: TLabel
+            Left = 369
+            Top = 56
+            Width = 30
+            Height = 14
+            Caption = 'oW'
+          end
+          object Label77: TLabel
+            Left = 369
+            Top = 80
+            Width = 30
+            Height = 14
+            Caption = 'oy'
+          end
+          object Label78: TLabel
+            Left = 369
+            Top = 104
+            Width = 30
+            Height = 14
+            Caption = 'oz'
+          end
+          object Label79: TLabel
+            Left = 8
+            Top = 128
+            Width = 15
+            Height = 14
+            Caption = 'S'
+          end
+          object Label89: TLabel
+            Left = 24
+            Top = 128
+            Width = 105
+            Height = 14
+            Caption = '0.00000'
+          end
+          object Label100: TLabel
+            Left = 399
+            Top = 56
+            Width = 90
+            Height = 14
+            Caption = '-0,000'
+          end
+          object Label102: TLabel
+            Left = 399
+            Top = 80
+            Width = 90
+            Height = 14
+            Caption = '-0,000'
+          end
+          object Label103: TLabel
+            Left = 399
+            Top = 104
+            Width = 90
+            Height = 14
+            Caption = '-0,000'
+          end
+          object Label110: TLabel
+            Left = 279
+            Top = 32
+            Width = 45
+            Height = 14
+            Caption = '---'
+          end
+          object Label112: TLabel
+            Left = 159
+            Top = 128
+            Width = 105
+            Height = 14
+            Caption = 'HHH HHH'
+          end
+          object Label120: TLabel
+            Left = 204
+            Top = 320
+            Width = 90
+            Height = 14
+            Caption = '-0,000'
+          end
+          object Label121: TLabel
+            Left = 204
+            Top = 344
+            Width = 90
+            Height = 14
+            Caption = '-0,000'
+          end
+          object Label122: TLabel
+            Left = 173
+            Top = 344
+            Width = 30
+            Height = 14
+            Caption = 'py'
+          end
+          object Label123: TLabel
+            Left = 173
+            Top = 320
+            Width = 30
+            Height = 14
+            Caption = 'pz'
+          end
+          object Label124: TLabel
+            Left = 25
+            Top = 320
+            Width = 15
+            Height = 14
+            Caption = 'm'
+          end
+          object Label125: TLabel
+            Left = 54
+            Top = 320
+            Width = 90
+            Height = 14
+            AutoSize = False
+            Caption = '00,000'
+          end
+          object Label126: TLabel
+            Left = 25
+            Top = 344
+            Width = 15
+            Height = 14
+            Caption = 'n'
+          end
+          object Label127: TLabel
+            Left = 39
+            Top = 344
+            Width = 106
+            Height = 14
+            AutoSize = False
+            Caption = ' 000,00'
+          end
+          object Label128: TLabel
+            Left = 25
+            Top = 368
+            Width = 15
+            Height = 14
+            Caption = 'A'
+          end
+          object f44_emer: TLabel
+            Left = 54
+            Top = 368
+            Width = 90
+            Height = 14
+            Caption = 'HHHHHH'
+          end
+          object Label141: TLabel
+            Left = 159
+            Top = 368
+            Width = 30
+            Height = 14
+            Caption = '00'
+          end
+          object Label142: TLabel
+            Left = 249
+            Top = 368
+            Width = 30
+            Height = 14
+            Caption = 'JO'
+          end
+          object Label143: TLabel
+            Left = 295
+            Top = 368
+            Width = 90
+            Height = 14
+            Caption = 'HHHHHH'
+          end
+          object Label144: TLabel
+            Left = 264
+            Top = 176
+            Width = 30
+            Height = 14
+            Caption = '-W'
+            Visible = False
+          end
+          object Label145: TLabel
+            Left = 174
+            Top = 152
+            Width = 105
+            Height = 14
+            Caption = 'UST ---'
+          end
+          object Label146: TLabel
+            Left = 265
+            Top = 224
+            Width = 30
+            Height = 14
+            Caption = '-y'
+            Visible = False
+          end
+          object Label147: TLabel
+            Left = 265
+            Top = 272
+            Width = 30
+            Height = 14
+            Caption = '+z'
+            Visible = False
+          end
+          object f44_gso: TLabel
+            Left = 400
+            Top = 32
+            Width = 75
+            Height = 14
+            Caption = '00000'
+          end
+          object Label149: TLabel
+            Left = 365
+            Top = 320
+            Width = 30
+            Height = 14
+            Caption = 'pz'
+          end
+          object Label150: TLabel
+            Left = 365
+            Top = 344
+            Width = 30
+            Height = 14
+            Caption = 'py'
+          end
+          object Label154: TLabel
+            Left = 396
+            Top = 344
+            Width = 90
+            Height = 14
+            Caption = '-0,000'
+          end
+          object Label158: TLabel
+            Left = 396
+            Top = 320
+            Width = 90
+            Height = 14
+            Caption = '-0,000'
+          end
+        end
       end
     end
     object f_45: TTabSheet
@@ -986,7 +1734,7 @@ object BFI_Simvol_form: TBFI_Simvol_form
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object Label46: TLabel
+        object f45_time: TLabel
           Left = 309
           Top = 8
           Width = 180
@@ -1056,7 +1804,7 @@ object BFI_Simvol_form: TBFI_Simvol_form
           Height = 14
           Caption = 'A'
         end
-        object Label130: TLabel
+        object f45_emer: TLabel
           Left = 54
           Top = 368
           Width = 90
@@ -1191,7 +1939,7 @@ object BFI_Simvol_form: TBFI_Simvol_form
           AutoSize = False
           Caption = 'HHH'
         end
-        object Label60: TLabel
+        object f45_gso: TLabel
           Left = 400
           Top = 32
           Width = 75
@@ -1269,6 +2017,304 @@ object BFI_Simvol_form: TBFI_Simvol_form
         Align = alClient
         Color = clBlack
         TabOrder = 0
+        object Panel9: TPanel
+          Left = 1
+          Top = 1
+          Width = 492
+          Height = 396
+          Align = alClient
+          Color = clBackground
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'TMAVKU12'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 0
+          object Label10: TLabel
+            Left = 9
+            Top = 8
+            Width = 150
+            Height = 14
+            Caption = 'V45 NAOFCR'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clYellow
+            Font.Height = -19
+            Font.Name = 'TMAVKU12'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object f46_time: TLabel
+            Left = 309
+            Top = 8
+            Width = 180
+            Height = 14
+            Caption = 'TN=23:17:35 '
+          end
+          object Label113: TLabel
+            Left = 9
+            Top = 32
+            Width = 90
+            Height = 14
+            Caption = 'RFHJN:'
+          end
+          object Label114: TLabel
+            Left = 129
+            Top = 32
+            Width = 105
+            Height = 14
+            AutoSize = False
+            Caption = 'HHH'
+          end
+          object Label115: TLabel
+            Left = 323
+            Top = 56
+            Width = 120
+            Height = 14
+            Caption = 'HHHHHHHH'
+          end
+          object Label117: TLabel
+            Left = 400
+            Top = 32
+            Width = 15
+            Height = 14
+          end
+          object Label118: TLabel
+            Left = 39
+            Top = 128
+            Width = 255
+            Height = 14
+            Caption = 'PQFRAXJJ LPOXA CX'
+          end
+          object Label119: TLabel
+            Left = 99
+            Top = 152
+            Width = 150
+            Height = 14
+            Caption = 'QPCTPRO DX'
+          end
+          object Label159: TLabel
+            Left = 99
+            Top = 176
+            Width = 180
+            Height = 14
+            Caption = 'SBM QPSMF DX'
+          end
+          object Label160: TLabel
+            Left = 54
+            Top = 200
+            Width = 120
+            Height = 14
+            Caption = 'USTACLJ:'
+          end
+          object Label161: TLabel
+            Left = 25
+            Top = 368
+            Width = 15
+            Height = 14
+            Caption = 'A'
+          end
+          object Label162: TLabel
+            Left = 54
+            Top = 368
+            Width = 90
+            Height = 14
+            Caption = 'HHHHHH'
+          end
+          object Label163: TLabel
+            Left = 159
+            Top = 368
+            Width = 30
+            Height = 14
+            Caption = '00'
+          end
+          object Label164: TLabel
+            Left = 249
+            Top = 368
+            Width = 30
+            Height = 14
+            Caption = 'JO'
+          end
+          object Label165: TLabel
+            Left = 295
+            Top = 368
+            Width = 90
+            Height = 14
+            Caption = 'HHHHHH'
+          end
+          object Label166: TLabel
+            Left = 280
+            Top = 344
+            Width = 135
+            Height = 14
+            Caption = 'CK     LD'
+          end
+          object Label167: TLabel
+            Left = 39
+            Top = 320
+            Width = 45
+            Height = 14
+            Caption = 'e3='
+          end
+          object Label168: TLabel
+            Left = 39
+            Top = 296
+            Width = 45
+            Height = 14
+            Caption = 'e2='
+          end
+          object Label169: TLabel
+            Left = 39
+            Top = 272
+            Width = 45
+            Height = 14
+            Caption = 'e1='
+          end
+          object Label170: TLabel
+            Left = 39
+            Top = 248
+            Width = 45
+            Height = 14
+            Caption = 'e0='
+          end
+          object Label171: TLabel
+            Left = 39
+            Top = 224
+            Width = 45
+            Height = 14
+            Caption = 'h1='
+          end
+          object Label172: TLabel
+            Left = 339
+            Top = 176
+            Width = 120
+            Height = 14
+            Caption = 'CcLM Y-3'
+          end
+          object Label173: TLabel
+            Left = 354
+            Top = 152
+            Width = 45
+            Height = 14
+            Caption = 'SPI'
+          end
+          object Label174: TLabel
+            Left = 83
+            Top = 320
+            Width = 105
+            Height = 14
+            Caption = '0.00000'
+          end
+          object Label175: TLabel
+            Left = 83
+            Top = 296
+            Width = 105
+            Height = 14
+            Caption = '0.00000'
+          end
+          object Label176: TLabel
+            Left = 83
+            Top = 272
+            Width = 105
+            Height = 14
+            Caption = '0.00000'
+          end
+          object Label177: TLabel
+            Left = 83
+            Top = 224
+            Width = 90
+            Height = 14
+            AutoSize = False
+            Caption = '000.00'
+          end
+          object Label178: TLabel
+            Left = 173
+            Top = 224
+            Width = 45
+            Height = 14
+            Caption = 'N/S'
+          end
+          object Label179: TLabel
+            Left = 9
+            Top = 56
+            Width = 135
+            Height = 14
+            Caption = 'PQFRAXJJ:'
+          end
+          object Label180: TLabel
+            Left = 159
+            Top = 56
+            Width = 105
+            Height = 14
+            AutoSize = False
+            Caption = 'HHH'
+          end
+          object Label181: TLabel
+            Left = 400
+            Top = 32
+            Width = 75
+            Height = 14
+            Caption = '12345'
+          end
+          object Label182: TLabel
+            Left = 339
+            Top = 32
+            Width = 45
+            Height = 14
+            Caption = 'DSP'
+          end
+          object Label183: TLabel
+            Left = 83
+            Top = 248
+            Width = 105
+            Height = 14
+            Caption = '0.00000'
+          end
+          object Label184: TLabel
+            Left = 265
+            Top = 224
+            Width = 90
+            Height = 14
+            AutoSize = False
+            Caption = 'hTFL'
+          end
+          object Label185: TLabel
+            Left = 323
+            Top = 224
+            Width = 90
+            Height = 14
+            AutoSize = False
+            Caption = '000.00'
+          end
+          object Label186: TLabel
+            Left = 413
+            Top = 224
+            Width = 45
+            Height = 14
+            Caption = 'N/S'
+          end
+          object Label187: TLabel
+            Left = 250
+            Top = 248
+            Width = 60
+            Height = 14
+            Caption = 'fCX='
+          end
+          object Label188: TLabel
+            Left = 309
+            Top = 248
+            Width = 120
+            Height = 14
+            Caption = '00.00.00'
+          end
+          object Label189: TLabel
+            Left = 429
+            Top = 248
+            Width = 15
+            Height = 14
+            Caption = 'S'
+          end
+        end
       end
     end
   end

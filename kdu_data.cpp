@@ -252,3 +252,27 @@ SpsDataSt.TSpsParam[31] = SpsDataSt.TSpsParam[31] + 0.200753;
    
 
 */
+
+void __fastcall TKDUform::kdu_timerTimer(TObject *Sender)
+{
+Label38->Caption=FormatFloat("000.000",dynamics.rasp);
+Label42->Caption=FormatFloat("000.000000000000000",dynamics.rudkg);
+Label49->Caption=FormatFloat("000.000000000000000",dynamics.kvkg);
+dpo1->Visible=dpo_v_pr[1];   dpo2->Visible=dpo_v_pr[2];
+dpo3->Visible=dpo_v_pr[3];   dpo4->Visible=dpo_v_pr[4];
+dpo5->Visible=dpo_v_pr[5];   dpo6->Visible=dpo_v_pr[6];
+dpo7->Visible=dpo_v_pr[7];   dpo8->Visible=dpo_v_pr[8];
+dpo9->Visible=dpo_v_pr[9];   dpo10->Visible=dpo_v_pr[10];
+dpo11->Visible=dpo_v_pr[11]; dpo12->Visible=dpo_v_pr[12];
+dpo12->Visible=dpo_v_pr[13]; dpo14->Visible=dpo_v_pr[14];
+dpo15->Visible=dpo_v_pr[15]; dpo16->Visible=dpo_v_pr[16];
+dpo17->Visible=dpo_v_pr[17]; dpo18->Visible=dpo_v_pr[18];
+dpo19->Visible=dpo_v_pr[19]; dpo20->Visible=dpo_v_pr[20];
+dpo21->Visible=dpo_v_pr[21]; dpo22->Visible=dpo_v_pr[22];
+dpo23->Visible=dpo_v_pr[23]; dpo24->Visible=dpo_v_pr[24];
+dpo25->Visible=dpo_v_pr[25]; dpo26->Visible=dpo_v_pr[26];
+dpo27->Visible=dpo_v_pr[27]; dpo28->Visible=dpo_v_pr[28];
+}
+//---------------------------------------------------------------------------
+
+

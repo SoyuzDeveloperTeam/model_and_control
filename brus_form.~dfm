@@ -16856,6 +16856,7 @@ object brus_frm: Tbrus_frm
       F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0EDEEEDBEBFBEB9B8B9
       B9B8B9BEBFBEEDEEEDF0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0}
     Transparent = True
+    OnClick = vsa_offClick
   end
   object epkrd_osn_off: TImage
     Left = 32
@@ -17093,6 +17094,7 @@ object brus_frm: Tbrus_frm
       F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0EDEEEDBEBFBEB9B8B9
       B9B8B9BEBFBEEDEEEDF0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0}
     Transparent = True
+    OnClick = epkrd_rez_offClick
   end
   object boa_sa_osn_on: TImage
     Left = 32
@@ -17450,6 +17452,7 @@ object brus_frm: Tbrus_frm
       0A152B010B202930408C8E94C3C4C7F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0}
     Transparent = True
     Visible = False
+    OnClick = vsa_onClick
   end
   object en_ill_vsk_on: TImage
     Left = 160
@@ -18046,5 +18049,6 @@ object brus_frm: Tbrus_frm
       0A152B010B202930408C8E94C3C4C7F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0}
     Transparent = True
     Visible = False
+    OnClick = epkrd_rez_onClick
   end
 end

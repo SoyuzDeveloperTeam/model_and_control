@@ -38,11 +38,11 @@ KSP_Booled[3][0]=true;                          // Тогда выставляем признак Г1 -
 JPS(1,is_operator,is_miu,is_ksp,"Г1"); } else   // Логируем выдачу команды
 
 if (KSP_Let[3]){  // Д                             Если выбранна буква Д
-USO_Booled[4][0]=true;                          // Тогда выставляем признак Д1 - правда
+KSP_Booled[4][0]=true;                          // Тогда выставляем признак Д1 - правда
 JPS(1,is_operator,is_miu,is_ksp,"Д1"); } else   // Логируем выдачу команды
 
 if (KSP_Let[4]){  // Ж
-USO_Booled[5][0]=true;
+KSP_Booled[5][0]=true;
 SendToBum(0x0000029A, 1, 0);       //Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"ПЕРЕСВЕТКА");  // Резерв
 } else
@@ -526,11 +526,6 @@ A13_LABEL->Color=clLime;
 A13_LABEL->Font->Color=clBlack;  } else {
 A13_LABEL->Color=clGreen;
 A13_LABEL->Font->Color=clYellow; }
-if(USO_Booled[0][7]){  // KSP A15
-A15_LABEL->Color=clLime;
-A15_LABEL->Font->Color=clBlack;  } else {
-A15_LABEL->Color=clGreen;
-A15_LABEL->Font->Color=clYellow; }
 if(USO_Booled[0][8]){  // KSP A17
 A17_LABEL->Color=clLime;
 A17_LABEL->Font->Color=clBlack;  } else {
@@ -557,11 +552,6 @@ V7_LABEL->Color=clLime;
 V7_LABEL->Font->Color=clBlack;  } else {
 V7_LABEL->Color=clGreen;
 V7_LABEL->Font->Color=clYellow; }
-if(USO_Booled[1][6]){  // KSP B9
-V9_LABEL->Color=clLime;
-V9_LABEL->Font->Color=clBlack;  } else {
-V9_LABEL->Color=clGreen;
-V9_LABEL->Font->Color=clYellow; }
 if(USO_Booled[1][7]){  // KSP B11
 V11_LABEL->Color=clLime;
 V11_LABEL->Font->Color=clBlack;  } else {
@@ -613,16 +603,6 @@ G11_LABEL->Color=clLime;
 G11_LABEL->Font->Color=clBlack;  } else {
 G11_LABEL->Color=clGreen;
 G11_LABEL->Font->Color=clYellow; }
-if(USO_Booled[2][1]){  // KSP Г13
-G13_LABEL->Color=clLime;
-G13_LABEL->Font->Color=clBlack;  } else {
-G13_LABEL->Color=clGreen;
-G13_LABEL->Font->Color=clYellow; }
-if(USO_Booled[2][2]){  // KSP Г15
-G15_LABEL->Color=clLime;
-G15_LABEL->Font->Color=clBlack;  } else {
-G15_LABEL->Color=clGreen;
-G15_LABEL->Font->Color=clYellow; }
 if(USO_Booled[2][3]){  // KSP Г17
 G17_LABEL->Color=clLime;
 G17_LABEL->Font->Color=clBlack;  } else {
@@ -751,11 +731,6 @@ I11_LABEL->Color=clLime;
 I11_LABEL->Font->Color=clBlack;  } else {
 I11_LABEL->Color=clGreen;
 I11_LABEL->Font->Color=clYellow; }
-if(USO_Booled[3][12]){  // KSP И13
-I13_LABEL->Color=clLime;
-I13_LABEL->Font->Color=clBlack;  } else {
-I13_LABEL->Color=clGreen;
-I13_LABEL->Font->Color=clYellow; }
 if(USO_Booled[3][13]){  // KSP И15
 I15_LABEL->Color=clLime;
 I15_LABEL->Font->Color=clBlack;  } else {
@@ -787,11 +762,6 @@ K7_LABEL->Color=clLime;
 K7_LABEL->Font->Color=clBlack;  } else {
 K7_LABEL->Color=clGreen;
 K7_LABEL->Font->Color=clYellow; }
-if(USO_Booled[4][4]){  // KSP К9
-K9_LABEL->Color=clLime;
-K9_LABEL->Font->Color=clBlack;  } else {
-K9_LABEL->Color=clGreen;
-K9_LABEL->Font->Color=clYellow; }
 if(USO_Booled[4][5]){  // KSP К11
 K11_LABEL->Color=clLime;
 K11_LABEL->Font->Color=clBlack;  } else {
@@ -838,11 +808,6 @@ L9_LABEL->Color=clLime;
 L9_LABEL->Font->Color=clBlack;  } else {
 L9_LABEL->Color=clGreen;
 L9_LABEL->Font->Color=clYellow; }
-if(USO_Booled[4][14]){  // KSP Л11
-L11_LABEL->Color=clLime;
-L11_LABEL->Font->Color=clBlack;  } else {
-L11_LABEL->Color=clGreen;
-L11_LABEL->Font->Color=clYellow; }
 if(USO_Booled[4][15]){  // KSP Л13
 L13_LABEL->Color=clLime;
 L13_LABEL->Font->Color=clBlack;  } else {

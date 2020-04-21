@@ -1,10 +1,36 @@
 
-AnsiString GSO_String;
-AnsiString BFI_action_str1[11] = {"SXFQLA","LASAOJF","QRPNAW","UCPE","IAQR SB","SB-2JNQ","RAIR SB","IACJS","PBMFT","IAC LPO","QRJYAM"};
-AnsiString BFI_action_str2[8] = {"TFST E","TFST L","QRJYAM","IAWCAT","ACTPSTPQ","SOX","LURS1","LURS2"};
-AnsiString BFI_oper2str[4] = {"CLM EQP","CLM SLE","CLM EQP-BT","RAICPRPT"};
-AnsiString BFI_EmerStr[16] = {"OFT","OFT","JLC-1","JLC-2","BEUS-1","BEUS-2","EQP-B","EQP-N1","EQP-N2","SLE","LEU","ALS","LURS1","LURS2","ALS2","ALS3"};
-AnsiString BFI_InstrStr[] = {"OFT","QRFHE QFRFLM","OFJSQR BEUS","DR OF RFAMJI","QPCcZ RASWPE","OFT RFSURSA","IAQRFT JLC","PTS RFIFRC","PTLAI SLE",
-"D PST","QUIcRd","PTS LCJT DL","OUHFO RR","PST IASC SE","OFT eQR","RUYO QRJYAM","OF CcLM L","OF QAS","PTL LURS QAS","RUYO JINFR","OFT IW","LPR VAIc","JSTFLMP TI"};
+static AnsiString GSO_String;
+                                   //     яжеойю   йюяюмхе   опнлюу   сбнд   гюоп яа   яа-2хло   пюгп яа   гюбхя   накер   гюб йнм   опхвюк
+static AnsiString BFI_action_str1[11] = {"SXFQLA","LASAOJF","QRPNAW","UCPE","IAQR SB","SB-2JNQ","RAIR SB","IACJS","PBMFT","IAC LPO","QRJYAM"};
+
+                                   //    реяр д   реяр й   опхвюк   гюубюр   юбрняно   ямж   йспя1   йспя2
+static AnsiString BFI_action_str2[8] = {"TFST E","TFST L","QRJYAM","IAWCAT","ACTPSPQ","SOX","LURS1","LURS2"};
+
+                                   // бйк дон   бйк яйд   бйк-дон-ар   пюгбнпнр
+static AnsiString BFI_oper2str[4] = {"CLM EQP","CLM SLE","CLM EQP-BT","RAICPRPT"};
+
+                                  //  мер   хйб-1   хйб-2   адся-1   адся-2   дон-а   дон-л1   дон-л2   яйд   йдс   юйя   йспя1   йспя2   юйя2   юйя3
+static AnsiString BFI_EmerStr[16] = {"OFT","JLC-1","JLC-2","BEUS-1","BEUS-2","EQP-B","EQP-N1","EQP-N2","SLE","LEU","ALS","LURS1","LURS2","ALS2","ALS3"};
+
+                                  // мер   опефд оепейк   мехяоп адся   цп ме пеюкхг   онбшь пюяунд   мер пеяспяю   гюопер хйб   нря пегепб   нрйюг яйд
+static AnsiString BFI_InstrStr[] = {"OFT","QRFHE QFRFLM","OFJSQR BEUS","DR OF RFAMJI","QPCcZ RASWPE","OFT RFSURSA","IAQRFT JLC","PTS RFIFRC","PTLAI SLE",
+
+// ц няр   осгшпэ   нря йбхр цй   мсфем пп   няр гюяб яд   мер lоп   псвм опхвюк   ме бшйк й   мер оюя
+  "D PST","QUIcRd","PTS LCJT DL","OUHFO RR","PST IASC SE","OFT eQR","RUYO QRJYAM","OF CcLM L","OFT QAS",
+
+// нрй йспя оюя   псвм хглеп   мер гу   йнп тюгш   хярейкн рг
+  "PTL LURS QAS","RUYO JINFR","OFT IW","LPR VAIc","JSTFLMP TI"};
+
+                             //  о/ю   юбр
+static AnsiString BFI_Aut[2] = {"Q/A","ACT"};
+
+                             //  гюо юя   бпюыем   йпсц о   яейр о   оепеяр
+static AnsiString BFI_Zap[5] = {"IAQ AS","CRAZFO","LRUD Q","SFLT Q","QFRFST"};
+
+                             //   сбнд   яйд   дон   кяй   опхвюк   накер   няй
+static AnsiString BFI_Uvod[7] = {"UCPE","SLE","EQP","MSL","QRJYAM","PBMFT","PSL"};
+
+                            //     аегно   ноюямн   рнплнф   хмд пеф   аюгю юп   яябо цр   тхкэрп
+static AnsiString BFI_Bezop[7] = {"BFIPQ","PQASOP","TPRNP ","JOE RF ","BAIA AR","SSCQ DT","VJMdTR"};
 
 

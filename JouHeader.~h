@@ -1,7 +1,7 @@
 #ifndef _JOUHEADER_H_
 #define _JOUHEADER_H_
 #include "JouLogFrm.h"
-
+#include "main_header.h"
 /*
 +------------------------------------------+
 | Отправка в журнал стандартного сообщения |
@@ -21,7 +21,9 @@ zero = "";
                       JouLogForm->JouLB->Count+   // Номер
   "  ["+Now().FormatString("hh.mm.ss.zzz")+"]"+   // Local Time (PC)
                                           "  "+   // Разделитель между Lt и Ot
-                              "[00:00:00.000]"+   // Onboard (model) time from BUM
++"["+OnboardModelTime.FormatString("hh.nn.ss.zzz")+"]"+   // Onboard (model) time from BUM
+
+
                                          "   "+   // Разделитель между Ot и Inst
                                           Inst+   // Источник команды
 

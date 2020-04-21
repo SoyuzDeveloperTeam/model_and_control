@@ -94,6 +94,7 @@ object KSP_right: TKSP_right
     0000000000000000000000000000000000000000000000000000000000000000
     00000000000000000000000000000000000000000000}
   OldCreateOrder = False
+  Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
   object ksp_1: TSpeedButton

@@ -20,8 +20,10 @@
 #include <Tlhelp32.h>
 //---------------------------------------------------------------------------
 /* Заголовки */
+#include "MD_math_header.h"
 #include "main_header.h"                // Основной заголовок
 #include "JouHeader.h"                  // Заголовок для журнала
+#include "arg_jou.h"                    // Журнал Аргона
 #include "dta.cpp"                      // Данные для обмена с БУМ
 #include "md_m.h"                       // Модельные переменные
 #include "ts_header.h"                  // Переменные ТС
@@ -39,7 +41,8 @@
 #include "argon/arg_pks.cpp"            // Программы Аргона
 #include "bumconnect.cpp"               // Обмен с БУМ
 #include "neptun_main.cpp"              // Основные процедуры ПСА "Нептун-МЭ"
-#include "unity_connect.cpp"            // Обмен с Юнити 
+#include "unity_connect.cpp"            // Обмен с Юнити
+#include "inpuconnect.cpp"              // Обмен с ИнПУ
 //---------------------------------------------------------------------------
 /* Формы */
 #include "vived_frm.cpp"                // Форма Выведение (график)
@@ -114,9 +117,8 @@ bool iniread;
 int qwe;
 
 //---------------------------------------------------------------------------
-SOCKET SPSSocket_ch1;           // Сокет канала 1 СПС
-SOCKET SPSSocket_ch2;           // Сокет канала 2 СПС
-sockaddr_in clientInPU_COM2;      // Структура адреса сервера ИнПУ 1
+
+
 
 const int MAX_BUF_SIZE = 1024;
 
@@ -148,7 +150,6 @@ void __fastcall TMainForm::pusk_btnClick(TObject *Sender)
 {
 if(bum_pr){
 p_sost_from_bum->Enabled=true;
-dk_to_bum->Enabled=true;           // Разрешение отправки параметров ДК в БУМ
 start_priz = true;                 // признак запуска для бум
 SendToBum(0x00000301, 2, 1); }     //Пуск динамики - команда в БУМ ()
 PuskPr = true;                     // Вводим признак "Пуск динамики"
@@ -156,8 +157,9 @@ ModelDateTime_Timer->Enabled=true; // Запускаем таймер модельного времени (он и 
 MainTimer->Enabled=true;           // Запуск глобального обработчика команд. Разрешение КСП, УСО и т.д.
 ChekTSKD->Enabled=true;            // Обработчик операций СКД
 pusk_btn->Enabled=false;           // Блокируем кнопку "ПУСК" во избежание сбоев при повторной выдаче в динамике.
-Timer6->Enabled=true;
+//Timer6->Enabled=true;
 JPS(1,is_operator,is_miu,"Пуск моделирования","");
+arg_tst->Enabled=true;
 StatusBar->Panels->Items[0]->Text="Запущен процесс моделирования...";
 // Если этот комплект выступает в режиме сервера желательно блокировать кнопку "ПУСК" у клиентов
 // и переименовывать ее в кнопку "подключится"
@@ -230,7 +232,7 @@ PuskPr = false;
 ModelDateTime_Timer->Enabled=false;
 MainTimer->Enabled=false;
 ArgonTakt->Enabled=false;
-Timer6->Enabled=false;
+//Timer6->Enabled=false;
 pusk_btn->Enabled=true;
 JPS(1,is_operator,is_miu,"Пауза моделирования","");
 StatusBar->Panels->Items[0]->Text="Пауза процесса моделирования.";
@@ -551,20 +553,6 @@ void __fastcall TMainForm::N24Click(TObject *Sender)
 graphics->Show();
 }
 //---------------------------------------------------------------------------
-void kptg_fnu(double psi,double tet,double gam,double *c0,double *c1,double *c2,double *c3)
-{
-double sp,cp,st,ct,sg,cg;
-sp=sin(psi/2.0);
-cp=cos(psi/2.0);
-st=sin(tet/2.0);
-ct=cos(tet/2.0);
-sg=sin(gam/2.0);
-cg=cos(gam/2.0);
-*c0=cp*ct*cg-sp*st*sg;
-*c1=sp*st*cg+cp*ct*sg;
-*c2=sp*ct*cg+cp*st*sg;
-*c3=cp*st*cg-sp*ct*sg;
-}
 //-----------------------------------------------//
 // К О М А Н Д А   Н А   О Т Р А Б О Т К У   Н У //
 //-----------------------------------------------//
@@ -572,16 +560,20 @@ void __fastcall TMainForm::Button9Click(TObject *Sender)
 {
 double q_mks[4], q_tk[4];
 JPS(1,is_operator,is_miu,"Выдана команда - отработка НУ.","");
+  
   // НУ для модели КУРСа и БЦВК
   SpsSend->Enabled=true;
   i_takt = 0;
   dynamics.rs = StrToFloat(EnterNuForm->ro_init->Text);      // Дальность начальная
   dynamics.sks = StrToFloat(EnterNuForm->ro_dot_init->Text); // Скорость начальная
-  dynamics.omy = StrToFloat(EnterNuForm->Edit63->Text);      //
-  dynamics.omz = StrToFloat(EnterNuForm->Edit64->Text);      //
-  dynamics.uomy = 0;                                         //
-  dynamics.uomz = 0;                                         //
+  dynamics.modV = sqrt(dynamics.sks*dynamics.sks+dynamics.vbok*dynamics.vbok); // Модуль скорости
+  dynamics.omy = StrToFloat(EnterNuForm->Edit63->Text);      // Угловая скорость ЛВ рыскание
+  dynamics.omz = StrToFloat(EnterNuForm->Edit64->Text);      // Угловая скорость ЛВ тангаж
+  dynamics.uomy = 0;                                         // Угол начальный
+  dynamics.uomz = 0;                                         // Угол начальный
   dynamics.rasp = StrToFloat(EnterNuForm->tk_toplivo->Text); // Топливо ТПК
+  //dynamics.vbok = sqrt((dynamics.omy*dynamics.omy+dynamics.omz*dynamics.omz)*0,017453*0,017453*dynamics.rs*dynamics.rs);
+  dynamics.sks = -dynamics.sks;                              // Скорость с учетом унарного минуса
   // Set model Data and Time from NU form
   EnterNuForm->SetModelDatePicker->Time = EnterNuForm->SetModelTimePicker->Time;
   OnboardModelTime = EnterNuForm->SetModelDatePicker->Date;  // Выставляем модельное дату/время
@@ -612,18 +604,30 @@ JPS(1,is_operator,is_miu,"Выдана команда - отработка НУ.","");
   NU_temp.vel_j2000_mks[2]=StrToFloat(EnterNuForm->iss_vel_z->Text);
   // Компоненты кватерниона разворота ССК РС относительно J2000
   // Расчитывать из углов ориентации (уточнить!)
- // kptg_fnu(StrToFloat(EnterNuForm->ang_psi_iss->Text),
- //          StrToFloat(EnterNuForm->ang_thetta_iss->Text),
- //          StrToFloat(EnterNuForm->ang_gamma_iss->Text),
- //          &q_mks[0],&q_mks[2],&q_mks[3],&q_mks[4]);
-  NU_temp.Q_mks[0] =  0.9992133378982547;//ntohl(q_mks[0]);
-  NU_temp.Q_mks[1] =  0.0077055334113538;//ntohl(q_mks[1]);
-  NU_temp.Q_mks[2] = -0.0172779280692339;//ntohl(q_mks[2]);
-  NU_temp.Q_mks[3] = -0.0348548266385634;//ntohl(q_mks[3]);
+  /* double q_mksn[4];
+  double eiler_nu[3];
+  eiler_nu[0] = StrToFloat(EnterNuForm->ang_gamma_iss->Text)*GraRad;
+  eiler_nu[1] = StrToFloat(EnterNuForm->ang_psi_iss->Text)*GraRad;
+  eiler_nu[2] = StrToFloat(EnterNuForm->ang_thetta_iss->Text)*GraRad;
+  kgpt(eiler_nu[0],eiler_nu[1],eiler_nu[2],
+       &q_mks[0],&q_mks[2],&q_mks[3],&q_mksn[4]);
+       JPS(1,"Q_mks[0] = "+FloatToStr(q_mks[0]),"","","");
+       JPS(1,"Q_mks[1] = "+FloatToStr(q_mks[1]),"","","");
+       JPS(1,"Q_mks[2] = "+FloatToStr(q_mks[2]),"","","");
+       JPS(1,"Q_mks[3] = "+FloatToStr(q_mks[3]),"","","");
+  norm_q(q_mks,q_mksn);   // Нормируем
+       JPS(1,"Q_mks[0] norm = "+FloatToStr(q_mksn[0]),"","","");
+       JPS(1,"Q_mks[1] norm = "+FloatToStr(q_mksn[1]),"","","");
+       JPS(1,"Q_mks[2] norm = "+FloatToStr(q_mksn[2]),"","","");
+       JPS(1,"Q_mks[3] norm = "+FloatToStr(q_mksn[3]),"","","");  */
+  //NU_temp.Q_mks[0] =  1;
+  //NU_temp.Q_mks[1] =  0;
+  //NU_temp.Q_mks[2] =  0;
+  //NU_temp.Q_mks[3] =  0;
   // Вектор угловой скорости МКС относительно J2000 в проекциях на ССК РС
-  NU_temp.w_j2000_mks[0]=StrToFloat(EnterNuForm->w_x_iss->Text);
-  NU_temp.w_j2000_mks[1]=StrToFloat(EnterNuForm->w_y_iss->Text);
-  NU_temp.w_j2000_mks[0]=StrToFloat(EnterNuForm->w_z_iss->Text);
+  NU_temp.w_j2000_mks[0]=StrToFloat(EnterNuForm->w_x_iss->Text)*GraRad;
+  NU_temp.w_j2000_mks[1]=StrToFloat(EnterNuForm->w_y_iss->Text)*GraRad;
+  NU_temp.w_j2000_mks[0]=StrToFloat(EnterNuForm->w_z_iss->Text)*GraRad;
   // Координаты Ц.М. МКС в РС (уточнить по поводу ввода НУ)
   NU_temp.vec_mks_PC[0]=StrToFloat(EnterNuForm->cm_x_iss->Text);
   NU_temp.vec_mks_PC[1]=StrToFloat(EnterNuForm->cm_y_iss->Text);
@@ -652,14 +656,20 @@ JPS(1,is_operator,is_miu,"Выдана команда - отработка НУ.","");
   NU_temp.vel_j2000_tk[2]=StrToFloat(EnterNuForm->tk_vel_z->Text);
   // Компоненты кватерниона разворота ССК ТК относительно J2000
         // Расчитывать из углов ориентации
-  NU_temp.Q_tk[0]=0.06356357343;   // Qs
-  NU_temp.Q_tk[1]=1;   // Qx
-  NU_temp.Q_tk[2]=0.77777;   // Qy
-  NU_temp.Q_tk[3]=0;   // Qz
+  double q_tkn[4];
+  kgpt(StrToFloat(EnterNuForm->ang_psi_tk->Text),  // Формируем
+       StrToFloat(EnterNuForm->ang_thetta_tk->Text),
+       StrToFloat(EnterNuForm->ang_gamma_tk->Text),
+       &q_tk[0],&q_tk[2],&q_tk[3],&q_tk[4]);
+  norm_q(q_tk,q_tkn);   // Нормируем
+  NU_temp.Q_tk[0]= 1;   // Qs
+  NU_temp.Q_tk[1]= 0;   // Qx
+  NU_temp.Q_tk[2]= 0;   // Qy
+  NU_temp.Q_tk[3]= 0;   // Qz
   // Вектор угловой скорости ТК относительно J2000 в проекциях на ССК ТК
-  NU_temp.w_j2000_tk[0]=StrToFloat(EnterNuForm->w_x_tk->Text);
-  NU_temp.w_j2000_tk[1]=StrToFloat(EnterNuForm->w_y_tk->Text);
-  NU_temp.w_j2000_tk[0]=StrToFloat(EnterNuForm->w_z_tk->Text);
+  NU_temp.w_j2000_tk[0]=StrToFloat(EnterNuForm->w_x_tk->Text)*GraRad;
+  NU_temp.w_j2000_tk[1]=StrToFloat(EnterNuForm->w_y_tk->Text)*GraRad;
+  NU_temp.w_j2000_tk[0]=StrToFloat(EnterNuForm->w_z_tk->Text)*GraRad;
   // Координаты Ц.М. ТК в ТГК/ТПК (уточнить по поводу ввода НУ)
   NU_temp.vec_tk_TPK[0]=StrToFloat(EnterNuForm->cm_x_tk->Text);
   NU_temp.vec_tk_TPK[1]=StrToFloat(EnterNuForm->cm_y_tk->Text);
@@ -700,9 +710,9 @@ JPS(1,is_operator,is_miu,"Выдана команда - отработка НУ.","");
   if(EnterNuForm->avtsbl_pr->Checked) NU_temp.nr_sudn =ntohl(1); else
   if(EnterNuForm->roak_pr->Checked)   NU_temp.nr_sudn =ntohl(2); else
   if(EnterNuForm->rodk_pr->Checked)   NU_temp.nr_sudn =ntohl(3);
-  NU_temp.vec_solar[0] = 5555;      // Вектор на солнце в J2000 - расчитывать при отработке  (получаем в алгоритме расчета элементов)
-  NU_temp.vec_solar[1] = 5555;
-  NU_temp.vec_solar[2] = 5555;
+  NU_temp.vec_solar[0] = 0.234678763256245;      // Единичный вектор на солнце в J2000 - расчитывать при отработке  (получаем в алгоритме расчета элементов)
+  NU_temp.vec_solar[1] = -0.945676544665;
+  NU_temp.vec_solar[2] = 0.67276567569899;
 
 J[0]=NU_temp.mi_tk[0][0];
 J[1]=NU_temp.mi_tk[0][1];
@@ -728,7 +738,14 @@ SpsDataSt.TSpsParam[10] = 230.0;
 SpsDataSt.TSpsParam[19] = 7000.0;
 SpsDataSt.TSpsParam[3] = 0.0;
 
-NUotr = true; // Добавить обработку начальных условий на соответствие
+NUotr = true; // Добавить обработку начальных условий на соответствие (верефикация)
+
+// выставка начального состояния БС
+if(USO_Booled[1][2]) USO_Booled[11][9] = false; else USO_Booled[11][9]=true;
+if(USO_Booled[1][3]) USO_Booled[11][10]= false; else USO_Booled[11][10]=true;
+a2_upr = -0.037; // Ускорение в продольном канале
+a3_upr = 0.5 * 6.8 * 6.8 / (3000 - 200); // Ускорение параболы верхней границы закона
+a4_upr = 0.00395;
 
 struct{
 int i;
@@ -774,7 +791,7 @@ void __fastcall TMainForm::N25Click(TObject *Sender)
 sotr->Show();
 }
 //---------------------------------------------------------------------------
-
+u_long iMode = 1;
 void __fastcall TMainForm::inpu_com2_connectTimer(TObject *Sender)
 {
 if(!inpu_com2_connect_pr){
@@ -795,6 +812,7 @@ iResult = connect(SPSSocket_ch1, (SOCKADDR *) & clientInPU_COM2, sizeof (clientI
 inpu_com2_connect_pr=true;
 inpu_com2_connect->Enabled=false;
 JPS(4,"Процесс инициализации обмена с ИнПУ завершен успешно.","","","");
+iResult = ioctlsocket(SPSSocket_ch1, FIONBIO, &iMode);
 arg_tst->Enabled;
 inpu_status_pic->Invalidate();
 ModelStatusPicList->GetBitmap(1, inpu_status_pic->Picture->Bitmap);
@@ -898,6 +916,8 @@ Cl_blink=true;
 
 void __fastcall TMainForm::MainTimerTimer(TObject *Sender)
 {
+mass_tk_full = NU_temp.m_tk + dynamics.rasp;  // Расчет текущей массы ТК
+
 Label13->Caption=(ob_cur-onboard_dt).FormatString("hh:nn:ss");
 USO_Booled[10][7] = dpo_status_bit;
 if(USO_Booled[12][7])YzS1[0]=1;
@@ -1194,6 +1214,7 @@ KSP_Booled[6][8] = false;
 // Посылаем команду в БУМ
 //USO_Booled[0][8]=false;
 USO_Booled[3][10]=true; // Признак питание чайки
+JPS(1,is_argon,is_operator,"Организовано питание контура управления и БЦВК","");
 USO_Booled[0][1]=true;  // Наддув КДУ по питанию Чайки
 // Так же запитываем БДУС-1 и ИКВ
 }
@@ -1201,6 +1222,7 @@ USO_Booled[0][1]=true;  // Наддув КДУ по питанию Чайки
 if(KSP_Booled[6][10]) { // И11   -  ПУСК ЧАЙКИ
 KSP_Booled[6][10] = false;
 USO_Booled[3][11]=true;
+JPS(1,is_argon,is_operator,"Введена команда \"ПУСК\", запуск режима самопроверки.","");
 //     И 9                И 15
 //if(USO_Booled[3][11]&&USO_Booled[3][14])
 // Операции по пуску чайки //
@@ -1245,6 +1267,17 @@ USO_Booled[4][8]=false;
 sp_d_k = 0; // Короткая самопроверка БЦВК
 }
 
+if(KSP_Booled[8][0]) { // Л1 - РО ДК
+KSP_Booled[8][0]=false;
+USO_Booled[1][1]=true;
+dk_to_bum->Enabled=true;           // Разрешение отправки параметров ДК в БУМ
+}
+
+if(KSP_Booled[8][1]) { // Л1 - РО ДК
+KSP_Booled[8][1]=false;
+USO_Booled[1][1]=false;
+dk_to_bum->Enabled=false;           // Разрешение отправки параметров ДК в БУМ
+}
 
 if(KSP_Booled[13][0]) { // Т 1
 KSP_Booled[13][0] = false;
@@ -1257,6 +1290,8 @@ KSP_Booled[13][2] = false;
 USO_Booled[5][3]=true;
 JPS(1,"Подано питание на УКВ ПРМд","","","");
 }
+
+
 
 }
 //---------------------------------------------------------------------------
@@ -1280,16 +1315,21 @@ void __fastcall TMainForm::ArgonTaktTimer(TObject *Sender)
 {
 if(!arg_work_pr){        // Если нет признака работы Аргона (состояние самопроверки) - перенести в отдельную функцию
 // Проводим самопроверку - self_test. Если результат удвлетворительный, выставляем соответствующие признаки
+// Добавить самопроверку по каналам АБВ
    if(sp_d_k==1) {  // Если выбрана длинная самопроверка (1 минута - t), то...
+      JPS(1,is_argon,is_operator,"Проведение длинной самопроверки...","");
       if(t==300) tResult = self_test_long(); else t++; } else
    if(sp_d_k==0) {  // Если выбрана короткая самопроверка (5 секунд), то...
+      JPS(1,is_argon,is_operator,"Проведение короткой самопроверки...","");
       if(t==25)  tResult = self_test_short();else t++; }
-Label22->Caption=IntToStr(t);
+//Label22->Caption=IntToStr(t); // Тактов самопроверки 
 // По окончанию теста считываем результат - если = 0, то тест прошел удачно и тогда
 if(self_test_pr) {          // Если есть признак окончания теста
+JPS(1,is_argon,is_operator,"Самопроверка окончена. Значение tResult = "+IntToStr(tResult),"");
 if(tResult==0){             // выставляем соответствующие признаки...
    USO_Booled[11][6]=true;} // Выставляем признак БЦВК Готов на ТСЭ
 else if(!tResult==0){       // Если во время теста произошла ошибка (Result != 0), тогда
+JPS(3,is_argon,is_operator,"Самопроверка завершена с ошибкой. Значение tResult = "+IntToStr(tResult),"");
    arg_acc_handler(tResult);// Вызываем обработчик ошибок Аргона
    ArgonTakt->Enabled=false;}// Прекращаем работу БЦВК
 if(USO_Booled[11][6]){      // Если есть готовность БЦВК, то...
@@ -1300,6 +1340,7 @@ if(USO_Booled[11][6]){      // Если есть готовность БЦВК, то...
  }
  } //self_test_pr
 } else {
+i_ot_pusk++; // Счетчик тактов БЦВК
 // В СУД "Чайка-3" по началу каждого такта происходит самоконтроль (СК) - self_check
 
 //---------//
@@ -1318,6 +1359,11 @@ if(USO_Booled[11][6]){      // Если есть готовность БЦВК, то...
 // П А Р А М Е Т Р О В   Д В И Ж Е Н И Я //
 /*****************************************/
 if(i_tok==5){
+integer_n++;
+dynamics.rs0 = dynamics.rs;
+dynamics.sks0 = dynamics.sks;
+dynamics.omy0 = dynamics.omy;
+dynamics.omz0 = dynamics.omz;
 ///////////////////////////////
 //                           //
 // А. Обслуживание динамики  //
@@ -1338,9 +1384,19 @@ Panel1->Caption="НЕТ";
 Panel1->Font->Color=clYellow;
 }
 
+// Подпрограмма Контроля Расхода (КОРА)
+// Контроль расхода на сближение осуществляется только на дальнем уч-ке сбл (признак?).
+// Производим постоянное сравнивание распологаемого ресурса (R)
+// и прогнозируемого Rп расходов топлива на ориентацию ЦМ в режиме СБ
+// если R - Rп < 3,5 кг, то формируем ИН 05 "Нет ресурса для СБ" и вводим
+// признак cw_a23[0]=1; "Запрет коррекции". При этом, если по КРЛ ввести новое
+// значение уставки BR, то при превышении разности между распологаемым и прогнозируемым
+// расходами величины 14 кг запрет коррекции снимается
+
 if(dynamics.rasp < 20){
 Panel1->Caption="ДОСТИГНУТ ГО !";
 Panel1->Font->Color=clRed;
+// Так же на ИРВИ
 } else {
 Panel1->Caption="НЕТ";
 Panel1->Font->Color=clYellow;
@@ -1354,11 +1410,10 @@ Panel1->Caption="НЕТ";
 Panel1->Font->Color=clYellow;
 }
 
-/* УБРАТЬ
-
 ///////////////////////////////////
 // Расчет расхода топлива от РУД //
 ///////////////////////////////////
+//                   Линейное ускорение             Боковое по Y                   Боковое по Z
 dynamics.rudkg = abs(dynamics.ax*0.046/0.01849)+abs(dynamics.ay*0.046/0.01915)+abs(dynamics.az*0.046/0.01897);
 
 ///////////////////////////////////////////
@@ -1370,7 +1425,7 @@ dynamics.kvkg = abs(0.209 * 0.046 * dynamics.ay / 0.0383 / 0.621) + abs(0.209 * 
 /////////////////////////////////////////
 // Общий расход топлива (на вычитание) //
 /////////////////////////////////////////
-//                                         РУД             ВпБП             РУО               РУО               РУО
+//              ОБЩ.ТОПЛИВО               РУД              ВпБП            РУО               РУО               РУО
 dynamics.rasp = dynamics.rasp - (dynamics.rudkg + dynamics.kvkg + dynamics.ruokgx + dynamics.ruokgy + dynamics.ruokgz);
 
 ////////////////////////////////////////////////////
@@ -1379,21 +1434,23 @@ dynamics.rasp = dynamics.rasp - (dynamics.rudkg + dynamics.kvkg + dynamics.ruokg
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=//
 // Расчет радиальной дальности //  Версия  0.001  //
 ////////////////////////////////////////////////////
-dynamics.rs = pow((pow((dynamics.rs - ht * dynamics.sks),2) + pow((ht * dynamics.rs * 0.017453),2) *
-(dynamics.omy * dynamics.omy + dynamics.omz * dynamics.omz)),0.5);
+//                      (Дальность нулевая минус время умноженное на скорость нулевую) в квадрате плюс
+dynamics.rs = pow((pow((dynamics.rs0 - ht * dynamics.sks0),2) +
+pow((ht * dynamics.rs0 * 0.017453),2) *
+(dynamics.omy0 * dynamics.omy0 + dynamics.omz0 * dynamics.omz0)),0.5);
 
 ////////////////////////////////////////////////////
 // Расчет радиальной скорости  //  Версия  0.001  //
 ////////////////////////////////////////////////////
-dynamics.sks = ht * (dynamics.axd + dynamics.axruo - dynamics.ax) + (dynamics.rs * dynamics.sks - ht *
-(pow(dynamics.sks,2) + (pow(dynamics.omy,2) + pow(dynamics.omz,2)) * pow((0.017453 * dynamics.rs),2))) / dynamics.rs;
+dynamics.sks = ht * (dynamics.axd + dynamics.axruo - dynamics.ax) + (dynamics.rs0 * dynamics.sks0 - ht *
+(pow(dynamics.sks0,2) + (pow(dynamics.omy,2) + pow(dynamics.omz,2)) * pow((0.017453 * dynamics.rs0),2))) / dynamics.rs;
 
 ///////////////////////////////////////////////
 // Расчет угловой скорости линии визирования //
 // по горизонтали (ось OY) и по тангажу (OZ) //
 ///////////////////////////////////////////////
-dynamics.omy = dynamics.omy * pow((dynamics.rs / dynamics.rs),2) + 57.3 * dynamics.az / dynamics.rs;
-dynamics.omz = dynamics.omz * pow((dynamics.rs / dynamics.rs),2) + 57.3 * dynamics.ay / dynamics.rs;
+dynamics.omy = dynamics.omy0 * pow((dynamics.rs0 / dynamics.rs),2) + 57.3 * dynamics.az / dynamics.rs;
+dynamics.omz = dynamics.omz0 * pow((dynamics.rs0 / dynamics.rs),2) + 57.3 * dynamics.ay / dynamics.rs;
 
 dynamics.omyf = (dynamics.omy * cos(dynamics.uomx * 0.017454) + dynamics.omz * sin(dynamics.uomx * 0.017454));
 dynamics.omzf = (dynamics.omz * cos(dynamics.uomx * 0.017454) - dynamics.omy * sin(dynamics.uomx * 0.017454));
@@ -1407,9 +1464,20 @@ dynamics.axd = abs(dynamics.ay * 0.157959) + abs(dynamics.az * 0.157924) + abs(d
 ////////////////////
 // Расчет промаха //
 ////////////////////
+//                (Омега Z * Ро)*(Омега Z * Ро)  *   ???    /  Вектор скорости
 dynamics.ypr = pow(dynamics.omz * dynamics.rs,2) * 0.017453 / dynamics.V;   //  Sy
 dynamics.zpr = pow(dynamics.omy * dynamics.rs,2) * 0.017453 / dynamics.V;   //  Sz
 dynamics.Spr = dynamics.rs * dynamics.vb / dynamics.V;                      //  S
+
+//Линейный промах = dynamics.rs/sqrt(pow(dynamics.sks/,2)+1)
+
+////////////////////////////
+// Расчет времени пролета //
+////////////////////////////
+
+t_prolet[0] = ceil(dynamics.rs * abs(dynamics.sks)/pow(dynamics.V,2));
+t_prolet[1] = t_prolet[0]/86400;
+
 
 //////////////////////////////
 // Расчет боковых скоростей //
@@ -1432,7 +1500,6 @@ dynamics.uomx = dynamics.uomx + dynamics.Ex;                             // угол
 //   дальности по прогнозу   //
 ///////////////////////////////
 
-УБРАТЬ */ 
 
 //*//*//*//*//*//*//*//*//*//*//*//*//*//*//*
 
@@ -1450,7 +1517,7 @@ if(argon_auto_contr){
 }
 
 //*//*//*//*//*//*//*//*//*//*//*//*//*//*//*//*
-
+i_tok = 0;
 } else i_tok++; // Что бы интегрирование было с шагом в секунду
 
 if(cw_b1[12]) USO_Booled[12][7]=1; else USO_Booled[12][7]=0;
@@ -1462,6 +1529,17 @@ if(YzS1[0]&&YzS1[1]==0){ // Если есть заявка на "Присваивание"
  YzS1[1]=1;
 }
 }
+
+/////////////////////////////  USO_Booled[1][15] КУРС1
+//*************************//  USO_Booled[2][0]  КУРС2
+//** РАБОТА С РТС "КУРС" **//
+//*************************//
+/////////////////////////////
+// if(Время бортовое > Т1)
+// if(заявка на программу КУРС) (в любом месте?)
+// формируем признак cw_b6[6]=1; и выдаем команду на (USO_Booled[2][0]=true; КУРС2) включение невыбранного
+// комплекта КУРС, а так же в систему КУРС выдаем команду "вращение"
+// на БФИ "КУРС2" "ВРАЩЕН"
 
 vill_test=1;
 // Start integer if I9 and I11 = true
@@ -1702,8 +1780,9 @@ PuskPr = false;
 ModelDateTime_Timer->Enabled=false;
 MainTimer->Enabled=false;
 ArgonTakt->Enabled=false;
-Timer6->Enabled=false;
+//Timer6->Enabled=false;
 pusk_btn->Enabled=true;
+arg_tst->Enabled=false;
 JPS(1,is_operator,is_miu,"Стоп моделирования","");
 StatusBar->Panels->Items[0]->Text="Процесс моделирования остановлен.";
 }
@@ -1772,4 +1851,63 @@ unity_arr.signature=0xD8A73F93;
 un_serv->Bindings->Items[0]->Send((char *)&unity_arr,sizeof(&unity_arr),0);
 }
 //---------------------------------------------------------------------------
+
+void __fastcall TMainForm::Button17Click(TObject *Sender)
+{
+double ver_vec_iss, ver_vel_iss, ver_vec_tk, ver_vel_tk;
+double vz_d, vz_s;
+double ver_v2tk[3], ver_v2iss[3], v3_o_iss, v3_o_tk ;
+ver_vec_iss = sqrt(NU_temp.vec_j2000_mks[0]*NU_temp.vec_j2000_mks[0] +
+NU_temp.vec_j2000_mks[1]*NU_temp.vec_j2000_mks[1] +
+NU_temp.vec_j2000_mks[2]*NU_temp.vec_j2000_mks[2]);
+JPS(1,"Результат нормировки вектора положения МКС: "+FloatToStr(ver_vec_iss),"","","");
+ver_vel_iss = sqrt(pow(NU_temp.vel_j2000_mks[0],2) +
+pow(NU_temp.vel_j2000_mks[1],2) +
+pow(NU_temp.vel_j2000_mks[2],2));
+JPS(1,"Результат нормировки вектора скорости МКС: "+FloatToStr(ver_vel_iss),"","","");
+ver_vec_tk = sqrt(NU_temp.vec_j2000_tk[0]*NU_temp.vec_j2000_tk[0] +
+NU_temp.vec_j2000_tk[1]*NU_temp.vec_j2000_tk[1] +
+NU_temp.vec_j2000_tk[2]*NU_temp.vec_j2000_tk[2]);
+JPS(1,"Результат нормировки вектора положения ТК: "+FloatToStr(ver_vec_tk),"","","");
+ver_vel_tk = sqrt(NU_temp.vel_j2000_tk[0]*NU_temp.vel_j2000_tk[0] +
+NU_temp.vel_j2000_tk[1]*NU_temp.vel_j2000_tk[1] +
+NU_temp.vel_j2000_tk[2]*NU_temp.vel_j2000_tk[2]);
+JPS(1,"Результат нормировки вектора скорости ТК: "+FloatToStr(ver_vel_tk),"","","");
+vz_d = ver_vec_iss - ver_vec_tk;
+JPS(1,"Расстояние: "+FloatToStr(vz_d)," м","","");
+vz_s = ver_vel_iss - ver_vel_tk;
+JPS(1,"Скорость взаимная: "+FloatToStr(vz_s)," м/с","","");
+ver_v2iss[0]=NU_temp.vec_j2000_mks[0]*NU_temp.vel_j2000_mks[0];
+ver_v2iss[1]=NU_temp.vec_j2000_mks[1]*NU_temp.vel_j2000_mks[1];
+ver_v2iss[2]=NU_temp.vec_j2000_mks[2]*NU_temp.vel_j2000_mks[2];
+ver_v2tk[0]=NU_temp.vec_j2000_tk[0]*NU_temp.vel_j2000_tk[0];
+ver_v2tk[1]=NU_temp.vec_j2000_tk[1]*NU_temp.vel_j2000_tk[1];
+ver_v2tk[2]=NU_temp.vec_j2000_tk[2]*NU_temp.vel_j2000_tk[2];
+v3_o_iss=sqrt(ver_v2iss[0]*ver_v2iss[0]+ver_v2iss[1]*ver_v2iss[1]+ver_v2iss[2]*ver_v2iss[2]);
+JPS(1,"Результат нормировки вектора П: "+FloatToStr(v3_o_iss),"","","");
+if((ver_vec_iss<1000)||(ver_vel_iss<1000)||(ver_vec_tk<1000)||(ver_vel_tk<1000))
+JPS(3,"Верификация параметра НУ не пройдена!","","",""); else
+JPS(2,"Верификация параметра НУ пройдена!","","","");
+}
+//---------------------------------------------------------------------------
+
+
+
+TPacketHeader PH;
+
+void __fastcall TMainForm::InpuRecvTimer(TObject *Sender)
+{
+if(inpu_com2_connect_pr){
+nResult = recv(SPSSocket_ch1,(char *)&PH,12, 0);
+if(PH.Signature==0x71AF5D13){
+ if(PH.PacketID==8)
+ if(PH.PacketID==3) JPS(1,is_inpu1,is_miu,"Получен статусный пакет ","");
+ if(PH.PacketID==4) { JPS(1,is_inpu1,is_miu,"Получен контрольный пакет "+IntToStr(PH.CodeType),"");
+        if(PH.CodeType==9)JPS(1,is_operator,is_inpu1,"Команда КСП     "+IntToStr(PH.DataType1)," "+IntToStr(PH.DataType2));
+        KSP_Booled[PH.DataType1][PH.DataType2-1]=true;
+ }
+}}
+}
+//---------------------------------------------------------------------------
+
 

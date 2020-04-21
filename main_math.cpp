@@ -22,7 +22,7 @@ else  return(fabs(x1)*(-1.0));
 /* +----------------------------------------------------+
    |  Âû÷èñëåíèå êâàòåðíèîíà ïî óãëàì gam,psi,tet       |
    +----------------------------------------------------+ */
-   //           ÊÐÅÍ   ÐÛÑÊÀÍÈÅ     ÒÀÍÃÀÆ
+   //            ÊÐÅÍ       ÐÛÑÊÀÍÈÅ   ÒÀÍÃÀÆ
 void kgpt(double gam,double psi,double tet,double *c0,double *c1,double *c2,double *c3)
 {
 double sp,cp,st,ct,sg,cg;
@@ -73,6 +73,32 @@ else
   *gam11=atan2(-alf*a[2][1],alf*a[2][2]);
   *tet11=atan2(-alf*a[1][0],alf*a[0][0]);
  }
+}
+
+// Íîðìàëèçàöèÿ êâàòåðíèîíîâ
+void norm_q(double q_in[4], double q_ot[4]){
+double n = sqrt(q_in[1]*q_in[1]+q_in[2]*q_in[2]+q_in[3]*q_in[3]+q_in[0]*q_in[0]);
+q_ot[0] /= n;
+q_ot[1] /= n;
+q_ot[2] /= n;
+q_ot[3] /= n;
+}
+
+void qtr2eil (double q[4], double eiler[3]){
+ // Roll (x-axis rotation)
+ double sinr_cosp = 2 * (q[0] * q[1] + q[2] * q[3]);
+ double cosr_cosp = 1 - 2 * (q[0] * q[0] + q[1] * q[1]);
+ eiler[0] = atan2(sinr_cosp, cosr_cosp);
+
+ // Pitch (y-axis rotation)
+ double sinp = 2 * (q[0] * q[1] - q[2] * q[3]);
+//                               ÍÅÒÓ
+// if(abs(sinp)>=1) eiler[1] = copysign(M_PI/2,sinp); else eiler[1] = asin(sinp);
+
+ // yaw (z-axis rotation)
+ double siny_cosp = 2 * (q[0] * q[1] + q[2] * q[3]);
+ double cosy_cosp = 1 - 2 * (q[2] * q[2] + q[3] * q[3]);
+ eiler[2] = atan2(siny_cosp, cosy_cosp);
 }
 
 

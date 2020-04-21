@@ -48,6 +48,7 @@ Label29->Caption=FormatFloat("00.000",dynamics.vby);
 Label28->Caption=FormatFloat("00.000",dynamics.vbz);
  Label9->Caption=FormatFloat("00.000",dynamics.uomz);
 Label10->Caption=FormatFloat("00.000",dynamics.uomy);
+t_pr->Caption=IntToStr(t_prolet[1]);
 }
 //---------------------------------------------------------------------------
 void __fastcall TInstructorFormat_FRM::Image4Click(TObject *Sender)
@@ -80,8 +81,7 @@ dynamics.ay = 0;
 
 void __fastcall TInstructorFormat_FRM::Image11MouseDown(TObject *Sender,
       TMouseButton Button, TShiftState Shift, int X, int Y)
-{
-//Левая стрелка РУД (Перемещение влево ДПо №21 №22)
+{ //Левая стрелка РУД (Перемещение влево ДПо №21 №22)
 dpo_status_bit = 1;
 dynamics.az = 2 * 0.01897;
 
@@ -90,7 +90,7 @@ dynamics.az = 2 * 0.01897;
 
 void __fastcall TInstructorFormat_FRM::Image11MouseUp(TObject *Sender,
       TMouseButton Button, TShiftState Shift, int X, int Y)
-{
+{ //Левая стрелка РУД отпущенна
 dpo_status_bit = 0;
 dynamics.az = 0;
 }
@@ -98,25 +98,25 @@ dynamics.az = 0;
 
 void __fastcall TInstructorFormat_FRM::Image10MouseDown(TObject *Sender,
       TMouseButton Button, TShiftState Shift, int X, int Y)
-{
-// Разгон (крест - ДПО №14, №16)
+{ // Разгон (крест - ДПО №14, №16)
 dynamics.ax = -0.018 * 2;    // На увеличение скорости
 dpo_status_bit = 1;
+dpo_v_pr[14,16]=1;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TInstructorFormat_FRM::Image10MouseUp(TObject *Sender,
       TMouseButton Button, TShiftState Shift, int X, int Y)
-{
-dynamics.ax = 0;    // На увеличение скорости
+{ // Тумблер на разгнон отпущен
+dynamics.ax = 0;
 dpo_status_bit = 0;
+dpo_v_pr[14,16]=0;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TInstructorFormat_FRM::Image9MouseDown(TObject *Sender,
       TMouseButton Button, TShiftState Shift, int X, int Y)
-{
-//Торможение (Дпо №17, №18)
+{ //Торможение (Дпо №17, №18)
 dynamics.ax = 2 * 0.01849;
 dpo_status_bit=1;
 }
@@ -226,5 +226,6 @@ dpo_status_bit = 0;
 dynamics.Ey = 0;
 }
 //---------------------------------------------------------------------------
+
 
 

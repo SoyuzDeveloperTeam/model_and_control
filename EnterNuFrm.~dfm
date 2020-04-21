@@ -1,6 +1,6 @@
 object EnterNuForm: TEnterNuForm
-  Left = 983
-  Top = 199
+  Left = 375
+  Top = 31
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1042#1074#1086#1076' '#1053#1091
@@ -71,9 +71,9 @@ object EnterNuForm: TEnterNuForm
     Top = 0
     Width = 507
     Height = 641
-    ActivePage = ParAndOr
+    ActivePage = complex_tab
     Align = alTop
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 0
     object complex_tab: TTabSheet
       Caption = #1050#1086#1084#1087#1083#1077#1082#1089#1085#1099#1081
@@ -90,6 +90,13 @@ object EnterNuForm: TEnterNuForm
         Width = 11
         Height = 13
         Caption = #1082#1075
+      end
+      object Label110: TLabel
+        Left = 184
+        Top = 451
+        Width = 99
+        Height = 13
+        Caption = #1050#1086#1085#1092#1080#1075#1091#1088#1072#1094#1080#1103' '#1052#1050#1057
       end
       object CharTK: TGroupBox
         Left = 16
@@ -922,6 +929,19 @@ object EnterNuForm: TEnterNuForm
           TabOrder = 1
           Text = '0'
         end
+      end
+      object iss_config: TComboBox
+        Left = 184
+        Top = 468
+        Width = 153
+        Height = 22
+        Style = csOwnerDrawFixed
+        ItemHeight = 16
+        ItemIndex = 0
+        TabOrder = 7
+        Text = '12A'
+        Items.Strings = (
+          '12A')
       end
     end
     object orbitpar_tab: TTabSheet

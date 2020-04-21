@@ -1,6 +1,6 @@
 object liftoff_form: Tliftoff_form
-  Left = -7
-  Top = 134
+  Left = 451
+  Top = 225
   Width = 1036
   Height = 601
   Caption = 'liftoff_form'

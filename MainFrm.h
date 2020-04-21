@@ -58,7 +58,6 @@ __published:	// IDE-managed Components
         TLabel *Label2;
         TLabel *Label3;
         TImage *argon_status_pic;
-        TTimer *Timer3;
         TMenuItem *LAPTOP1;
         TMenuItem *N17;
         TMenuItem *N18;
@@ -67,7 +66,6 @@ __published:	// IDE-managed Components
         TMenuItem *N21;
         TTimer *LocalTimeTimer;
         TGroupBox *GroupBox5;
-        TTimer *SocketTeleConnect;
         TGroupBox *GroupBox6;
         TLabel *LocalTime;
         TLabel *Label5;
@@ -84,7 +82,6 @@ __published:	// IDE-managed Components
         TMenuItem *N25;
         TTimer *inpu_com2_connect;
         TMemo *Memo1;
-        TTimer *Timer4;
         TPanel *CO_light;
         TTimer *CentralLightBlink;
         TTimer *MainTimer;
@@ -107,8 +104,6 @@ __published:	// IDE-managed Components
         TLabel *Label4;
         TMenuItem *N29;
         TMenuItem *N30;
-        TLabel *Label21;
-        TLabel *Label22;
         TGroupBox *GroupBox10;
         TRadioButton *RadioButton1;
         TRadioButton *RadioButton2;
@@ -123,7 +118,6 @@ __published:	// IDE-managed Components
         TMenuItem *N161;
         TMenuItem *N35;
         TTimer *p_sost_from_bum;
-        TTimer *Timer6;
         TGroupBox *GroupBox3;
         TCheckBox *sps_model;
         TButton *init_;
@@ -171,6 +165,8 @@ __published:	// IDE-managed Components
         TTimer *unity_s_h;
         TIdTCPServer *un_serv;
         TButton *Button14;
+        TButton *Button17;
+        TTimer *InpuRecv;
         void __fastcall pusk_btnClick(TObject *Sender);
         void __fastcall N3Click(TObject *Sender);
         void __fastcall N14Click(TObject *Sender);
@@ -234,6 +230,8 @@ __published:	// IDE-managed Components
         void __fastcall un_servConnect(TIdPeerThread *AThread);
         void __fastcall un_servDisconnect(TIdPeerThread *AThread);
         void __fastcall Button14Click(TObject *Sender);
+        void __fastcall Button17Click(TObject *Sender);
+        void __fastcall InpuRecvTimer(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TMainForm(TComponent* Owner);

@@ -1,12 +1,13 @@
 object arg_deb: Targ_deb
-  Left = 934
-  Top = 364
+  Left = 844
+  Top = 103
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1054#1090#1083#1072#1076#1082#1072' '#1040#1088#1075#1086#1085'-16'
   ClientHeight = 529
   ClientWidth = 945
   Color = clBtnFace
+  DefaultMonitor = dmDesktop
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -5999,6 +6000,7 @@ object arg_deb: Targ_deb
     8001000000010000000000000000000000000000000000000000000080000000
     F07F0000}
   OldCreateOrder = False
+  Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
   object Label3: TLabel
@@ -6039,6 +6041,20 @@ object arg_deb: Targ_deb
     Font.Name = 'Consolas'
     Font.Style = []
     ParentFont = False
+  end
+  object Label6: TLabel
+    Left = 456
+    Top = 40
+    Width = 32
+    Height = 13
+    Caption = 'Label6'
+  end
+  object Label7: TLabel
+    Left = 456
+    Top = 56
+    Width = 32
+    Height = 13
+    Caption = 'Label7'
   end
   object GroupBox8: TGroupBox
     Left = 8
@@ -6175,7 +6191,7 @@ object arg_deb: Targ_deb
     Height = 129
     Caption = #1046#1091#1088#1085#1072#1083' '#1041#1062#1042#1050
     TabOrder = 2
-    object ListBox1: TListBox
+    object ArgonJou: TListBox
       Left = 8
       Top = 24
       Width = 577
@@ -6464,7 +6480,7 @@ object arg_deb: Targ_deb
     Top = 88
   end
   object argon_dt: TTimer
-    Interval = 200
+    Interval = 100
     OnTimer = argon_dtTimer
     Left = 560
     Top = 112

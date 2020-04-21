@@ -8,8 +8,21 @@ static int tResult;
 
 static double ArgonMemoryType[4096];
 
+TDateTime arg_T0;
+
+static double mass_tk_full; // Текущая общая масса ТК
+
 static bool dpo_v_pr[29]; // Признак выбранных в работу ДПО (счёт с 1) // DPO flags
 static bool subk_pr[1000];// SUBK flags // Признаки СУБК
+
+// Переменные для БФИ
+static byte av_pav_pr;    // Признак "Полуавтомат"(1) "Автомат"(2) ""(0)
+static byte kurs_zap_t;   // Курс часть 1
+static byte bezop_bfi;    //
+
+static int integer_n;
+
+static double a1_upr, a2_upr, a3_upr, a4_upr;
 
 static struct {
 byte mode;
@@ -40,10 +53,13 @@ double axd;
 double axruo;
 
 double rs;   // Дальность радиальная
+double rs0;
 double sks;  // Скорость радиальная
+double sks0;
 
-double V;
-double vb;
+double V;    // Ускорение линейное (вектор)
+double modV; // Модель V (расчет во время отработки НУ - const)
+double vb;   // Модель боковой скорости
 double vby, vbz;
 double om;
 
@@ -51,7 +67,9 @@ double omyx; // Угловая скорость ЛВ по горизонтали (ось ОУ) Ex
 double omzx; // Угловая скорость по тангажу (Ось OZ) Ez
 double omx;  // Угловая скорость вращения вокруг оси ОХ
 double omy;  // Угловая скорость ЛВ по горизонтали (ось ОУ)
+double omy0;
 double omz;  // Угловая скорость по тангажу (ось OZ)
+double omz0;
 double omyf; //
 double omzf; //
 double uomx; //
@@ -95,7 +113,9 @@ bool dpo_x;
 
 static bool dpo_status_bit;
 
-static byte ht = 1;
+static int t_prolet[4];    // Время пролета
+
+static byte ht = 1;     // Время (секунды от начала режима)
 
 static int i, j, K, k, t;  // Такты БЦВК
 static long i_ot_pusk;  // Такты БЦКВ от Пуска

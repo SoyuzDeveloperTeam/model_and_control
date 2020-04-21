@@ -2085,93 +2085,93 @@ T17_LABEL->Font->Color=clBlack;  } else {
 T17_LABEL->Color=clGreen;
 T17_LABEL->Font->Color=clYellow; }
 
-if(USO_Booled[4][0]){  // KSP Ó1
+if(USO_Booled[8][0]){  // KSP Ó1
 U1_LABEL->Color=clLime;
 U1_LABEL->Font->Color=clBlack;  } else {
 U1_LABEL->Color=clGreen;
 U1_LABEL->Font->Color=clYellow; }
-if(USO_Booled[4][1]){  // KSP Ó3
+if(USO_Booled[8][1]){  // KSP Ó3
 U3_LABEL->Color=clLime;
 U3_LABEL->Font->Color=clBlack;  } else {
 U3_LABEL->Color=clGreen;
 U3_LABEL->Font->Color=clYellow; }
-if(USO_Booled[4][2]){  // KSP Ó5
+if(USO_Booled[8][2]){  // KSP Ó5
 U5_LABEL->Color=clLime;
 U5_LABEL->Font->Color=clBlack;  } else {
 U5_LABEL->Color=clGreen;
 U5_LABEL->Font->Color=clYellow; }
-if(USO_Booled[4][3]){  // KSP Ó7
+if(USO_Booled[8][3]){  // KSP Ó7
 U7_LABEL->Color=clLime;
 U7_LABEL->Font->Color=clBlack;  } else {
 U7_LABEL->Color=clGreen;
 U7_LABEL->Font->Color=clYellow; }
-if(USO_Booled[4][4]){  // KSP Ó9
+if(USO_Booled[8][4]){  // KSP Ó9
 U9_LABEL->Color=clLime;
 U9_LABEL->Font->Color=clBlack;  } else {
 U9_LABEL->Color=clGreen;
 U9_LABEL->Font->Color=clYellow; }
-if(USO_Booled[4][5]){  // KSP Ó11
+if(USO_Booled[8][5]){  // KSP Ó11
 U11_LABEL->Color=clLime;
 U11_LABEL->Font->Color=clBlack;  } else {
 U11_LABEL->Color=clGreen;
 U11_LABEL->Font->Color=clYellow; }
-if(USO_Booled[4][6]){  // KSP Ó13
+if(USO_Booled[8][6]){  // KSP Ó13
 U13_LABEL->Color=clLime;
 U13_LABEL->Font->Color=clBlack;  } else {
 U13_LABEL->Color=clGreen;
 U13_LABEL->Font->Color=clYellow; }
-if(USO_Booled[4][7]){  // KSP Ó15
+if(USO_Booled[8][7]){  // KSP Ó15
 U15_LABEL->Color=clLime;
 U15_LABEL->Font->Color=clBlack;  } else {
 U15_LABEL->Color=clGreen;
 U15_LABEL->Font->Color=clYellow; }
-if(USO_Booled[4][8]){  // KSP Ó17
+if(USO_Booled[8][8]){  // KSP Ó17
 U17_LABEL->Color=clLime;
 U17_LABEL->Font->Color=clBlack;  } else {
 U17_LABEL->Color=clGreen;
 U17_LABEL->Font->Color=clYellow; }
 
-if(USO_Booled[1][1]){  // KSP Ô1
+if(USO_Booled[8][9]){  // KSP Ô1
 F1_LABEL->Color=clLime;
 F1_LABEL->Font->Color=clBlack;  } else {
 F1_LABEL->Color=clGreen;
 F1_LABEL->Font->Color=clYellow; }
-if(USO_Booled[4][10]){ // KSP Ô3
+if(USO_Booled[8][10]){ // KSP Ô3
 F3_LABEL->Color=clLime;
 F3_LABEL->Font->Color=clBlack;  } else {
 F3_LABEL->Color=clGreen;
 F3_LABEL->Font->Color=clYellow; }
-if(USO_Booled[4][11]){ // KSP Ô5
+if(USO_Booled[8][11]){ // KSP Ô5
 F5_LABEL->Color=clLime;
 F5_LABEL->Font->Color=clBlack;  } else {
 F5_LABEL->Color=clGreen;
 F5_LABEL->Font->Color=clYellow; }
-if(USO_Booled[4][12]){  // KSP Ô7
+if(USO_Booled[8][12]){  // KSP Ô7
 F7_LABEL->Color=clLime;
 F7_LABEL->Font->Color=clBlack;  } else {
 F7_LABEL->Color=clGreen;
 F7_LABEL->Font->Color=clYellow; }
-if(USO_Booled[4][13]){  // KSP Ô9
+if(USO_Booled[8][13]){  // KSP Ô9
 F9_LABEL->Color=clLime;
 F9_LABEL->Font->Color=clBlack;  } else {
 F9_LABEL->Color=clGreen;
 F9_LABEL->Font->Color=clYellow; }
-if(USO_Booled[4][14]){  // KSP Ô11
+if(USO_Booled[8][14]){  // KSP Ô11
 F11_LABEL->Color=clLime;
 F11_LABEL->Font->Color=clBlack;  } else {
 F11_LABEL->Color=clGreen;
 F11_LABEL->Font->Color=clYellow; }
-if(USO_Booled[4][15]){  // KSP Ô13
+if(USO_Booled[8][15]){  // KSP Ô13
 F13_LABEL->Color=clLime;
 F13_LABEL->Font->Color=clBlack;  } else {
 F13_LABEL->Color=clGreen;
 F13_LABEL->Font->Color=clYellow; }
-if(USO_Booled[5][0]){  // KSP Ô15
+if(USO_Booled[9][0]){  // KSP Ô15
 F15_LABEL->Color=clLime;
 F15_LABEL->Font->Color=clBlack;  } else {
 F15_LABEL->Color=clGreen;
 F15_LABEL->Font->Color=clYellow; }
-if(USO_Booled[5][1]){  // KSP Ô17
+if(USO_Booled[9][1]){  // KSP Ô17
 F17_LABEL->Color=clLime;
 F17_LABEL->Font->Color=clBlack;  } else {
 F17_LABEL->Color=clGreen;

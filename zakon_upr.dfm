@@ -1,8 +1,8 @@
 object zakon_upr_frm: Tzakon_upr_frm
-  Left = 278
-  Top = 452
-  Width = 913
-  Height = 492
+  Left = 435
+  Top = 539
+  Width = 920
+  Height = 491
   Caption = #1047#1072#1082#1086#1085' '#1091#1087#1088#1072#1074#1083#1077#1085#1080#1103
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,8 +19,8 @@ object zakon_upr_frm: Tzakon_upr_frm
   object zakon_uprav: TChart
     Left = 0
     Top = 0
-    Width = 897
-    Height = 433
+    Width = 904
+    Height = 432
     AllowPanning = pmNone
     AllowZoom = False
     BackWall.Brush.Color = clWhite
@@ -295,10 +295,35 @@ object zakon_upr_frm: Tzakon_upr_frm
       YValues.Multiplier = 1
       YValues.Order = loNone
     end
+    object Series10: TFastLineSeries
+      Marks.Arrow.Visible = False
+      Marks.ArrowLength = 8
+      Marks.BackColor = 4194304
+      Marks.Clip = True
+      Marks.Font.Charset = RUSSIAN_CHARSET
+      Marks.Font.Color = clAqua
+      Marks.Font.Height = -12
+      Marks.Font.Name = 'Consolas'
+      Marks.Font.Style = []
+      Marks.Frame.Visible = False
+      Marks.Style = smsXValue
+      Marks.Visible = True
+      SeriesColor = clWhite
+      Title = 'AxisX'
+      LinePen.Color = clWhite
+      LinePen.Width = 2
+      XValues.DateTime = False
+      XValues.Name = 'X'
+      XValues.Multiplier = 1
+      XValues.Order = loAscending
+      YValues.DateTime = False
+      YValues.Name = 'Y'
+      YValues.Multiplier = 1
+      YValues.Order = loNone
+    end
   end
   object MainMenu1: TMainMenu
-    Left = 872
-    Top = 400
+    Left = 32
     object N1: TMenuItem
       Caption = #1052#1072#1089#1096#1090#1072#1073
       object N3001: TMenuItem
@@ -331,9 +356,6 @@ object zakon_upr_frm: Tzakon_upr_frm
     end
   end
   object Timer1: TTimer
-    Enabled = False
     OnTimer = Timer1Timer
-    Left = 840
-    Top = 400
   end
 end

@@ -1,16 +1,18 @@
 object liftoff_form: Tliftoff_form
   Left = 451
   Top = 225
-  Width = 1036
-  Height = 601
-  Caption = 'liftoff_form'
+  Width = 905
+  Height = 477
+  Caption = #1042#1099#1074#1077#1076#1077#1085#1080#1077
   Color = clBtnFace
+  DefaultMonitor = dmDesktop
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
