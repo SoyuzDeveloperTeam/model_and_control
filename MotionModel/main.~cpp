@@ -67,7 +67,15 @@ ModelDTime  = dtd->DateTime;
 Jou("Выставленно модельное время. Дата "+ModelDTime.FormatString("dd.mm.yyyy"));
 //TransDatetoJD(23, 07, 2005, JDate);
 JulDate = DateTimeToJulianDate(ModelDTime);
+double JDJ2K = DayFromJD(JulDate);
 Jou("Результат перевода в Юлианскую Дату - "+FloatToStr(JulDate));
+Jou("Прошло с J2000 - "+FloatToStr(JDJ2K));
+double Lsun = SredDolVosSun(JDJ2K);
+Jou("Средняя долгота Солнца - "+FloatToStr(Lsun));
+double SA = Srenanom(JDJ2K);
+Jou("Средняя аномаляи - "+FloatToStr(SA));
+double Ecl = eclipticdolg(Lsun,SA);
+Jou("Эклептичность - "+FloatToStr(Ecl));
 kd[0] = StrToFloat(Edit1->Text);
 kd[1] = StrToFloat(Edit2->Text);
 kd[2] = StrToFloat(Edit3->Text);
@@ -75,7 +83,7 @@ kd[3] = StrToFloat(Edit4->Text);
 kd[4] = StrToFloat(Edit5->Text);
 kd[5] = StrToFloat(Edit6->Text);
 Jou("Расчет вектора состояния по НУ");
-KeplXV(kd[0],kd[1],kd[2],kd[3],kd[4],kd[5],vecvel);
+//KeplXV(kd[0],kd[1],kd[2],kd[3],kd[4],kd[5],vecvel);
 v_pol[0] = vecvel[0];
 v_pol[1] = vecvel[1];
 v_pol[2] = vecvel[2];
@@ -88,13 +96,42 @@ Label6->Caption=FormatFloat("0.0",v_pol[2]);
 Label10->Caption=FormatFloat("0.0",v_vel[0]);
 Label11->Caption=FormatFloat("0.0",v_vel[1]);
 Label12->Caption=FormatFloat("0.0",v_vel[2]);
-Label16->Caption=FormatFloat("000.0000",attitude(v_vel));
+//Label16->Caption=FormatFloat("000.0000",attitude(v_vel));
 Jou("Нормировка ВС");
 // Нормируем
 Jou("Вычисляем единичный векор на Солнце в J2000.0");
 double vosh, skl;
 vosh = StrToFloat(Edit7->Text)*GraRad;
 skl  = StrToFloat(Edit8->Text)*GraRad;
-sun(JulDate,ed_v_sun,*vosh,*skl);
+//sun(JulDate,ed_v_sun,*vosh,*skl);
+}
+int i;
+//---------------------------------------------------------------------------
+void __fastcall TForm1::md_cTimer(TObject *Sender)
+{
+
+////////////////////
+//  SOYUZ - TMA   //
+// MOTION   MODEL //
+////////////////////
+// 1.1. Calc current date/time
+time->Caption=ModelDTime.FormatString("hh:nn:ss.zzz"); // Выводим на форму
+double dt = DateTimeToJulianDate(ModelDTime);          // Союздаем юлианскую дату/время
+Label32->Caption=FormatFloat("000000.00000",dt);       // Выводим на форму
 }
 //---------------------------------------------------------------------------
+
+void __fastcall TForm1::start_integerClick(TObject *Sender)
+{
+md_c->Enabled=true;
+time_f->Enabled=true;
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::time_fTimer(TObject *Sender)
+{
+ModelDTime = ModelDTime + StrToTime("00:00:01");       // Прибавляем к начальному модельному времени шаг интегрирования
+}
+//---------------------------------------------------------------------------
+

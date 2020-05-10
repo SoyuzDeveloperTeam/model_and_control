@@ -67,10 +67,11 @@
 #include "SOTR_frm.cpp"                 // Форма СОТР
 #include "InstructorFormat_Form.cpp"    // Форма инструкторского формата
 #include "vku_graph.cpp"                // Форма ВКУ графиком
-#include "iss_per_tp.cpp"               // Переход МКС в ТП
+#include "iss_per_tp.cpp"               // Форма Переход МКС в ТП
 #include "argon_debug_frm.cpp"          // Форма отладки Аргона
 #include "debug_bum_frm.cpp"            // Форма отладки обмена с БУМ
 #include "otkazy.cpp"                   // Форма "Отказ Бортоввых Систем"
+#include "neptun.cpp"                     // Форма ПСА "Нептун-МЭ" -  ИнПУ1
 // Форматы Laptop РС МКС (СМ)
 #include "sm_ssvp_PX.cpp"               // Формат СМ:ССВП:+Х
 //---------------------------------------------------------------------------
@@ -1903,11 +1904,23 @@ if(PH.Signature==0x71AF5D13){
  if(PH.PacketID==8)
  if(PH.PacketID==3) JPS(1,is_inpu1,is_miu,"Получен статусный пакет ","");
  if(PH.PacketID==4) { JPS(1,is_inpu1,is_miu,"Получен контрольный пакет "+IntToStr(PH.CodeType),"");
-        if(PH.CodeType==9)JPS(1,is_operator,is_inpu1,"Команда КСП     "+IntToStr(PH.DataType1)," "+IntToStr(PH.DataType2));
-        KSP_Booled[PH.DataType1][PH.DataType2-1]=true;
+
+        if(PH.CodeType==9){JPS(1,is_operator,is_inpu1,"Команда КСП     "+IntToStr(PH.DataType1)," "+IntToStr(PH.DataType2));
+        KSP_Booled[PH.DataType1][PH.DataType2-1]=true;}
+        if(PH.CodeType==10){JPS(1,is_operator,is_inpu1,"Нажата клавиша ПРВИ "+IntToStr(PH.DataType1)," "+IntToStr(PH.DataType2));
+        }
+        if(PH.CodeType==10){JPS(1,is_operator,is_inpu1,"Сообщение о телеметрии"+IntToStr(PH.DataType1)," "+IntToStr(PH.DataType2));
+        }
+
  }
 }}
 }
 //---------------------------------------------------------------------------
 
+
+void __fastcall TMainForm::N110Click(TObject *Sender)
+{
+inpu_1->Show();      // Загрузка ИнПУ-1
+}
+//---------------------------------------------------------------------------
 

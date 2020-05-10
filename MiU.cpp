@@ -34,6 +34,8 @@ USEFORM("SOTR_frm.cpp", sotr);
 USEFORM("trassa.cpp", trace);
 USEFORM("AboutFrm.cpp", AboutForm);
 USEFORM("otkazy.cpp", otkazy_frm);
+USEFORM("neptun\neptun.cpp", inpu_1);
+USEFORM("inpudebugf.cpp", NeptDebug);
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
@@ -72,6 +74,8 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
                  Application->CreateForm(__classid(Tsm_ssvp_plx_frm), &sm_ssvp_plx_frm);
                  Application->CreateForm(__classid(Targ_deb), &arg_deb);
                  Application->CreateForm(__classid(Tbum_debug), &bum_debug);
+                 Application->CreateForm(__classid(Tinpu_1), &inpu_1);
+                 Application->CreateForm(__classid(TNeptDebug), &NeptDebug);
                  Application->Run();
         }
         catch (Exception &exception)

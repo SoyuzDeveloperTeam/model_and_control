@@ -1,0 +1,7 @@
+﻿  dllmain.cpp
+C:\miu\model_and_control\DLLs\MathModels\MathModels\dllmain.cpp(21,28): warning C4273:  MDinit: несовместимая компоновка dll
+C:\miu\model_and_control\DLLs\MathModels\MathModels\MDHeaderh.h(9,33): message :  см. предыдущее определение "MDinit"
+C:\miu\model_and_control\DLLs\MathModels\MathModels\dllmain.cpp(27,25): warning C4273:  test1: несовместимая компоновка dll
+C:\miu\model_and_control\DLLs\MathModels\MathModels\MDHeaderh.h(10,33): message :  см. предыдущее определение "test1"
+     ╤ючфрхЄё  сшсышюЄхър C:\miu\model_and_control\DLLs\MathModels\Debug\MathModels.lib ш юс·хъЄ C:\miu\model_and_control\DLLs\MathModels\Debug\MathModels.exp
+  MathModels.vcxproj -> C:\miu\model_and_control\DLLs\MathModels\Debug\MathModels.dll

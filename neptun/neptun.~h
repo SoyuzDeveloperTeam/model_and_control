@@ -1,0 +1,30 @@
+//---------------------------------------------------------------------------
+
+#ifndef neptunH
+#define neptunH
+//---------------------------------------------------------------------------
+#include <Classes.hpp>
+#include <Controls.hpp>
+#include <StdCtrls.hpp>
+#include <Forms.hpp>
+#include <ExtCtrls.hpp>
+#include <Buttons.hpp>
+#include <Graphics.hpp>
+//---------------------------------------------------------------------------
+class Tinpu_1 : public TForm
+{
+__published:	// IDE-managed Components
+        TPanel *inpu_src;
+        TImage *nept_can;
+        TImage *Image1;
+        TSpeedButton *SpeedButton1;
+        TSpeedButton *SpeedButton2;
+        void __fastcall FormCreate(TObject *Sender);
+private:	// User declarations
+public:		// User declarations
+        __fastcall Tinpu_1(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE Tinpu_1 *inpu_1;
+//---------------------------------------------------------------------------
+#endif

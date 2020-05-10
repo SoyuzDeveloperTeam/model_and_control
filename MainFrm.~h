@@ -167,6 +167,8 @@ __published:	// IDE-managed Components
         TButton *Button14;
         TButton *Button17;
         TTimer *InpuRecv;
+        TMenuItem *N39;
+        TMenuItem *N110;
         void __fastcall pusk_btnClick(TObject *Sender);
         void __fastcall N3Click(TObject *Sender);
         void __fastcall N14Click(TObject *Sender);
@@ -232,6 +234,7 @@ __published:	// IDE-managed Components
         void __fastcall Button14Click(TObject *Sender);
         void __fastcall Button17Click(TObject *Sender);
         void __fastcall InpuRecvTimer(TObject *Sender);
+        void __fastcall N110Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TMainForm(TComponent* Owner);

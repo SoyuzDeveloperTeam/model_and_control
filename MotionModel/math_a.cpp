@@ -5,13 +5,42 @@
 #include <math.h>
 #include "MD_math_header.h"
 
+// Число дней, прошедших с J2000
+double DayFromJD(double JD){
+double D = JD - 2451545.0;
+return D;}
+
+double SredDolVosSun (double JD){
+double L = 280.472+0.9856474*JD;
+return L;
+}
+
+double Srenanom(double JD){
+double g = 357.529+0.9860028*JD;
+return g; }
+
+double eclipticdolg (double lh, double g){
+double L = lh + 1.915*sin(g)+0.020*sin(2*g);
+return L;
+}
+
+double rsun(double g){
+double R = 1.14 - 0.01671*cos(g) - 0.00014*cos(2*g)
+return R;
+}
+
+
+
+
+//--------------------------------------------------------
+
 void mmd (double kepler_nu[6],double pos[3], double vel[3]){
  double p, ia, ah, ap, bp, e;
  bp = kepler_nu[0];
- e = kepler_nu[1];
+ e  = kepler_nu[1];
  ap = kepler_nu[4];
  ah = kepler_nu[5];
- p = bp*(1-pow(e,2)); // Фокальный параметр
+ p  = bp*(1-pow(e,2)); // Фокальный параметр
  //ia = au - ap;
 }
 

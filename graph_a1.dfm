@@ -6,12 +6,14 @@ object graphics: Tgraphics
   ClientHeight = 672
   ClientWidth = 1010
   Color = clBackground
+  DefaultMonitor = dmDesktop
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13

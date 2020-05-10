@@ -4,19 +4,20 @@
   <MACROS>
     <VERSION value="BCB.06.00"/>
     <PROJECT value="&quot;C:\Users\Professional\Desktop\Моделирование и Управление\miu_debug\MiU.exe&quot;"/>
-    <OBJFILES value="MainFrm.obj ts_frm.obj bum_sett_frm.obj toru_frm.obj EnterNuFrm.obj 
-      kdu_data.obj clock_form.obj JouLogFrm.obj BkuCFrm.obj 
+    <OBJFILES value="neptun\neptprim.obj MainFrm.obj ts_frm.obj bum_sett_frm.obj toru_frm.obj 
+      EnterNuFrm.obj kdu_data.obj clock_form.obj JouLogFrm.obj BkuCFrm.obj 
       brvi_irvi\irvi_brfi_frm.obj KSPLForm.obj KSPPForm.obj sepform.obj 
       cdn_clock_frm.obj graph_a1.obj USOFrm.obj bfi_formats.obj 
       InstructorFormat_Form.obj zakon_upr.obj help_form.obj iss_per_tp.obj 
       vku_graph.obj brus_form.obj debug_bum_frm.obj vived_frm.obj 
       iss\sm_ssvp_PX.obj argon\argon_debug_frm.obj SOTR_frm.obj trassa.obj 
-      AboutFrm.obj otkazy.obj argon\bumconnect.obj MiU.obj dta.obj JouJPS.obj 
-      argon\arg_kdu_operations.obj argon\arg_prkrt.obj argon\arg_main.obj 
-      sotr_model.obj inpu_connect.obj MainCycle_PrObr.obj main_math.obj 
-      ks020\ks_main.obj argon\arg_pks.obj argon\arg_irvi.obj bum_connect.obj 
-      pults_tk.obj transit.obj neptun\neptun_main.obj unity_connect.obj 
-      winsock_ed.obj argon\argjh.obj kurs\kurs_main.obj inpuconnect.obj"/>
+      AboutFrm.obj otkazy.obj neptun\neptun.obj argon\bumconnect.obj MiU.obj 
+      dta.obj JouJPS.obj argon\arg_kdu_operations.obj argon\arg_prkrt.obj 
+      argon\arg_main.obj sotr_model.obj inpu_connect.obj MainCycle_PrObr.obj 
+      main_math.obj ks020\ks_main.obj neptun\nepthdr.obj argon\arg_pks.obj 
+      argon\arg_irvi.obj bum_connect.obj pults_tk.obj transit.obj 
+      neptun\neptun_main.obj unity_connect.obj winsock_ed.obj argon\argjh.obj 
+      kurs\kurs_main.obj inpuconnect.obj inpudebugf.obj"/>
     <RESFILES value="MiU.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -28,7 +29,7 @@
       InstructorFormat_Form.dfm zakon_upr.dfm help_form.dfm iss_per_tp.dfm 
       vku_graph.dfm brus_form.dfm debug_bum_frm.dfm vived_frm.dfm 
       iss\sm_ssvp_PX.dfm argon\argon_debug_frm.dfm SOTR_frm.dfm trassa.dfm 
-      AboutFrm.dfm otkazy.dfm"/>
+      AboutFrm.dfm otkazy.dfm neptun\neptun.dfm inpudebugf.dfm"/>
     <LIBFILES value=""/>
     <LIBRARIES value="tee.lib bdertl.lib dbrtl.lib vcldb.lib inet.lib indy.lib rtl.lib vcl.lib"/>
     <SPARELIBS value="vcl.lib rtl.lib indy.lib inet.lib vcldb.lib dbrtl.lib bdertl.lib tee.lib"/>
@@ -39,7 +40,7 @@
       inetdbbde.bpi inetdbxpress.bpi inetdb.bpi nmfast.bpi webdsnap.bpi 
       bcbie.bpi websnap.bpi soaprtl.bpi dclocx.bpi dbexpress.bpi dbxcds.bpi 
       indy.bpi bcb2kaxserver.bpi"/>
-    <PATHCPP value=".;brvi_irvi;iss;argon;argon;argon;argon;argon;ks020;argon;argon;neptun;argon;kurs"/>
+    <PATHCPP value=".;neptun;brvi_irvi;iss;argon;neptun;argon;argon;argon;argon;ks020;neptun;argon;argon;neptun;argon;kurs"/>
     <PATHPAS value=".;"/>
     <PATHRC value=".;"/>
     <PATHASM value=".;"/>
@@ -72,6 +73,7 @@
     <OTHERFILES value=""/>
   </LINKER>
   <FILELIST>
+      <FILE FILENAME="neptun\neptprim.cpp" FORMNAME="" UNITNAME="neptprim" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="MainFrm.cpp" FORMNAME="MainForm" UNITNAME="MainFrm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="ts_frm.cpp" FORMNAME="ts_form" UNITNAME="ts_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="bum_sett_frm.cpp" FORMNAME="bum_settings" UNITNAME="bum_sett_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
@@ -103,6 +105,7 @@
       <FILE FILENAME="trassa.cpp" FORMNAME="trace" UNITNAME="trassa" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="AboutFrm.cpp" FORMNAME="AboutForm" UNITNAME="AboutFrm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="otkazy.cpp" FORMNAME="otkazy_frm" UNITNAME="otkazy" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="neptun\neptun.cpp" FORMNAME="inpu_1" UNITNAME="neptun" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="argon\bumconnect.cpp" FORMNAME="" UNITNAME="bumconnect" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="argon\CtrlWord.h" FORMNAME="" UNITNAME="CtrlWord.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="argon\arg_header.h" FORMNAME="" UNITNAME="arg_header.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
@@ -130,6 +133,7 @@
       <FILE FILENAME="MainCycle_PrObr.cpp" FORMNAME="" UNITNAME="MainCycle_PrObr" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="main_math.cpp" FORMNAME="" UNITNAME="main_math" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="ks020\ks_main.cpp" FORMNAME="" UNITNAME="ks_main" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="neptun\nepthdr.cpp" FORMNAME="" UNITNAME="nepthdr" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="sotr_data.h" FORMNAME="" UNITNAME="sotr_data.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="argon\arg_pks.cpp" FORMNAME="" UNITNAME="arg_pks" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="argon\arg_irvi.cpp" FORMNAME="" UNITNAME="arg_irvi" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
@@ -144,6 +148,7 @@
       <FILE FILENAME="kurs\kurs_main.cpp" FORMNAME="" UNITNAME="kurs_main" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="MotionModel\MD_math_header.h" FORMNAME="" UNITNAME="MD_math_header.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="inpuconnect.cpp" FORMNAME="" UNITNAME="inpuconnect" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="inpudebugf.cpp" FORMNAME="NeptDebug" UNITNAME="inpudebugf" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>

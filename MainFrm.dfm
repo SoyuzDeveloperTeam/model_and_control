@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 501
-  Top = 118
+  Left = 1613
+  Top = 594
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   ClientHeight = 573
@@ -1176,6 +1176,13 @@ object MainForm: TMainForm
         object N38: TMenuItem
           Caption = #1055#1056#1042#1048
           OnClick = N38Click
+        end
+        object N39: TMenuItem
+          Caption = #1053#1077#1087#1090#1091#1085'-'#1052#1069
+          object N110: TMenuItem
+            Caption = #1048#1085#1055#1059' 1'
+            OnClick = N110Click
+          end
         end
       end
       object N23: TMenuItem
