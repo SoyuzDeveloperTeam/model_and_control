@@ -38,112 +38,128 @@ dpo_status_bit = 0;
 //---------------------------------------------------------------------------
 void __fastcall TInstructorFormat_FRM::Timer2Timer(TObject *Sender)
 {
+Label66->Caption=FormatFloat("000.00",dynamics.rudkg);
 Label38->Caption=FormatFloat("000.00",dynamics.ypr);   // Sy
 Label41->Caption=FormatFloat("000.00",dynamics.zpr);   // Sz
 Label44->Caption=FormatFloat("000.00",dynamics.Spr);   // S
- Label1->Caption=FormatFloat("000.00",dynamics.rs);
- Label3->Caption=FormatFloat("000.00",dynamics.sks);
-Label30->Caption=FormatFloat("00.000",dynamics.V);
+ Label1->Caption=FormatFloat("000.00",dynamics.rs);    // Дальность от ЦГМ СТМ до ЦСУ СМ РС МКС
+ Label3->Caption=FormatFloat("000.00",dynamics.sks);   // их взаимная скорость
+Label30->Caption=FormatFloat("00.000",dynamics.V);     // вектор скорости (относительно...?)
 Label29->Caption=FormatFloat("00.000",dynamics.vby);
 Label28->Caption=FormatFloat("00.000",dynamics.vbz);
  Label9->Caption=FormatFloat("00.000",dynamics.uomz);
 Label10->Caption=FormatFloat("00.000",dynamics.uomy);
-t_pr->Caption=IntToStr(t_prolet[1]);
+t_pr->Caption=IntToStr(t_prolet[1]);   // Не работает - превратить в время!
 }
 //---------------------------------------------------------------------------
 void __fastcall TInstructorFormat_FRM::Image4Click(TObject *Sender)
 {
-//Стрелка вверх (Перемещение вверх ДПО №23 №24)
-dpo_status_bit = 1;
-dynamics.ay = 2 * 0.01915;
-
+// РУО Крен правый
+// В работе ДПО 23 и 24
+dpo_status_bit = 1;         // Признак работы ДПО
+dynamics.ay = 2 * 0.01915;  // Ускорение вызываемое работой ДПО (пересчитать для ТМА)
+dpo_v_pr[23]=1;  dpo_v_pr[24]=1;  // Признак работы выбранных дпо - перенести в функцию dpo_stbit(dpo_status[28]);
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TInstructorFormat_FRM::Image16MouseDown(TObject *Sender,
+void __fastcall TInstructorFormat_FRM::rud_upMouseDown(TObject *Sender,
       TMouseButton Button, TShiftState Shift, int X, int Y)
 {
-//Стрелка вверх (Перемещение вверх ДПО №23 №24)
+//РУД - вверх
+//ДПО 23 и 24
 dynamics.ay = 2 * 0.01915;
 dpo_status_bit = 1;
+dpo_v_pr[23]=1;  dpo_v_pr[24]=1;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TInstructorFormat_FRM::Image16MouseUp(TObject *Sender,
+void __fastcall TInstructorFormat_FRM::rud_upMouseUp(TObject *Sender,
       TMouseButton Button, TShiftState Shift, int X, int Y)
 {
+// РУД Нейтраль
 dpo_status_bit = 0;
 dynamics.ay = 0;
+dpo_v_pr[23]=0;  dpo_v_pr[24]=0;
 }
 //---------------------------------------------------------------------------
 
 
 
-void __fastcall TInstructorFormat_FRM::Image11MouseDown(TObject *Sender,
+void __fastcall TInstructorFormat_FRM::rud_leftMouseDown(TObject *Sender,
       TMouseButton Button, TShiftState Shift, int X, int Y)
-{ //Левая стрелка РУД (Перемещение влево ДПо №21 №22)
+{
+//РУД - влево
+//В работе ДПО 21 и 22
 dpo_status_bit = 1;
 dynamics.az = 2 * 0.01897;
-
+dpo_v_pr[21]=1;  dpo_v_pr[22]=1;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TInstructorFormat_FRM::Image11MouseUp(TObject *Sender,
+void __fastcall TInstructorFormat_FRM::rud_leftMouseUp(TObject *Sender,
       TMouseButton Button, TShiftState Shift, int X, int Y)
-{ //Левая стрелка РУД отпущенна
+{//РУД - Нейтраль
 dpo_status_bit = 0;
 dynamics.az = 0;
+dpo_v_pr[21]=0;  dpo_v_pr[22]=0;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TInstructorFormat_FRM::Image10MouseDown(TObject *Sender,
       TMouseButton Button, TShiftState Shift, int X, int Y)
-{ // Разгон (крест - ДПО №14, №16)
+{ // Тумблер - Разгон
+  // Работа ДПО 14 и 16)
+  dpo_status_bit = 1;
 dynamics.ax = -0.018 * 2;    // На увеличение скорости
-dpo_status_bit = 1;
-dpo_v_pr[14,16]=1;
+dpo_v_pr[14]=1;  dpo_v_pr[16]=1;  // Признак работы для каждого ДПО
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TInstructorFormat_FRM::Image10MouseUp(TObject *Sender,
       TMouseButton Button, TShiftState Shift, int X, int Y)
-{ // Тумблер на разгнон отпущен
+{ // Тумблер отпущен
 dynamics.ax = 0;
 dpo_status_bit = 0;
-dpo_v_pr[14,16]=0;
+dpo_v_pr[14]=0;  dpo_v_pr[16]=0;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TInstructorFormat_FRM::Image9MouseDown(TObject *Sender,
+void __fastcall TInstructorFormat_FRM::tormMouseDown(TObject *Sender,
       TMouseButton Button, TShiftState Shift, int X, int Y)
-{ //Торможение (Дпо №17, №18)
-dynamics.ax = 2 * 0.01849;
+{ // Тумблер - Торможение
+  // Работа ДПО 17 и 18
 dpo_status_bit=1;
+dynamics.ax = 2 * 0.01849;
+dpo_v_pr[17]=1;  dpo_v_pr[18]=1;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TInstructorFormat_FRM::Image9MouseUp(TObject *Sender,
+void __fastcall TInstructorFormat_FRM::tormMouseUp(TObject *Sender,
       TMouseButton Button, TShiftState Shift, int X, int Y)
 {
 dynamics.ax = 0;
 dpo_status_bit=0;
+dpo_v_pr[17]=0;  dpo_v_pr[18]=0;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TInstructorFormat_FRM::Image12MouseDown(TObject *Sender,
+void __fastcall TInstructorFormat_FRM::rud_rightMouseDown(TObject *Sender,
       TMouseButton Button, TShiftState Shift, int X, int Y)
 {
-// Правая стрелка РУД (Перемещение вправо ДПо №25 №26)
+//РУД - вправо
+//ДПО 25 и 26
 dynamics.az = -0.01897 * 2;
 dpo_status_bit = 1;
+dpo_v_pr[25]=1;  dpo_v_pr[26]=1;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TInstructorFormat_FRM::Image12MouseUp(TObject *Sender,
+void __fastcall TInstructorFormat_FRM::rud_rightMouseUp(TObject *Sender,
       TMouseButton Button, TShiftState Shift, int X, int Y)
 {
 dynamics.az = 0;
 dpo_status_bit = 0;
+dpo_v_pr[25]=0;  dpo_v_pr[26]=0;
 }
 //---------------------------------------------------------------------------
 
@@ -166,6 +182,8 @@ dpo_status_bit = 0;
 void __fastcall TInstructorFormat_FRM::Image8MouseDown(TObject *Sender,
       TMouseButton Button, TShiftState Shift, int X, int Y)
 {
+// Тангаж вверх
+// ДПО 
 dynamics.Ez = -0.62063 * 0.5;
 dpo_status_bit = 1;
 }
@@ -174,6 +192,7 @@ dpo_status_bit = 1;
 void __fastcall TInstructorFormat_FRM::Image8MouseUp(TObject *Sender,
       TMouseButton Button, TShiftState Shift, int X, int Y)
 {
+// РУО Нейтраль
 dynamics.Ez = 0;
 dpo_status_bit = 0;
 }
@@ -224,6 +243,27 @@ void __fastcall TInstructorFormat_FRM::Image6MouseUp(TObject *Sender,
 {
 dpo_status_bit = 0;
 dynamics.Ey = 0;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TInstructorFormat_FRM::rud_downMouseDown(TObject *Sender,
+      TMouseButton Button, TShiftState Shift, int X, int Y)
+{
+// Руд вниз
+// В работе ДПО 19 20
+dpo_status_bit = 1;
+dynamics.ay = -0.01915 * 2;
+dpo_v_pr[19]=1;  dpo_v_pr[20]=1;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TInstructorFormat_FRM::rud_downMouseUp(TObject *Sender,
+      TMouseButton Button, TShiftState Shift, int X, int Y)
+{
+// Руд нейтраль
+dpo_status_bit = 0;
+dynamics.ay = 0;
+dpo_v_pr[19]=0;  dpo_v_pr[20]=0;
 }
 //---------------------------------------------------------------------------
 

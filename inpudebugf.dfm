@@ -1,6 +1,6 @@
 object NeptDebug: TNeptDebug
-  Left = 46
-  Top = 123
+  Left = 1017
+  Top = 310
   Width = 975
   Height = 474
   Caption = #1054#1090#1083#1072#1076#1082#1072' '#1086#1073#1084#1077#1085#1072' '#1089' '#1048#1085#1055#1059
@@ -1287,7 +1287,7 @@ object NeptDebug: TNeptDebug
         object Label108: TLabel
           Left = 256
           Top = 52
-          Width = 65
+          Width = 64
           Height = 18
           Caption = 'SynchRo='
           Font.Charset = RUSSIAN_CHARSET

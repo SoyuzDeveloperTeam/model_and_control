@@ -27,10 +27,10 @@ __published:	// IDE-managed Components
         TLabel *Label7;
         TLabel *Label8;
         TGroupBox *GroupBox2;
-        TImage *Image1;
-        TImage *Image2;
-        TLabel *Label9;
-        TLabel *Label10;
+        TImage *psi_tk_image;
+        TImage *tethta_tk_image;
+        TLabel *psi_tk;
+        TLabel *theta_tk;
         TLabel *Label11;
         TLabel *Label12;
         TImageList *RU_pic;
@@ -42,12 +42,12 @@ __published:	// IDE-managed Components
         TImage *Image6;
         TImage *Image7;
         TImage *Image8;
-        TImage *Image9;
+        TImage *torm;
         TImage *Image10;
-        TImage *Image11;
-        TImage *Image12;
-        TImage *Image15;
-        TImage *Image16;
+        TImage *rud_left;
+        TImage *rud_right;
+        TImage *rud_down;
+        TImage *rud_up;
         TImage *Image17;
         TLabel *Label13;
         TImage *Image18;
@@ -123,6 +123,9 @@ __published:	// IDE-managed Components
         TMemo *Memo1;
         TLabel *Label67;
         TLabel *t_pr;
+        TImage *gamma_tk_image;
+        TLabel *gamma_tk;
+        TLabel *Label69;
         void __fastcall Image3MouseDown(TObject *Sender,
           TMouseButton Button, TShiftState Shift, int X, int Y);
         void __fastcall Timer1Timer(TObject *Sender);
@@ -130,25 +133,25 @@ __published:	// IDE-managed Components
           TShiftState Shift, int X, int Y);
         void __fastcall Timer2Timer(TObject *Sender);
         void __fastcall Image4Click(TObject *Sender);
-        void __fastcall Image16MouseDown(TObject *Sender,
+        void __fastcall rud_upMouseDown(TObject *Sender,
           TMouseButton Button, TShiftState Shift, int X, int Y);
-        void __fastcall Image16MouseUp(TObject *Sender,
+        void __fastcall rud_upMouseUp(TObject *Sender,
           TMouseButton Button, TShiftState Shift, int X, int Y);
-        void __fastcall Image11MouseDown(TObject *Sender,
+        void __fastcall rud_leftMouseDown(TObject *Sender,
           TMouseButton Button, TShiftState Shift, int X, int Y);
-        void __fastcall Image11MouseUp(TObject *Sender,
+        void __fastcall rud_leftMouseUp(TObject *Sender,
           TMouseButton Button, TShiftState Shift, int X, int Y);
         void __fastcall Image10MouseDown(TObject *Sender,
           TMouseButton Button, TShiftState Shift, int X, int Y);
         void __fastcall Image10MouseUp(TObject *Sender,
           TMouseButton Button, TShiftState Shift, int X, int Y);
-        void __fastcall Image9MouseDown(TObject *Sender,
+        void __fastcall tormMouseDown(TObject *Sender,
           TMouseButton Button, TShiftState Shift, int X, int Y);
-        void __fastcall Image9MouseUp(TObject *Sender, TMouseButton Button,
+        void __fastcall tormMouseUp(TObject *Sender, TMouseButton Button,
           TShiftState Shift, int X, int Y);
-        void __fastcall Image12MouseDown(TObject *Sender,
+        void __fastcall rud_rightMouseDown(TObject *Sender,
           TMouseButton Button, TShiftState Shift, int X, int Y);
-        void __fastcall Image12MouseUp(TObject *Sender,
+        void __fastcall rud_rightMouseUp(TObject *Sender,
           TMouseButton Button, TShiftState Shift, int X, int Y);
         void __fastcall Image5MouseDown(TObject *Sender,
           TMouseButton Button, TShiftState Shift, int X, int Y);
@@ -170,6 +173,10 @@ __published:	// IDE-managed Components
           TMouseButton Button, TShiftState Shift, int X, int Y);
         void __fastcall Image6MouseUp(TObject *Sender, TMouseButton Button,
           TShiftState Shift, int X, int Y);
+        void __fastcall rud_downMouseDown(TObject *Sender,
+          TMouseButton Button, TShiftState Shift, int X, int Y);
+        void __fastcall rud_downMouseUp(TObject *Sender,
+          TMouseButton Button, TShiftState Shift, int X, int Y);
 private:	// User declarations
 public:		// User declarations
         __fastcall TInstructorFormat_FRM(TComponent* Owner);

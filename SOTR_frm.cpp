@@ -207,3 +207,12 @@ ksd_pr[2]=true;
 //---------------------------------------------------------------------------
 
 
+void __fastcall Tsotr::input_sps_dataClick(TObject *Sender)
+{
+TSpsDataN[13]=StrToFloat(Tsa_input->Text);
+TSpsDataN[10]=StrToFloat(Tbo_input->Text);
+TSpsDataN[12]=StrToFloat(Tpo_input->Text); //(TЖО?)
+// и  далее весь СПС по такому же принципу
+}
+//---------------------------------------------------------------------------
+

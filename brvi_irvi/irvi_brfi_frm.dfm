@@ -1,6 +1,6 @@
 object IrBrForm: TIrBrForm
-  Left = 1496
-  Top = 127
+  Left = 277
+  Top = 206
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1055#1056#1042#1048

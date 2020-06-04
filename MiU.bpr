@@ -11,13 +11,14 @@
       InstructorFormat_Form.obj zakon_upr.obj help_form.obj iss_per_tp.obj 
       vku_graph.obj brus_form.obj debug_bum_frm.obj vived_frm.obj 
       iss\sm_ssvp_PX.obj argon\argon_debug_frm.obj SOTR_frm.obj trassa.obj 
-      AboutFrm.obj otkazy.obj neptun\neptun.obj argon\bumconnect.obj MiU.obj 
-      dta.obj JouJPS.obj argon\arg_kdu_operations.obj argon\arg_prkrt.obj 
-      argon\arg_main.obj sotr_model.obj inpu_connect.obj MainCycle_PrObr.obj 
-      main_math.obj ks020\ks_main.obj neptun\nepthdr.obj argon\arg_pks.obj 
-      argon\arg_irvi.obj bum_connect.obj pults_tk.obj transit.obj 
-      neptun\neptun_main.obj unity_connect.obj winsock_ed.obj argon\argjh.obj 
-      kurs\kurs_main.obj inpuconnect.obj inpudebugf.obj"/>
+      AboutFrm.obj otkazy.obj inpudebugf.obj sps_frm.obj bilu_format.obj 
+      neptun\neptun.obj argon\bumconnect.obj MiU.obj dta.obj JouJPS.obj 
+      argon\arg_kdu_operations.obj argon\arg_prkrt.obj argon\arg_main.obj 
+      sotr_model.obj inpu_connect.obj MainCycle_PrObr.obj main_math.obj 
+      ks020\ks_main.obj neptun\nepthdr.obj argon\arg_pks.obj argon\arg_irvi.obj 
+      bum_connect.obj pults_tk.obj transit.obj neptun\neptun_main.obj 
+      unity_connect.obj winsock_ed.obj argon\argjh.obj kurs\kurs_main.obj 
+      inpuconnect.obj uso_model.obj"/>
     <RESFILES value="MiU.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -29,7 +30,8 @@
       InstructorFormat_Form.dfm zakon_upr.dfm help_form.dfm iss_per_tp.dfm 
       vku_graph.dfm brus_form.dfm debug_bum_frm.dfm vived_frm.dfm 
       iss\sm_ssvp_PX.dfm argon\argon_debug_frm.dfm SOTR_frm.dfm trassa.dfm 
-      AboutFrm.dfm otkazy.dfm neptun\neptun.dfm inpudebugf.dfm"/>
+      AboutFrm.dfm otkazy.dfm inpudebugf.dfm sps_frm.dfm bilu_format.dfm 
+      neptun\neptun.dfm"/>
     <LIBFILES value=""/>
     <LIBRARIES value="tee.lib bdertl.lib dbrtl.lib vcldb.lib inet.lib indy.lib rtl.lib vcl.lib"/>
     <SPARELIBS value="vcl.lib rtl.lib indy.lib inet.lib vcldb.lib dbrtl.lib bdertl.lib tee.lib"/>
@@ -105,6 +107,9 @@
       <FILE FILENAME="trassa.cpp" FORMNAME="trace" UNITNAME="trassa" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="AboutFrm.cpp" FORMNAME="AboutForm" UNITNAME="AboutFrm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="otkazy.cpp" FORMNAME="otkazy_frm" UNITNAME="otkazy" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="inpudebugf.cpp" FORMNAME="NeptDebug" UNITNAME="inpudebugf" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="sps_frm.cpp" FORMNAME="sps_form" UNITNAME="sps_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="bilu_format.cpp" FORMNAME="bilu_frm" UNITNAME="bilu_format" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="neptun\neptun.cpp" FORMNAME="inpu_1" UNITNAME="neptun" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="argon\bumconnect.cpp" FORMNAME="" UNITNAME="bumconnect" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="argon\CtrlWord.h" FORMNAME="" UNITNAME="CtrlWord.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
@@ -148,7 +153,7 @@
       <FILE FILENAME="kurs\kurs_main.cpp" FORMNAME="" UNITNAME="kurs_main" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="MotionModel\MD_math_header.h" FORMNAME="" UNITNAME="MD_math_header.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="inpuconnect.cpp" FORMNAME="" UNITNAME="inpuconnect" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="inpudebugf.cpp" FORMNAME="NeptDebug" UNITNAME="inpudebugf" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="uso_model.cpp" FORMNAME="" UNITNAME="uso_model" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>
@@ -160,7 +165,7 @@ AutoIncBuild=0
 MajorVer=1
 MinorVer=0
 Release=1
-Build=46
+Build=54
 Debug=1
 PreRelease=0
 Special=0
@@ -172,7 +177,7 @@ CodePage=1251
 [Version Info Keys]
 CompanyName=SoyuzDeveloperTeam
 FileDescription=
-FileVersion=1.0.1.46
+FileVersion=1.0.1.54
 InternalName=
 LegalCopyright=SDT
 LegalTrademarks=
@@ -183,16 +188,18 @@ Comments=СПО &quot;Моделирование и Управление&quot;
 S_SK=F334-M9
 
 [HistoryLists\hlIncludePath]
-Count=3
-Item0=neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
-Item1=ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
-Item2=C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+Count=4
+Item0=kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+Item1=neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+Item2=ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+Item3=C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
 
 [HistoryLists\hlLibraryPath]
-Count=3
-Item0=neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
-Item1=ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
-Item2=C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Count=4
+Item0=kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Item1=neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Item2=ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Item3=C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
 
 [HistoryLists\hlDebugSourcePath]
 Count=1

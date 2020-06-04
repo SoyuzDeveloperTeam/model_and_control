@@ -317,6 +317,10 @@ __published:	// IDE-managed Components
         TRadioButton *roak_pr;
         TLabel *Label110;
         TComboBox *iss_config;
+        TComboBox *Spaceship;
+        TLabel *Label111;
+        TGroupBox *GroupBox14;
+        TTimer *Timer1;
         void __fastcall LoadFromFileBtnClick(TObject *Sender);
         void __fastcall BitBtn1Click(TObject *Sender);
         //void __fastcall TabControl1Change(TObject *Sender);

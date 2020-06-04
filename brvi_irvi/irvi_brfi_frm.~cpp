@@ -496,8 +496,6 @@ void __fastcall TIrBrForm::SpeedButton2Click(TObject *Sender)
 {
 if(brvi_on){
 USO_BitType[16][4] = 1011;
-
-
 if(i1->Caption=="")
         i1->Caption="2";
 else if(i2->Caption=="")
@@ -831,6 +829,15 @@ else {}
 void __fastcall TIrBrForm::SpeedButton15Click(TObject *Sender)
 {
 if(brvi_on){
+if(mode18act){
+ i14->Caption="".Length()==1;
+ i15->Caption="".Length()==1;
+ i9->Caption="".Length()==1;
+ i10->Caption="".Length()==1;
+ i11->Caption="".Length()==1;
+ i12->Caption="".Length()==1;
+ i13->Caption="".Length()==1;
+}
 if(i14->Caption.Length()==1)
         i14->Caption="";
 else if(i13->Caption.Length()==1)

@@ -256,6 +256,7 @@ __published:	// IDE-managed Components
         void __fastcall Image3Click(TObject *Sender);
         void __fastcall Image2Click(TObject *Sender);
         void __fastcall Image4Click(TObject *Sender);
+        void __fastcall input_sps_dataClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall Tsotr(TComponent* Owner);

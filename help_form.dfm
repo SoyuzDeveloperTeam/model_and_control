@@ -1,10 +1,10 @@
 object help_frm: Thelp_frm
-  Left = 821
-  Top = 481
+  Left = 223
+  Top = 188
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1057#1087#1088#1072#1074#1082#1072' '#1080' '#1087#1086#1076#1076#1077#1088#1078#1082#1072
-  ClientHeight = 431
+  ClientHeight = 462
   ClientWidth = 786
   Color = clBtnFace
   Font.Charset = RUSSIAN_CHARSET
@@ -48,14 +48,13 @@ object help_frm: Thelp_frm
     0000FE0F0000FC1F0000FC0F0000FC0F0000FC0F0000FE070000C1030000C003
     0000C0030000C0030000E0030000F0070000FC0F0000}
   OldCreateOrder = False
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 22
   object PageControl1: TPageControl
     Left = 0
     Top = 0
     Width = 786
-    Height = 431
+    Height = 462
     ActivePage = TabSheet5
     Align = alClient
     Font.Charset = RUSSIAN_CHARSET
@@ -134,7 +133,6 @@ object help_frm: Thelp_frm
         Height = 25
         Caption = #1044#1072#1083#1077#1077
         TabOrder = 2
-        OnClick = Button1Click
       end
     end
     object TabSheet2: TTabSheet
@@ -244,7 +242,7 @@ object help_frm: Thelp_frm
       end
     end
     object TabSheet5: TTabSheet
-      Caption = 'TabSheet5'
+      Caption = 'docking mode'
       ImageIndex = 4
       object Label4: TLabel
         Left = 4

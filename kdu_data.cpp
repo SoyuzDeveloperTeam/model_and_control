@@ -91,8 +91,8 @@ Label14->Caption=IntToStr(timeed);
 Label12->Caption=TimeSKD++;
  data_vtek = v_tek;
  data_num_t = timeed;
-Label38->Caption=rash;
-Label51->Caption=rash;
+fuel_ost->Caption=dynamics.rasp;
+Label51->Caption=dynamics.rasp;
 upp--;
 Label68->Caption=upp;
 }
@@ -274,5 +274,6 @@ dpo25->Visible=dpo_v_pr[25]; dpo26->Visible=dpo_v_pr[26];
 dpo27->Visible=dpo_v_pr[27]; dpo28->Visible=dpo_v_pr[28];
 }
 //---------------------------------------------------------------------------
+
 
 

@@ -1,6 +1,6 @@
 object BFI_Simvol_form: TBFI_Simvol_form
-  Left = 921
-  Top = 182
+  Left = 503
+  Top = 227
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1060#1086#1088#1084#1072#1090#1099' '#1041#1062#1042#1050' '#1040#1088#1075#1086#1085'-16'
@@ -35,7 +35,7 @@ object BFI_Simvol_form: TBFI_Simvol_form
     Top = 0
     Width = 502
     Height = 429
-    ActivePage = f_41
+    ActivePage = f_43
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -44,7 +44,7 @@ object BFI_Simvol_form: TBFI_Simvol_form
     Font.Style = []
     ParentFont = False
     Style = tsButtons
-    TabIndex = 0
+    TabIndex = 2
     TabOrder = 0
     OnChange = formatsChange
     object f_41: TTabSheet
@@ -2314,6 +2314,536 @@ object BFI_Simvol_form: TBFI_Simvol_form
             Height = 14
             Caption = 'S'
           end
+        end
+      end
+    end
+    object TabSheet1: TTabSheet
+      Caption = #1058#1045#1057#1058
+      ImageIndex = 6
+      object Panel11: TPanel
+        Left = 0
+        Top = 0
+        Width = 494
+        Height = 398
+        Align = alClient
+        Color = clBackground
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clYellow
+        Font.Height = -19
+        Font.Name = 'My Font'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 0
+        object Label50: TLabel
+          Left = 9
+          Top = 8
+          Width = 140
+          Height = 19
+          Caption = 'V45 NAOFCR'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label130: TLabel
+          Left = 309
+          Top = 8
+          Width = 168
+          Height = 19
+          Caption = 'TN=23:17:35 '
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label140: TLabel
+          Left = 9
+          Top = 32
+          Width = 84
+          Height = 19
+          Caption = 'RFHJN:'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label193: TLabel
+          Left = 129
+          Top = 32
+          Width = 105
+          Height = 14
+          AutoSize = False
+          Caption = 'HHH'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label195: TLabel
+          Left = 323
+          Top = 56
+          Width = 112
+          Height = 19
+          Caption = 'HHHHHHHH'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label200: TLabel
+          Left = 400
+          Top = 32
+          Width = 14
+          Height = 19
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label203: TLabel
+          Left = 39
+          Top = 128
+          Width = 238
+          Height = 19
+          Caption = 'PQFRAXJJ LPOXA CX'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label205: TLabel
+          Left = 99
+          Top = 152
+          Width = 140
+          Height = 19
+          Caption = 'QPCTPRO DX'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label208: TLabel
+          Left = 99
+          Top = 176
+          Width = 168
+          Height = 19
+          Caption = 'SBM QPSMF DX'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label209: TLabel
+          Left = 54
+          Top = 200
+          Width = 112
+          Height = 19
+          Caption = 'USTACLJ:'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label216: TLabel
+          Left = 25
+          Top = 368
+          Width = 14
+          Height = 19
+          Caption = 'A'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label232: TLabel
+          Left = 54
+          Top = 368
+          Width = 84
+          Height = 19
+          Caption = 'HHHHHH'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label233: TLabel
+          Left = 159
+          Top = 368
+          Width = 28
+          Height = 19
+          Caption = '00'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label234: TLabel
+          Left = 249
+          Top = 368
+          Width = 28
+          Height = 19
+          Caption = 'JO'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label235: TLabel
+          Left = 295
+          Top = 368
+          Width = 84
+          Height = 19
+          Caption = 'HHHHHH'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label236: TLabel
+          Left = 280
+          Top = 344
+          Width = 126
+          Height = 19
+          Caption = 'CK     LD'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label237: TLabel
+          Left = 39
+          Top = 320
+          Width = 37
+          Height = 19
+          Caption = 'e3='
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label238: TLabel
+          Left = 39
+          Top = 296
+          Width = 37
+          Height = 19
+          Caption = 'e2='
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label239: TLabel
+          Left = 39
+          Top = 272
+          Width = 37
+          Height = 19
+          Caption = 'e1='
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label240: TLabel
+          Left = 39
+          Top = 248
+          Width = 37
+          Height = 19
+          Caption = 'e0='
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label241: TLabel
+          Left = 39
+          Top = 224
+          Width = 37
+          Height = 19
+          Caption = 'h1='
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label242: TLabel
+          Left = 339
+          Top = 176
+          Width = 107
+          Height = 19
+          Caption = 'CcLM Y-3'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label243: TLabel
+          Left = 354
+          Top = 152
+          Width = 42
+          Height = 19
+          Caption = 'SPI'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label244: TLabel
+          Left = 83
+          Top = 320
+          Width = 98
+          Height = 19
+          Caption = '0.00000'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label245: TLabel
+          Left = 83
+          Top = 296
+          Width = 98
+          Height = 19
+          Caption = '0.00000'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label246: TLabel
+          Left = 83
+          Top = 272
+          Width = 98
+          Height = 19
+          Caption = '0.00000'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label247: TLabel
+          Left = 83
+          Top = 224
+          Width = 90
+          Height = 14
+          AutoSize = False
+          Caption = '000.00'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label248: TLabel
+          Left = 173
+          Top = 224
+          Width = 43
+          Height = 19
+          Caption = 'N/S'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label249: TLabel
+          Left = 9
+          Top = 56
+          Width = 126
+          Height = 19
+          Caption = 'PQFRAXJJ:'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label250: TLabel
+          Left = 159
+          Top = 56
+          Width = 105
+          Height = 14
+          AutoSize = False
+          Caption = 'HHH'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label251: TLabel
+          Left = 400
+          Top = 32
+          Width = 70
+          Height = 19
+          Caption = '12345'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label252: TLabel
+          Left = 339
+          Top = 32
+          Width = 42
+          Height = 19
+          Caption = 'DSP'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label253: TLabel
+          Left = 83
+          Top = 248
+          Width = 98
+          Height = 19
+          Caption = '0.00000'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label254: TLabel
+          Left = 265
+          Top = 224
+          Width = 90
+          Height = 14
+          AutoSize = False
+          Caption = 'hTFL'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label255: TLabel
+          Left = 323
+          Top = 224
+          Width = 90
+          Height = 14
+          AutoSize = False
+          Caption = '000.00'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label256: TLabel
+          Left = 413
+          Top = 224
+          Width = 43
+          Height = 19
+          Caption = 'N/S'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label257: TLabel
+          Left = 250
+          Top = 248
+          Width = 47
+          Height = 19
+          Caption = 'fCX='
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label258: TLabel
+          Left = 309
+          Top = 248
+          Width = 112
+          Height = 19
+          Caption = '00.00.00'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label259: TLabel
+          Left = 429
+          Top = 248
+          Width = 14
+          Height = 19
+          Caption = 'S'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -19
+          Font.Name = 'My Font'
+          Font.Style = [fsBold]
+          ParentFont = False
         end
       end
     end

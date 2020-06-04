@@ -105,7 +105,7 @@ __published:	// IDE-managed Components
         TLabel *L15_LABEL;
         TLabel *L17_LABEL;
         TShape *Shape1;
-        TTimer *KSPTMR;
+        TTimer *S;
         TPanel *KSP_L_V;
         TImage *KSP_L_V_image;
         TPanel *KSP_L_A;
@@ -176,7 +176,7 @@ __published:	// IDE-managed Components
         void __fastcall KSP_L_J_imageClick(TObject *Sender);
         void __fastcall KSP_L_I_imageClick(TObject *Sender);
         void __fastcall KSP_L_K_imageClick(TObject *Sender);
-        void __fastcall KSPTMRTimer(TObject *Sender);
+        void __fastcall STimer(TObject *Sender);
         void __fastcall ksp_3Click(TObject *Sender);
         void __fastcall KSP_L_L_imageClick(TObject *Sender);
         void __fastcall ksp_4Click(TObject *Sender);

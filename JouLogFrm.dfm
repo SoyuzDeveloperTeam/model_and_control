@@ -1,6 +1,6 @@
 object JouLogForm: TJouLogForm
-  Left = 792
-  Top = 278
+  Left = 313
+  Top = 330
   VertScrollBar.Smooth = True
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle

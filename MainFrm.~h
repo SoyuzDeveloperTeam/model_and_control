@@ -51,9 +51,9 @@ __published:	// IDE-managed Components
         TTimer *Timer2;
         TMenuItem *N16;
         TStatusBar *StatusBar;
-        TGroupBox *GroupBox1;
+        TGroupBox *model_status_pics;
         TImageList *ModelStatusPicList;
-        TLabel *Label1;
+        TLabel *bum_st_label;
         TImage *inpu_status_pic;
         TLabel *Label2;
         TLabel *Label3;
@@ -65,7 +65,7 @@ __published:	// IDE-managed Components
         TMenuItem *N20;
         TMenuItem *N21;
         TTimer *LocalTimeTimer;
-        TGroupBox *GroupBox5;
+        TGroupBox *debug_panel;
         TGroupBox *GroupBox6;
         TLabel *LocalTime;
         TLabel *Label5;
@@ -81,7 +81,6 @@ __published:	// IDE-managed Components
         TTimer *PuskRgPr;
         TMenuItem *N25;
         TTimer *inpu_com2_connect;
-        TMemo *Memo1;
         TPanel *CO_light;
         TTimer *CentralLightBlink;
         TTimer *MainTimer;
@@ -118,11 +117,6 @@ __published:	// IDE-managed Components
         TMenuItem *N161;
         TMenuItem *N35;
         TTimer *p_sost_from_bum;
-        TGroupBox *GroupBox3;
-        TCheckBox *sps_model;
-        TButton *init_;
-        TCheckBox *WithoutBum;
-        TButton *Button6;
         TGroupBox *GroupBox7;
         TButton *Button8;
         TButton *Button5;
@@ -161,7 +155,6 @@ __published:	// IDE-managed Components
         TButton *Button11;
         TTimer *dk_to_bum;
         TButton *Button13;
-        TCheckBox *with_unity;
         TTimer *unity_s_h;
         TIdTCPServer *un_serv;
         TButton *Button14;
@@ -169,6 +162,22 @@ __published:	// IDE-managed Components
         TTimer *InpuRecv;
         TMenuItem *N39;
         TMenuItem *N110;
+        TCheckBox *debug_status;
+        TGroupBox *GroupBox3;
+        TCheckBox *sps_model;
+        TButton *init_;
+        TCheckBox *WithoutBum;
+        TButton *Button6;
+        TCheckBox *with_unity;
+        TTimer *bum_status;
+        TMenuItem *N40;
+        TLabel *Label1;
+        TLabel *Label8;
+        TLabel *Label11;
+        TLabel *Label15;
+        TLabel *Label16;
+        TLabel *Label17;
+        TMenuItem *bilu;
         void __fastcall pusk_btnClick(TObject *Sender);
         void __fastcall N3Click(TObject *Sender);
         void __fastcall N14Click(TObject *Sender);
@@ -235,6 +244,10 @@ __published:	// IDE-managed Components
         void __fastcall Button17Click(TObject *Sender);
         void __fastcall InpuRecvTimer(TObject *Sender);
         void __fastcall N110Click(TObject *Sender);
+        void __fastcall debug_statusClick(TObject *Sender);
+        void __fastcall N40Click(TObject *Sender);
+        void __fastcall bum_statusTimer(TObject *Sender);
+        void __fastcall biluClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TMainForm(TComponent* Owner);

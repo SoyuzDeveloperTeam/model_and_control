@@ -1,6 +1,6 @@
 object BkuC: TBkuC
-  Left = 779
-  Top = 156
+  Left = -7
+  Top = 223
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1041#1050#1059'-'#1062' "'#1057#1080#1084#1074#1086#1083'-'#1062'"'

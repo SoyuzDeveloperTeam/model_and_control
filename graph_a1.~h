@@ -98,6 +98,7 @@ __published:	// IDE-managed Components
         TRadioButton *RadioButton15;
         TRadioButton *RadioButton16;
         TCheckBox *sled;
+        TChart *Chart9;
         void __fastcall Timer1Timer(TObject *Sender);
         void __fastcall N1Click(TObject *Sender);
         void __fastcall MenuItem1Click(TObject *Sender);

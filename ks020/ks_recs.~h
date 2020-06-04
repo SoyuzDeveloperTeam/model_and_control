@@ -1,0 +1,26 @@
+#ifndef ks_recs
+#define ks_recs
+
+enum{
+SmallGlobus_No, //0 -  ТНМНБЮЪ
+BigGlobus_No,   //1 -  хмй
+BNO_No,         //2 -  амн
+AUS_No,         //3 -  юся
+RUS_No,         //4 -  пся
+VC_No,          //5 -  бейрнп
+Spusk_No,       //6 -  яосяй
+SA_No,          //7 -  яю
+Nip_No,         //8 -  мхо
+Transit_No,     //9 -  рпюмгхр
+Manevr_No,      //10 - люмебп
+Kontr_No        //11 - йнмрп
+#ifdef Bilu
+,Bilu_No        //12 - ахкс
+#endif
+}ksFormats;
+
+const int SmallGlobusTraceWidth = 148;
+const int TraceArrayLength = 100;
+
+#endif ks_recs
+ 

@@ -147,7 +147,14 @@ switch (irvi_type.mode) {   // Обработчик режима
                  break;
         case 15: /* Одиночный ввод 8-х чисел */  break;
         case 17: /* Групповой ввод 10-х чисел */ break;
-        case 18: /* Групповой ввод 8-х чисел */ break;
+        case 18: /* Групповой ввод 8-х чисел */
+                // irvi_type.addr = StrToInt(irvi_str.SubString(3,5));   // Присваиваем значение адреса
+                 // if(CorrectAddr(irvi_type.addr)) {                    // Проверяем корректность адреса, если корректен, то
+                 //irvi_type.value = StrToInt(irvi_str.SubString(8,7));  // Присваиваем значение
+                // ArgonMemoryType[irvi_type.addr] = irvi_type.value;   // Записываем его в ячейку памяти Аргона
+                 //SetItvi(irvi_type.mode,(irvi_type.addr)+1,ArgonMemoryType[irvi_type.addr], irvi_type.z );   // Выставляем результат на ИРВИ
+                 //mode18act=true;
+                 break;
         case 21: /* Вывод уставки АУС 1-й группы */ break;
         case 22: /* Вывод уставки АУС 2-й группы */ break;
         case 24: /* Одиночный вывод 10-х чисел */                      // Если режим 24, то
@@ -186,10 +193,13 @@ switch (irvi_type.mode) {   // Обработчик режима
         case 44: /*  */ break;
         case 45: /*  */ break;
         case 46: /*  */ break;
-        case 48: /* Сверка времени */ break;
+        case 48: /* Сверка времени */
+        break;
         default: irvi_err = true;       // Флаг ошибки (для индикации на ИРВИ)
                  JPS(3,is_argon,is_irvi,"АА","");        // Логируем ошибку о несуществующием режиме
                  JPS(3,is_miu,is_operator,"Несуществующий режим!","");
+        irvi_type.addr = StrToInt(irvi_str.SubString(3,5));
+        irvi_type.value = StrToInt(irvi_str.SubString(8,7));
 
         break;
 }
@@ -219,15 +229,26 @@ cw_A4[15]=0; cw_A9[0-15]=0; cw_A5[0-15]=0; };
 
 };
 
-int self_test_long () { // Проведение самотестирования - длинное
+static bool self_test_pr;
+
+int self_test_long () {
+ // Проведение самотестирования - длинное
  // тут должен быть алгоритм тестирования
  // Проверяем ОЗУ, ДЗУ, процессор и все устройства обмена (УО-1 - УО-7)
- return 0; }
+ self_test_pr = 1;
+ return 3; }
 
 int self_test_short () { // Проведение самотестирования - короткое
  // тут должен быть алгоритм тестирования
  // Проверяем ОЗУ, ДЗУ, процессор и устройства обмена (УО-1, 2, 4, 5, 6)
- return 0; }
+ if(USO_Booled[3][14]||USO_Booled[3][2]||USO_Booled[3][3]||USO_Booled[3][4]){
+     self_test_pr = 1;
+     return 0;
+   } else {
+  // Признак-возврат отсутствия выбора канала БЦВК провереку к-ро проводить
+     self_test_pr = 1;
+     JPS(3,is_argon,is_operator,"Пуск не возможен, т.к. нет канала для самопроверки.","");
+     return 1; }}
 
 void arg_acc_handler(int Result) {
 // Выставляем признаки -  + ЦО +

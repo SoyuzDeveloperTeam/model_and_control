@@ -31,13 +31,14 @@
 
 */
              //  [ 0  1  2 ]
-bool rrg_pr[3]; // 4  8  16
-bool str_pr[3]; //OF MIN MAX
-bool cond[2];   //BO  SA
-bool vsa_pr,
+static double rrg_sos;  // Current value
+static bool rrg_pr[3]; // 4  8  16
+static bool str_pr[3]; //OF MIN MAX
+static bool cond[2];   //BO  SA
+static bool vsa_pr,
      vent_vsk_pr,
      en_vsk_pr;
-bool ksd_pr[3];
+static bool ksd_pr[3];
 //int i;
 
 

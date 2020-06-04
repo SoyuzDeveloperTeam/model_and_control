@@ -1,5 +1,4 @@
 //---------------------------------------------------------------------------
-
 #include <vcl.h>
 #pragma hdrstop
 
@@ -14,13 +13,4 @@ __fastcall Thelp_frm::Thelp_frm(TComponent* Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall Thelp_frm::FormCreate(TObject *Sender)
-{
-//PageControl1->T
-}
-//---------------------------------------------------------------------------
-void __fastcall Thelp_frm::Button1Click(TObject *Sender)
-{
-PageControl1->TabIndex=2;
-}
-//---------------------------------------------------------------------------
+

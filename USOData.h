@@ -28,6 +28,8 @@
 #define _USO_data
 static unsigned short USO_BT[20];    // Array
 
+static bool argon_takt_pr; // Признак включения Аргона от УСО (ПО КСП)
+
 static bool ruo_pr[6];
 static bool rud_pr[6];
 
@@ -40,7 +42,7 @@ static bool KSP_Let[17];  // 17 - потому что отсчет начинается с единицы
 
 static unsigned short USO_BitType[20][4];
 static bool USO_Booled[20][16];      // Основной массив для работы с УСО - Факт-квитанция о исполнении команды
-static bool KSP_Booled[16][9];      // Массив выдачи команд с КСП (факт выдачи команды с КСП [LETTER] [NUMBER])
+static bool KSP_Booled[16][9];       // Массив выдачи команд с КСП (факт выдачи команды с КСП [LETTER] [NUMBER])
 /* KSP_Booled
 [00] [0 - 8]  А
 [01] [0 - 8]  Б

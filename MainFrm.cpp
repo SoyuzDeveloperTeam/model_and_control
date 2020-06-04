@@ -31,6 +31,7 @@
 #include "JouStrings.h"                 // Строковые переменные для журнала
 #include "SPSHead.h"                    // Данные СПС ч.1
 #include "USOData.h"                    // Параметры УСО
+#include "uso_model.cpp"                // Модель УСО
 #include "inpu_connect.cpp"             // Обмен с моделью ИнПУ
 #include "main_math.cpp"                // Математические модели
 #include "argon/arg_header.h"           // Загогловок А16
@@ -45,6 +46,8 @@
 #include "inpuconnect.cpp"              // Обмен с ИнПУ
 //---------------------------------------------------------------------------
 /* Формы */
+//#include "help_form.cpp"                // Форма Поддержи
+#include "bilu_format.cpp"              // Форма БИЛУ
 #include "vived_frm.cpp"                // Форма Выведение (график)
 #include "brus_form.cpp"                // Форма БРУС
 #include "ts_frm.cpp"                   // Форма ТС
@@ -71,7 +74,8 @@
 #include "argon_debug_frm.cpp"          // Форма отладки Аргона
 #include "debug_bum_frm.cpp"            // Форма отладки обмена с БУМ
 #include "otkazy.cpp"                   // Форма "Отказ Бортоввых Систем"
-#include "neptun.cpp"                     // Форма ПСА "Нептун-МЭ" -  ИнПУ1
+#include "neptun.cpp"                   // Форма ПСА "Нептун-МЭ" -  ИнПУ1
+#include "sps_frm.cpp"                  // Форма СПС
 // Форматы Laptop РС МКС (СМ)
 #include "sm_ssvp_PX.cpp"               // Формат СМ:ССВП:+Х
 //---------------------------------------------------------------------------
@@ -82,13 +86,14 @@ TMainForm *MainForm;
 #define n_act_str 5    //Номер актуальной струтуры
 static AnsiString StrForDebug;
 
-// Для тестов
-static int i_test;
+// Для тестов  (ОПИСАТЬ!)
+
 static int j_test;
 static bool vill_test;
 static int f_test;
 TDateTime SFD_sec;
-double ghjh;
+static double ghjh;
+
 // -- -- -- --
 
 HINSTANCE Lib = LoadLibrary("LIB_BNO.dll");                    // загружаем библиотеку динамически
@@ -123,10 +128,10 @@ int qwe;
 
 const int MAX_BUF_SIZE = 1024;
 
-bool init;            // Признак успешной инициализации  (перенести в main?)
-int err;
-bool con;             // Признак удачного подключения для активации кнопок
-bool inpu_com2_connect_pr; // Признак связи с ИнПУ
+static bool init;            // Признак успешной инициализации  (перенести в main?)
+static int err;
+static bool con;             // Признак удачного подключения для активации кнопок
+static bool inpu_com2_connect_pr; // Признак связи с ИнПУ
 WORD wVersionRequested;
 
 //---------------------------------------------------------------------------
@@ -148,8 +153,8 @@ err = WSAStartup(wVersionRequested, &wsaData);
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::pusk_btnClick(TObject *Sender)
-{
-if(bum_pr){
+{ // Операции по нажатию кнопки "ПУСК"
+if(bum_pr){                        // Есл есть признак обмена с БУМ, то...
 p_sost_from_bum->Enabled=true;
 start_priz = true;                 // признак запуска для бум
 SendToBum(0x00000301, 2, 1); }     //Пуск динамики - команда в БУМ ()
@@ -177,7 +182,7 @@ ts_form->Show();  //Запуск формы "ТС"
 //}
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::N14Click(TObject *Sender)
-{
+{ // Запуск формы ТОРУ
 toru_pult->Show();
 }
 //---------------------------------------------------------------------------
@@ -534,7 +539,7 @@ Timer2->Enabled=false; }
 
 void __fastcall TMainForm::FormCreate(TObject *Sender)
 {
-ver_num=" 1.0.1.43";              // Переделать - выводить версию из атрибутов
+ver_num=" 1.0.1.54";              // Переделать - выводить версию из атрибутов
 // --- Выставляем начальное состояние иконок моделей --- //
 ModelStatusPicList->GetBitmap(0, bum_status_pic->Picture->Bitmap);
 ModelStatusPicList->GetBitmap(0, inpu_status_pic->Picture->Bitmap);
@@ -561,7 +566,7 @@ void __fastcall TMainForm::Button9Click(TObject *Sender)
 {
 double q_mks[4], q_tk[4];
 JPS(1,is_operator,is_miu,"Выдана команда - отработка НУ.","");
-  
+
   // НУ для модели КУРСа и БЦВК
   SpsSend->Enabled=true;
   i_takt = 0;
@@ -919,7 +924,10 @@ void __fastcall TMainForm::MainTimerTimer(TObject *Sender)
 {
 mass_tk_full = NU_temp.m_tk + dynamics.rasp;  // Расчет текущей массы ТК
 
+Label15->Caption=tResult;   // Результатирующая переменная для проведения внутренних тестов Аргона (почеу она тут?)
+
 Label13->Caption=(ob_cur-onboard_dt).FormatString("hh:nn:ss");
+
 USO_Booled[10][7] = dpo_status_bit;
 if(USO_Booled[12][7])YzS1[0]=1;
 ///////////////////
@@ -960,338 +968,12 @@ if(testb->ItemIndex==3) GSO_types=3; else
 if(testb->ItemIndex==4) GSO_types=4; else
 if(testb->ItemIndex==5) GSO_types=5;
 
-// Only for KSP test
-/////////////////////////////////////////////
-// О Б Р А Б О Т К А   К О М А Н Д   К С П //
-/////////////////////////////////////////////
-if(KSP_Booled[0][0]) { // A 1
-// Временный алгоритм открытия крышки СКД (без проверки ПаО)
-if(i_test==80) { // Время открытия 16 секунд = 16000 мс = 80 тактов по 200 мс
-USO_Booled[0][0]=true;   //
-JPS(1,"Крышка СКД открыта","","","");
-KSP_Booled[0][0] = false;
-i_test=0;
-}else
-i_test++;
-}
+/* PGO1
+USO_work(); // working with USO model *.CPP
 
-if(KSP_Booled[0][1]) {  // A 2
-if(i_test==80) {
-USO_Booled[0][0]=false;
-JPS(1,"Крышка СКД закрыта","","","");
-KSP_Booled[0][1] = false;
-i_test=0;
-}else
-i_test++;
-}
-
-if(KSP_Booled[0][2]) {  // A 3   Наддув КДУ - ВКЛ
-// Вкл. пит. клапана наддува ЭПКН1 и ЭПКН2
-KSP_Booled[0][2] = false;
-USO_Booled[0][1]=true;
-}
-
-if(KSP_Booled[0][3]) {  // A 4   Наддув КДУ - ВЫКЛ
-// Откл. пит. клап. наддува ЭПКН1, ЭПКН2
-KSP_Booled[0][3] = false;
-USO_Booled[0][1]=false;
-}
-
-if(KSP_Booled[0][4]) { // A 5     СДР ОТКЛ
-KSP_Booled[0][4] = false;
-// 98 - Исключение СДН (СДР) из схемы управления
-USO_Booled[0][2]=true;
-}
-
-if(KSP_Booled[0][5]) { // A 6
-KSP_Booled[0][5] = false;
-// -98 - Подключение СДН (СДР) к схеме управления
-USO_Booled[0][2]=false; }
-
-if(KSP_Booled[0][6]) { // A 7
-KSP_Booled[0][6] = false;
-USO_Booled[0][3]=true;
-}
-
-if(KSP_Booled[0][7]) { // A 8
-KSP_Booled[0][7] = false;
-USO_Booled[0][3]=false;
-}
-
-if(KSP_Booled[0][8]) { // A 9 - Выбор ДПО-Б
-// Команда в БА ДПО "Выбор ДПО-Б"
-KSP_Booled[0][8] = false;
-USO_Booled[0][4]=true;
-}
-
-if(KSP_Booled[0][10]) { // A 11 - Выбор ДПО-М1
-KSP_Booled[0][10] = false;
-USO_Booled[0][5]=true;
-}
-
-if(KSP_Booled[0][12]) {  // A 13
-// Включаем ДПО №№ 2,4,6,8.10,12;
-dpo_v_pr[2,4,6,8,10,12]=1;
-USO_Booled[0][6]=true;
-}
-
-if(KSP_Booled[0][14]) { // A 15
-KSP_Booled[0][14] = false;
-// Вводим в СУБК признак 100 "Объединение секций КДУ",
-// что обеспечит в последующем работу двигателей ДПО и
-// СКД от двух топливных секций КДУ одновременно
-USO_Booled[0][7]=true;
-}
-
-if(KSP_Booled[0][16]) {  // A 17
-KSP_Booled[0][16]=false;
-USO_Booled[0][8]=true;
-}
-
-if(KSP_Booled[2][0]) { // В 1
-KSP_Booled[2][0] = false;
-// 5.12 Выбор первой секции наддува КДУ
-USO_Booled[1][2]=true;
-USO_Booled[11][9]=false;  // Гасим ТС-7 "2 секция наддува"
-}
-
-if(KSP_Booled[2][1]) { // В 2
-KSP_Booled[2][1] = false;
-// -5.12 Выбор второй секции наддува КДУ
-USO_Booled[1][2]=false;
-USO_Booled[11][9]=true;  // Зажигаем ТС-7 "2 секция наддува"
-}
-
-if(KSP_Booled[2][2]) { // В 3
-KSP_Booled[2][2] = false;
-USO_Booled[1][3]=true;
-USO_Booled[11][10]=false;  // Гасим ТС-7 "2 секция КДУ"
-}
-if(KSP_Booled[2][3]) { // В 4
-KSP_Booled[2][3]  = false;
-USO_Booled[1][3]  = false;
-USO_Booled[11][10]= true;  // Зажигаем ТС-7 "2 секция КДУ"
-}
-if(KSP_Booled[2][4]) { // В 5 // Закрываем АО-ВКА
-KSP_Booled[2][4]  = false;
-USO_Booled[1][4]  = true;
-}
-if(KSP_Booled[2][5]) { // В 6 // Открываем АО-ВКА
-KSP_Booled[2][5]  = false;
-USO_Booled[1][4]  = false;
-}
-if(KSP_Booled[2][6]) { // В 7
-KSP_Booled[2][6]  = false;
-USO_Booled[1][5]  = true;
-}
-if(KSP_Booled[2][7]) { // В 8
-KSP_Booled[2][7]  = false;
-USO_Booled[1][5]  = false;
-}
-if(KSP_Booled[2][8]) { // В 9
-KSP_Booled[2][8]  = false;
-USO_Booled[1][6]  = true;
-}
-if(KSP_Booled[2][10]) { // В 11
-KSP_Booled[2][10]  = false;
-USO_Booled[1][7]  = true;
-}
-if(KSP_Booled[2][12]) { // В 13
-// 17.26 Команда в БСУ "ВКЛ ТЕСТ ДИСПЛЕЙ"
-KSP_Booled[2][12]  = false;
-USO_Booled[1][8]  = true;
-USO_Booled[1][12]  = false; // Откл Дисплей
-USO_Booled[1][9]  = false;  // Откл Дисплей ТВ
-}
-if(KSP_Booled[2][14]) { // В 15
-KSP_Booled[2][14]  = false;
-USO_Booled[1][9]  = true;
-USO_Booled[1][12]  = false;
-USO_Booled[1][8]  = false;
-}
-if(KSP_Booled[2][16]) { // В 17
-KSP_Booled[2][16]  = false;
-USO_Booled[1][10]  = true;
-}
-if(KSP_Booled[2][17]) { // В 18
-KSP_Booled[2][17]  = false;
-USO_Booled[1][10]  = false;
-}
-
-if(KSP_Booled[3][0]) { // Г 1  Обогрев антен ВКЛ
-KSP_Booled[3][0] = false;
-// Так же выдаем по КО - перенести в операции по КО
-// включается термостат обогрева антенн, который поддерживает
-// заданный температурный режим механики антенн 2АО,АСФ1,АСФ2.
-USO_Booled[1][11]=true;
-}
-if(KSP_Booled[3][1]) { // Г 2  Обогрев антен ВЫКЛ
-KSP_Booled[3][1] =false;
-USO_Booled[1][11]=false;
-}
-if(KSP_Booled[3][2]) { // Г 3  Дисплей
-KSP_Booled[3][2] =false;
-USO_Booled[1][12]=true;
-USO_Booled[1][8] =false;
-USO_Booled[1][9] =false;  // Откл Дисплей ТВ
-}
-if(KSP_Booled[3][3]) { // Г 4  Дисплей
-KSP_Booled[3][3] =false;
-USO_Booled[1][12]=false;
-USO_Booled[1][8] =false;
-USO_Booled[1][9] =false;  // Откл Дисплей ТВ
-}
-if(KSP_Booled[3][4]) {  // Г 5
-KSP_Booled[3][4] =false;
-//5.18 Подготовка к вкл ДПО-Б1 (17, 18)
-USO_Booled[1][13]=true;
-// и откл подготовки ДПО-Б2 (27, 28)
-USO_Booled[1][14]=false;
-}
-if(KSP_Booled[3][6]) {  // Г 7
-KSP_Booled[3][6] = false;
-//5.19 Подготовка к вкл ДПО-Б2 (27, 28)
-USO_Booled[1][14]=true;
-// и откл подготовки ДПО-Б1 (17, 18)
-USO_Booled[1][13]=false;
-}
-if(KSP_Booled[3][8]) {  // Г 9  КУРС-1
-KSP_Booled[3][8] = false;
-//27.1 Вкл РП1 (реж пит 1 компл), квитанция в БСУ-7 "ВКЛ РП1"
-USO_Booled[1][15]=true; // Признак выбора КУРС-1
-//-27.2 Откл РП2, квит в БСУ-7 "ОТКЛ РП2"
-USO_Booled[2][0]=false; // Снимаем признак выбора КУРС-2
-//27.3 Вкл РП3 (реж пит общ устр), квит в БСУ-7 "ВКЛ РП3"
-//27.9 Перекл на 1 комплект РПК
-}
-if(KSP_Booled[3][10]) {  // Г 11 КУРС-2
-KSP_Booled[3][10] = false;
-//-27.1 Откл РП1, квитанция в БСУ-7 "ОТКЛ РП1"
-USO_Booled[1][15]=false;
-//27.2 Вкл РП2, квит в БСУ-7 "ВКЛ РП2"
-USO_Booled[2][0]=true;
-//27.3 Вкл РП3 (реж пит общ устр), квит в БСУ-7 "ВКЛ РП3"
-//-27.9 Перекл на 2 комплект РПК
-KSP_Booled[3][10] = false;
-}
-if(KSP_Booled[3][12]) {  // Г 13 ОТКЛ КУРС
-KSP_Booled[3][12] = false;
-//-27.1 Откл РП1, квитанция в БСУ-7 "ОТКЛ РП1"
-USO_Booled[1][15]=false;
-//-27.2 Откл РП2, квит в БСУ-7 "ОТКЛ РП2"
-USO_Booled[2][0]=false;
-//-27.3 Откл РП3 , квит в БСУ-7 "ОТКЛ РП3"
-KSP_Booled[3][12] = false;
-}
-if(KSP_Booled[3][14]) { // Г15
-KSP_Booled[3][14] = false;
-USO_Booled[1][13]=true;
-USO_Booled[1][14]=true;
-}
-
-if(KSP_Booled[6][0]) { // И1   ЗДР
-KSP_Booled[6][0] = false;
-USO_Booled[3][6]=true;
-}
-
-if(KSP_Booled[6][1]) { // И2   РРП
-KSP_Booled[6][1] = false;
-USO_Booled[3][6]=false;
-}
-
-if(KSP_Booled[6][2]) { // И3 АКС
-KSP_Booled[6][2] = false;
-// Включаем питание БИЛУ + КС020
-USO_Booled[3][7]=true;
-}
-
-if(KSP_Booled[6][3]) { // И4 АКС
-KSP_Booled[6][3] = false;
-USO_Booled[3][7]=false;
-}
-
-if(KSP_Booled[6][8]) {  // И9 ПИТАНИЕ ЧАЙКИ
-KSP_Booled[6][8] = false;
-// Посылаем команду в БУМ
-//USO_Booled[0][8]=false;
-USO_Booled[3][10]=true; // Признак питание чайки
-JPS(1,is_argon,is_operator,"Организовано питание контура управления и БЦВК","");
-USO_Booled[0][1]=true;  // Наддув КДУ по питанию Чайки
-// Так же запитываем БДУС-1 и ИКВ
-}
-
-if(KSP_Booled[6][10]) { // И11   -  ПУСК ЧАЙКИ
-KSP_Booled[6][10] = false;
-USO_Booled[3][11]=true;
-JPS(1,is_argon,is_operator,"Введена команда \"ПУСК\", запуск режима самопроверки.","");
-//     И 9                И 15
-//if(USO_Booled[3][11]&&USO_Booled[3][14])
-// Операции по пуску чайки //
-// 1 - Проверка (в аргоне) и по результатам - запуск или НшС
-ArgonTakt->Enabled=true;  // запуск
-}
-if(KSP_Booled[6][14]) { // И 15
-KSP_Booled[6][14] = false;
-USO_Booled[3][2]=false;
-USO_Booled[3][3]=false;
-USO_Booled[3][4]=false;
-USO_Booled[3][13]=true;  }
-
-if(KSP_Booled[5][10]){  // KSP Ж11
-KSP_Booled[5][10] = false;
-USO_Booled[3][2] = true;
-USO_Booled[3][3] = false;
-USO_Booled[3][4] = false;
-USO_Booled[3][13] = false; }
-if(KSP_Booled[5][12]){  // KSP Ж13
-KSP_Booled[5][12] = false;
-USO_Booled[3][2] = false;
-USO_Booled[3][3] = true;
-USO_Booled[3][4] = false;
-USO_Booled[3][13] = false; }
-if(KSP_Booled[5][14]){  // KSP Ж15
-KSP_Booled[5][14] = false;
-USO_Booled[3][2] = false;
-USO_Booled[3][3] = false;
-USO_Booled[3][4] = true;
-USO_Booled[3][13] = false; }
-
-if(KSP_Booled[7][16]) { // К 17
-KSP_Booled[7][16] = false;
-USO_Booled[4][8]=true;
-sp_d_k = 1; // Длинная самопроверка БЦВК
-}
-
-if(KSP_Booled[7][17]) { // К 18
-KSP_Booled[7][17] = false;
-USO_Booled[4][8]=false;
-sp_d_k = 0; // Короткая самопроверка БЦВК
-}
-
-if(KSP_Booled[8][0]) { // Л1 - РО ДК
-KSP_Booled[8][0]=false;
-USO_Booled[1][1]=true;
-dk_to_bum->Enabled=true;           // Разрешение отправки параметров ДК в БУМ
-}
-
-if(KSP_Booled[8][1]) { // Л1 - РО ДК
-KSP_Booled[8][1]=false;
-USO_Booled[1][1]=false;
-dk_to_bum->Enabled=false;           // Разрешение отправки параметров ДК в БУМ
-}
-
-if(KSP_Booled[13][0]) { // Т 1
-KSP_Booled[13][0] = false;
-USO_Booled[7][6]=true;
-JPS(1,"\"Рассвет-М\" подключается к СЗИ.","","","");
-}
-
-if(KSP_Booled[13][2]) { // Н 3
-KSP_Booled[13][2] = false;
-USO_Booled[5][3]=true;
-JPS(1,"Подано питание на УКВ ПРМд","","","");
-}
-
+if(apm)     // if argon ready flag is true, then...
+ArgonTakt->Enabled=true; else
+ArgonTakt->Enabled=false;   */
 
 
 }
@@ -1314,33 +996,49 @@ BFI_Simvol_form->Show();
 // Т а к т   А р г о н а
 void __fastcall TMainForm::ArgonTaktTimer(TObject *Sender)
 {
+if(USO_Booled[3][10]){   // Если есть признак питания чайки
 if(!arg_work_pr){        // Если нет признака работы Аргона (состояние самопроверки) - перенести в отдельную функцию
-// Проводим самопроверку - self_test. Если результат удвлетворительный, выставляем соответствующие признаки
-// Добавить самопроверку по каналам АБВ
+// Проводим самопроверку - self_test.
+// Если результат удвлетворительный, выставляем соответствующие признаки
+// Добавить самопроверку по каналам АБВ (внутри self_test_)
+
    if(sp_d_k==1) {  // Если выбрана длинная самопроверка (1 минута - t), то...
       JPS(1,is_argon,is_operator,"Проведение длинной самопроверки...","");
       if(t==300) tResult = self_test_long(); else t++; } else
+
    if(sp_d_k==0) {  // Если выбрана короткая самопроверка (5 секунд), то...
       JPS(1,is_argon,is_operator,"Проведение короткой самопроверки...","");
-      if(t==25)  tResult = self_test_short();else t++; }
-//Label22->Caption=IntToStr(t); // Тактов самопроверки 
+     if(t==25) tResult = self_test_short(); else t++; }
+
+//Label22->Caption=IntToStr(t); // Тактов самопроверки
+
 // По окончанию теста считываем результат - если = 0, то тест прошел удачно и тогда
 if(self_test_pr) {          // Если есть признак окончания теста
 JPS(1,is_argon,is_operator,"Самопроверка окончена. Значение tResult = "+IntToStr(tResult),"");
-if(tResult==0){             // выставляем соответствующие признаки...
-   USO_Booled[11][6]=true;} // Выставляем признак БЦВК Готов на ТСЭ
-else if(!tResult==0){       // Если во время теста произошла ошибка (Result != 0), тогда
-JPS(3,is_argon,is_operator,"Самопроверка завершена с ошибкой. Значение tResult = "+IntToStr(tResult),"");
-   arg_acc_handler(tResult);// Вызываем обработчик ошибок Аргона
-   ArgonTakt->Enabled=false;}// Прекращаем работу БЦВК
-if(USO_Booled[11][6]){      // Если есть готовность БЦВК, то...
-   arg_work_pr = true;      // Признак работы Аргона (по нему происходит запуск)
-   USO_Booled[11][7]=true;  // Выставляем "ОСК" для ТСЭ (от кого?)
-   test_test_tse=0;         // ?
- // Так же выставляем заявку на Программу Установки Начальных Условий (ПУНУ)
- }
- } //self_test_pr
+
+        // РЕЗУЛЬТАТ 0
+        if(tResult==0){                   // выставляем соответствующие признаки...
+         USO_Booled[11][6]=true;}         // Выставляем признак БЦВК Готов на ТСЭ
+
+        // РЕЗУЛЬТАТ 1
+        else if(tResult==1){              // Если во время теста произошла ошибка (Result != 0), тогда
+        JPS(3,is_argon,is_operator,"Самопроверка завершена с ошибкой. Значение tResult = "+IntToStr(tResult),"");
+         arg_acc_handler(tResult);        // Вызываем обработчик ошибок Аргона
+         ArgonTakt->Enabled=false;}       // Прекращаем работу БЦВК
+
+       // ВЕРНЫЙ РЕЗУЛЬТАТ
+        if(USO_Booled[11][6]){            // Если есть готовность БЦВК, то...
+          arg_work_pr = true;             // Признак работы Аргона (по нему происходит запуск)
+          USO_Booled[11][7]=true;         // Выставляем "ОСК" для ТСЭ (от кого?)
+          test_test_tse=0;                // ?
+        // Так же выставляем заявку на Программу Установки Начальных Условий (ПУНУ)
+         }
+
+
+         } //self_test_pr
 } else {
+// Р А Б О Т А   А Р Г О Н А //
+//if(rygim==1){   // Если есть признак режима движения, то...
 i_ot_pusk++; // Счетчик тактов БЦВК
 // В СУД "Чайка-3" по началу каждого такта происходит самоконтроль (СК) - self_check
 
@@ -1403,6 +1101,12 @@ Panel1->Caption="НЕТ";
 Panel1->Font->Color=clYellow;
 }
 
+if(dynamics.rs<1){
+JPS(4,is_miu,is_operator,"Есть касание! Начало формирования протокола.","");
+//rygim=0;
+
+}
+
 if(dynamics.rs<10&&dynamics.sks>1){
 Panel1->Caption="Большая скорость n\на малой дальности!";
 Panel1->Font->Color=clRed;
@@ -1411,17 +1115,24 @@ Panel1->Caption="НЕТ";
 Panel1->Font->Color=clYellow;
 }
 
+if(dynamics.rs<0,00){
+Panel1->Caption="Касание!";
+Panel1->Font->Color=clLime;
+} else {
+Panel1->Caption="НЕТ";
+Panel1->Font->Color=clYellow;}
+
 ///////////////////////////////////
 // Расчет расхода топлива от РУД //
 ///////////////////////////////////
 //                   Линейное ускорение             Боковое по Y                   Боковое по Z
-dynamics.rudkg = abs(dynamics.ax*0.046/0.01849)+abs(dynamics.ay*0.046/0.01915)+abs(dynamics.az*0.046/0.01897);
+dynamics.rudkg = ((dynamics.ax*0.046/0.01849)+(dynamics.ay*0.046/0.01915)+abs(dynamics.az*0.046/0.01897));
 
 ///////////////////////////////////////////
 // Расчет расхода топлива от компенсации //
 // вращения при боковом перемещении      //
 ///////////////////////////////////////////
-dynamics.kvkg = abs(0.209 * 0.046 * dynamics.ay / 0.0383 / 0.621) + abs(0.209 * 0.046 * dynamics.az / 0.03794 / 0.592);
+dynamics.kvkg = -((0.209 * 0.046 * dynamics.ay / 0.0383 / 0.621) + (0.209 * 0.046 * dynamics.az / 0.03794 / 0.592));
 
 /////////////////////////////////////////
 // Общий расход топлива (на вычитание) //
@@ -1456,6 +1167,8 @@ dynamics.omz = dynamics.omz0 * pow((dynamics.rs0 / dynamics.rs),2) + 57.3 * dyna
 dynamics.omyf = (dynamics.omy * cos(dynamics.uomx * 0.017454) + dynamics.omz * sin(dynamics.uomx * 0.017454));
 dynamics.omzf = (dynamics.omz * cos(dynamics.uomx * 0.017454) - dynamics.omy * sin(dynamics.uomx * 0.017454));
 
+dynamics.omzx = (dynamics.omz * cos(dynamics.Ex * 0.017454) + dynamics.omy * sin(dynamics.Ex * 0.017454));
+dynamics.omyx = (dynamics.omy * cos(dynamics.Ex * 0.017454) - dynamics.omz * sin(dynamics.Ex * 0.017454));
 ////////////////////////////
 // Дополнительные расчеты //
 ////////////////////////////
@@ -1476,7 +1189,7 @@ dynamics.Spr = dynamics.rs * dynamics.vb / dynamics.V;                      //  
 // Расчет времени пролета //
 ////////////////////////////
 
-t_prolet[0] = ceil(dynamics.rs * abs(dynamics.sks)/pow(dynamics.V,2));
+t_prolet[0] = abs(dynamics.rs * abs(dynamics.sks)/pow(dynamics.V,2));
 t_prolet[1] = t_prolet[0]/86400;
 
 
@@ -1486,12 +1199,12 @@ t_prolet[1] = t_prolet[0]/86400;
 dynamics.vby = dynamics.omz * dynamics.rs * 0.017453;
 dynamics.vbz = dynamics.omy * dynamics.rs * 0.017453;
 
-//////////////////
+//////////////////  25 * 0.9 *
 // Расчет углов //
 //////////////////
 
-dynamics.uomy = dynamics.uomy + 25 * 0.9 * (dynamics.omy + dynamics.Ey); // угол =  1 сек*омега у
-dynamics.uomz = dynamics.uomz + 25 * 0.9 * (dynamics.omz + dynamics.Ez); // угол  от омеги z + вращение ТПК
+dynamics.uomy = dynamics.uomy + (dynamics.omy + dynamics.Ey); // угол =  1 сек*омега у
+dynamics.uomz = dynamics.uomz + (dynamics.omz + dynamics.Ez); // угол  от омеги z + вращение ТПК
 dynamics.uomx = dynamics.uomx + dynamics.Ex;                             // угол  от  вращения ТПК
 
 //*//*//*//*//*//*//*//*//*//*//*//*//*//*//*//*
@@ -1500,7 +1213,6 @@ dynamics.uomx = dynamics.uomx + dynamics.Ex;                             // угол
 // Вычисление относительной  //
 //   дальности по прогнозу   //
 ///////////////////////////////
-
 
 //*//*//*//*//*//*//*//*//*//*//*//*//*//*//*
 
@@ -1517,13 +1229,16 @@ if(argon_auto_contr){
  if(dynamics.omz>0.001) dynamics.Ez = -0.62063 * 0.5; else dynamics.Ez = 0;
 }
 
+
 //*//*//*//*//*//*//*//*//*//*//*//*//*//*//*//*
 i_tok = 0;
-} else i_tok++; // Что бы интегрирование было с шагом в секунду
+} else i_tok=i_tok++; // Что бы интегрирование было с шагом в секунду
+// Задача = сделать шаг интегрирования 0.100 мс
+// а шаг отображения на форматах (не ИнПУ) так как удобно оператору
 
 if(cw_b1[12]) USO_Booled[12][7]=1; else USO_Booled[12][7]=0;
 
-if(cw_b1[12]&&!USO_Booled[3][7]){
+ if(cw_b1[12]&&!USO_Booled[3][7]){
 if(YzS1[0]&&YzS1[1]==0){ // Если есть заявка на "Присваивание"
  f_test++;
  Label46->Caption="Состояние заявки на присваивание: "+IntToStr(f_test);
@@ -1531,7 +1246,7 @@ if(YzS1[0]&&YzS1[1]==0){ // Если есть заявка на "Присваивание"
 }
 }
 
-/////////////////////////////  USO_Booled[1][15] КУРС1
+/////////////////////////////  USO_Booled[1][16] КУРС1
 //*************************//  USO_Booled[2][0]  КУРС2
 //** РАБОТА С РТС "КУРС" **//
 //*************************//
@@ -1577,6 +1292,7 @@ if(pr_TSKD){ // Если Время.борт = ТСКД  S001
 } // S001
 } // S001.1
 } // else !arg_work_pr
+} // SUDN Power
 }
 //-----+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+--
 //----+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---
@@ -1595,6 +1311,7 @@ cw_b6[14] = 0; // Разрешение сближения по концу ГЦ
 cw_b6[8] = 1;  // Разрешение сближения
 GSO_types=2;
 JPS(4,is_operator,is_miu,"ОТЛАДОЧНОЕ - КУРС - Причаливание","");
+
 }
 //---------------------------------------------------------------------------
 
@@ -1684,13 +1401,14 @@ Label72->Caption="Пакетов СПС: "+IntToStr(CounterNo); }
 void __fastcall TMainForm::Button15Click(TObject *Sender)
 {
 SpsDataSt.TSpsParam[StrToInt(sps_num->Text)]=StrToInt(Edit1->Text);
+TSpsDataN[StrToInt(sps_num->Text)]=StrToInt(Edit1->Text);
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMainForm::Button16Click(TObject *Sender)
 {
-if(inpu_com2_connect_pr){
-CounterNo++;
+if(inpu_com2_connect_pr){      // If InPU COM2 connect flag trute...
+CounterNo++;                   // Add Pack Num
 PacketHeaderType.Signature = PacketSignatureR;
 PacketHeaderType.No = CounterNo;
 PacketHeaderType.Size = sizeof(wpControlCodeTypeN);
@@ -1923,4 +1641,56 @@ void __fastcall TMainForm::N110Click(TObject *Sender)
 inpu_1->Show();      // Загрузка ИнПУ-1
 }
 //---------------------------------------------------------------------------
+
+
+void __fastcall TMainForm::debug_statusClick(TObject *Sender)
+{
+/**************************/
+/* РАБОТА С СТАТУСОМ БУМа */
+/**************************/
+bool message_status[2];           // Message BUM Status booled - recode for good work!
+if(!debug_status->Checked) {
+if(message_status[1]==0){
+JPS(3,is_operator,is_miu,"ВНИМАНИЕ!!! Режим отладки снят!","");
+message_status[1]=1;}
+message_status[0] = 0;
+debug_panel->Visible=false;    // Скрываем отладочную панель
+WithoutBum->Visible=false;
+model_status_pics->Width=241;
+} 
+if(debug_status->Checked){     // Если введен признак отладки
+debug_panel->Visible=true;
+if(message_status[0]==0){
+message_status[1] = 0;
+JPS(3,is_operator,is_miu,"ВНИМАНИЕ!!! Введен режим отладки!","");
+message_status[0]=1;}
+model_status_pics->Width=177;  // Меняем размер окна состояния моделей
+}
+ // Меняем размер окна состояния моделей
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TMainForm::N40Click(TObject *Sender)
+{
+sps_form->Show(); // SPS Form 
+}
+//---------------------------------------------------------------------------
+int blabla;
+
+void __fastcall TMainForm::bum_statusTimer(TObject *Sender)
+{
+//if(bilu_work_pr==true){
+//Label8->Caption="Введен "+IntToStr(blabla);
+//blabla++;}else
+//Label8->Caption="Не Введен "+IntToStr(blabla);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::biluClick(TObject *Sender)
+{
+bilu_frm->Show();
+}
+//---------------------------------------------------------------------------
+
 

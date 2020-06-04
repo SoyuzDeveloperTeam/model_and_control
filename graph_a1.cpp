@@ -106,3 +106,12 @@ Series8->AddXY(0,0,"", clBlue);                // Null Центр конуса стыковочного
 }
 //---------------------------------------------------------------------------
 
+void __fastcall Tgraphics::SpeedButton1Click(TObject *Sender)
+{
+double x, y;
+x = StrToFloat(Edit1->Text);
+y = StrToFloat(Edit2->Text);
+Series8->AddXY(x,y,"", clBlue);
+}
+//---------------------------------------------------------------------------
+

@@ -1,6 +1,6 @@
 object zakon_upr_frm: Tzakon_upr_frm
-  Left = 435
-  Top = 539
+  Left = 63
+  Top = 152
   Width = 920
   Height = 491
   Caption = #1047#1072#1082#1086#1085' '#1091#1087#1088#1072#1074#1083#1077#1085#1080#1103

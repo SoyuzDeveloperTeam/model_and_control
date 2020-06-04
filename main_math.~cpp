@@ -1,14 +1,13 @@
 #include <math.h>
 #include <time.h>
-#include <tgmath.h>
 // Main Math
 
-int i_takt;
-double mis[7];
-double J[9];
-double Mg[3];
-double B[3];
-double Q[4];
+static int i_takt;
+static double mis[7];
+static double J[9];
+static double Mg[3];
+static double B[3];
+static double Q[4];
 
 typedef void (*TInit)() ;                                                 // ????????? ???, ????????? ?? ??????? ????????????? ?????? ??????? IGRF-11 ? ?????? ???????? ?????? ????
 typedef void (*TGetMagData)(double t, double *Q, double *B) ;             // ????????? ???, ????????? ?? ??????? GetMagData
@@ -85,7 +84,7 @@ q_ot[2] /= n;
 q_ot[3] /= n;
 }
 
-void (double q[4], double eiler[3]){
+void qtr2eil (double q[4], double eiler[3]){
  // Roll (x-axis rotation)
  double sinr_cosp = 2 * (q[0] * q[1] + q[2] * q[3]);
  double cosr_cosp = 1 - 2 * (q[0] * q[0] + q[1] * q[1]);
@@ -93,7 +92,8 @@ void (double q[4], double eiler[3]){
 
  // Pitch (y-axis rotation)
  double sinp = 2 * (q[0] * q[1] - q[2] * q[3]);
- if(abs(sinp)>=1) eiler[1] = copysign(M_PI/2,sinp); else eiler[1] = asin(sinp);
+//                               мерс
+// if(abs(sinp)>=1) eiler[1] = copysign(M_PI/2,sinp); else eiler[1] = asin(sinp);
 
  // yaw (z-axis rotation)
  double siny_cosp = 2 * (q[0] * q[1] + q[2] * q[3]);

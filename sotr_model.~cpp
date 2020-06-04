@@ -38,15 +38,15 @@ bool vsa_pr,
      vent_vsk_pr,
      en_vsk_pr;
 bool ksd_pr[3];
-int i;
+//int i;
 
 
 
 void test_open_f (void){
-  if(i>=10){
+//  if(i>=10){
 
-  } else {
-   i++;
+ // } else {
+ //  i++;
    //SPS_DataType.P_bo=SPS_DataType.P_bo-(SPS_DataType.P_bo*0.10);
-  }
+ // }
 }

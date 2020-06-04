@@ -496,8 +496,6 @@ void __fastcall TIrBrForm::SpeedButton2Click(TObject *Sender)
 {
 if(brvi_on){
 USO_BitType[16][4] = 1011;
-
-
 if(i1->Caption=="")
         i1->Caption="2";
 else if(i2->Caption=="")

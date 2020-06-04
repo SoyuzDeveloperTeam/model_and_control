@@ -111,6 +111,8 @@ if(dynamics.sks>0,00001)
 zakon_uprav->Series[7]->AddXY(dynamics.rs, dynamics.sks, clGreen); else  // Трасса ТК (при ск на сближение)
 zakon_uprav->Series[10]->AddXY(dynamics.rs, dynamics.sks, clGreen);      // Трасса ТК (при ск на расхождение)
 zakon_uprav->Series[8]->AddXY(dynamics.rs, dynamics.sks, clGreen);       // Маркер ТК
+if(dynamics.rs<0,00) Timer1->Enabled=false;
+
 }
 //---------------------------------------------------------------------------
 void __fastcall Tzakon_upr_frm::Button1Click(TObject *Sender)

@@ -61,17 +61,22 @@ if(cw_TA1[2]){ // Если есть авария
  f41_emer->Caption=BFI_EmerStr[2];
  f41_emerN->Caption="02";
  f43_emer->Caption=BFI_EmerStr[2];
- f43_emerN->Caption="02"; }
+ f43_emerN->Caption="02"; } else
+if(cw_TA1[3]){ // Если есть авария
+ f41_emer->Caption=BFI_EmerStr[3];
+ f41_emerN->Caption="03";
+ f43_emer->Caption=BFI_EmerStr[3];
+ f43_emerN->Caption="03"; }
 //////////////////////
 // Обработчик astr2 //
-if(USO_Booled[1][15]) {  // Если есть признак КУРС1...
-f43_astr2->Caption=BFI_action_str2[6];
-f44_astr2->Caption=BFI_action_str2[6];
-/* f46_4615*/}else
+if(USO_Booled[1][16]) {  // Если есть признак КУРС1...
+f43_astr2->Caption=BFI_action_str2[6]; // "КУРС 1"
+f44_astr2->Caption=BFI_action_str2[6]; // "КУРС 1"
+/* f46_4615 */} else
 if(USO_Booled[2][0])  {  // Если есть признак КУРС2...
-f43_astr2->Caption=BFI_action_str2[7];
-f44_astr2->Caption=BFI_action_str2[6];
-/* f46_4616*/} else
+f43_astr2->Caption=BFI_action_str2[7]; // "КУРС 2"
+f44_astr2->Caption=BFI_action_str2[6]; // "КУРС 2"
+/* f46_4616 */} else
 if(cw_b6[13]) {          // Если введен признак "ПРИЧАЛ"
 f43_astr2->Caption=BFI_action_str2[2]; }else{
 f43_astr2->Caption=""; f44_astr2->Caption=""; } // При отсутствии признаков из группы 8 - знакоместо пустое "ПРОБЕЛ"
@@ -90,23 +95,24 @@ f41_42->Caption=FormatFloat("0000",ArgonMemoryType[42]);
 f41_102->Caption=FormatFloat("0000",ArgonMemoryType[102]);
 //f41_A22->Caption=FloatToStr(ArgonMemoryType[112]);
 
-if(dynamics.Ex>0.00) f43_X_plus->Caption="+W"; else
-if(dynamics.Ex<0.00) f43_X_plus->Caption="-W"; else
+if(dynamics.Ex>=0.01) f43_X_plus->Caption="+W"; else
+if(dynamics.Ex<=0.01) f43_X_plus->Caption="-W"; else
 if(dynamics.Ex=0) f43_X_plus->Caption="  ";
 
-if(dynamics.Ey>0.00) f43_Y_plus->Caption="+y"; else
-if(dynamics.Ey<0.00) f43_Y_plus->Caption="-y"; else
+if(dynamics.Ey>=0.01) f43_Y_plus->Caption="+y"; else
+if(dynamics.Ey<=0.01) f43_Y_plus->Caption="-y"; else
 if(dynamics.Ey=0) f43_Y_plus->Caption="  ";
 
-if(dynamics.Ez>0.00) f43_Z_plus->Caption="+z"; else
-if(dynamics.Ez<0.00) f43_Z_plus->Caption="-z"; else
+if(dynamics.Ez>=0.01) f43_Z_plus->Caption="+z"; else
+if(dynamics.Ez<=0.01) f43_Z_plus->Caption="-z"; else
 if(dynamics.Ez=0) f43_Z_plus->Caption="  ";
 
-if(USO_Booled[3][7]=false&&dynamics.rs<1000){
+// Алгоритм перенести в соотвутствующую подрограмму Аргона (T0 ?)
+/* if(USO_Booled[3][7]=false&&dynamics.rs<1000){  // Если нет акселерометра и дальность менее 1 км, то...
  cw_b6[11]=1;
  cw_b6[8]=1;
  bfi_strings.str_1=7;
- if(dynamics.sks<0.001&&dynamics.rs<100)bfi_strings.str_1=8; }
+ if(dynamics.sks<0.001&&dynamics.rs<100)bfi_strings.str_1=8; } */ // BILU TEST - LEX 20200406
 
 ////////////////////////
 // Обработчик ВКЛ ДПО //
@@ -131,15 +137,15 @@ f43_rod->Caption=FormatFloat(" 000.00",-dynamics.sks); else                    /
 if(dynamics.sks>0)f43_rod->Caption=FormatFloat("000.00",-dynamics.sks); else
 if(dynamics.sks==0,000000)f43_rod->Caption=" 000.00";
 f43_resurs->Caption=FormatFloat("000.0",dynamics.rasp);                        // Ресур
-f43_omzf->Caption=FloatToStr(dynamics.omzf).sprintf("%06.03f",dynamics.omzf);
-f43_omyf->Caption=FloatToStr(dynamics.omyf).sprintf("%06.03f",dynamics.omyf);
+f43_omzf->Caption=FloatToStr(dynamics.omzx).sprintf("%06.03f",dynamics.omzx);
+f43_omyf->Caption=FloatToStr(dynamics.omyx).sprintf("%06.03f",dynamics.omyx);
 
 f46_vtek->Caption=FloatToStr(v_tek_m).sprintf("%06.05f",v_tek_m);
 if(cw_b1[12]) f46_tvc->Caption=gc1_time.FormatString("hh.nn.ss"); else
 f46_tvc->Caption="00.00.00";
 f41_v1v->Caption=FormatFloat("000.00",ArgonMemoryType[41]);
 f41_101->Caption=FormatFloat("000.00",ArgonMemoryType[101]);
-f41_43->Caption=FormatFloat("0.00000",ArgonMemoryType[43]);
+f41_43->Caption=FormatFloat("#.#####",ArgonMemoryType[43]);
 f41_44->Caption=FormatFloat("0.00000",ArgonMemoryType[44]);
 f41_45->Caption=FormatFloat("0.00000",ArgonMemoryType[45]);
 f41_46->Caption=FormatFloat("0.00000",ArgonMemoryType[46]);

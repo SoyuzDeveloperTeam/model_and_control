@@ -1,11 +1,11 @@
 object arg_deb: Targ_deb
-  Left = 844
-  Top = 103
+  Left = 278
+  Top = 175
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1054#1090#1083#1072#1076#1082#1072' '#1040#1088#1075#1086#1085'-16'
   ClientHeight = 529
-  ClientWidth = 945
+  ClientWidth = 757
   Color = clBtnFace
   DefaultMonitor = dmDesktop
   Font.Charset = DEFAULT_CHARSET
@@ -6408,9 +6408,9 @@ object arg_deb: Targ_deb
   end
   object GroupBox6: TGroupBox
     Left = 608
-    Top = 264
-    Width = 329
-    Height = 257
+    Top = 200
+    Width = 145
+    Height = 321
     TabOrder = 7
   end
   object GroupBox7: TGroupBox
@@ -6467,6 +6467,59 @@ object arg_deb: Targ_deb
       Width = 54
       Height = 13
       Caption = 'az 00.000'
+    end
+  end
+  object arg_channels_indication: TGroupBox
+    Left = 312
+    Top = 136
+    Width = 137
+    Height = 65
+    Caption = ' '#1050#1072#1085#1072#1083#1099' '#1041#1062#1042#1050' '
+    TabOrder = 9
+    object v_ch: TPanel
+      Left = 94
+      Top = 21
+      Width = 27
+      Height = 28
+      BevelInner = bvLowered
+      Caption = #1042
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 0
+    end
+    object B_ch: TPanel
+      Left = 54
+      Top = 21
+      Width = 27
+      Height = 28
+      BevelInner = bvLowered
+      Caption = #1041
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 1
+    end
+    object a_ch: TPanel
+      Left = 14
+      Top = 21
+      Width = 27
+      Height = 28
+      BevelInner = bvLowered
+      Caption = #1040
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 2
     end
   end
   object Timer1: TTimer

@@ -65,6 +65,10 @@ __published:	// IDE-managed Components
         TLabel *Label5;
         TLabel *Label6;
         TLabel *Label7;
+        TGroupBox *arg_channels_indication;
+        TPanel *v_ch;
+        TPanel *B_ch;
+        TPanel *a_ch;
         void __fastcall Button11Click(TObject *Sender);
         void __fastcall Button13Click(TObject *Sender);
         void __fastcall Timer1Timer(TObject *Sender);

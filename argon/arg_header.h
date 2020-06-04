@@ -6,6 +6,13 @@ static bool arg_work_pr; // Признак работы Аргона // Argon work flag
 static bool sp_d_k;      // Тип самопроверки (1 - длинная, 0 - короткая) // Argon Self-test type (1-long, 0-short)
 static int tResult;
 
+//static bool apm; // Argon Power Mask for USO
+
+//static bool bilu_work_pr;
+
+static bool prvi_8_enter;   // Признак перевода точки ввода (каретки) на в ячейку в ИРВИ
+static bool mode18act;      // Признак режима для ирви 18
+// Память Аргона (по данным ИнПУ) - требуется подтверждение кол-ва ячеек памяти
 static double ArgonMemoryType[4096];
 
 TDateTime arg_T0;
@@ -38,10 +45,10 @@ double halfk; // Половина К
 double verch; // Верхняя граница ЗУ
 double sred;  // Средняя граница ЗУ
 double niz;   // Нижняя граница ЗУ
-} dopusk_zu;  // Допуска на скорость сближения (динамические)
+} dopusk_zu;  // Допуска на скорость сближения (динамические) !!! НА ТМА-М
 
 static struct {
-double Ex; //  Ускорение в продольном канале x
+double Ex; //  Ускорение в продольном канале x  (Откуда приходит начальное значение?)
 double Ey; //  Ускорение в боковом по тангажу y
 double Ez; //  Ускорение в боковом по рысканию z
 
@@ -51,6 +58,10 @@ double az; // Ускорение в боковом по рысканию z
 
 double axd;
 double axruo;
+
+int rud_t_ruch;   // Общее время работы РУД (ручное)  (1 = 1 сек)
+int rud_t_auto;   // Общее время работы РУД (автомат)
+int rud_t_all;    // Общее время работы РУД (общее)
 
 double rs;   // Дальность радиальная
 double rs0;
@@ -82,7 +93,7 @@ double Spr;  // Промах S
 
 double vbok;   //
 
-double rasp;   //
+double rasp;   // Расход общий
 double rudkg;  // Топливо от РУД
 double ruokgx; // ROU x
 double ruokgy; // ROU y

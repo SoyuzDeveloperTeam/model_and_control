@@ -4,9 +4,11 @@
 #pragma hdrstop
 
 #include "argon_debug_frm.h"
+#include "USOData.h"
 #include "arg_header.h"
 #include "CtrlWord.h"    // Управляющие слова Аргона
 #include "JouHeader.h"   // Заголовок для журнала
+
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -215,7 +217,22 @@ if(arg_work_pr) Panel1->Caption="ЕСТЬ"; else Panel1->Caption="НЕТ"; // Проверка 
 Label5->Caption="Переменная из БЦВК: "+IntToStr(a_debugger);
 Label4->Caption=IntToStr(i_ot_pusk);
 Label6->Caption=IntToStr(integer_n);
-
+//USO_Booled[3][3]  = false;
+//USO_Booled[3][4]  = false;
+if(USO_Booled[3][13]){
+ a_ch->Color=clLime;
+ B_ch->Color=clLime;
+ v_ch->Color=clLime; } else {
+ a_ch->Color=clBtnFace;
+ B_ch->Color=clBtnFace;
+ v_ch->Color=clBtnFace; }
+if(USO_Booled[3][2]){
+ a_ch->Color=clLime;
+ B_ch->Color=clBtnFace;
+ v_ch->Color=clBtnFace; } else {
+ a_ch->Color=clBtnFace;
+ B_ch->Color=clBtnFace;
+ v_ch->Color=clBtnFace; }
 }
 //---------------------------------------------------------------------------
 

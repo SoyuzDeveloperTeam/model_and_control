@@ -98,11 +98,21 @@ __published:	// IDE-managed Components
         TRadioButton *RadioButton15;
         TRadioButton *RadioButton16;
         TCheckBox *sled;
+        TChart *Chart9;
+        TBubbleSeries *Series12;
+        TEdit *Edit1;
+        TLabel *Label9;
+        TEdit *Edit2;
+        TLabel *Label10;
+        TLabel *Label11;
+        TTimer *Timer3;
+        TSpeedButton *SpeedButton1;
         void __fastcall Timer1Timer(TObject *Sender);
         void __fastcall N1Click(TObject *Sender);
         void __fastcall MenuItem1Click(TObject *Sender);
         void __fastcall Timer2Timer(TObject *Sender);
         void __fastcall FormShow(TObject *Sender);
+        void __fastcall SpeedButton1Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall Tgraphics(TComponent* Owner);

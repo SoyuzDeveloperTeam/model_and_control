@@ -1,6 +1,6 @@
 object ksplfrm: Tksplfrm
-  Left = 842
-  Top = 308
+  Left = 305
+  Top = 130
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1050#1057#1055' '#1083#1077#1074#1086#1077
@@ -3012,9 +3012,9 @@ object ksplfrm: Tksplfrm
       OnClick = KSP_L_K_imageClick
     end
   end
-  object KSPTMR: TTimer
+  object S: TTimer
     Interval = 200
-    OnTimer = KSPTMRTimer
+    OnTimer = STimer
     Top = 424
   end
 end

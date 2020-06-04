@@ -9,6 +9,7 @@
 #include "JouHeader.h"         // Заголовок для журнала
 #include "JouStrings.h"        // Строковые переменные для журнала
 #include "bumconnect.cpp"      // Обмен с БУМ
+#include "arg_header.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -488,7 +489,7 @@ ksp_18->Enabled=true;
 }
 //---------------------------------------------------------------------------
 // ТАЙМЕР ИНДИКАЦИИ ТРАНСПАРАНТОВ КСП
-void __fastcall Tksplfrm::KSPTMRTimer(TObject *Sender)
+void __fastcall Tksplfrm::STimer(TObject *Sender)
 {
 // Индикация транспарантов КСП
 if(USO_Booled[0][0]){  // KSP A1
@@ -532,7 +533,7 @@ A17_LABEL->Font->Color=clBlack;  } else {
 A17_LABEL->Color=clGreen;
 A17_LABEL->Font->Color=clYellow; }
 
-if(USO_Booled[1][2]){  // KSP B1
+if(USO_Booled[1][2]){  // KSP B1 (неверно - неренести на Л1 РЛО ДК)
 V1_LABEL->Color=clLime;
 V1_LABEL->Font->Color=clBlack;  } else {
 V1_LABEL->Color=clGreen;
@@ -547,12 +548,12 @@ V5_LABEL->Color=clLime;
 V5_LABEL->Font->Color=clBlack;  } else {
 V5_LABEL->Color=clGreen;
 V5_LABEL->Font->Color=clYellow; }
-if(USO_Booled[1][5]){  // KSP B7
+if(USO_Booled[1][6]){  // KSP B7
 V7_LABEL->Color=clLime;
 V7_LABEL->Font->Color=clBlack;  } else {
 V7_LABEL->Color=clGreen;
 V7_LABEL->Font->Color=clYellow; }
-if(USO_Booled[1][7]){  // KSP B11
+if(USO_Booled[1][8]){  // KSP B11
 V11_LABEL->Color=clLime;
 V11_LABEL->Font->Color=clBlack;  } else {
 V11_LABEL->Color=clGreen;
@@ -593,7 +594,7 @@ G7_LABEL->Color=clLime;
 G7_LABEL->Font->Color=clBlack;  } else {
 G7_LABEL->Color=clGreen;
 G7_LABEL->Font->Color=clYellow; }
-if(USO_Booled[1][15]){  // KSP Г9
+if(USO_Booled[1][16]){  // KSP Г9
 G9_LABEL->Color=clLime;
 G9_LABEL->Font->Color=clBlack;  } else {
 G9_LABEL->Color=clGreen;
@@ -706,7 +707,7 @@ I1_LABEL->Color=clLime;
 I1_LABEL->Font->Color=clBlack;  } else {
 I1_LABEL->Color=clGreen;
 I1_LABEL->Font->Color=clYellow; }
-if(USO_Booled[3][7]){  // KSP И3
+if(USO_Booled[3][7]){  // KSP И3   USO_Booled[3][7]
 I3_LABEL->Color=clLime;
 I3_LABEL->Font->Color=clBlack;  } else {
 I3_LABEL->Color=clGreen;
@@ -1544,7 +1545,7 @@ KSP_Booled[4][10]=1;                          // Тогда выставляем признак Д11 - 
 JPS(1,is_operator,is_miu,is_ksp,"Д11"); } else   // Логируем выдачу команды
 
 if (KSP_Let[4]){  // Ж
-KSP_Booled[5][10]=1;                          // Тогда выставляем признак Ж11 - правда
+KSP_Booled[5][10]=true;                          // Тогда выставляем признак Ж11 - правда
 SendToBum(0x000002B6, 1, 1);                  //Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"Ж11"); } else   // Логируем выдачу команды
 
