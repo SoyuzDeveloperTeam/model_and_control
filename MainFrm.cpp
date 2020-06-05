@@ -120,7 +120,7 @@ int c;
 bool startdelay;
 bool iniread;
 
-int qwe;
+static int qwe;
 
 //---------------------------------------------------------------------------
 
@@ -968,12 +968,11 @@ if(testb->ItemIndex==3) GSO_types=3; else
 if(testb->ItemIndex==4) GSO_types=4; else
 if(testb->ItemIndex==5) GSO_types=5;
 
-/* PGO1
-USO_work(); // working with USO model *.CPP
+USO_work(); // Îáğàáîò÷èê êîìàíä ñ ÊÑÏ â ÓÑÎ - Translate KSP cmd to USO bool flags
 
 if(apm)     // if argon ready flag is true, then...
 ArgonTakt->Enabled=true; else
-ArgonTakt->Enabled=false;   */
+ArgonTakt->Enabled=false;
 
 
 }

@@ -14,7 +14,7 @@
 #pragma resource "*.dfm"
 Targ_deb *arg_deb;
 
-int i_flo;
+static int i_flo;
 
 //---------------------------------------------------------------------------
 __fastcall Targ_deb::Targ_deb(TComponent* Owner)

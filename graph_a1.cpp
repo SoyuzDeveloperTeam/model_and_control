@@ -11,9 +11,9 @@
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 Tgraphics *graphics;
-int shhh;
-int i_fds;
-int shag_a;
+static int shhh;
+static int i_fds;
+static int shag_a;
 //---------------------------------------------------------------------------
 __fastcall Tgraphics::Tgraphics(TComponent* Owner)
         : TForm(Owner)

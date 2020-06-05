@@ -47,8 +47,9 @@ Label44->Caption=FormatFloat("000.00",dynamics.Spr);   // S
 Label30->Caption=FormatFloat("00.000",dynamics.V);     // вектор скорости (относительно...?)
 Label29->Caption=FormatFloat("00.000",dynamics.vby);
 Label28->Caption=FormatFloat("00.000",dynamics.vbz);
- Label9->Caption=FormatFloat("00.000",dynamics.uomz);
-Label10->Caption=FormatFloat("00.000",dynamics.uomy);
+theta_tk->Caption=FormatFloat("00.000",dynamics.uomz);
+psi_tk->Caption=FormatFloat("00.000",dynamics.uomy);
+gamma_tk->Caption=FormatFloat("00.000", dynamics.uomx);
 t_pr->Caption=IntToStr(t_prolet[1]);   // Не работает - превратить в время!
 }
 //---------------------------------------------------------------------------

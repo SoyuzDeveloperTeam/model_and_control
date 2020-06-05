@@ -2,13 +2,13 @@
 #define A16_HDR
 #include <vcl.h>
 
-static bool arg_work_pr; // Признак работы Аргона // Argon work flag
+static bool arg_work_pr; // Признак работы Аргона - Argon work flag
 static bool sp_d_k;      // Тип самопроверки (1 - длинная, 0 - короткая) // Argon Self-test type (1-long, 0-short)
 static int tResult;
 
-//static bool apm; // Argon Power Mask for USO
+static bool apm; // Признак УСО для запуска такта Аргона - Argon Power Flag for USO
 
-//static bool bilu_work_pr;
+static bool bilu_work_pr;
 
 static bool prvi_8_enter;   // Признак перевода точки ввода (каретки) на в ячейку в ИРВИ
 static bool mode18act;      // Признак режима для ирви 18
@@ -17,14 +17,14 @@ static double ArgonMemoryType[4096];
 
 TDateTime arg_T0;
 
-static double mass_tk_full; // Текущая общая масса ТК
+static double mass_tk_full; // Текущая общая масса ТК - Current TK mass
 
 static bool dpo_v_pr[29]; // Признак выбранных в работу ДПО (счёт с 1) // DPO flags
-static bool subk_pr[1000];// SUBK flags // Признаки СУБК
+static bool subk_pr[1000];// Признаки СУБК - SUBK flags
 
-// Переменные для БФИ
-static byte av_pav_pr;    // Признак "Полуавтомат"(1) "Автомат"(2) ""(0)
-static byte kurs_zap_t;   // Курс часть 1
+// Переменные для БФИ - Data for BFI
+static byte av_pav_pr;    // Признак "Полуавтомат"(1) "Автомат"(2) ""(0) - KURS Flag "half-Auto"(1) "auto"(2) ""(0)
+static byte kurs_zap_t;   // Курс часть 1 - KURS Part 1
 static byte bezop_bfi;    //
 
 static int integer_n;
@@ -105,9 +105,9 @@ double ax1;
 double Y2;
 }dynamics;
 
-static bool argon_auto_contr; // Признак автоматического управления ТПК.
-static bool dock_fbvs;        // Признак стыковки от СУБК
-static bool can_send_toirvi;  // Флаг разрешения вывода на ИрВИ
+static bool argon_auto_contr; // Признак автоматического управления ТПК - Half-auto control spacecraft flag
+static bool dock_fbvs;        // Признак стыковки от СУБК - Docking flag from SUBK
+static bool can_send_toirvi;  // Флаг разрешения вывода на ИрВИ  - Flag for IRVI entry
 
 static struct{
 byte str_1;

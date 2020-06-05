@@ -8,7 +8,7 @@
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 TCDN_CLOCK *CDN_CLOCK;
-int f;
+static int f;
 //---------------------------------------------------------------------------
 __fastcall TCDN_CLOCK::TCDN_CLOCK(TComponent* Owner)
         : TForm(Owner)

@@ -15,7 +15,7 @@
 #pragma package(smart_init)
 
 static int i_test;
-bool d2b;
+static bool d2b;
 
 
 ///////////////////////

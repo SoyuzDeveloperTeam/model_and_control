@@ -12,8 +12,8 @@ Tzakon_upr_frm *zakon_upr_frm;
 /////////////
 // Ð ß Ä Û //
 /////////////
-int i_chart;
-int i_axis;
+static int i_chart;
+static int i_axis;
 //---------------------------------------------------------------------------
 __fastcall Tzakon_upr_frm::Tzakon_upr_frm(TComponent* Owner)
         : TForm(Owner)

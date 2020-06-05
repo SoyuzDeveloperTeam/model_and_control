@@ -9,7 +9,7 @@
 
 #pragma package(smart_init)
 
-int nResult;
+static int nResult;
 
 SOCKET SPSSocket_ch1;             // Сокет канала 1 СПС
 SOCKET SPSSocket_ch2;             // Сокет канала 2 СПС

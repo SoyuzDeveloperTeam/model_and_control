@@ -1,6 +1,6 @@
 object graphics: Tgraphics
-  Left = -3
-  Top = 123
+  Left = 10
+  Top = 9
   BorderStyle = bsSingle
   Caption = 'graphics'
   ClientHeight = 672
@@ -17,6 +17,13 @@ object graphics: Tgraphics
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
+  object Label10: TLabel
+    Left = 20
+    Top = 58
+    Width = 7
+    Height = 13
+    Caption = 'X'
+  end
   object PageControl1: TPageControl
     Left = 0
     Top = 0
@@ -1506,6 +1513,8 @@ object graphics: Tgraphics
         Top = 0
         Width = 1002
         Height = 644
+        AllowPanning = pmNone
+        AllowZoom = False
         BackImage.Data = {
           07544269746D6170F60B1600424DF60B16000000000036000000280000002003
           00005A0200000100180000000000C00B1600C40E0000C40E0000000000000000
@@ -46665,23 +46674,96 @@ object graphics: Tgraphics
         BackWall.Brush.Style = bsClear
         Foot.Visible = False
         MarginBottom = 0
-        MarginLeft = 10
+        MarginLeft = 0
         MarginRight = 10
         MarginTop = 0
         Title.Text.Strings = (
           'TChart')
         Title.Visible = False
-        AxisVisible = False
-        BottomAxis.Visible = False
+        BottomAxis.EndPosition = 84
+        BottomAxis.PositionPercent = 2
+        ClipPoints = False
+        LeftAxis.StartPosition = 14
         Legend.Visible = False
+        RightAxis.MinorTickLength = 0
+        RightAxis.StartPosition = 10
+        RightAxis.EndPosition = 91
+        RightAxis.PositionPercent = -26
         RightAxis.Visible = False
+        TopAxis.StartPosition = 2
+        TopAxis.EndPosition = 99
+        TopAxis.PositionPercent = 2
         TopAxis.Visible = False
+        View3D = False
         Align = alClient
         BevelOuter = bvNone
         BevelWidth = 0
         TabOrder = 0
+        object Label9: TLabel
+          Left = 16
+          Top = 10
+          Width = 7
+          Height = 13
+          Caption = 'X'
+        end
+        object Label11: TLabel
+          Left = 16
+          Top = 34
+          Width = 7
+          Height = 13
+          Caption = 'Y'
+        end
+        object SpeedButton1: TSpeedButton
+          Left = 16
+          Top = 56
+          Width = 73
+          Height = 22
+          OnClick = SpeedButton1Click
+        end
+        object Edit1: TEdit
+          Left = 32
+          Top = 8
+          Width = 57
+          Height = 21
+          TabOrder = 0
+          Text = '0'
+        end
+        object Series12: TBubbleSeries
+          Marks.ArrowLength = 0
+          Marks.Frame.Visible = False
+          Marks.Transparent = True
+          Marks.Visible = False
+          SeriesColor = clRed
+          Pointer.HorizSize = 49
+          Pointer.InflateMargins = True
+          Pointer.Pen.Style = psDashDot
+          Pointer.Pen.Width = 11
+          Pointer.Style = psCircle
+          Pointer.VertSize = 49
+          Pointer.Visible = True
+          XValues.DateTime = False
+          XValues.Name = 'X'
+          XValues.Multiplier = 1
+          XValues.Order = loAscending
+          YValues.DateTime = False
+          YValues.Name = 'Y'
+          YValues.Multiplier = 1
+          YValues.Order = loNone
+          RadiusValues.DateTime = False
+          RadiusValues.Name = 'Radius'
+          RadiusValues.Multiplier = 1
+          RadiusValues.Order = loNone
+        end
       end
     end
+  end
+  object Edit2: TEdit
+    Left = 36
+    Top = 56
+    Width = 57
+    Height = 21
+    TabOrder = 1
+    Text = '0'
   end
   object Timer1: TTimer
     Enabled = False
@@ -46715,5 +46797,9 @@ object graphics: Tgraphics
     OnTimer = Timer2Timer
     Left = 976
     Top = 56
+  end
+  object Timer3: TTimer
+    Left = 16
+    Top = 112
   end
 end

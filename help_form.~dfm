@@ -48,7 +48,6 @@ object help_frm: Thelp_frm
     0000FE0F0000FC1F0000FC0F0000FC0F0000FC0F0000FE070000C1030000C003
     0000C0030000C0030000E0030000F0070000FC0F0000}
   OldCreateOrder = False
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 22
   object PageControl1: TPageControl
@@ -134,7 +133,6 @@ object help_frm: Thelp_frm
         Height = 25
         Caption = #1044#1072#1083#1077#1077
         TabOrder = 2
-        OnClick = Button1Click
       end
     end
     object TabSheet2: TTabSheet

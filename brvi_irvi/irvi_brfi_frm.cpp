@@ -15,8 +15,8 @@
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 TIrBrForm *IrBrForm;
-bool brvi_on;
-bool halfe;
+static bool brvi_on;
+static bool halfe;
 
 void irvi_clear(void)
 {

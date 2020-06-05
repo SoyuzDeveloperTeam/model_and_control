@@ -13,9 +13,9 @@
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 TEnterNuForm *EnterNuForm;
-AnsiString F;
-byte reg2;
-TIniFile *FNUfile;
+static AnsiString F;
+static byte reg2;
+static TIniFile *FNUfile;
 //---------------------------------------------------------------------------
 __fastcall TEnterNuForm::TEnterNuForm(TComponent* Owner)
         : TForm(Owner)

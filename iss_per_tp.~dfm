@@ -3,7 +3,7 @@ object iss_t_tp: Tiss_t_tp
   Top = 162
   Width = 525
   Height = 747
-  Caption = 'iss_t_tp'
+  Caption = #1055#1077#1088#1077#1093#1086#1076' '#1074' '#1058#1055
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

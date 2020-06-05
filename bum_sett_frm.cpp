@@ -13,7 +13,7 @@
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 Tbum_settings *bum_settings;
-int ddss;
+static int ddss;
 //---------------------------------------------------------------------------
 __fastcall Tbum_settings::Tbum_settings(TComponent* Owner)
         : TForm(Owner)
@@ -25,7 +25,7 @@ __fastcall Tbum_settings::Tbum_settings(TComponent* Owner)
 static bool isk_pr;
 
 unsigned int m_second, m_min, m_hour, s_sec;
-AnsiString model_time;
+static AnsiString model_time;
 void __fastcall Tbum_settings::bum_descTimer(TObject *Sender)
 {
 Label161->Caption=PS_tk_iss.CIFC_bt[0];

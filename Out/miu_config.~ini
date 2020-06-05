@@ -7,5 +7,3 @@ tele_port = 2002
 [INPU]
 inpu1_port_com1 = 5480
 inpu1_port_com2 = 5430
-[OTHER]
-DS = false

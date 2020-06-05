@@ -153,7 +153,7 @@ double w_j2000_tk[3];                   // 30  Массив вектора угловой скорости T
 double vec_tk_TPK[3];                   // 33  Массив координат   Ц.М.    TK   (X, Y, Z)
 }parpar;
 
-unsigned char pu_bps_rudo_st[53];       // Параметр квитанций от ПУ БПС, РУД и РУО
+static unsigned char pu_bps_rudo_st[53];       // Параметр квитанций от ПУ БПС, РУД и РУО
 
 #endif //nu_data_h
 

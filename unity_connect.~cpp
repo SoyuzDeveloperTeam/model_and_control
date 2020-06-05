@@ -51,9 +51,11 @@ if ((acceptS = accept(unity_server, (struct sockaddr*)&addr_c, &addrlen)) != 0) 
 //SClient* client = new SClient(acceptS, addr_c);
 }
 
-void send_to_unity(){
+void send_to_unity(int PT){
+unity_arr.signature = 0xD8A73F93;
+unity_arr.packet_type = PT;
 uResult = send(unity_server,(char *)&unity_arr,sizeof(unity_arr), 0);   //
-if (uResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
+if (uResult == SOCKET_ERROR) GetWsaError(uResult);
 }
 
 

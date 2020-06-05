@@ -1,6 +1,6 @@
 object graphics: Tgraphics
-  Left = 10
-  Top = 9
+  Left = 232
+  Top = 582
   BorderStyle = bsSingle
   Caption = 'graphics'
   ClientHeight = 672

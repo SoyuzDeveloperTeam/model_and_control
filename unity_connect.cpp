@@ -14,14 +14,14 @@
 static AnsiString unity_ip;    // UnityIP адрес из конфигурации
 static AnsiString unity_port;  // Порт Unity из конфига
 
-int uResult;
+static int uResult;
 
 SOCKET unity_server;
 SOCKADDR_IN addr;
 
 SOCKET acceptS;
 SOCKADDR_IN addr_c;
-unsigned long ul = 1;
+static unsigned long ul = 1;
 
 void unity_server_init () {
 JPS(1,"Создание сервера для обмена с Юнити","","","");

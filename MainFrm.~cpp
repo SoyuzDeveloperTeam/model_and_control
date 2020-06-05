@@ -57,7 +57,7 @@
 #include "EnterNuFrm.cpp"               // Форма ввода начальных условий (НУ)
 #include "kdu_data.cpp"                 // Форма параметров КДУ
 #include "clock_form.cpp"               // Форма БЧК-744К Бортовые Часы на РС МКС
-#include "JouLogFrm.cpp"                 // Форма основного журнала
+#include "JouLogFrm.h"                  // Форма основного журнала
 #include "zakon_upr.cpp"                // Форма Закон Управления
 #include "KSPLForm.cpp"                 // Форма КСП левое
 #include "KSPPForm.cpp"                 // Форма КСП правое
@@ -120,7 +120,7 @@ int c;
 bool startdelay;
 bool iniread;
 
-int qwe;
+static int qwe;
 
 //---------------------------------------------------------------------------
 
@@ -968,12 +968,11 @@ if(testb->ItemIndex==3) GSO_types=3; else
 if(testb->ItemIndex==4) GSO_types=4; else
 if(testb->ItemIndex==5) GSO_types=5;
 
-/* PGO1
 USO_work(); // working with USO model *.CPP
 
 if(apm)     // if argon ready flag is true, then...
 ArgonTakt->Enabled=true; else
-ArgonTakt->Enabled=false;   */
+ArgonTakt->Enabled=false;
 
 
 }

@@ -1,6 +1,6 @@
 object iss_t_tp: Tiss_t_tp
-  Left = 290
-  Top = 162
+  Left = 232
+  Top = 20
   Width = 525
   Height = 747
   Caption = #1055#1077#1088#1077#1093#1086#1076' '#1074' '#1058#1055

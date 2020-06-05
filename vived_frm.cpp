@@ -8,7 +8,7 @@
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 Tliftoff_form *liftoff_form;
-int d;
+static int d;
 
 //---------------------------------------------------------------------------
 __fastcall Tliftoff_form::Tliftoff_form(TComponent* Owner)

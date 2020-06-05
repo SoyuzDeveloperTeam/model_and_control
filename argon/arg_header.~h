@@ -6,9 +6,9 @@ static bool arg_work_pr; // Признак работы Аргона // Argon work flag
 static bool sp_d_k;      // Тип самопроверки (1 - длинная, 0 - короткая) // Argon Self-test type (1-long, 0-short)
 static int tResult;
 
-//static bool apm; // Argon Power Mask for USO
+static bool apm; // Argon Power Mask for USO
 
-//static bool bilu_work_pr;
+static bool bilu_work_pr;
 
 static bool prvi_8_enter;   // Признак перевода точки ввода (каретки) на в ячейку в ИРВИ
 static bool mode18act;      // Признак режима для ирви 18
@@ -45,7 +45,7 @@ double halfk; // Половина К
 double verch; // Верхняя граница ЗУ
 double sred;  // Средняя граница ЗУ
 double niz;   // Нижняя граница ЗУ
-} dopusk_zu;  // Допуска на скорость сближения (динамические)
+} dopusk_zu;  // Допуска на скорость сближения (динамические) !!! НА ТМА-М
 
 static struct {
 double Ex; //  Ускорение в продольном канале x  (Откуда приходит начальное значение?)

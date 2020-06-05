@@ -11,8 +11,8 @@
 Tclock_frm *clock_frm;
 TDateTime secundomer;
 TDateTime TStartM;
-int cc=0;
-int SSD_st;
+static int cc=0;
+static int SSD_st;
 //---------------------------------------------------------------------------
 __fastcall Tclock_frm::Tclock_frm(TComponent* Owner)
         : TForm(Owner)

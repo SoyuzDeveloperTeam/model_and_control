@@ -6,6 +6,8 @@
 #include "md_m.h"              // Модельные переменные (структура m_math)
 #include "stdio.h"
 #include "dta.cpp"
+#include "JouStrings.h"                 // Строковые переменные для журнала
+#include "JouHeader.h"                  // Заголовок для журнала
 #include <math.hpp>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -20,6 +22,8 @@ __fastcall Tbum_settings::Tbum_settings(TComponent* Owner)
 }
 //---------------------------------------------------------------------------
 
+static bool isk_pr;
+
 unsigned int m_second, m_min, m_hour, s_sec;
 AnsiString model_time;
 void __fastcall Tbum_settings::bum_descTimer(TObject *Sender)
@@ -28,20 +32,23 @@ Label161->Caption=PS_tk_iss.CIFC_bt[0];
 //Label162->Caption=ntohf(PS_tk_iss.CIFC_bt[1]);
 Label163->Caption=FloatToStr(PS_tk_iss.CIFC_bt[2]);
 
-Label165->Caption=FormatFloat("0.000000",ntohs(PS_tk_iss.CIFC_Ug_bt[0]));
-Label166->Caption=FormatFloat("0.000000",ntohs(PS_tk_iss.CIFC_Ug_bt[1]));
-Label167->Caption=FormatFloat("0.000000",ntohs(PS_tk_iss.CIFC_Ug_bt[2]));
+Label165->Caption=FormatFloat("0.000000",PS_tk_iss.CIFC_Ug_bt[0]);
+Label166->Caption=FormatFloat("0.000000",PS_tk_iss.CIFC_Ug_bt[1]);
+Label167->Caption=FormatFloat("0.000000",PS_tk_iss.CIFC_Ug_bt[2]);
+Label161->Caption=FormatFloat("0.000000",PS_tk_iss.CIFC_bt[0]);
+Label162->Caption=FormatFloat("0.000000",PS_tk_iss.CIFC_bt[1]);
+Label163->Caption=FormatFloat("0.000000",PS_tk_iss.CIFC_bt[2]);
+Label169->Caption=FormatFloat("0.000000",PS_tk_iss.CIFC_Wdis[0]);
+Label170->Caption=FormatFloat("0.000000",PS_tk_iss.CIFC_Wdis[1]);
+Label171->Caption=FormatFloat("0.000000",PS_tk_iss.CIFC_Wdis[2]);
 
-Label169->Caption=PS_tk_iss.CIFC_Wdis[0];
-//Label170->Caption=htonf(PS_tk_iss.CIFC_Wdis[1]);
-//Label171->Caption=ntohf(PS_tk_iss.CIFC_Wdis[2]);
-
+// Промах
 Label156->Caption=htonl(PS_tk_iss.promah_pr);
 // Вектор на Солнце
 if(IsNan(PS_tk_iss.sun_vec[0]))sun_vector_x->Caption="***"; else
 sun_vector_x->Caption=FloatToStr(PS_tk_iss.sun_vec[0]);
 if(IsNan(PS_tk_iss.sun_vec[1]))sun_vector_y->Caption="***"; else
-sun_vector_y->Caption=FloatToStr(PS_tk_iss.sun_vec[1]);
+sun_vector_y->Caption=FloatToStr(htonl(PS_tk_iss.sun_vec[1]));
 if(IsNan(PS_tk_iss.sun_vec[2]))sun_vector_z->Caption="***"; else
 sun_vector_z->Caption=FloatToStr(PS_tk_iss.sun_vec[2]);
 // Шаг отображения
@@ -87,7 +94,8 @@ if(htonl(PS_tk_iss.tk_type)==1)bum_object->Caption="Союз-МС"; else
 if(htonl(PS_tk_iss.tk_type)==2)bum_object->Caption="МЛМ";
 // Признак перехода МКС в ТП
 if(htonl(PS_tk_iss.iss_tp_pr)==0)Label130->Caption="Не завершен"; else
-if(htonl(PS_tk_iss.iss_tp_pr)==1)Label130->Caption="Завершен";
+if(htonl(PS_tk_iss.iss_tp_pr)==1){Label130->Caption="Завершен"; if(!isk_pr){
+isk_pr=true; JPS(1,is_bum,is_operator,"Смена ориентации МКС ","     ИСКт");}}
 // Дата-время
 //m_second = htonl(PS_tk_iss.model_sec);
 //m_min  = m_second/60;
