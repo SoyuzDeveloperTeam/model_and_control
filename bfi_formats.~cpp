@@ -61,7 +61,12 @@ if(cw_TA1[2]){ // Если есть авария
  f41_emer->Caption=BFI_EmerStr[2];
  f41_emerN->Caption="02";
  f43_emer->Caption=BFI_EmerStr[2];
- f43_emerN->Caption="02"; }
+ f43_emerN->Caption="02"; } else
+if(cw_TA1[3]){ // Если есть авария
+ f41_emer->Caption=BFI_EmerStr[3];
+ f41_emerN->Caption="03";
+ f43_emer->Caption=BFI_EmerStr[3];
+ f43_emerN->Caption="03"; }
 //////////////////////
 // Обработчик astr2 //
 if(USO_Booled[1][16]) {  // Если есть признак КУРС1...
@@ -102,7 +107,7 @@ if(dynamics.Ez>=0.01) f43_Z_plus->Caption="+z"; else
 if(dynamics.Ez<=0.01) f43_Z_plus->Caption="-z"; else
 if(dynamics.Ez=0) f43_Z_plus->Caption="  ";
 
-// Алгоритм перенести в соотвутствующую подрограмму Аргона
+// Алгоритм перенести в соотвутствующую подрограмму Аргона (T0 ?)
 /* if(USO_Booled[3][7]=false&&dynamics.rs<1000){  // Если нет акселерометра и дальность менее 1 км, то...
  cw_b6[11]=1;
  cw_b6[8]=1;

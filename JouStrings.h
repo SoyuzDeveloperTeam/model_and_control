@@ -8,7 +8,7 @@ static AnsiString is_instruct = "Инструктор         ";
 static AnsiString is_inpu1    = "ИнПУ 1             ";
 static AnsiString is_inpu2    = "ИнПУ 2             ";
 static AnsiString is_neptun   = "ОВК               ";
-static AnsiString is_sudn     = "СУБК              ";
+static AnsiString is_sudn     = "СУБК               ";
 static AnsiString is_miu      = "МиУ               ";
 static AnsiString is_ksp      = "КСП               ";
 static AnsiString is_bum      = "БУМ                ";
@@ -20,6 +20,7 @@ static AnsiString is_irvi     = "ИРВИ              ";
 static AnsiString is_prvi     = "ПРВИ              ";
 static AnsiString is_brus     = "БРУС              ";
 static AnsiString is_argon    = "Аргон              ";
+static AnsiString is_kdu      = "КДУ               ";
 
 // Команды
 static AnsiString cmd_LoadToArgon = "Загрузка уставок на борт   ";

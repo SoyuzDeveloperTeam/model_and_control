@@ -1,6 +1,6 @@
 object BFI_Simvol_form: TBFI_Simvol_form
-  Left = 503
-  Top = 227
+  Left = 423
+  Top = 214
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1060#1086#1088#1084#1072#1090#1099' '#1041#1062#1042#1050' '#1040#1088#1075#1086#1085'-16'

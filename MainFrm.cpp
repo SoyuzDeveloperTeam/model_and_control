@@ -9,8 +9,6 @@
 /* реализованы в данном ПО.                                                */
 /*-------------------------------------------------------------------------*/
 /***************************************************************************/
-// Отладка поиска зависания:
-// Отключил таймеры локальное время, отладочный, таймер №5 (работа с ОЗУ), таймер №2 (иконка БУМ)
 //---------------------------------------------------------------------------
 #pragma hdrstop
 #include <vcl.h>
@@ -21,39 +19,39 @@
 //---------------------------------------------------------------------------
 /* Заголовки */
 #include "MD_math_header.h"
-#include "main_header.h"                // Основной заголовок
-#include "JouHeader.h"                  // Заголовок для журнала
-#include "arg_jou.h"                    // Журнал Аргона
-#include "dta.cpp"                      // Данные для обмена с БУМ
-#include "md_m.h"                       // Модельные переменные
-#include "ts_header.h"                  // Переменные ТС
-#include "ICN_header.h"                 // Данные для обмена с ИнПУ
-#include "JouStrings.h"                 // Строковые переменные для журнала
-#include "SPSHead.h"                    // Данные СПС ч.1
-#include "USOData.h"                    // Параметры УСО
-#include "uso_model.cpp"                // Модель УСО
-#include "inpu_connect.cpp"             // Обмен с моделью ИнПУ
-#include "main_math.cpp"                // Математические модели
-#include "argon/arg_header.h"           // Загогловок А16
-#include "argon/CtrlWord.h"             // Управляющие слова Аргона
+#include "main_header.h"                // Основной заголовок - main Header
+#include "JouHeader.h"                  // Заголовок для журнала - Header for Journal
+#include "arg_jou.h"                    // Журнал Аргона - argon journal
+#include "dta.cpp"                      // Данные для обмена с БУМ - BUM data
+#include "md_m.h"                       // Модельные переменные - Model data
+#include "ts_header.h"                  // Переменные ТС - TC data
+#include "ICN_header.h"                 // Данные для обмена с ИнПУ - data ffor connect with InPU
+#include "JouStrings.h"                 // Строковые переменные для журнала - String's for JPS loging funtion
+#include "SPSHead.h"                    // Данные СПС ч.1 - SPS Data Part 1
+#include "USOData.h"                    // Параметры УСО - USO Data
+#include "uso_model.cpp"                // Модель УСО - USO Model
+#include "inpu_connect.cpp"             // Обмен с моделью ИнПУ - For connect with InPU
+#include "main_math.cpp"                // Математические модели - Math Models
+#include "argon/arg_header.h"           // Загогловок А16 - argon header #2 (?)
+#include "argon/CtrlWord.h"             // Управляющие слова Аргона - Control words (flags) for argon
 #include "argon/arg_kdu_operations.cpp" // Argon-16 программы КДУ
 #include "sotr_data.h"                  // Модель СОТР
 #include "DateUtils.hpp"
-#include "argon/arg_pks.cpp"            // Программы Аргона
-#include "bumconnect.cpp"               // Обмен с БУМ
-#include "neptun_main.cpp"              // Основные процедуры ПСА "Нептун-МЭ"
-#include "unity_connect.cpp"            // Обмен с Юнити
-#include "inpuconnect.cpp"              // Обмен с ИнПУ
+#include "argon/arg_pks.cpp"            // Программы Аргона - Argon Programs
+#include "bumconnect.cpp"               // Обмен с БУМ - Connect wth BUM
+#include "neptun_main.cpp"              // Основные процедуры ПСА "Нептун-МЭ" - Main proc for Neptune model
+#include "unity_connect.cpp"            // Обмен с Юнити - Connect with Unity
+#include "inpuconnect.cpp"              // Обмен с ИнПУ  - Connect with InPU
 //---------------------------------------------------------------------------
 /* Формы */
-//#include "help_form.cpp"                // Форма Поддержи
-#include "bilu_format.cpp"              // Форма БИЛУ
-#include "vived_frm.cpp"                // Форма Выведение (график)
-#include "brus_form.cpp"                // Форма БРУС
-#include "ts_frm.cpp"                   // Форма ТС
-#include "bfi_formats.cpp"              // Форма "БФИ Символ" для А16
-#include "bum_sett_frm.cpp"             // Форма вывода данных БУМ
-#include "toru_frm.cpp"                 // Форма пульта ПУ БПС ТОРУ
+//#include "help_form.cpp"              // Форма Поддержи - Help Form
+#include "bilu_format.cpp"              // Форма БИЛУ - BILU form
+#include "vived_frm.cpp"                // Форма Выведение (график) - "LiftOff" chart
+#include "brus_form.cpp"                // Форма БРУС - BRUS form
+#include "ts_frm.cpp"                   // Форма ТС - TS Form
+#include "bfi_formats.cpp"              // Форма "БФИ Символ" для А16 - BFI Data monitor ith VKU form
+#include "bum_sett_frm.cpp"             // Форма вывода данных БУМ  - Data from BUM form
+#include "toru_frm.cpp"                 // Форма пульта ПУ БПС ТОРУ - TORU Pult form
 #include "EnterNuFrm.cpp"               // Форма ввода начальных условий (НУ)
 #include "kdu_data.cpp"                 // Форма параметров КДУ
 #include "clock_form.cpp"               // Форма БЧК-744К Бортовые Часы на РС МКС

@@ -1,11 +1,11 @@
 object bum_settings: Tbum_settings
-  Left = 506
-  Top = 162
+  Left = -94
+  Top = 95
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1057#1086#1089#1090#1086#1103#1085#1080#1077' '#1041#1059#1052
   ClientHeight = 551
-  ClientWidth = 1216
+  ClientWidth = 1024
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
