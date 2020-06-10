@@ -69,6 +69,7 @@ __published:	// IDE-managed Components
         TPanel *v_ch;
         TPanel *B_ch;
         TPanel *a_ch;
+        TLabel *debug_pusk;
         void __fastcall Button11Click(TObject *Sender);
         void __fastcall Button13Click(TObject *Sender);
         void __fastcall Timer1Timer(TObject *Sender);

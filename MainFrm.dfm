@@ -1,9 +1,9 @@
 object MainForm: TMainForm
-  Left = 146
-  Top = 66
+  Left = 564
+  Top = 191
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  ClientHeight = 571
+  ClientHeight = 570
   ClientWidth = 748
   Color = clBtnFace
   DefaultMonitor = dmDesktop
@@ -360,6 +360,7 @@ object MainForm: TMainForm
       0404020202040004000004040401040401040404040404040404040402020404
       0403000400000404010404040104040404040404040404040404020202020404
       000004040404040401040404040404040404040404040404040404040000}
+    OnClick = SpeedButton1Click
   end
   object GroupBox2: TGroupBox
     Left = 8
@@ -428,7 +429,7 @@ object MainForm: TMainForm
   end
   object StatusBar: TStatusBar
     Left = 0
-    Top = 554
+    Top = 553
     Width = 748
     Height = 17
     Panels = <
@@ -1109,7 +1110,7 @@ object MainForm: TMainForm
   end
   object GroupBox3: TGroupBox
     Left = 344
-    Top = 77
+    Top = 72
     Width = 249
     Height = 81
     TabOrder = 11
@@ -1146,6 +1147,7 @@ object MainForm: TMainForm
       Checked = True
       State = cbChecked
       TabOrder = 2
+      Visible = False
     end
     object Button6: TButton
       Left = 128
@@ -1197,6 +1199,7 @@ object MainForm: TMainForm
       end
       object N22: TMenuItem
         Caption = #1041#1059#1052
+        Visible = False
         OnClick = N22Click
       end
       object N26: TMenuItem
@@ -1266,6 +1269,10 @@ object MainForm: TMainForm
         Caption = #1041#1048#1051#1059
         OnClick = biluClick
       end
+      object ssvp: TMenuItem
+        Caption = #1057#1057#1042#1055
+        OnClick = ssvpClick
+      end
     end
     object N7: TMenuItem
       Caption = #1046#1091#1088#1085#1072#1083
@@ -1274,6 +1281,7 @@ object MainForm: TMainForm
     end
     object N8: TMenuItem
       Caption = #1057#1048#1042#1054
+      Enabled = False
     end
     object N13: TMenuItem
       Caption = #1052#1050#1057
@@ -1287,6 +1295,7 @@ object MainForm: TMainForm
       end
       object LAPTOP1: TMenuItem
         Caption = 'LAPTOP'
+        Enabled = False
         object N17: TMenuItem
           Caption = #1060#1086#1088#1084#1072#1090#1099
           object N18: TMenuItem
@@ -1303,7 +1312,18 @@ object MainForm: TMainForm
       end
       object N21: TMenuItem
         Caption = #1041#1050#1059'-'#1062
+        Enabled = False
         OnClick = N21Click
+      end
+      object N41: TMenuItem
+        Caption = #1057#1080#1089#1090#1077#1084#1099' '#1056#1057' '#1052#1050#1057
+        Enabled = False
+        object N42: TMenuItem
+          Caption = #1057#1052
+        end
+        object N43: TMenuItem
+          Caption = #1060#1043#1041
+        end
       end
     end
     object N36: TMenuItem
@@ -1321,6 +1341,7 @@ object MainForm: TMainForm
       end
       object N35: TMenuItem
         Caption = #1054#1073#1084#1077#1085' '#1089' '#1041#1059#1052
+        Visible = False
         OnClick = N35Click
       end
     end
@@ -1339,7 +1360,6 @@ object MainForm: TMainForm
     end
   end
   object ArgonTakt: TTimer
-    Enabled = False
     Interval = 200
     OnTimer = ArgonTaktTimer
     Left = 712
@@ -2452,5 +2472,9 @@ object MainForm: TMainForm
     OnTimer = bum_statusTimer
     Left = 712
     Top = 72
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 224
+    Top = 496
   end
 end

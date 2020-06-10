@@ -13,7 +13,7 @@ TUsoForm *UsoForm;
 __fastcall TUsoForm::TUsoForm(TComponent* Owner)
         : TForm(Owner)
 {
-USO_BufferType[0]=0000;
+
 
 }
 //---------------------------------------------------------------------------

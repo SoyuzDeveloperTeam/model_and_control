@@ -9,8 +9,8 @@
 #pragma resource "*.dfm"
 Tinpu_1 *inpu_1;
 
-int inpu_x0, inpu_y0, inpu_xmax, inpu_ymax, ot_x, ot_y;
-int color1 = 0x006D8E;
+static int inpu_x0, inpu_y0, inpu_xmax, inpu_ymax, ot_x, ot_y;
+static int color1 = 0x006D8E;
 
 //---------------------------------------------------------------------------
 __fastcall Tinpu_1::Tinpu_1(TComponent* Owner)

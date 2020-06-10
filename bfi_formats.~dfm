@@ -1,6 +1,6 @@
 object BFI_Simvol_form: TBFI_Simvol_form
-  Left = 503
-  Top = 227
+  Left = 356
+  Top = 268
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1060#1086#1088#1084#1072#1090#1099' '#1041#1062#1042#1050' '#1040#1088#1075#1086#1085'-16'
@@ -35,7 +35,7 @@ object BFI_Simvol_form: TBFI_Simvol_form
     Top = 0
     Width = 502
     Height = 429
-    ActivePage = f_43
+    ActivePage = f_41
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -44,7 +44,7 @@ object BFI_Simvol_form: TBFI_Simvol_form
     Font.Style = []
     ParentFont = False
     Style = tsButtons
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 0
     OnChange = formatsChange
     object f_41: TTabSheet
@@ -133,12 +133,12 @@ object BFI_Simvol_form: TBFI_Simvol_form
           Width = 15
           Height = 14
         end
-        object f41_kurstime: TLabel
+        object f41_t0: TLabel
           Left = 309
           Top = 32
-          Width = 180
+          Width = 45
           Height = 14
-          Caption = 'T0=23:17:35S'
+          Caption = 'T0='
         end
         object Label55: TLabel
           Left = 39
@@ -304,7 +304,7 @@ object BFI_Simvol_form: TBFI_Simvol_form
           AutoSize = False
           Caption = '113T1='
         end
-        object Label82: TLabel
+        object f41_t1: TLabel
           Left = 99
           Top = 296
           Width = 120
@@ -508,14 +508,14 @@ object BFI_Simvol_form: TBFI_Simvol_form
           Height = 14
           Caption = 'N/S'
         end
-        object Label4: TLabel
+        object f41_t2: TLabel
           Left = 99
           Top = 320
           Width = 120
           Height = 14
           Caption = '00.00.00'
         end
-        object Label49: TLabel
+        object f41_t3: TLabel
           Left = 99
           Top = 344
           Width = 120
@@ -1402,12 +1402,11 @@ object BFI_Simvol_form: TBFI_Simvol_form
             Height = 14
             Caption = 'TN=23:17:35 '
           end
-          object Label9: TLabel
+          object f44_astr1: TLabel
             Left = 9
             Top = 32
-            Width = 105
+            Width = 15
             Height = 14
-            Caption = 'RFCFYBT'
           end
           object f44_astr2: TLabel
             Left = 144

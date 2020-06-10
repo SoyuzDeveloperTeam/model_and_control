@@ -83,7 +83,7 @@ __published:	// IDE-managed Components
         TPanel *Panel8;
         TLabel *Label3;
         TLabel *f44_time;
-        TLabel *Label9;
+        TLabel *f44_astr1;
         TLabel *f44_astr2;
         TLabel *Label16;
         TLabel *f44_kurs;
@@ -210,7 +210,7 @@ __published:	// IDE-managed Components
         TLabel *Label71;
         TLabel *Label72;
         TLabel *Label101;
-        TLabel *f41_kurstime;
+        TLabel *f41_t0;
         TLabel *Label55;
         TLabel *Label57;
         TLabel *f41_B10;
@@ -232,7 +232,7 @@ __published:	// IDE-managed Components
         TLabel *Label75;
         TLabel *Label80;
         TLabel *Label81;
-        TLabel *Label82;
+        TLabel *f41_t1;
         TLabel *Label83;
         TLabel *f41_emer;
         TLabel *f41_emerN;
@@ -261,8 +261,8 @@ __published:	// IDE-managed Components
         TLabel *f41_102;
         TLabel *f41_101;
         TLabel *Label53;
-        TLabel *Label4;
-        TLabel *Label49;
+        TLabel *f41_t2;
+        TLabel *f41_t3;
         TPanel *Panel1;
         TLabel *Label45;
         TLabel *f45_time;
@@ -369,6 +369,9 @@ __published:	// IDE-managed Components
 private:	// User declarations
 public:		// User declarations
         __fastcall TBFI_Simvol_form(TComponent* Owner);
+        
+//--- Временные переменные для вывода параметров на ВКУ ---------------------
+
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TBFI_Simvol_form *BFI_Simvol_form;

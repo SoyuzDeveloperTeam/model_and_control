@@ -1,6 +1,6 @@
 object bum_settings: Tbum_settings
-  Left = -94
-  Top = 95
+  Left = -39
+  Top = 62
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1057#1086#1089#1090#1086#1103#1085#1080#1077' '#1041#1059#1052

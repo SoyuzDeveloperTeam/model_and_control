@@ -16,11 +16,11 @@ static AnsiString unity_port;  // Порт Unity из конфига
 
 static int uResult;
 
-SOCKET unity_server;
-SOCKADDR_IN addr;
+static SOCKET unity_server;
+static SOCKADDR_IN addr;
 
-SOCKET acceptS;
-SOCKADDR_IN addr_c;
+static SOCKET acceptS;
+static SOCKADDR_IN addr_c;
 static unsigned long ul = 1;
 
 void unity_server_init () {

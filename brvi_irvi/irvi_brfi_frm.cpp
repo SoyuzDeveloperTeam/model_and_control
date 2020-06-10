@@ -42,7 +42,7 @@ AnsiString i5,AnsiString i6,AnsiString i7,AnsiString i8,AnsiString i9,AnsiString
 AnsiString i11,AnsiString i12,AnsiString i13,AnsiString i14,AnsiString i15) {
 
 // Проверяем програма ли это Аргона
-int br_reg;
+static int br_reg;
 // Обработчик пустого ввода
 if(i1.IsEmpty()&&i8.IsEmpty()){
 IrBrForm->i1->Caption="A";

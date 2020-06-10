@@ -178,6 +178,11 @@ __published:	// IDE-managed Components
         TLabel *Label16;
         TLabel *Label17;
         TMenuItem *bilu;
+        TMenuItem *ssvp;
+        TPopupMenu *PopupMenu1;
+        TMenuItem *N41;
+        TMenuItem *N42;
+        TMenuItem *N43;
         void __fastcall pusk_btnClick(TObject *Sender);
         void __fastcall N3Click(TObject *Sender);
         void __fastcall N14Click(TObject *Sender);
@@ -211,7 +216,6 @@ __published:	// IDE-managed Components
         void __fastcall MainTimerTimer(TObject *Sender);
         void __fastcall ModelDateTime_TimerTimer(TObject *Sender);
         void __fastcall N26Click(TObject *Sender);
-        void __fastcall ArgonTaktTimer(TObject *Sender);
         void __fastcall N27Click(TObject *Sender);
         void __fastcall Button12Click(TObject *Sender);
         void __fastcall ChekTSKDTimer(TObject *Sender);
@@ -248,6 +252,9 @@ __published:	// IDE-managed Components
         void __fastcall N40Click(TObject *Sender);
         void __fastcall bum_statusTimer(TObject *Sender);
         void __fastcall biluClick(TObject *Sender);
+        void __fastcall ssvpClick(TObject *Sender);
+        void __fastcall SpeedButton1Click(TObject *Sender);
+        void __fastcall ArgonTaktTimer(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TMainForm(TComponent* Owner);

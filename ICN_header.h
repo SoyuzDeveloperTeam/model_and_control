@@ -4,14 +4,12 @@
 #include "vector.h"
 // InPU Connect Data
 
-
-
-static const unsigned long PacketSignatureR = 0x71AF5D13;  // Сигнатура пакета
+static const unsigned long PacketSignatureR = 0x71AF5D13;  // Сигнатура пакета - packet signature
 
 static struct {
-long Signature;         // Сигнатура пакета
-unsigned short No;      // Номер пакета
-unsigned short Size;    // Размер пакета
+long Signature;         // Сигнатура пакета - packet signature
+unsigned short No;      // Номер пакета - packet number
+unsigned short Size;    // Размер пакета - packet size
 byte PacketID;          // PacketID - b
 }PacketHeaderType;
 
@@ -122,12 +120,12 @@ enum{       wpCodeNone,
     /* 41 */  wpBfiFormat,
           wpLast} wpControlCodeTypeN;
 
-enum{
-bfiFormatNone, // Отсутствие формата
+static enum{
+bfiFormatNone,                       // Отсутствие формата
 bfiFormat41,bfiFormat42,bfiFormat43, // Штатные форматы
 bfiFormat44,bfiFormat45,bfiFormat46, // Штатные форматы
-bfiFormatRus, // Формат РУС
-bfiFormatBlack // Черный экран
+bfiFormatRus,                        // Формат РУС
+bfiFormatBlack                       // Черный экран
 }bfiFormatType;
 
 #endif

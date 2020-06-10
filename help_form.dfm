@@ -1,6 +1,6 @@
 object help_frm: Thelp_frm
-  Left = 429
-  Top = 432
+  Left = 30
+  Top = 330
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1057#1087#1088#1072#1074#1082#1072' '#1080' '#1087#1086#1076#1076#1077#1088#1078#1082#1072

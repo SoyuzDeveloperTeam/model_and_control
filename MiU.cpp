@@ -20,8 +20,8 @@ USEFORM("cdn_clock_frm.cpp", CDN_CLOCK);
 USEFORM("graph_a1.cpp", graphics);
 USEFORM("USOFrm.cpp", UsoForm);
 USEFORM("bfi_formats.cpp", BFI_Simvol_form);
-USEFORM("InstructorFormat_Form.cpp", InstructorFormat_FRM);
 USEFORM("zakon_upr.cpp", zakon_upr_frm);
+USEFORM("InstructorFormat_Form.cpp", InstructorFormat_FRM);
 USEFORM("help_form.cpp", help_frm);
 USEFORM("iss_per_tp.cpp", iss_t_tp);
 USEFORM("vku_graph.cpp", vkugraph);
@@ -38,6 +38,8 @@ USEFORM("inpudebugf.cpp", NeptDebug);
 USEFORM("sps_frm.cpp", sps_form);
 USEFORM("bilu_format.cpp", bilu_frm);
 USEFORM("neptun\neptun.cpp", inpu_1);
+USEFORM("ssvp_form.cpp", ssvp_frm);
+USEFORM("krl_form.cpp", krl_frm);
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
@@ -80,6 +82,8 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
                  Application->CreateForm(__classid(TNeptDebug), &NeptDebug);
                  Application->CreateForm(__classid(Tsps_form), &sps_form);
                  Application->CreateForm(__classid(Tbilu_frm), &bilu_frm);
+                 Application->CreateForm(__classid(Tssvp_frm), &ssvp_frm);
+                 Application->CreateForm(__classid(Tkrl_frm), &krl_frm);
                  Application->Run();
         }
         catch (Exception &exception)

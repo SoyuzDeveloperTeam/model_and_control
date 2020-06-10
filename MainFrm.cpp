@@ -37,6 +37,7 @@
 #include "argon/arg_kdu_operations.cpp" // Argon-16 программы КДУ
 #include "sotr_data.h"                  // Модель СОТР
 #include "DateUtils.hpp"
+#include "ssvp_module.h"                // Признаки ССВП
 #include "argon/arg_pks.cpp"            // Программы Аргона - Argon Programs
 #include "bumconnect.cpp"               // Обмен с БУМ - Connect wth BUM
 #include "neptun_main.cpp"              // Основные процедуры ПСА "Нептун-МЭ" - Main proc for Neptune model
@@ -56,10 +57,12 @@
 #include "kdu_data.cpp"                 // Форма параметров КДУ
 #include "clock_form.cpp"               // Форма БЧК-744К Бортовые Часы на РС МКС
 #include "JouLogFrm.h"                  // Форма основного журнала
+#include "ssvp_form.cpp"                // Форма ССВП - Процессуальная
 #include "zakon_upr.cpp"                // Форма Закон Управления
 #include "KSPLForm.cpp"                 // Форма КСП левое
 #include "KSPPForm.cpp"                 // Форма КСП правое
 #include "USOFrm.cpp"                   // Форма УСО
+#include "krl_form.cpp"                 // Форма КРЛ
 #include "cdn_clock_frm.cpp"            // Форма CDN clock MSK
 #include "AboutFrm.cpp"                 // Форма "О программе..."
 #include "BkuCFrm.cpp"                  // Форма БКУ-Ц "Символ-Ц"
@@ -89,7 +92,7 @@ static AnsiString StrForDebug;
 static int j_test;
 static bool vill_test;
 static int f_test;
-TDateTime SFD_sec;
+static TDateTime SFD_sec;
 static double ghjh;
 
 // -- -- -- --
@@ -105,18 +108,16 @@ static int qss;
 static int disp[3];
 static vector <int> STBv(3);
 
-int test_test_tse;
+static int image_index;
 
-int image_index;
-
-struct {
+static struct {
 int a;
 int b;
 int c;
 }sends;
-  int intVariable;
-bool startdelay;
-bool iniread;
+static int intVariable;
+static bool startdelay;
+static bool iniread;
 
 static int qwe;
 
@@ -537,7 +538,7 @@ Timer2->Enabled=false; }
 
 void __fastcall TMainForm::FormCreate(TObject *Sender)
 {
-ver_num=" 1.0.1.54";              // Переделать - выводить версию из атрибутов
+ver_num=" 1.0.1.56";              // Переделать - выводить версию из атрибутов
 // --- Выставляем начальное состояние иконок моделей --- //
 ModelStatusPicList->GetBitmap(0, bum_status_pic->Picture->Bitmap);
 ModelStatusPicList->GetBitmap(0, inpu_status_pic->Picture->Bitmap);
@@ -990,308 +991,7 @@ void __fastcall TMainForm::N26Click(TObject *Sender)
 BFI_Simvol_form->Show();
 }
 //---------------------------------------------------------------------------
-// Т а к т   А р г о н а
-void __fastcall TMainForm::ArgonTaktTimer(TObject *Sender)
-{
-if(USO_Booled[3][10]){   // Если есть признак питания чайки
-if(!arg_work_pr){        // Если нет признака работы Аргона (состояние самопроверки) - перенести в отдельную функцию
-// Проводим самопроверку - self_test.
-// Если результат удвлетворительный, выставляем соответствующие признаки
-// Добавить самопроверку по каналам АБВ (внутри self_test_)
-
-   if(sp_d_k==1) {  // Если выбрана длинная самопроверка (1 минута - t), то...
-      JPS(1,is_argon,is_operator,"Проведение длинной самопроверки...","");
-      if(t==300) tResult = self_test_long(); else t++; } else
-
-   if(sp_d_k==0) {  // Если выбрана короткая самопроверка (5 секунд), то...
-      JPS(1,is_argon,is_operator,"Проведение короткой самопроверки...","");
-     if(t==25) tResult = self_test_short(); else t++; }
-
-//Label22->Caption=IntToStr(t); // Тактов самопроверки
-
-// По окончанию теста считываем результат - если = 0, то тест прошел удачно и тогда
-if(self_test_pr) {          // Если есть признак окончания теста
-JPS(1,is_argon,is_operator,"Самопроверка окончена. Значение tResult = "+IntToStr(tResult),"");
-
-        // РЕЗУЛЬТАТ 0
-        if(tResult==0){                   // выставляем соответствующие признаки...
-         USO_Booled[11][6]=true;}         // Выставляем признак БЦВК Готов на ТСЭ
-
-        // РЕЗУЛЬТАТ 1
-        else if(tResult==1){              // Если во время теста произошла ошибка (Result != 0), тогда
-        JPS(3,is_argon,is_operator,"Самопроверка завершена с ошибкой. Значение tResult = "+IntToStr(tResult),"");
-         arg_acc_handler(tResult);        // Вызываем обработчик ошибок Аргона
-         ArgonTakt->Enabled=false;}       // Прекращаем работу БЦВК
-
-       // ВЕРНЫЙ РЕЗУЛЬТАТ
-        if(USO_Booled[11][6]){            // Если есть готовность БЦВК, то...
-          arg_work_pr = true;             // Признак работы Аргона (по нему происходит запуск)
-          USO_Booled[11][7]=true;         // Выставляем "ОСК" для ТСЭ (от кого?)
-          test_test_tse=0;                // ?
-        // Так же выставляем заявку на Программу Установки Начальных Условий (ПУНУ)
-         }
-
-
-         } //self_test_pr
-} else {
-// Р А Б О Т А   А Р Г О Н А //
-//if(rygim==1){   // Если есть признак режима движения, то...
-i_ot_pusk++; // Счетчик тактов БЦВК
-// В СУД "Чайка-3" по началу каждого такта происходит самоконтроль (СК) - self_check
-
-//---------//
-// П У Н У //
-// Программа Установки Начальных Условий //
-//=======================================//
-// Если есть заявка на ПУНУ, то...
-
-
-// Блок Жесткой программы -
-
-
-//
-/*****************************************/
-// Б Л О К   И Н Т Е Г Р И Р О В А Н И Я //
-// П А Р А М Е Т Р О В   Д В И Ж Е Н И Я //
-/*****************************************/
-if(i_tok==5){
-integer_n++;
-dynamics.rs0 = dynamics.rs;
-dynamics.sks0 = dynamics.sks;
-dynamics.omy0 = dynamics.omy;
-dynamics.omz0 = dynamics.omz;
-///////////////////////////////
-//                           //
-// А. Обслуживание динамики  //
-//                           ////////////////////////////////////////////
-// Начинать расчет при введенных признаках - (описать список признаков //
-/////////////////////////////////////////////////////////////////////////
-
-////////////
-// Аварии //
-////////////
-dynamics.Y2 = pow((2 * dynamics.ax1 * (dynamics.rs - 202)),0.5);
-
-if(dynamics.sks > dynamics.Y2){
-Panel1->Caption="ОПАСНО |V|>9 m/s";
-Panel1->Font->Color=clRed;
-} else {
-Panel1->Caption="НЕТ";
-Panel1->Font->Color=clYellow;
-}
-
-// Подпрограмма Контроля Расхода (КОРА)
-// Контроль расхода на сближение осуществляется только на дальнем уч-ке сбл (признак?).
-// Производим постоянное сравнивание распологаемого ресурса (R)
-// и прогнозируемого Rп расходов топлива на ориентацию ЦМ в режиме СБ
-// если R - Rп < 3,5 кг, то формируем ИН 05 "Нет ресурса для СБ" и вводим
-// признак cw_a23[0]=1; "Запрет коррекции". При этом, если по КРЛ ввести новое
-// значение уставки BR, то при превышении разности между распологаемым и прогнозируемым
-// расходами величины 14 кг запрет коррекции снимается
-
-if(dynamics.rasp < 20){
-Panel1->Caption="ДОСТИГНУТ ГО !";
-Panel1->Font->Color=clRed;
-// Так же на ИРВИ
-} else {
-Panel1->Caption="НЕТ";
-Panel1->Font->Color=clYellow;
-}
-
-if(dynamics.rs<1){
-JPS(4,is_miu,is_operator,"Есть касание! Начало формирования протокола.","");
-//rygim=0;
-
-}
-
-if(dynamics.rs<10&&dynamics.sks>1){
-Panel1->Caption="Большая скорость n\на малой дальности!";
-Panel1->Font->Color=clRed;
-} else {
-Panel1->Caption="НЕТ";
-Panel1->Font->Color=clYellow;
-}
-
-if(dynamics.rs<0,00){
-Panel1->Caption="Касание!";
-Panel1->Font->Color=clLime;
-} else {
-Panel1->Caption="НЕТ";
-Panel1->Font->Color=clYellow;}
-
-///////////////////////////////////
-// Расчет расхода топлива от РУД //
-///////////////////////////////////
-//                   Линейное ускорение             Боковое по Y                   Боковое по Z
-dynamics.rudkg = ((dynamics.ax*0.046/0.01849)+(dynamics.ay*0.046/0.01915)+abs(dynamics.az*0.046/0.01897));
-
-///////////////////////////////////////////
-// Расчет расхода топлива от компенсации //
-// вращения при боковом перемещении      //
-///////////////////////////////////////////
-dynamics.kvkg = -((0.209 * 0.046 * dynamics.ay / 0.0383 / 0.621) + (0.209 * 0.046 * dynamics.az / 0.03794 / 0.592));
-
-/////////////////////////////////////////
-// Общий расход топлива (на вычитание) //
-/////////////////////////////////////////
-//              ОБЩ.ТОПЛИВО               РУД              ВпБП            РУО               РУО               РУО
-dynamics.rasp = dynamics.rasp - (dynamics.rudkg + dynamics.kvkg + dynamics.ruokgx + dynamics.ruokgy + dynamics.ruokgz);
-
-////////////////////////////////////////////////////
-// Алгоритмы расчета параметров движения с учетом //
-// боковых скоростей для заданной траектории.     //
-//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=//
-// Расчет радиальной дальности //  Версия  0.001  //
-////////////////////////////////////////////////////
-//                      (Дальность нулевая минус время умноженное на скорость нулевую) в квадрате плюс
-dynamics.rs = pow((pow((dynamics.rs0 - ht * dynamics.sks0),2) +
-pow((ht * dynamics.rs0 * 0.017453),2) *
-(dynamics.omy0 * dynamics.omy0 + dynamics.omz0 * dynamics.omz0)),0.5);
-
-////////////////////////////////////////////////////
-// Расчет радиальной скорости  //  Версия  0.001  //
-////////////////////////////////////////////////////
-dynamics.sks = ht * (dynamics.axd + dynamics.axruo - dynamics.ax) + (dynamics.rs0 * dynamics.sks0 - ht *
-(pow(dynamics.sks0,2) + (pow(dynamics.omy,2) + pow(dynamics.omz,2)) * pow((0.017453 * dynamics.rs0),2))) / dynamics.rs;
-
-///////////////////////////////////////////////
-// Расчет угловой скорости линии визирования //
-// по горизонтали (ось OY) и по тангажу (OZ) //
-///////////////////////////////////////////////
-dynamics.omy = dynamics.omy0 * pow((dynamics.rs0 / dynamics.rs),2) + 57.3 * dynamics.az / dynamics.rs;
-dynamics.omz = dynamics.omz0 * pow((dynamics.rs0 / dynamics.rs),2) + 57.3 * dynamics.ay / dynamics.rs;
-
-dynamics.omyf = (dynamics.omy * cos(dynamics.uomx * 0.017454) + dynamics.omz * sin(dynamics.uomx * 0.017454));
-dynamics.omzf = (dynamics.omz * cos(dynamics.uomx * 0.017454) - dynamics.omy * sin(dynamics.uomx * 0.017454));
-
-dynamics.omzx = (dynamics.omz * cos(dynamics.Ex * 0.017454) + dynamics.omy * sin(dynamics.Ex * 0.017454));
-dynamics.omyx = (dynamics.omy * cos(dynamics.Ex * 0.017454) - dynamics.omz * sin(dynamics.Ex * 0.017454));
-////////////////////////////
-// Дополнительные расчеты //
-////////////////////////////
-dynamics.V = pow(pow((pow(dynamics.sks, 2) + dynamics.vb),2),0.5);
-dynamics.axd = abs(dynamics.ay * 0.157959) + abs(dynamics.az * 0.157924) + abs(dynamics.az * 0.157924) + abs(dynamics.az * 0.157924);
-
-////////////////////
-// Расчет промаха //
-////////////////////
-//                (Омега Z * Ро)*(Омега Z * Ро)  *   ???    /  Вектор скорости
-dynamics.ypr = pow(dynamics.omz * dynamics.rs,2) * 0.017453 / dynamics.V;   //  Sy
-dynamics.zpr = pow(dynamics.omy * dynamics.rs,2) * 0.017453 / dynamics.V;   //  Sz
-dynamics.Spr = dynamics.rs * dynamics.vb / dynamics.V;                      //  S
-
-//Линейный промах = dynamics.rs/sqrt(pow(dynamics.sks/,2)+1)
-
-////////////////////////////
-// Расчет времени пролета //
-////////////////////////////
-
-t_prolet[0] = abs(dynamics.rs * abs(dynamics.sks)/pow(dynamics.V,2));
-t_prolet[1] = t_prolet[0]/86400;
-
-
-//////////////////////////////
-// Расчет боковых скоростей //
-//////////////////////////////
-dynamics.vby = dynamics.omz * dynamics.rs * 0.017453;
-dynamics.vbz = dynamics.omy * dynamics.rs * 0.017453;
-
-//////////////////  25 * 0.9 *
-// Расчет углов //
-//////////////////
-
-dynamics.uomy = dynamics.uomy + (dynamics.omy + dynamics.Ey); // угол =  1 сек*омега у
-dynamics.uomz = dynamics.uomz + (dynamics.omz + dynamics.Ez); // угол  от омеги z + вращение ТПК
-dynamics.uomx = dynamics.uomx + dynamics.Ex;                             // угол  от  вращения ТПК
-
-//*//*//*//*//*//*//*//*//*//*//*//*//*//*//*//*
-
-///////////////////////////////
-// Вычисление относительной  //
-//   дальности по прогнозу   //
-///////////////////////////////
-
-//*//*//*//*//*//*//*//*//*//*//*//*//*//*//*
-
-//////+///////////////////////////////+//////
-//=//   Б Л О К   А Л Г О Р Т И М О В   //=//
-//+//   А В Т О М А Т И Ч Е С К О Г О   //+//
-//=//        У П Р А В Л Е Н И Я        //=//
-//////+///////////////////////////////+//////
-
-///////////////////////////////////////////
-// Подпрограммы стабилизации и коррекции //
-///////////////////////////////////////////
-if(argon_auto_contr){
- if(dynamics.omz>0.001) dynamics.Ez = -0.62063 * 0.5; else dynamics.Ez = 0;
-}
-
-
-//*//*//*//*//*//*//*//*//*//*//*//*//*//*//*//*
-i_tok = 0;
-} else i_tok=i_tok++; // Что бы интегрирование было с шагом в секунду
-// Задача = сделать шаг интегрирования 0.100 мс
-// а шаг отображения на форматах (не ИнПУ) так как удобно оператору
-
-if(cw_b1[12]) USO_Booled[12][7]=1; else USO_Booled[12][7]=0;
-
- if(cw_b1[12]&&!USO_Booled[3][7]){
-if(YzS1[0]&&YzS1[1]==0){ // Если есть заявка на "Присваивание"
- f_test++;
- Label46->Caption="Состояние заявки на присваивание: "+IntToStr(f_test);
- YzS1[1]=1;
-}
-}
-
-/////////////////////////////  USO_Booled[1][16] КУРС1
-//*************************//  USO_Booled[2][0]  КУРС2
-//** РАБОТА С РТС "КУРС" **//
-//*************************//
-/////////////////////////////
-// if(Время бортовое > Т1)
-// if(заявка на программу КУРС) (в любом месте?)
-// формируем признак cw_b6[6]=1; и выдаем команду на (USO_Booled[2][0]=true; КУРС2) включение невыбранного
-// комплекта КУРС, а так же в систему КУРС выдаем команду "вращение"
-// на БФИ "КУРС2" "ВРАЩЕН"
-
-vill_test=1;
-// Start integer if I9 and I11 = true
-//i_takt++;
-
-
-///////////////////////////////
-// Обработчик ввода признака //
-//    ИНДИКАТОРНЫЙ РЕЖИМ     //
-///////////////////////////////
-if(cw_b1[7]) { // If "IR" true
- // Вводим запрет на формирование управляющих импульсов на ДПО
- // Вводим запрет на формирование ГСО
- // Вводим запрет на контроль расхода топлива
- // Вводим запрет на контроль ориентации в ОСК
- // Вводим запрет на динамический контроль
-}
-
-/* Отладочные обработчики признаков */
-if(cw_b6[13]) { // "Разрешение причаливания"
-// Гасим "ЗАВ КОН" (почему?)
-// Так же команда в БУМ
-if(!WithoutBum->Checked&&!arg_half_false[1]){
-JPS(4,"ОТЛАДОЧНОЕ: Прошла команда в СУБК \"Причаливание\", запуск процедуры...","","","");
-SendToBum(0x0000029D, 1, 1);
-arg_half_false[1]=true;}
-}
-
-if(USO_Booled[0][0]){  // Check Open SKD S001.1
-if(pr_TSKD){ // Если Время.борт = ТСКД  S001
-  JPS(4,"ОТЛАДОЧНОЕ: Прошла команда в СУБК \"Включение СКД\", запуск S001.1","","","");
-  arg_du_on_skd();
-  pr_TSKD = false;
-} // S001
-} // S001.1
-} // else !arg_work_pr
-} // SUDN Power
-}
-//-----+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+--
+// Т а к т   А р г о н а//-----+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+--
 //----+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---
 //---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+----
 
@@ -1653,7 +1353,9 @@ message_status[1]=1;}
 message_status[0] = 0;
 debug_panel->Visible=false;    // Скрываем отладочную панель
 WithoutBum->Visible=false;
-model_status_pics->Width=241;
+model_status_pics->Width=177;
+N35->Enabled=false;
+N22->Enabled=false;
 } 
 if(debug_status->Checked){     // Если введен признак отладки
 debug_panel->Visible=true;
@@ -1661,7 +1363,9 @@ if(message_status[0]==0){
 message_status[1] = 0;
 JPS(3,is_operator,is_miu,"ВНИМАНИЕ!!! Введен режим отладки!","");
 message_status[0]=1;}
-model_status_pics->Width=177;  // Меняем размер окна состояния моделей
+model_status_pics->Width=241;  // Меняем размер окна состояния моделей
+N35->Enabled=true;
+N22->Enabled=true;
 }
  // Меняем размер окна состояния моделей
 }
@@ -1690,4 +1394,26 @@ bilu_frm->Show();
 }
 //---------------------------------------------------------------------------
 
+
+void __fastcall TMainForm::ssvpClick(TObject *Sender)
+{
+ssvp_frm->Show();
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TMainForm::SpeedButton1Click(TObject *Sender)
+{
+krl_frm->Show();
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TMainForm::ArgonTaktTimer(TObject *Sender)
+{
+if(argon_ready){
+
+}        
+}
+//---------------------------------------------------------------------------
 

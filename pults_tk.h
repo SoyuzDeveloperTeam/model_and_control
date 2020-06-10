@@ -6,7 +6,7 @@
 //-=-=-=-=-//
 // а п с я //
 //-=-=-=-=-//
-struct{
+static struct{
 bool pods_vsk;   // апся13
 bool vent_vsk;   // апся7
 bool en_i_vsk;   // апся15

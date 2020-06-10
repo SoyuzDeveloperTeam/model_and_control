@@ -27,22 +27,8 @@
 /////////////////////////////////
 
 void asti(AnsiString i[15]){
-irvi_string += i[0];
-irvi_string += i[1];
-irvi_string += i[2];
-irvi_string += i[3];
-irvi_string += i[4];
-irvi_string += i[5];
-irvi_string += i[6];
-irvi_string += i[7];
-irvi_string += i[8];
-irvi_string += i[9];
-irvi_string += i[10];
-irvi_string += i[11];
-irvi_string += i[12];
-irvi_string += i[13];
-irvi_string += i[14];
-}
+
+ }
 
 //////////////////////////////////////////////////
 //             П О Д П Р О Г Р А М М А          //
@@ -59,31 +45,23 @@ irvi_string += i[14];
 
 
 void sskd (void) {
-// временные переменные
-AnsiString dv_ust, dv_tek, d_vrm;
-AnsiString t_skd, t_gk;
-AnsiString msg;  // строка с сообщением
+/* char fd[15];
+fd[0] = ;
+fd[1] = ;
+fd[2] = ;
+fd[3] = ;
+fd[4] = ;
+fd[0] = ;
+fd[0] = ;
+fd[0] = ;
+fd[0] = ;
+fd[0] = ;
+fd[0] = ;
+fd[0] = ;
+fd[0] = ;
+fd[0] = ;
+fd[0] = ;
+fd[0] = ;  */
 
-t_skd=SecondsBetween(data_TSKD, OnboardModelTime); // Время до Тскд
 
-//FormatFloat("000.00",dynamics.ypr);
-//FormatString
-msg = "               ";   // Задаем пустую строку (что бы длинна была 15 - поискать другие способы)
-msg[0]="0"; // И1
-msg[1]="0"; // И2
-msg[2]="3"; // И3
-msg[3]=" "; // И4
-msg[4]="0"; // И5
-msg[5]="0"; // И6
-msg[6]="0"; // И7
-msg[7]="0"; // И8
-msg[8]="0"; // И9
-msg[9]="0"; // И10
-msg[10]="0"; // И11
-msg[11]="0"; // И12
-msg[12]="0"; // И13
-msg[13]="0"; // И14
-msg[14]="0"; // И15
-
-asti(msg);
 }

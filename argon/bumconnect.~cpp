@@ -8,6 +8,7 @@
 #include "bumconnect.h"
 #include "JouHeader.h"          // Заголовок для журнала
 #include "JouStrings.h"         // Строковые переменные для журнала
+#include "winsock_ed.cpp"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 
@@ -79,6 +80,6 @@ send_tru.zr = ntohl(p1);
 send_tru.c = ntohl(p2);
 if(bum_pr){
 iResult = send( TeleSocket,(char *)&send_tru,20, 0);   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());}
+if (iResult == SOCKET_ERROR) GetWsaError(iResult);}
 }
 #endif bum_connect

@@ -9,7 +9,7 @@
 //- О Б М Е Н   С   Ю Н И Т И -
 //-----------------------------
 
-struct {
+static struct {
 int signature;               // Сигнатура 0xD8A73F93
 unsigned long packet_type;   // Тип пакета
 unsigned long packet_n;      // Номер пакета
@@ -20,7 +20,7 @@ unsigned int u_mode_type;    // Режим работы Юнити относительно МиУ
 //- О Б М Е Н   С   Б У М -
 //-------------------------
 
-struct {
+static struct {
 int str_1;
 int str_2;
 int cmd;
@@ -29,7 +29,7 @@ double dk_per[3];   // Массив времени работы ДПО на пермещение
 double dk_ori[3];   // Массив времени работы ДПО на ориентацию
 } dk_mass;          // Дополнительный параметр от ДК для БУМ
 
-struct {    //Структура параметра НУ в БУМ
+static struct {    //Структура параметра НУ в БУМ
 //Переменные для команды в БУМ-МС
 unsigned long i;
 unsigned long s;
@@ -79,14 +79,16 @@ void NU_pack_for_bum (void) //упаковка НУ для БУМ
 //double milli =0.001;
 
 }
-struct{
+
+
+static struct{
 unsigned long a;
 unsigned long tk_type;
 unsigned long model_sec;
 unsigned long milisec_ost;
 }fdd;
 
-struct {                                // Параметр от БУМ в МиУ (по интерфейсу Телеоператор)
+static struct {                                // Параметр от БУМ в МиУ (по интерфейсу Телеоператор)
 unsigned long fd_1;                     // Начальное смещение
 unsigned long fd_2;
 unsigned long fd_3;
@@ -135,7 +137,7 @@ unsigned char bsr_RUD;                  // 62  Сигналы РУД с БСР
 unsigned int bsr_RUO[3];                // 63  Сигналы РУО с БСР
 }PS_tk_iss;
 
-struct {
+static struct {
 unsigned long tk_type;
 unsigned long model_sec;
 unsigned long milisec_ost;

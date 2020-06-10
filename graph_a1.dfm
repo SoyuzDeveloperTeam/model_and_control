@@ -1,6 +1,6 @@
 object graphics: Tgraphics
-  Left = 232
-  Top = 582
+  Left = -8
+  Top = 380
   BorderStyle = bsSingle
   Caption = 'graphics'
   ClientHeight = 672
@@ -29,9 +29,9 @@ object graphics: Tgraphics
     Top = 0
     Width = 1010
     Height = 672
-    ActivePage = TabSheet10
+    ActivePage = TabSheet9
     Align = alClient
-    TabIndex = 9
+    TabIndex = 8
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = #1050#1044#1059
@@ -1503,6 +1503,100 @@ object graphics: Tgraphics
         Font.Style = []
         ParentFont = False
         TabOrder = 3
+      end
+      object GroupBox2: TGroupBox
+        Left = 184
+        Top = 488
+        Width = 129
+        Height = 89
+        Enabled = False
+        TabOrder = 4
+        object RadioButton12: TRadioButton
+          Left = 16
+          Top = 16
+          Width = 49
+          Height = 17
+          Caption = '+X'
+          Checked = True
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clWhite
+          Font.Height = -15
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          TabStop = True
+        end
+        object RadioButton17: TRadioButton
+          Left = 72
+          Top = 40
+          Width = 49
+          Height = 17
+          Caption = '-Y'
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clWhite
+          Font.Height = -15
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 1
+        end
+        object RadioButton18: TRadioButton
+          Left = 72
+          Top = 16
+          Width = 49
+          Height = 17
+          Caption = '-X'
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clWhite
+          Font.Height = -15
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 2
+        end
+        object RadioButton19: TRadioButton
+          Left = 16
+          Top = 40
+          Width = 49
+          Height = 17
+          Caption = '+Y'
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clWhite
+          Font.Height = -15
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 3
+        end
+        object RadioButton20: TRadioButton
+          Left = 72
+          Top = 64
+          Width = 49
+          Height = 17
+          Caption = '-Z'
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clWhite
+          Font.Height = -15
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 4
+        end
+        object RadioButton21: TRadioButton
+          Left = 16
+          Top = 64
+          Width = 49
+          Height = 17
+          Caption = '+Z'
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clWhite
+          Font.Height = -15
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 5
+        end
       end
     end
     object TabSheet10: TTabSheet
@@ -46728,18 +46822,26 @@ object graphics: Tgraphics
           TabOrder = 0
           Text = '0'
         end
+        object Edit2: TEdit
+          Left = 28
+          Top = 32
+          Width = 57
+          Height = 21
+          TabOrder = 1
+          Text = '0'
+        end
         object Series12: TBubbleSeries
           Marks.ArrowLength = 0
           Marks.Frame.Visible = False
           Marks.Transparent = True
           Marks.Visible = False
           SeriesColor = clRed
-          Pointer.HorizSize = 49
+          Pointer.HorizSize = 51
           Pointer.InflateMargins = True
           Pointer.Pen.Style = psDashDot
           Pointer.Pen.Width = 11
           Pointer.Style = psCircle
-          Pointer.VertSize = 49
+          Pointer.VertSize = 51
           Pointer.Visible = True
           XValues.DateTime = False
           XValues.Name = 'X'
@@ -46756,14 +46858,6 @@ object graphics: Tgraphics
         end
       end
     end
-  end
-  object Edit2: TEdit
-    Left = 36
-    Top = 56
-    Width = 57
-    Height = 21
-    TabOrder = 1
-    Text = '0'
   end
   object Timer1: TTimer
     Enabled = False
@@ -46799,7 +46893,7 @@ object graphics: Tgraphics
     Top = 56
   end
   object Timer3: TTimer
-    Left = 16
-    Top = 112
+    Left = 976
+    Top = 88
   end
 end

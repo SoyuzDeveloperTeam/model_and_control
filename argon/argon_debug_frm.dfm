@@ -1,6 +1,6 @@
 object arg_deb: Targ_deb
-  Left = 278
-  Top = 175
+  Left = 433
+  Top = 133
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1054#1090#1083#1072#1076#1082#1072' '#1040#1088#1075#1086#1085'-16'
@@ -6055,6 +6055,19 @@ object arg_deb: Targ_deb
     Width = 32
     Height = 13
     Caption = 'Label7'
+  end
+  object debug_pusk: TLabel
+    Left = 456
+    Top = 72
+    Width = 154
+    Height = 14
+    Caption = #1054#1090#1083#1072#1076#1086#1095#1085#1072#1103' '#1085#1072' '#1087#1091#1089#1082#1077' - '
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Consolas'
+    Font.Style = []
+    ParentFont = False
   end
   object GroupBox8: TGroupBox
     Left = 8

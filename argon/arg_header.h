@@ -2,11 +2,14 @@
 #define A16_HDR
 #include <vcl.h>
 
+static bool argon_ready; // Признак готовности А-16
 static bool arg_work_pr; // Признак работы Аргона - Argon work flag
 static bool sp_d_k;      // Тип самопроверки (1 - длинная, 0 - короткая) // Argon Self-test type (1-long, 0-short)
-static int tResult;
+static short tResult;    // SelfTest Result
+static bool sto_pnk;     // Признак СТО ПНК
+static bool apm;         // Признак УСО для запуска такта Аргона - Argon Power Flag for USO
 
-static bool apm; // Признак УСО для запуска такта Аргона - Argon Power Flag for USO
+static bool brvi_pr;     // Признак разрешения обмена с БРВИ
 
 static bool bilu_work_pr;
 
@@ -14,8 +17,14 @@ static bool prvi_8_enter;   // Признак перевода точки ввода (каретки) на в ячейк
 static bool mode18act;      // Признак режима для ирви 18
 // Память Аргона (по данным ИнПУ) - требуется подтверждение кол-ва ячеек памяти
 static double ArgonMemoryType[4096];
+// в аргоне имеет тип размером 2 байта
 
-TDateTime arg_T0;
+static bool t_krl_true[5];
+static TDateTime arg_T0;
+static TDateTime arg_T1;
+static TDateTime arg_T2;
+static TDateTime arg_T3;
+static TDateTime arg_TM; // Time Moscow
 
 static double mass_tk_full; // Текущая общая масса ТК - Current TK mass
 
@@ -26,6 +35,8 @@ static bool subk_pr[1000];// Признаки СУБК - SUBK flags
 static byte av_pav_pr;    // Признак "Полуавтомат"(1) "Автомат"(2) ""(0) - KURS Flag "half-Auto"(1) "auto"(2) ""(0)
 static byte kurs_zap_t;   // Курс часть 1 - KURS Part 1
 static byte bezop_bfi;    //
+
+static bool prks; // Признак касания
 
 static int integer_n;
 
@@ -124,15 +135,15 @@ bool dpo_x;
 
 static bool dpo_status_bit;
 
-static int t_prolet[4];    // Время пролета
+static int t_prolet[4];      // Время пролета
 
-static byte ht = 1;     // Время (секунды от начала режима)
+static byte ht = 1;          // Время (секунды от начала режима)
 
-static int i, j, K, k, t;  // Такты БЦВК
-static long i_ot_pusk;  // Такты БЦКВ от Пуска
-static double dt;       // Delta t
+static int i, j, K, k, t;    // Такты БЦВК
+static long i_ot_pusk;       // Такты БЦКВ от Пуска
+static double dt;            // Delta t
 
-static int GSO_types;   // GSO type (for ArgMath result)
+static int GSO_types;        // GSO type (for ArgMath result)
 static double deltavt_1, deltavt_2;
 
 //\\\//\\\//\\\//\\\//\\\//\\\//\\\//\\\//\\\
@@ -140,6 +151,7 @@ static double deltavt_1, deltavt_2;
 // Debug data's - DON'T use in sim
 static int a_debugger; // Отладочная по основным программам и циклам.
 static int i_012;
+static unsigned short apdp; // argon pusk debug 
 //\\\//\\\//\\\//\\\//\\\//\\\//\\\//\\\//\\\//\\\//\\\//\\\
 
 static AnsiString irvi_string = "              ";
@@ -249,11 +261,5 @@ static const double ax_nijn = 0.00254;
 
 ПРОГРАММА ТЕЛЕМЕТРИИ:
 - выдает из БЦВК командную и непрерывную телеметрическую информацию о прохождении режимов.
-
-
-
-
-
-
 
 */

@@ -20,6 +20,10 @@ static String dOUT;
 static int fdh;
 static int int_model;
 
+//Half-flag's
+static bool arg_half_false[166];
+// 1 - Признак "Причаливание"
+
 static bool pr_TSKD;
 //int i_takt;
 

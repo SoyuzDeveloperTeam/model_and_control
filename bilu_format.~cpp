@@ -26,8 +26,8 @@ void __fastcall Tbilu_frm::SpeedButton1Click(TObject *Sender)
 
 void __fastcall Tbilu_frm::bilustTimer(TObject *Sender)
 {
-if(bilu_work_pr=1) bst->Caption="еярэ"; else
-bst->Caption="мер";
+//if(bilu_work_pr=1) bst->Caption="еярэ"; else
+//bst->Caption="мер";
 }
 //---------------------------------------------------------------------------
 

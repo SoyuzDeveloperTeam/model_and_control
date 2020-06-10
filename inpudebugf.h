@@ -289,6 +289,16 @@ __published:	// IDE-managed Components
         TStaticText *StaticText2;
         TLabel *Label245;
         TStaticText *StaticText3;
+        TLabel *Label246;
+        TLabel *cn_r_stat_label;
+        TPanel *Panel14;
+        TLabel *Label247;
+        TStaticText *StaticText4;
+        TLabel *Label248;
+        TLabel *Label249;
+        TLabel *Label250;
+        TLabel *Label251;
+        TLabel *Label252;
 private:	// User declarations
 public:		// User declarations
         __fastcall TNeptDebug(TComponent* Owner);

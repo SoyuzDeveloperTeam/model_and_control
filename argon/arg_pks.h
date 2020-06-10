@@ -4,5 +4,5 @@
 #define arg_pksH
 //---------------------------------------------------------------------------
 //------ Временные переменные ------//
-TDateTime datetime_vrem;
+static TDateTime datetime_vrem;
 #endif

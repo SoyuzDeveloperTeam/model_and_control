@@ -1,6 +1,6 @@
 object NeptDebug: TNeptDebug
-  Left = 1017
-  Top = 310
+  Left = 14
+  Top = 148
   Width = 975
   Height = 474
   Caption = #1054#1090#1083#1072#1076#1082#1072' '#1086#1073#1084#1077#1085#1072' '#1089' '#1048#1085#1055#1059
@@ -3017,6 +3017,19 @@ object NeptDebug: TNeptDebug
     object TabSheet4: TTabSheet
       Caption = #1040#1085#1072#1083#1080#1079' '#1086#1073#1084#1077#1085#1072' '#1050#1057'-'#1053#1077#1087#1090#1091#1085
       ImageIndex = 3
+      object Label248: TLabel
+        Left = 408
+        Top = 18
+        Width = 168
+        Height = 15
+        Caption = #1057#1090#1072#1090#1091#1089' '#1086#1073#1084#1077#1085#1072' '#1089' '#1084#1086#1076#1077#1083#1100#1102':'
+        Font.Charset = RUSSIAN_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Consolas'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
       object Panel9: TPanel
         Left = 0
         Top = 48
@@ -3205,6 +3218,124 @@ object NeptDebug: TNeptDebug
           ParentColor = False
           ParentFont = False
         end
+        object Label246: TLabel
+          Left = 72
+          Top = 1
+          Width = 80
+          Height = 18
+          Caption = 'CN_R_Stat='
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clGreen
+          Font.Height = -15
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+        end
+        object cn_r_stat_label: TLabel
+          Left = 168
+          Top = 1
+          Width = 8
+          Height = 18
+          Caption = '0'
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clYellow
+          Font.Height = -15
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label249: TLabel
+          Left = 272
+          Top = 2
+          Width = 48
+          Height = 18
+          Caption = 'Ready='
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clGreen
+          Font.Height = -15
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label250: TLabel
+          Left = 336
+          Top = 2
+          Width = 8
+          Height = 18
+          Caption = 'I'
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clYellow
+          Font.Height = -15
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label251: TLabel
+          Left = 8
+          Top = 25
+          Width = 72
+          Height = 18
+          Caption = 'BD_Ready='
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clGreen
+          Font.Height = -15
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label252: TLabel
+          Left = 88
+          Top = 25
+          Width = 64
+          Height = 18
+          Caption = '00000000'
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clYellow
+          Font.Height = -15
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentFont = False
+        end
+      end
+      object Panel14: TPanel
+        Left = 0
+        Top = 304
+        Width = 401
+        Height = 41
+        Color = clBackground
+        TabOrder = 5
+        object Label247: TLabel
+          Left = 1
+          Top = 1
+          Width = 60
+          Height = 18
+          Caption = ' R_Cont'
+          Color = clYellow
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clGreen
+          Font.Height = -15
+          Font.Name = 'Consolas'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+        end
+      end
+      object StaticText4: TStaticText
+        Left = 584
+        Top = 16
+        Width = 97
+        Height = 19
+        Alignment = taCenter
+        AutoSize = False
+        BorderStyle = sbsSingle
+        Caption = #1053#1045#1058' '#1054#1041#1052#1045#1053#1040
+        Font.Charset = RUSSIAN_CHARSET
+        Font.Color = clRed
+        Font.Height = -13
+        Font.Name = 'Consolas'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 6
       end
     end
     object TabSheet5: TTabSheet

@@ -3,9 +3,11 @@
 //---------------------------------------------------------------------------
 #include "USOData.h"
 #include "arg_header.h"
+#include "arg_main.cpp"
 #include "JouHeader.h"
 #include "JouStrings.h"
 #include "MainFrm.h"
+#include "ssvp_module.cpp"
 #pragma  hdrstop
 
 #include "uso_model.h"
@@ -204,6 +206,8 @@ if(KSP_Booled[2][17]) { // В 18
 
 if(KSP_Booled[3][0]) { // Г 1  Обогрев антен ВКЛ
    KSP_Booled[3][0] = false;
+        // Выдается автоматически системой КУРС
+        // Условия исполнения Г1, ОК1, КР
         // Так же выдаем по КО - перенести в операции по КО
         // включается термостат обогрева антенн, который поддерживает
         // заданный температурный режим механики антенн 2АО,АСФ1,АСФ2.
@@ -212,6 +216,7 @@ if(KSP_Booled[3][0]) { // Г 1  Обогрев антен ВКЛ
 
 if(KSP_Booled[3][1]) { // Г 2  Обогрев антен ВЫКЛ
    KSP_Booled[3][1] =false;
+        // Производим выключение термостатов
         USO_Booled[1][11]=false;
 }
 
@@ -278,16 +283,38 @@ if(KSP_Booled[3][14]) { // Г15
         USO_Booled[1][14]=true;
 }
 
+// КСПл - Линейка Д //
+
+if(KSP_Booled[4][0]){  // KSP Д1
+   KSP_Booled[4][0]=false;
+   // Можно выдать только при признаке от ССВП - СОСТЫК ЭЛ РАЗ
+   USO_Booled[2][5]  = true;
+}
+
+if(KSP_Booled[4][6]){  // КСП Д7
+   KSP_Booled[4][6]=false;
+       USO_Booled[2][7]=ssvp_power;  // ССВП ВКЛ
+       JPS(1,is_sudn,is_operator,"Подано питание на ССВП","");
+}
+
+if(KSP_Booled[4][7]){  // КСП Д8
+   KSP_Booled[4][7]=false;
+       USO_Booled[2][7]=false;  // ССВП ВыКЛ
+       JPS(1,is_sudn,is_operator,"Питание на ССВП снятно","");
+}
+
 // КСПл - Линейка И //
 
 if(KSP_Booled[6][0]) { // И1   ЗДР
    KSP_Booled[6][0] = false;
         USO_Booled[3][6]=true;
+        cw_a2[0]=0;
 }
 
 if(KSP_Booled[6][1]) { // И2   РРП
    KSP_Booled[6][1] = false;
         USO_Booled[3][6]=false;
+        cw_a2[0]=1;
 }
 
 if(KSP_Booled[6][2]) { // И3 АКС
@@ -320,7 +347,7 @@ if(KSP_Booled[6][10]) { // И11   -  ПУСК ЧАЙКИ
         // Операции по пуску чайки //
         // 1 - Проверка (в аргоне) и по результатам - запуск или НшС
         argon_takt_pr=1;
-        //apm=true; Признак запуска чайки
+        apm=true; //Признак запуска чайки
 }
 
 if(KSP_Booled[6][14]) { // И 15
@@ -403,6 +430,9 @@ if(KSP_Booled[13][2]) { // Н 3
         USO_Booled[5][3]=true;
         JPS(1,"Подано питание на УКВ ПРМд","","","");
 }
+
+uso_change(USO_Booled);
+
 }
 
 #endif // USO_MDL

@@ -21,7 +21,8 @@ unsigned short No;      // Номер пакета
 unsigned short Size;    // Размер пакета
 byte PacketID;          // PacketID - b
 byte CodeType;
-unsigned short DataType;
+byte DataType1;
+byte DataType2;
 }TPacketHeader;
 
 static struct {

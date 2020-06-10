@@ -7,7 +7,7 @@
 /* Директивы */
 #define FullDebug              // Режим отладки
 
-struct{
+static struct{
 int i;
 }send_trus;
 

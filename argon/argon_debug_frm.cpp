@@ -215,6 +215,7 @@ void __fastcall Targ_deb::argon_dtTimer(TObject *Sender)
 {
 if(arg_work_pr) Panel1->Caption="ЕСТЬ"; else Panel1->Caption="НЕТ"; // Проверка ввода признака "Работа Аргона"
 Label5->Caption="Переменная из БЦВК: "+IntToStr(a_debugger);
+debug_pusk->Caption="Отладочная на пуске - "+IntToStr(apdp);
 Label4->Caption=IntToStr(i_ot_pusk);
 Label6->Caption=IntToStr(integer_n);
 //USO_Booled[3][3]  = false;

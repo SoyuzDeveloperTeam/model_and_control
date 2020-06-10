@@ -5,6 +5,7 @@
 
 #include "bilu_format.h"
 #include "arg_header.h"
+#include "Ctrlword.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -20,7 +21,7 @@ __fastcall Tbilu_frm::Tbilu_frm(TComponent* Owner)
 
 void __fastcall Tbilu_frm::SpeedButton1Click(TObject *Sender)
 {
-// Происходит в Аргоне!!!        
+cw_b10[9]=1;
 }
 //---------------------------------------------------------------------------
 
