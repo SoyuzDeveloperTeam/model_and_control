@@ -19,7 +19,7 @@
       bum_connect.obj pults_tk.obj transit.obj neptun\neptun_main.obj 
       unity_connect.obj winsock_ed.obj argon\argjh.obj kurs\kurs_main.obj 
       inpuconnect.obj uso_model.obj ssvp_module.obj ks020\ks020_model.obj 
-      neptun\common.obj"/>
+      neptun\common.obj lib\StdAtmos.obj control.obj MotionModel\runge_kutta.obj"/>
     <RESFILES value="MiU.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -43,7 +43,7 @@
       inetdbbde.bpi inetdbxpress.bpi inetdb.bpi nmfast.bpi webdsnap.bpi 
       bcbie.bpi websnap.bpi soaprtl.bpi dclocx.bpi dbexpress.bpi dbxcds.bpi 
       indy.bpi bcb2kaxserver.bpi"/>
-    <PATHCPP value=".;neptun;brvi_irvi;iss;argon;neptun;argon;argon;argon;argon;ks020;neptun;argon;argon;neptun;argon;kurs;ks020;neptun"/>
+    <PATHCPP value=".;neptun;brvi_irvi;iss;argon;neptun;argon;argon;argon;argon;ks020;neptun;argon;argon;neptun;argon;kurs;ks020;neptun;lib;MotionModel"/>
     <PATHPAS value=".;"/>
     <PATHRC value=".;"/>
     <PATHASM value=".;"/>
@@ -53,15 +53,16 @@
     <USERDEFINES value=""/>
     <SYSDEFINES value="NO_STRICT"/>
     <MAINSOURCE value="MiU.cpp"/>
-    <INCLUDEPATH value="kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl"/>
-    <LIBPATH value="kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <INCLUDEPATH value="MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par"/>
     <OTHERFILES value=""/>
   </MACROS>
   <OPTIONS>
-    <IDLCFLAGS value="-Ikurs -Ineptun -Iks020 -Iargon -IC:\Users\Professional\Documents 
-      -Ibrvi_irvi -Iiss -I$(BCB)\Projects -I$(BCB)\Projects\miu -I$(BCB)\include 
-      -I$(BCB)\include\vcl -src_suffix cpp -boa"/>
+    <IDLCFLAGS value="-IMotionModel -Ilib -Ikurs -Ineptun -Iks020 -Iargon 
+      -IC:\Users\Professional\Documents -Ibrvi_irvi -Iiss -I$(BCB)\Projects 
+      -I$(BCB)\Projects\miu -I$(BCB)\include -I$(BCB)\include\vcl -src_suffix 
+      cpp -boa"/>
     <CFLAG1 value="-O2 -w- -Vx -Ve -X- -a1 -b- -k- -vi -c -tW -tWM"/>
     <PFLAGS value="-$Y- -$L- -$D- -$A8 -v -JPHNE -M"/>
     <RFLAGS value=""/>
@@ -160,6 +161,9 @@
       <FILE FILENAME="ssvp_module.cpp" FORMNAME="" UNITNAME="ssvp_module" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="ks020\ks020_model.cpp" FORMNAME="" UNITNAME="ks020_model" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="neptun\common.cpp" FORMNAME="" UNITNAME="common" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="lib\StdAtmos.cpp" FORMNAME="" UNITNAME="StdAtmos" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="control.cpp" FORMNAME="" UNITNAME="control" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="MotionModel\runge_kutta.cpp" FORMNAME="" UNITNAME="runge_kutta" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>

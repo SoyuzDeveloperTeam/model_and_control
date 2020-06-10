@@ -31,6 +31,14 @@ static double mass_tk_full; // Текущая общая масса ТК - Current TK mass
 static bool dpo_v_pr[29]; // Признак выбранных в работу ДПО (счёт с 1) // DPO flags
 static bool subk_pr[1000];// Признаки СУБК - SUBK flags
 
+static bool badpo_pr[6]; // +X  -X  +Y  -Y  +Z  -Z
+
+static struct{
+double a;
+double b;
+double c;
+}baz_E;
+
 // Переменные для БФИ - Data for BFI
 static byte av_pav_pr;    // Признак "Полуавтомат"(1) "Автомат"(2) ""(0) - KURS Flag "half-Auto"(1) "auto"(2) ""(0)
 static byte kurs_zap_t;   // Курс часть 1 - KURS Part 1
@@ -158,9 +166,9 @@ static AnsiString irvi_string = "              ";
 static AnsiString irvi_string_i[4];
 static bool irvi_err;
 
-static TDateTime gc1_time;
+static TDateTime gc1_time;  // Время первого Гибкого Цикла
 
-static double v_tek_m;
+static double v_tek_m;      // Vтек при СКД получаем от КС-020
 
 /////////////////////////////////////
 // Параболы для ручного управления //
@@ -178,6 +186,7 @@ static double v_niz[32];
 // Константы ускорений ДПО //
 // в разных конфигурациях  //
 /////////////////////////////
+// Произвести перерасчет для ТМА с учетом массы или сделать константой
 static const double ax_b1b2 = 0.07396;  //В методике 0.0778 это с БО, а без 0,093
 static const double ax_k1k2 = 0.03698;
 static const double ax_half = 0.01849;

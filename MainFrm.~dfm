@@ -1,9 +1,9 @@
 object MainForm: TMainForm
-  Left = 791
-  Top = 133
+  Left = 564
+  Top = 191
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  ClientHeight = 574
+  ClientHeight = 570
   ClientWidth = 748
   Color = clBtnFace
   DefaultMonitor = dmDesktop
@@ -429,7 +429,7 @@ object MainForm: TMainForm
   end
   object StatusBar: TStatusBar
     Left = 0
-    Top = 557
+    Top = 553
     Width = 748
     Height = 17
     Panels = <

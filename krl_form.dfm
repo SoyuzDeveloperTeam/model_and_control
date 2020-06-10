@@ -1,6 +1,6 @@
 object krl_frm: Tkrl_frm
-  Left = 116
-  Top = 117
+  Left = 215
+  Top = 151
   BorderStyle = bsSingle
   Caption = #1050#1086#1084#1072#1085#1076#1085#1072#1103' '#1056#1072#1076#1080#1086' '#1051#1080#1085#1080#1103
   ClientHeight = 527
@@ -19,9 +19,9 @@ object krl_frm: Tkrl_frm
     Top = 0
     Width = 781
     Height = 508
-    ActivePage = TabSheet3
+    ActivePage = balform1
     Align = alClient
-    TabIndex = 3
+    TabIndex = 0
     TabOrder = 0
     object balform1: TTabSheet
       Caption = #1041#1060' 73'
