@@ -369,22 +369,9 @@ __published:	// IDE-managed Components
 private:	// User declarations
 public:		// User declarations
         __fastcall TBFI_Simvol_form(TComponent* Owner);
-        static int i_takt_asd[10];
+        
 //--- Временные переменные для вывода параметров на ВКУ ---------------------
-static String cw_B1_string;
-static String B1_string[5];
-static String B1_forDBG[5];
-static String B1_bfi;
 
-static String cw_B6_string;
-static String B6_string[5];
-static String B6_forDBG[5];
-static String B6_bfi;
-
-static String cw_a19_string;
-static String a19_string[5];
-static String a19_forDBG[5];
-static String a19_bfi;
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TBFI_Simvol_form *BFI_Simvol_form;

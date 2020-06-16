@@ -9,6 +9,7 @@
 #include <Forms.hpp>
 #include <ComCtrls.hpp>
 #include <Buttons.hpp>
+#include <ExtCtrls.hpp>
 //---------------------------------------------------------------------------
 class Tkrl_frm : public TForm
 {
@@ -70,7 +71,7 @@ __published:	// IDE-managed Components
         TRadioButton *sb;
         TRadioButton *sp;
         TTabSheet *TabSheet2;
-        TMemo *Memo1;
+        TMemo *form_krl;
         TGroupBox *GroupBox3;
         TRadioButton *RadioButton1;
         TRadioButton *RadioButton2;
@@ -78,6 +79,9 @@ __published:	// IDE-managed Components
         TTabSheet *TabSheet3;
         TSpeedButton *SpeedButton2;
         TSpeedButton *SpeedButton3;
+        TListBox *ListBox1;
+        TButton *Button2;
+        TTimer *Timer1;
         void __fastcall SpeedButton1Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations

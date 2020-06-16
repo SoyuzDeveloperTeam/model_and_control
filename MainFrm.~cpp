@@ -326,6 +326,8 @@ dk_mass.size  = ntohl(48);
 
 Config_init(ExtractFilePath(Application->ExeName)+"miu_config.ini");  // Инициализация файла конфигурации
 
+if(fly_model)
+
 if(!WithoutBum->Checked){ // Если нет признака "Без БУМ"
 bum_pr = true;
 /*

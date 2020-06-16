@@ -183,6 +183,7 @@ __published:	// IDE-managed Components
         TMenuItem *N41;
         TMenuItem *N42;
         TMenuItem *N43;
+        TCheckBox *md_status;
         void __fastcall pusk_btnClick(TObject *Sender);
         void __fastcall N3Click(TObject *Sender);
         void __fastcall N14Click(TObject *Sender);

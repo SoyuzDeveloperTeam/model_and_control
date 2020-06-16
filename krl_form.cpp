@@ -14,9 +14,11 @@ AnsiString krl_u_mode[3]={"ОП","СБ","СП"};
 unsigned short nu_type[3];  // Номер записи по каждому режиму
 typedef struct{
 unsigned short Mode;
+AnsiString FLB;
 int day, mounth, year, hour, min, second;
 int spaceship_number;
 TDateTime T0;
+bool record_f;
 }ustavka;
 //---------------------------------------------------------------------------
 __fastcall Tkrl_frm::Tkrl_frm(TComponent* Owner)
@@ -40,6 +42,7 @@ nu_type[1]++;
 test.Mode=1;
 test.spaceship_number=2;
 test.T0=krl_t0->Time;
+t_krl_true[0]=1;
 } else
 if(sp->Checked){
 i=2;
@@ -47,4 +50,5 @@ i=2;
 JPS(4,is_miu,is_operator,"Уставки на "+krl_u_mode[i]," успешно записаны!");
 }
 //---------------------------------------------------------------------------
+
 

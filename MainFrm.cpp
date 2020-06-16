@@ -17,6 +17,7 @@
 #include <math.h>
 #include <Tlhelp32.h>
 //---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 /* Заголовки */
 #include "MD_math_header.h"
 #include "main_header.h"                // Основной заголовок - main Header
@@ -37,6 +38,7 @@
 #include "argon/arg_kdu_operations.cpp" // Argon-16 программы КДУ
 #include "sotr_data.h"                  // Модель СОТР
 #include "DateUtils.hpp"
+#include "fly_model.cpp"                // Модель движения
 #include "ssvp_module.h"                // Признаки ССВП
 #include "argon/arg_pks.cpp"            // Программы Аргона - Argon Programs
 #include "bumconnect.cpp"               // Обмен с БУМ - Connect wth BUM
@@ -325,6 +327,16 @@ dk_mass.size  = ntohl(48);
    JPS(1,"","","МиОП BNO инициализирован.",""); }
 
 Config_init(ExtractFilePath(Application->ExeName)+"miu_config.ini");  // Инициализация файла конфигурации
+
+if(md_status) { // Если выбрана работа с МД
+fly_model_pr = 1; // Разрешаем работу всех процедур МД
+JPS(1,"","","Начало инициализации модели движения...","");
+#define FLY_LINK_CORE {\
+#pragma message ("    Подключение библиотеки FlyCore...")\
+#pragma comment(lib, "FlyCore.lib")\
+}
+
+} // md_status
 
 if(!WithoutBum->Checked){ // Если нет признака "Без БУМ"
 bum_pr = true;
@@ -1416,4 +1428,5 @@ if(argon_ready){
 }        
 }
 //---------------------------------------------------------------------------
+
 

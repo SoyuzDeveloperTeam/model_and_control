@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 235
-  Top = 111
+  Left = 382
+  Top = 99
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   ClientHeight = 570
@@ -942,6 +942,14 @@ object MainForm: TMainForm
       Caption = #1042#1077#1088#1077#1092#1080#1082#1072#1094#1080#1103' '#1053#1059
       TabOrder = 18
       OnClick = Button17Click
+    end
+    object md_status: TCheckBox
+      Left = 256
+      Top = 16
+      Width = 161
+      Height = 17
+      Caption = #1052#1086#1076#1077#1083#1100' '#1044#1074#1080#1078#1077#1085#1080#1103
+      TabOrder = 19
     end
   end
   object GroupBox6: TGroupBox

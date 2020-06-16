@@ -16,6 +16,24 @@
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 TBFI_Simvol_form *BFI_Simvol_form;
+
+static int i_takt_asd[10];
+
+static String cw_B1_string;
+static String B1_string[5];
+static String B1_forDBG[5];
+static String B1_bfi;
+
+static String cw_B6_string;
+static String B6_string[5];
+static String B6_forDBG[5];
+static String B6_bfi;
+
+static String cw_a19_string;
+static String a19_string[5];
+static String a19_forDBG[5];
+static String a19_bfi;
+
 //---------------------------------------------------------------------------
 __fastcall TBFI_Simvol_form::TBFI_Simvol_form(TComponent* Owner)
         : TForm(Owner)

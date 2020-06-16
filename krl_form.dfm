@@ -1,6 +1,6 @@
 object krl_frm: Tkrl_frm
-  Left = 215
-  Top = 151
+  Left = 62
+  Top = 162
   BorderStyle = bsSingle
   Caption = #1050#1086#1084#1072#1085#1076#1085#1072#1103' '#1056#1072#1076#1080#1086' '#1051#1080#1085#1080#1103
   ClientHeight = 527
@@ -19,9 +19,9 @@ object krl_frm: Tkrl_frm
     Top = 0
     Width = 781
     Height = 508
-    ActivePage = balform1
+    ActivePage = TabSheet2
     Align = alClient
-    TabIndex = 0
+    TabIndex = 2
     TabOrder = 0
     object balform1: TTabSheet
       Caption = #1041#1060' 73'
@@ -607,13 +607,12 @@ object krl_frm: Tkrl_frm
     object TabSheet2: TTabSheet
       Caption = #1042#1099#1074#1086#1076' '#1080#1079' '#1041#1044
       ImageIndex = 2
-      object Memo1: TMemo
+      object form_krl: TMemo
         Left = 8
         Top = 16
         Width = 449
         Height = 249
-        Lines.Strings = (
-          'Memo1')
+        ReadOnly = True
         TabOrder = 0
       end
       object GroupBox3: TGroupBox
@@ -647,6 +646,22 @@ object krl_frm: Tkrl_frm
           Caption = #1057#1087#1091#1089#1082
           TabOrder = 2
         end
+      end
+      object ListBox1: TListBox
+        Left = 464
+        Top = 112
+        Width = 265
+        Height = 153
+        ItemHeight = 13
+        TabOrder = 2
+      end
+      object Button2: TButton
+        Left = 616
+        Top = 80
+        Width = 113
+        Height = 25
+        Caption = #1042#1099#1074#1077#1089#1090#1080' '#1085#1072' '#1092#1086#1088#1084#1091
+        TabOrder = 3
       end
     end
     object TabSheet3: TTabSheet
@@ -698,5 +713,10 @@ object krl_frm: Tkrl_frm
         Width = 50
       end>
     SimplePanel = False
+  end
+  object Timer1: TTimer
+    Interval = 100
+    Left = 744
+    Top = 472
   end
 end
