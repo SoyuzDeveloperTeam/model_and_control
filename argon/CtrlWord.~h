@@ -1,45 +1,64 @@
 #ifndef _ctrlwrd
 #define _ctrlwrd
 #include <memory.h>
+
 /*
-/* +--------------------+
-/* |  Управляющие слова |
-/* +--------------------+
+/* +-------------------------------------+
+/* |  Управляющие слова | Control Words  |
+/* |  УС - 16-ти разрядная ячейка ОЗУ,   |
+/* |     эмулируемая в симуляторе,       |
+/* |       как булевый массив            |
+/* +-------------------------------------+
 */
 
+//             Word        Addres (EEPROM)
 static bool cw_b1[16];  // 040
 static bool cw_b2[16];  //
-static bool cw_b6[16];  //
+static bool cw_b6[16];  // 047
+static bool cw_b10[16]; // 050
 static bool cw_r1[16];  // 100
 static bool cw_r6[16];  //
-static bool cw_b10[16]; // 050
-static bool cw_a2[16];  //
-static bool cw_a4[16];  //
-static bool cw_A4[16];  //
-static bool cw_a5[16];  //
-static bool cw_A5[16];  //
+static bool cw_r17[16]; // 274
+static bool cw_a2[16];  // 051
+static bool cw_a3[16];  // 464
+static bool cw_a4[16];  // 053
+static bool cw_a5[16];  // 054
 static bool cw_a6[16];  //
-static bool cw_a7[16];  //
-static bool cw_a8[16];  //
-static bool cw_A9[16];  //
+static bool cw_a7[16];  // 
+static bool cw_a8[16];  // 055
+static bool cw_a9[16];  // 470
 static bool cw_a10[16]; //
-static bool cw_a16[16]; //
-static bool cw_a14[16]; //
-static bool cw_a19[16]; // 227
-static bool cw_a20[16]; // 110
-static bool cw_a21[16]; // 111
+static bool cw_a11[16]; // 472
+static bool cw_a12[16]; // 473
+static bool cw_a13[16]; // 474
+static bool cw_a14[16]; // 271
+static bool cw_a16[16]; // 272
+static bool cw_a18[16]; // 275
+static bool cw_a19[16]; // 227 (277)
+static bool cw_a20[16]; // 110 - №8Л 0043013
+static bool cw_a21[16]; // 111 - №8Л 0140000
 static bool cw_a22[16]; // 112
-static bool cw_a23[16]; //
-static bool cw_a24[16]; //
+static bool cw_a23[16]; // 270
+static bool cw_a24[16]; // 766
+static bool cw_a25[16]; // 1540
+static bool cw_a26[16]; // 1541
+static bool cw_a27[16]; // 266
+static bool cw_a28[16]; // 267
 static bool cw_a30[16]; // 246
+static bool cw_a33[16]; //
+static bool cw_a34[16]; // 1542
 static bool cw_a35[16]; // 250
 static bool cw_a40[16]; //
-static bool cw_C1[16];  //
-static bool cw_c2[16];  //
-static bool cw_C2[16];  //
-static bool cw_C6[16];  //
-static bool cw_C7[16];  //
-static bool cw_C10[16]; //
+static bool cw_c1[16];  // 
+static bool cw_c2[16];  // 463
+static bool cw_c3[16];  // 465
+static bool cw_c6[16];  // 
+static bool cw_c7[16];  //
+static bool cw_c8[16];  // 462
+static bool cw_c10[16]; //
+
+static bool cw_x17[16]; // 273
+static bool cw_i17[16]; // 254
 
 // Команды
 static bool cw_K1[16];  //
@@ -50,6 +69,7 @@ static bool cw_K4[16];  //
 static bool cw_AC7[16]; //
 
 static bool cw_TA1[16]; // 061 - Текущие Аварии
+static bool cw_SA[16];  // 060 - Срочные Аварии
 static bool cw_TA00[16];//
 static bool cw_TA01[16];// ТА ИКВ-1
 static bool cw_TA02[16];// ТА ИКВ-2
@@ -66,24 +86,50 @@ static bool cw_TA12[16];// ТА
 static bool cw_TA13[16];// ТА
 static bool cw_TA14[16];// ТА
 static bool cw_TA15[16];// ТА
-static bool cw_SA[16];  // Срочные Аварии
+
+// Ячейки контроля состояния
+static bool cw_KC1[16]; // 520
+static bool cw_KC2[16]; // 521
+static bool cw_KC3[16]; // 522
+static bool cw_Ta1[16]; // 500
 
 static bool ych_z1[16]; // ych - Ячейки
 static bool ych_POZ[16];
 static bool ych_Rg15[16]; // Яч Рг
 static bool ych_RrP[16];  // RrП
 
-static bool Yz1[16];    //
-static bool Yz2[16];    //
-static bool Yz3[16];    //
+// Заявки
+static bool Yz1[16];    // 400
+static bool Yz2[16];    // 402
+static bool Yz3[16];    // 404
+
+static bool Yrgp[16];   // 027
 
 static bool YzS1[16];   // Запросы (Нет в БЦВК)
 
 static bool cw_Y32[16]; //
 
+// УС симулятора
+static bool cw_arg[16];
+/*
+[0] - Резерв
+[1] - Выбран канал БЦВК А
+[2] - Выбран канал БЦВК Б
+[3] - Выбран канал БЦВК В
+[4] - Выбран канал БЦВК АБВ
+[5] - ЦО
+[6] -
+*/
+
 #endif // _ctrlwrd
 
 /*
+
++| Информация КУРС |+
+
+ArgonMemoryType[1632,1633] - Ro
+
+-=-=-=-=-=-=-=-=-=-=-=
 
 Возможно что а14(0) - Сближение
 
@@ -109,4 +155,32 @@ bfi - ячейка 502
 bfi[6] - format bfi 42
 bfi[7] - format bfi 44
 Yz1[13] = 1 = ФИНТ
+С2[0] = 1 = РРП
+
+
+*****************************************************************************
+|            A2  C2                  *               А3      С3             *
+*****************************************************************************
+0  - РРП                             * 0  - Работа СКД                      *
+1  - Питание БДУС1-1                 * 1  - Стабил. на РМ                   *
+2  - Питание БДУС1-2                 * 2  - Работа ДПО-БТ                   *
+3  - М-15 (дальность=15 км при СБ)   * 3  - Крышка СКД откр.                *
+4  - Питание ИКВ-1                   * 4  -                                 *
+5  - Питание "Меры"                  * 5  - Сверка времени проведена        *
+6  - Питание ИКВ-2                   * 6  - Запрет вкл. СКД в теч. 30 сек.  *
+7  - БО отстрелен                    * 7  - Акселерометр включён            *
+8  - Питание СД                      * 8  - Жёсткий цикл                    *
+9  - Зона А                          * 9  - Нештатн. раб. акселером.        *
+10 - Зона В                          * 10 - Переходной процесс              *
+11 - Зона С                          * 11 - Запись КРЛ                      *
+12 - Зона Д                          * 12 - Квитирование КРЛ                *
+13 - Дпо-Б                           * 13 - Работоа ДПО при стаб. на РМ     *
+14 - Дпо-М2                          * 14 - Установившийся процесс          *
+15 - БДУС1-2 Выбран                  * 15 - Запр. сигн. Курс                *
+*****************************************************************************
+*            А5
+
+
+
+
 */

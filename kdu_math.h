@@ -19,6 +19,10 @@ static double tpl;
 static int e_r = 6371;
 static double skd_H;
 
+// Переменные КДУ
+static bool kdu_sdr;
+static bool kdu_sdd;
+
 static struct{
 double k;
 double V;

@@ -10,6 +10,7 @@
 #include "USOData.h"
 #include "neptun_main.h"
 #include "ssvp_module.h"
+#include "SPSHead.h"
 /*
    +--------------------------+
    |   Модель БЦВК Аргон-16   |
@@ -57,6 +58,7 @@ void arg_zrp (){
 
 }
 
+// Операции по РРП
 void arg_rrp (){
 // M638.u3
 if(cw_c2[0]){
@@ -67,11 +69,11 @@ if(cw_c2[0]){
 BLOK10: // Операции по "РРП"
 M405:
 Yz2[11]=cw_a20[14]; Yz1[6]=cw_a22[6];
-if((cw_C2[0]|cw_C6[8])&&cw_a6[8]){
+if((cw_c2[0]|cw_c6[8])&&cw_a6[8]){
         Yz1[2]=1; // PUPS
         cw_b6[11]=1; // Начало интегрирования УС
                                  }
-if((cw_C2[0]|cw_C6[7])&&cw_a6[7]){
+if((cw_c2[0]|cw_c6[7])&&cw_a6[7]){
         Yz1[14]=1; // ВЦПС
                                  }
 // блок пуска временных программ
@@ -137,10 +139,10 @@ cw_Y32[3] = false; // Включение ИКВ-2
 */
 
 void SetItvi (byte Mode, unsigned short Addr, unsigned short value, char z) {
-irvi_string.SubString(1,2) = IntToStr(Mode).SubString(1,1);
-irvi_string.SubString(3,5) = IntToStr(Addr);
-irvi_string.SubString(8,7) = IntToStr(value);
-irvi_string.SubString(15,1) = z;
+	irvi_string.SubString(1,2) = IntToStr(Mode).SubString(1,1);
+	irvi_string.SubString(3,5) = IntToStr(Addr);
+	irvi_string.SubString(8,7) = IntToStr(value);
+	irvi_string.SubString(15,1) = z;
 }
 
 /*
@@ -170,8 +172,10 @@ void DKUO (void) {
 }
 
 //+---------------------+
-// программы БРВИ
+//    Программы БРВИ
 //+---------------------+
+
+// Вынести на редактирование и доработку, что бы в зависимости от 
 
 void mode_31 (int addr, int val){
 switch (addr) {   // Обработчик режима
@@ -210,25 +214,29 @@ switch (addr) {   // Обработчик режима
 */
 
 void ChekIrvi (AnsiString irvi_str){
+if(irvi_str.IsEmpty())JPS(3,is_miu,is_operator,"Пустой ввод!",""); else {
+
 irvi_type.mode = StrToInt(irvi_str.SubString(1,2)); // Вырезаем первые два символа строки ирви "режим"
 switch (irvi_type.mode) {   // Обработчик режима
         case 00: /* Приоритетный или принудительный режим выдачи пр-м 1 - 4 */ break;
         case 04: /* Динамический вывод 10-х чисел */ break;
         case 05: /* Динамический вывод 8-х чисел */ break;
-        case 10: /* Ввод уставки РУС */   break;
+        case 10: /* Ввод уставки РУС */   break;           // Arg addr RUS AUS data?
         case 11: /* Ввод уставки АУС 1-й группы */  break;
         case 12: /* Ввод уставки АУС 2-й группы */  break;
         case 14: /* Одиночный ввод 10-х чисел */                       // Если режим 14, то
+                 if((irvi_str.SubString(3,5)).IsEmpty())JPS(3,is_miu,is_operator,"Пустой адрес!",""); else {
                  irvi_type.addr = StrToInt(irvi_str.SubString(3,5));   // Присваиваем значение адреса
                  if(CorrectAddr(irvi_type.addr)) {                     // Проверяем корректность адреса, если корректен, то
+                 if((irvi_str.SubString(8,7)).IsEmpty())JPS(3,is_miu,is_operator,"Пустое число!",""); else {
                  irvi_type.value = StrToInt(irvi_str.SubString(8,7));  // Присваиваем значение
                  ArgonMemoryType[irvi_type.addr] = irvi_type.value;    // Записываем его в ячейку памяти Аргона
                  SetItvi(irvi_type.mode,irvi_type.addr,ArgonMemoryType[irvi_type.addr], irvi_type.z );   // Выставляем результат на ИРВИ
                  JPS(4,is_argon,is_irvi,"Запись числа "+               // Логируем результат (от имени Аргона)
-                 IntToStr(irvi_type.value)+" по адресу "+IntToStr(irvi_type.addr),"");}
+                 IntToStr(irvi_type.value)+" по адресу "+IntToStr(irvi_type.addr),"");}}
                  else {                                                 // Если адрес не корректен ,то
                  irvi_err = true;
-                 JPS(3,is_argon,is_operator,arg_addr_error,"");     }   // Логируем превышение допустимого значения памяти А16
+                 JPS(3,is_argon,is_operator,arg_addr_error,"");     } }  // Логируем превышение допустимого значения памяти А16
                  break;
         case 15: /* Одиночный ввод 8-х чисел */  break;
         case 17: /* Групповой ввод 10-х чисел */ break;
@@ -287,7 +295,7 @@ switch (irvi_type.mode) {   // Обработчик режима
         irvi_type.value = StrToInt(irvi_str.SubString(8,7));
 
         break;
-}
+} }
 
 }
 
@@ -307,12 +315,17 @@ if(cw_C3[0]&&cw_C3[2])
 
 void blok_10 () {
 cw_b1[11]=1;
-cw_A4[0]=0; cw_A4[1]=0; cw_A4[2]=0; cw_A4[3]=0;
-cw_A4[4]=0; cw_A4[6]=0; cw_A4[7]=0; cw_A4[8]=0;
-cw_A4[9]=0; cw_A4[10]=0; cw_A4[13]=0; cw_A4[14]=0;
-cw_A4[15]=0; cw_A9[0-15]=0; cw_A5[0-15]=0; };
+cw_a4[0]=0; cw_a4[1]=0; cw_a4[2]=0; cw_a4[3]=0;
+cw_a4[4]=0; cw_a4[6]=0; cw_a4[7]=0; cw_a4[8]=0;
+cw_a4[9]=0; cw_a4[10]=0; cw_a4[13]=0; cw_a4[14]=0;
+cw_a4[15]=0; cw_a9[0-15]=0; cw_a5[0-15]=0; };
 
 };
+
+// test void's
+void pres_alarm_st(double SpsPressure){
+ if(SpsPressure<401) USO_Booled[9][11]=1;
+}
 
 static bool self_test_pr;
 
@@ -349,6 +362,8 @@ co_priz =1;
 arg_work_pr=0;
 }
 
+
+
 void argon_takt (){
 apdp=1;
 if(USO_Booled[3][10]){   // Если есть признак питания чайки
@@ -366,7 +381,6 @@ apdp=3;
       JPS(1,is_argon,is_operator,"Проведение короткой самопроверки...","");
      if(t==25){ tResult=0; apdp=4; self_test_pr=1;} else t++; }
 
-//Label22->Caption=IntToStr(t); // Тактов самопроверки
 // По окончанию теста считываем результат - если = 0, то тест прошел удачно и тогда
 if(self_test_pr) {          // Если есть признак окончания теста
 apdp=5;
@@ -388,35 +402,39 @@ JPS(1,is_argon,is_operator,"Самопроверка окончена. Значение tResult = "+IntToStr
           apdp=7;
           arg_work_pr = true;             // Признак работы Аргона (по нему происходит запуск)
           USO_Booled[11][7]=true;         // Выставляем "ОСК" для ТСЭ (от кого?)
-         // Так же выставляем заявку на Программу Установки Начальных Условий (ПУНУ)
+         //---------//
+         // П У Н У //
+         // Программа Установки Начальных Условий //
+         //=======================================//
          }
     apdp=8;
 
          } //self_test_pr
 } else {
 apdp=9;
-// Р А Б О Т А   А Р Г О Н А //
-//if(rygim==1){   // Если есть признак режима движения, то...
+
+///////////////////////////////////
+// ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! //
+//   Р А Б О Т А   А Р Г О Н А   //
+//  Начало вычислительного такта //
+///////////////////////////////////
+
 i_ot_pusk++; // Счетчик тактов БЦВК
 // В СУД "Чайка-3" по началу каждого такта происходит самоконтроль (СК) - self_check
 
-//---------//
-// П У Н У //
-// Программа Установки Начальных Условий //
-//=======================================//
-// Если есть заявка на ПУНУ, то...
-
-
 // Блок Жесткой программы -
 
+// Остальные блоки. СПС
+pres_alarm_st(TSpsDataN[19]); // Сверка давления (НЕ ДСД)
 
 //
 /*****************************************/
 // Б Л О К   И Н Т Е Г Р И Р О В А Н И Я //
 // П А Р А М Е Т Р О В   Д В И Ж Е Н И Я //
 /*****************************************/
-if(i_tok==5){
+if(i_tok==5){   // ВНИМАНИЕ!!!!
 integer_n++;
+// Точно каждый такт???
 dynamics.rs0 = dynamics.rs;
 dynamics.sks0 = dynamics.sks;
 dynamics.omy0 = dynamics.omy;
@@ -451,7 +469,7 @@ JPS(3,"Диспетчер Аргон-16  -  ","ДОСТИГНУТ ГО !","","");
 }
 
 if(dynamics.rs<=45){ // Складывание 2АО
-USO_Booled[1][4]  = false;
+USO_Booled[1][4]  = true;
 }
 
 if(dynamics.rs<=40){ //
@@ -468,10 +486,10 @@ ssvp_ready=1;
 | КАСАНИЕ |
 +---------+
 */
-if(dynamics.rs<=-0.02){
+if(dynamics.rs<=0.02){
 apdp=10;
 //НЕТ КАСАНИЕ! cw_a8[7]=1;  // "СЦЕПКА"
-        if(dynamics.Spr<=-0.002) {// Если нет промаха
+        if(dynamics.Spr<=-0.02) {// Если нет промаха
                 prks=1;
                 apdp=11;
                 JPS(4,is_miu,is_operator,"Есть касание! Начало формирования протокола.","");
@@ -594,7 +612,7 @@ if(argon_auto_contr){
 
 //*//*//*//*//*//*//*//*//*//*//*//*//*//*//*//*
 i_tok = 0;
-} else i_tok=i_tok++; // Что бы интегрирование было с шагом в секунду
+} else i_tok++; // Что бы интегрирование было с шагом в секунду  ВНИМАНИЕ!!!
 // Задача = сделать шаг интегрирования 0.100 мс
 // а шаг отображения на форматах (не ИнПУ) так как удобно оператору
 

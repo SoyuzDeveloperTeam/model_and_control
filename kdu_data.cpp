@@ -11,8 +11,7 @@
 #include "argon/arg_header.h"
 #include "argon/CtrlWord.h"
 #include "SPSHead.h"
-// Отладка поиска зависания:
-// Отключил таймеры таймер3, УСО_отр, спс_дата, маематика КДУ
+// Добавить - ТСЭ по УСО + разобрать переменные
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -45,13 +44,15 @@ KDUform->Position=poDesktopCenter;
 void __fastcall TKDUform::Timer1Timer(TObject *Sender)
 {
 // Включаем расход СКД
+// Произвести перерасчёт данного значения исходя
+// из массы ТК и особенностей СКД
 dynamics.rasp = dynamics.rasp - 0.535; // Высчитываем каждый тик 0.535 кг
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TKDUform::SpeedButton1Click(TObject *Sender)
+void __fastcall TKDUform::skd_startClick(TObject *Sender)
 {
-
+cw_a3[0]=1;  // Логический признак "СКД Вкл."
 JPS(1,is_sudn,is_operator,"Включение СКД     ","");
 }
 //---------------------------------------------------------------------------
@@ -60,7 +61,8 @@ void __fastcall TKDUform::SpeedButton2Click(TObject *Sender)
 {
 Timer1->Enabled=false;
 Timer2->Enabled=false;
-
+cw_a3[0]=0;  // Логический признак "СКД Выкл."
+cw_a3[1]=0;  // Логический признак "СКД Выкл."
 }
 //---------------------------------------------------------------------------
 
@@ -201,8 +203,8 @@ ArgonMemoryType[101] = StrToFloat(tormimp->Text);
 
 void __fastcall TKDUform::FormCreate(TObject *Sender)
 {
-SDR1_label->Hint="Рнастр = 24 кгс/см2";
-SDR2_label->Hint="Рнастр = 24 кгс/см2";
+SDR1_label->Hint="Рнастр = 24 кгс/см2 \n     ";
+SDR2_label->Hint="Рнастр = 24 кгс/см2 \n     ";
 DRO1_label->Hint="Датчик Расхода Окислителя \nРасход: 000.00 кг";
 DRG1_label->Hint="Датчик Расхода Горючего \nРасход: 000.00 кг";
 }
@@ -253,25 +255,29 @@ SpsDataSt.TSpsParam[31] = SpsDataSt.TSpsParam[31] + 0.200753;
 
 */
 
+/* Ведущий таймер формата КДУ */
 void __fastcall TKDUform::kdu_timerTimer(TObject *Sender)
 {
-Label38->Caption=FormatFloat("000.000",dynamics.rasp);
+rash_ob->Caption=FormatFloat("000.000",dynamics.rasp);              // Расход общий (кг)
 Label42->Caption=FormatFloat("000.000000000000000",dynamics.rudkg);
 Label49->Caption=FormatFloat("000.000000000000000",dynamics.kvkg);
-dpo1->Visible=dpo_v_pr[1];   dpo2->Visible=dpo_v_pr[2];
-dpo3->Visible=dpo_v_pr[3];   dpo4->Visible=dpo_v_pr[4];
-dpo5->Visible=dpo_v_pr[5];   dpo6->Visible=dpo_v_pr[6];
-dpo7->Visible=dpo_v_pr[7];   dpo8->Visible=dpo_v_pr[8];
-dpo9->Visible=dpo_v_pr[9];   dpo10->Visible=dpo_v_pr[10];
-dpo11->Visible=dpo_v_pr[11]; dpo12->Visible=dpo_v_pr[12];
-dpo12->Visible=dpo_v_pr[13]; dpo14->Visible=dpo_v_pr[14];
-dpo15->Visible=dpo_v_pr[15]; dpo16->Visible=dpo_v_pr[16];
-dpo17->Visible=dpo_v_pr[17]; dpo18->Visible=dpo_v_pr[18];
-dpo19->Visible=dpo_v_pr[19]; dpo20->Visible=dpo_v_pr[20];
-dpo21->Visible=dpo_v_pr[21]; dpo22->Visible=dpo_v_pr[22];
-dpo23->Visible=dpo_v_pr[23]; dpo24->Visible=dpo_v_pr[24];
-dpo25->Visible=dpo_v_pr[25]; dpo26->Visible=dpo_v_pr[26];
-dpo27->Visible=dpo_v_pr[27]; dpo28->Visible=dpo_v_pr[28];
+/* Признаки работы ДПО (иконки мнемосхемы)
+Номер ДПО     Признак от БАДПО            */
+dpo1->Visible=dpo_v_pr[1];      dpo2->Visible=dpo_v_pr[2];
+dpo3->Visible=dpo_v_pr[3];      dpo4->Visible=dpo_v_pr[4];
+dpo5->Visible=dpo_v_pr[5];      dpo6->Visible=dpo_v_pr[6];
+dpo7->Visible=dpo_v_pr[7];      dpo8->Visible=dpo_v_pr[8];
+dpo9->Visible=dpo_v_pr[9];      dpo10->Visible=dpo_v_pr[10];
+dpo11->Visible=dpo_v_pr[11];    dpo12->Visible=dpo_v_pr[12];
+dpo12->Visible=dpo_v_pr[13];    dpo14->Visible=dpo_v_pr[14];
+dpo15->Visible=dpo_v_pr[15];    dpo16->Visible=dpo_v_pr[16];
+dpo17->Visible=dpo_v_pr[17];    dpo18->Visible=dpo_v_pr[18];
+dpo19->Visible=dpo_v_pr[19];    dpo20->Visible=dpo_v_pr[20];
+dpo21->Visible=dpo_v_pr[21];    dpo22->Visible=dpo_v_pr[22];
+dpo23->Visible=dpo_v_pr[23];    dpo24->Visible=dpo_v_pr[24];
+dpo25->Visible=dpo_v_pr[25];    dpo26->Visible=dpo_v_pr[26];
+dpo27->Visible=dpo_v_pr[27];    dpo28->Visible=dpo_v_pr[28];
+
 }
 //---------------------------------------------------------------------------
 

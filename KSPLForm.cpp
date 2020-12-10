@@ -10,6 +10,7 @@
 #include "JouStrings.h"        // Строковые переменные для журнала
 #include "bumconnect.cpp"      // Обмен с БУМ
 #include "arg_header.h"
+#include "argon/CtrlWord.h"    // Управляющие Слова
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -1203,6 +1204,7 @@ JPS(1,is_operator,is_miu,is_ksp,"А7"); } else   // Логируем выдачу команды
 
 if (KSP_Let[1]){ // В                              Если выбранна буква B
 KSP_Booled[2][6]=true;                          // Тогда выставляем признак B7 - правда
+cw_a8[14]=1;                                    // Логический признак "РУД Вкл."
 SendToBum(0x00000283, 1, 1);                    // Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"В7"); } else   // Логируем выдачу команды
 
@@ -1546,6 +1548,10 @@ JPS(1,is_operator,is_miu,is_ksp,"Д11"); } else   // Логируем выдачу команды
 
 if (KSP_Let[4]){  // Ж
 KSP_Booled[5][10]=true;                          // Тогда выставляем признак Ж11 - правда
+        USO_Booled[3][2]  = true;   // Включаем только А, остальное в ноль
+        USO_Booled[3][3]  = false;
+        USO_Booled[3][4]  = false;
+        USO_Booled[3][13] = false;
 SendToBum(0x000002B6, 1, 1);                  //Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"Ж11"); } else   // Логируем выдачу команды
 
@@ -1714,8 +1720,13 @@ JPS(1,is_operator,is_miu,is_ksp,"Д13"); } else   // Логируем выдачу команды
 
 if (KSP_Let[4]){  // Ж
 KSP_Booled[5][12]=true;                          // Тогда выставляем признак Ж13 - правда
+        USO_Booled[3][3]  = true;
+        USO_Booled[3][2]  = false;
+        USO_Booled[3][4]  = false;
+        USO_Booled[3][13] = false;
 SendToBum(0x000002B7, 1, 0);       //Команда в БУМ ()
-JPS(1,is_operator,is_miu,is_ksp,"Ж13"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"Ж13");
+JPS(1,is_argon,is_operator,"Выбран канал  Б  БЦВК","");} else   // Логируем выдачу команды
 
 if (KSP_Let[5]){  // И
 KSP_Booled[6][12]=true;                          // Тогда выставляем признак И13 - правда
@@ -1883,7 +1894,13 @@ JPS(1,is_operator,is_miu,is_ksp,"Д15"); } else   // Логируем выдачу команды
 if (KSP_Let[4]){  // Ж
 KSP_Booled[5][14]=true;                          // Тогда выставляем признак Ж15 - правда
 SendToBum(0x000002B8, 1, 1);                     // Команда в БУМ ()
-JPS(1,is_operator,is_miu,is_ksp,"Ж15"); } else   // Логируем выдачу команды
+        USO_Booled[3][4] = true;
+        USO_Booled[3][2] = false;
+        USO_Booled[3][3] = false;
+        USO_Booled[3][13] = false;
+
+JPS(1,is_operator,is_miu,is_ksp,"Ж15");
+JPS(1,is_argon,is_operator,"Выбран канал  В  БЦВК",""); } else   // Логируем выдачу команды
 
 if (KSP_Let[5]){  // И
 KSP_Booled[6][14]=true;                          // Тогда выставляем признак И15 - правда
@@ -2037,6 +2054,7 @@ JPS(1,is_operator,is_miu,is_ksp,"А17"); } else   // Логируем выдачу команды
 if (KSP_Let[1]){ // В                               Если выбранна буква B
 KSP_Booled[2][16]=true;                          // Тогда выставляем признак B16 - правда
 SendToBum(0x00000280, 1, 0);                     // Команда в БУМ ()
+cw_AC7[0]=1;                                     // Логический признак "визир-причал"
 JPS(1,is_operator,is_miu,is_ksp,"В17"); } else   // Логируем выдачу команды
 
 if (KSP_Let[2]){  // Г                              Если выбранна буква Г

@@ -50,7 +50,7 @@ __published:	// IDE-managed Components
         TSpeedButton *SpeedButton15;
         TSpeedButton *SpeedButton16;
         TSpeedButton *SpeedButton17;
-        TSpeedButton *SpeedButton18;
+        TSpeedButton *isp_btn;
         TSpeedButton *SpeedButton1;
         TTimer *irvi_send_t;
         TTimer *Timer1;
@@ -59,7 +59,7 @@ __published:	// IDE-managed Components
         void __fastcall SpeedButton17Click(TObject *Sender);
         void __fastcall SpeedButton14Click(TObject *Sender);
         void __fastcall SpeedButton16Click(TObject *Sender);
-        void __fastcall SpeedButton18Click(TObject *Sender);
+        void __fastcall isp_btnClick(TObject *Sender);
         void __fastcall SpeedButton1Click(TObject *Sender);
         void __fastcall SpeedButton2Click(TObject *Sender);
         void __fastcall SpeedButton3Click(TObject *Sender);

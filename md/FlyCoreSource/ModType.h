@@ -22,8 +22,8 @@
 
 //------------------------------------------------------------------------
 using namespace std ;
-#include <FlyCoreSource\\ZCDU.h>
-#include <FlyCoreSource\\ZSK.h>
+#include "md/FlyCoreSource/ZCDU.h"
+#include "md/FlyCoreSource/ZSK.h"
 
 //------------------------------------------------------------------------
 #ifndef MODTYPE_H
@@ -100,25 +100,26 @@ enum VersionTide {TIDENULL=0, TIDESTEP2=1, TIDEPOSEIDON=2} ;
 
 //------------------------------------------------------------------------
 // Логическая шкала сил, значение по умолчанию.
+// ОБЬЯВИТЬ ПРИ ИНИЦИАЛИЗАЦИИ!!!
 typedef struct ZLSF {
-	int			num  = 0;			// Номер шкалы
-	VersionGPZ	vgpz = GPZ90;		// вариант ГПЗ
-	int			ngpz = 4;			// N разложения ГПЗ
-	int			mgpz = 4;			// M разложения ГПЗ
-	VersionATM	vatm = ATMSMA81;    // вариант атмосферы 
-	int			varsp= 0;			// 
-	int			vsvd = 0;			// Вариант светового давления 
-	VersionTide vTide= TIDESTEP2;	// учёт приливных эффектов
-	bool		isDU = false;		// учёт двигательной установки
-	bool		isSun = true;       // учёт Солнца
-	bool		isMoon = true;      // учёт Луны
+	int			num;//  = 0;			// Номер шкалы
+	VersionGPZ	vgpz;// = GPZ90;		// вариант ГПЗ
+	int			ngpz;// = 4;			// N разложения ГПЗ
+	int			mgpz;// = 4;			// M разложения ГПЗ
+	VersionATM	vatm;// = ATMSMA81;    // вариант атмосферы
+	int			varsp;//= 0;			//
+	int			vsvd;// = 0;			// Вариант светового давления
+	VersionTide vTide;//= TIDESTEP2;	// учёт приливных эффектов
+	bool		isDU;// = false;		// учёт двигательной установки
+	bool		isSun;// = true;       // учёт Солнца
+	bool		isMoon;// = true;      // учёт Луны
 	bool		isPlanet[8];		// учёт планет
 	ZLSF(int n=0) {
 		num = n;
 		memset(isPlanet, 0, 8*sizeof(bool)); // учёт планет
 	}
 	bool IsPlanet() { 
-		for(bool b : isPlanet) if (b) return true; 
+		for(bool b : isPlanet) if (b) return true;
 		return false; 
 	}
 } _ZLSF ;

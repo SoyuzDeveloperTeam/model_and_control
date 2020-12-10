@@ -16,28 +16,42 @@ static bool bilu_work_pr;
 static bool prvi_8_enter;   // Признак перевода точки ввода (каретки) на в ячейку в ИРВИ
 static bool mode18act;      // Признак режима для ирви 18
 // Память Аргона (по данным ИнПУ) - требуется подтверждение кол-ва ячеек памяти
+
 static double ArgonMemoryType[4096];
+static unsigned short ArgonMemory;
 // в аргоне имеет тип размером 2 байта
 
-static bool t_krl_true[5];
+static bool t_krl_true[5];   //
 static TDateTime arg_T0;
 static TDateTime arg_T1;
 static TDateTime arg_T2;
 static TDateTime arg_T3;
-static TDateTime arg_TM; // Time Moscow
+static TDateTime arg_TM;    // Correct Time Moscow
 
 static double mass_tk_full; // Текущая общая масса ТК - Current TK mass
 
-static bool dpo_v_pr[29]; // Признак выбранных в работу ДПО (счёт с 1) // DPO flags
-static bool subk_pr[1000];// Признаки СУБК - SUBK flags
+static bool subk_pr[1000];  // Признаки СУБК - SUBK flags
 
-static bool badpo_pr[6]; // +X  -X  +Y  -Y  +Z  -Z
+static bool badpo_pr[6];    // +X  -X  +Y  -Y  +Z  -Z   cw_a8[8-13] or cw_c8[8-13]
 
 static struct{
 double a;
 double b;
 double c;
 }baz_E;
+
+// Константы
+// Режим СО и закрутки
+static double search_speed_T_so = 0.85; // Скорость поиска по Т гр/с
+static double speed_prived_K_T_so = 0.85;
+
+// Логические признаки КДУ
+static struct{
+bool eko1;
+bool ekg1;
+bool eko2;
+bool ekg2;
+}kdu_log_pr;
 
 // Переменные для БФИ - Data for BFI
 static byte av_pav_pr;    // Признак "Полуавтомат"(1) "Автомат"(2) ""(0) - KURS Flag "half-Auto"(1) "auto"(2) ""(0)
@@ -125,7 +139,7 @@ double Y2;
 }dynamics;
 
 static bool argon_auto_contr; // Признак автоматического управления ТПК - Half-auto control spacecraft flag
-static bool dock_fbvs;        // Признак стыковки от СУБК - Docking flag from SUBK
+static bool dock_fbvs;        // Признак стыковки от СУБК - Docking flag from SUBK - Он же cw_a8[7]=1 ("СЦЕПКА")
 static bool can_send_toirvi;  // Флаг разрешения вывода на ИрВИ  - Flag for IRVI entry
 
 static struct{
@@ -155,7 +169,7 @@ static int GSO_types;        // GSO type (for ArgMath result)
 static double deltavt_1, deltavt_2;
 
 //\\\//\\\//\\\//\\\//\\\//\\\//\\\//\\\//\\\
-// Отладочные - неиспользовать в симуляторе!
+// Отладочные - не использовать в симуляторе!
 // Debug data's - DON'T use in sim
 static int a_debugger; // Отладочная по основным программам и циклам.
 static int i_012;
@@ -169,6 +183,20 @@ static bool irvi_err;
 static TDateTime gc1_time;  // Время первого Гибкого Цикла
 
 static double v_tek_m;      // Vтек при СКД получаем от КС-020
+
+////////////////
+// ПЕРЕМЕННЫЕ //
+// Б А  Д П О //
+////////////////
+
+static bool dpo_v_pr[29];   // Признак выбранных в работу ДПО (счёт с 1) // DPO flags
+
+static struct{
+bool b_com;     // 5.7
+bool m1_com;    // 5.15
+bool m2_com;    // 5.16
+bool m1t_com;   // 5.12
+}ba_dpo;
 
 /////////////////////////////////////
 // Параболы для ручного управления //
@@ -186,7 +214,7 @@ static double v_niz[32];
 // Константы ускорений ДПО //
 // в разных конфигурациях  //
 /////////////////////////////
-// Произвести перерасчет для ТМА с учетом массы или сделать константой
+// Произвести перерасчет для ТМА с учетом массы или сделать константой !!!!!
 static const double ax_b1b2 = 0.07396;  //В методике 0.0778 это с БО, а без 0,093
 static const double ax_k1k2 = 0.03698;
 static const double ax_half = 0.01849;
@@ -270,5 +298,26 @@ static const double ax_nijn = 0.00254;
 
 ПРОГРАММА ТЕЛЕМЕТРИИ:
 - выдает из БЦВК командную и непрерывную телеметрическую информацию о прохождении режимов.
+
+ПУНО:
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+Команды Взаимного Управления (КВУ)
+АС        - Команды ССВП
+БАСС      - Команды АКСС
+ГА1, ГА2  - Команды СОЖ
+КР        - Команды КРЛ (индекс не указывается)
+НИК       - Наземный Испытательный Комплекс
+СВ        - Команды СР Рассвет-М
+СКД       - Команды КДУ
+2СК       - Команды ПВУ
+СП        - Команды АСП
+СС        - Команды АСП
+СТД       - Команды СТД
+СТР       - Команды СТР
+СУ        - Команды СУБК (ДК1, ДК3 - дополнительные команды СУБК)
+СУС       - Команды СУС
+СЧ        - Команды СУД
+СЭП       - Команды СЭП
 
 */

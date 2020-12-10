@@ -5,5 +5,7 @@
 static bool Cl_blink;  // Признак ЦО (гор)
 static bool co_priz;     // Признак ЦО обо
 
+static bool n_ovk[23]; // Счет с 1
+
 
 #endif

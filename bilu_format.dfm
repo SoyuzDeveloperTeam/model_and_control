@@ -1,6 +1,6 @@
 object bilu_frm: Tbilu_frm
-  Left = 682
-  Top = 469
+  Left = 118
+  Top = 176
   Width = 702
   Height = 422
   Caption = #1041#1048#1051#1059' - '#1050#1061'69-042'
@@ -153,7 +153,7 @@ object bilu_frm: Tbilu_frm
     TabOrder = 7
   end
   object GroupBox3: TGroupBox
-    Left = 64
+    Left = 62
     Top = 94
     Width = 84
     Height = 36
@@ -170,7 +170,7 @@ object bilu_frm: Tbilu_frm
     end
   end
   object GroupBox4: TGroupBox
-    Left = 146
+    Left = 144
     Top = 94
     Width = 84
     Height = 36
@@ -187,7 +187,7 @@ object bilu_frm: Tbilu_frm
     end
   end
   object GroupBox5: TGroupBox
-    Left = 228
+    Left = 226
     Top = 94
     Width = 84
     Height = 36
@@ -204,7 +204,7 @@ object bilu_frm: Tbilu_frm
     end
   end
   object GroupBox6: TGroupBox
-    Left = 310
+    Left = 308
     Top = 94
     Width = 107
     Height = 36
@@ -221,7 +221,7 @@ object bilu_frm: Tbilu_frm
     end
   end
   object GroupBox7: TGroupBox
-    Left = 415
+    Left = 413
     Top = 94
     Width = 91
     Height = 36
@@ -258,6 +258,46 @@ object bilu_frm: Tbilu_frm
       Height = 13
       Caption = #1053#1045#1058
     end
+  end
+  object Panel7: TPanel
+    Left = 63
+    Top = 129
+    Width = 82
+    Height = 29
+    Caption = 'Panel7'
+    TabOrder = 14
+  end
+  object Panel8: TPanel
+    Left = 145
+    Top = 129
+    Width = 82
+    Height = 29
+    Caption = 'Panel7'
+    TabOrder = 15
+  end
+  object Panel9: TPanel
+    Left = 227
+    Top = 129
+    Width = 82
+    Height = 29
+    Caption = 'Panel7'
+    TabOrder = 16
+  end
+  object Panel10: TPanel
+    Left = 309
+    Top = 129
+    Width = 105
+    Height = 29
+    Caption = 'Panel7'
+    TabOrder = 17
+  end
+  object Panel11: TPanel
+    Left = 414
+    Top = 129
+    Width = 89
+    Height = 29
+    Caption = 'Panel7'
+    TabOrder = 18
   end
   object bilust: TTimer
     Interval = 250

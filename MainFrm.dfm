@@ -1,11 +1,11 @@
 object MainForm: TMainForm
-  Left = 382
-  Top = 99
+  Left = 326
+  Top = 43
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   ClientHeight = 570
   ClientWidth = 748
-  Color = clBtnFace
+  Color = clActiveBorder
   DefaultMonitor = dmDesktop
   Font.Charset = RUSSIAN_CHARSET
   Font.Color = clBlack
@@ -362,6 +362,13 @@ object MainForm: TMainForm
       000004040404040401040404040404040404040404040404040404040000}
     OnClick = SpeedButton1Click
   end
+  object Label21: TLabel
+    Left = 392
+    Top = 464
+    Width = 49
+    Height = 14
+    Caption = 'Label21'
+  end
   object GroupBox2: TGroupBox
     Left = 8
     Top = 72
@@ -417,6 +424,7 @@ object MainForm: TMainForm
       Width = 65
       Height = 41
       Caption = #1057#1058#1054#1055
+      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clLime
       Font.Height = -11
@@ -424,7 +432,6 @@ object MainForm: TMainForm
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 3
-      OnClick = Button2Click
     end
   end
   object StatusBar: TStatusBar
@@ -635,6 +642,48 @@ object MainForm: TMainForm
       Height = 14
       Caption = #1053#1045#1058
     end
+    object Label18: TLabel
+      Left = 560
+      Top = 16
+      Width = 35
+      Height = 14
+      Caption = #1041#1062#1042#1050':'
+    end
+    object arg_ch: TLabel
+      Left = 600
+      Top = 16
+      Width = 35
+      Height = 14
+      Caption = '- - -'
+    end
+    object Label19: TLabel
+      Left = 518
+      Top = 32
+      Width = 77
+      Height = 14
+      Caption = #1054#1090#1083#1072#1076#1086#1095#1085#1072#1103':'
+    end
+    object debug_int_a: TLabel
+      Left = 600
+      Top = 32
+      Width = 7
+      Height = 14
+      Caption = '0'
+    end
+    object debug_int_b: TLabel
+      Left = 614
+      Top = 32
+      Width = 7
+      Height = 14
+      Caption = '0'
+    end
+    object debug_int_c: TLabel
+      Left = 628
+      Top = 32
+      Width = 7
+      Height = 14
+      Caption = '0'
+    end
     object hhm: TComboBox
       Left = 264
       Top = 202
@@ -681,7 +730,7 @@ object MainForm: TMainForm
     end
     object Panel1: TPanel
       Left = 544
-      Top = -39
+      Top = 66
       Width = 177
       Height = 41
       BorderStyle = bsSingle
@@ -770,14 +819,14 @@ object MainForm: TMainForm
         TabOrder = 1
         Text = '0'
       end
-      object Button15: TButton
+      object sps_rec_btn: TButton
         Left = 4
         Top = 47
         Width = 50
         Height = 22
         Caption = #1047#1040#1055#1048#1057#1068
         TabOrder = 2
-        OnClick = Button15Click
+        OnClick = sps_rec_btnClick
       end
     end
     object GroupBox9: TGroupBox
@@ -923,7 +972,6 @@ object MainForm: TMainForm
       Height = 25
       Caption = #1047#1072#1087#1080#1089#1100' '#1044#1050
       TabOrder = 16
-      OnClick = Button11Click
     end
     object Button14: TButton
       Left = 402
@@ -932,7 +980,6 @@ object MainForm: TMainForm
       Height = 25
       Caption = #1054#1090#1087#1088#1072#1074#1080#1090#1100' '#1079#1072#1075#1086#1083#1086#1074#1086#1082
       TabOrder = 17
-      OnClick = Button14Click
     end
     object Button17: TButton
       Left = 408
@@ -941,7 +988,6 @@ object MainForm: TMainForm
       Height = 25
       Caption = #1042#1077#1088#1077#1092#1080#1082#1072#1094#1080#1103' '#1053#1059
       TabOrder = 18
-      OnClick = Button17Click
     end
     object md_status: TCheckBox
       Left = 256
@@ -1157,7 +1203,7 @@ object MainForm: TMainForm
       TabOrder = 2
       Visible = False
     end
-    object Button6: TButton
+    object close_socket: TButton
       Left = 128
       Top = 11
       Width = 113
@@ -1165,7 +1211,7 @@ object MainForm: TMainForm
       Caption = #1047#1072#1082#1088#1099#1090#1100' '#1089#1086#1082#1077#1090#1099
       Enabled = False
       TabOrder = 3
-      OnClick = Button6Click
+      OnClick = close_socketClick
     end
     object with_unity: TCheckBox
       Left = 8
@@ -1175,6 +1221,39 @@ object MainForm: TMainForm
       Caption = 'With Unity'
       TabOrder = 4
     end
+  end
+  object set_lang: TButton
+    Left = 600
+    Top = 80
+    Width = 49
+    Height = 25
+    Caption = 'ENG'
+    TabOrder = 12
+  end
+  object co_test_btn: TButton
+    Left = 96
+    Top = 464
+    Width = 97
+    Height = 25
+    Caption = 'co_test_btn'
+    TabOrder = 13
+    OnClick = co_test_btnClick
+  end
+  object TrackBar1: TTrackBar
+    Left = 653
+    Top = 72
+    Width = 25
+    Height = 97
+    Max = 100
+    Orientation = trVertical
+    Frequency = 5
+    Position = 0
+    SelEnd = 0
+    SelStart = 0
+    TabOrder = 14
+    ThumbLength = 16
+    TickMarks = tmBottomRight
+    TickStyle = tsAuto
   end
   object MainMenu1: TMainMenu
     Left = 296
@@ -1207,7 +1286,6 @@ object MainForm: TMainForm
       end
       object N22: TMenuItem
         Caption = #1041#1059#1052
-        Visible = False
         OnClick = N22Click
       end
       object N26: TMenuItem
@@ -1217,7 +1295,6 @@ object MainForm: TMainForm
       end
       object N40: TMenuItem
         Caption = #1057#1055#1057
-        OnClick = N40Click
       end
       object N25: TMenuItem
         Caption = #1057#1054#1058#1056
@@ -1233,9 +1310,9 @@ object MainForm: TMainForm
           Caption = #1057#1040' - '#1041#1056#1059#1057
           OnClick = N32Click
         end
-        object N38: TMenuItem
+        object tk_prvi_btn: TMenuItem
           Caption = #1055#1056#1042#1048
-          OnClick = N38Click
+          OnClick = tk_prvi_btnClick
         end
         object N39: TMenuItem
           Caption = #1053#1077#1087#1090#1091#1085'-'#1052#1069
@@ -1275,7 +1352,6 @@ object MainForm: TMainForm
       end
       object bilu: TMenuItem
         Caption = #1041#1048#1051#1059
-        OnClick = biluClick
       end
       object ssvp: TMenuItem
         Caption = #1057#1057#1042#1055
@@ -1349,8 +1425,11 @@ object MainForm: TMainForm
       end
       object N35: TMenuItem
         Caption = #1054#1073#1084#1077#1085' '#1089' '#1041#1059#1052
-        Visible = False
         OnClick = N35Click
+      end
+      object N44: TMenuItem
+        Caption = #1059#1087#1088#1072#1074#1083#1103#1102#1097#1080#1077' '#1089#1083#1086#1074#1072
+        OnClick = N44Click
       end
     end
     object N9: TMenuItem
@@ -1368,6 +1447,7 @@ object MainForm: TMainForm
     end
   end
   object ArgonTakt: TTimer
+    Enabled = False
     Interval = 200
     OnTimer = ArgonTaktTimer
     Left = 712
@@ -2396,7 +2476,7 @@ object MainForm: TMainForm
     Top = 520
   end
   object CentralLightBlink: TTimer
-    Interval = 385
+    Interval = 192
     OnTimer = CentralLightBlinkTimer
     Left = 488
     Top = 520
@@ -2444,14 +2524,12 @@ object MainForm: TMainForm
   object dk_to_bum: TTimer
     Enabled = False
     Interval = 100
-    OnTimer = dk_to_bumTimer
     Left = 568
     Top = 472
   end
   object unity_s_h: TTimer
     Enabled = False
     Interval = 100
-    OnTimer = unity_s_hTimer
     Left = 392
     Top = 504
   end
@@ -2462,27 +2540,22 @@ object MainForm: TMainForm
         Port = 25436
       end>
     DefaultPort = 0
-    OnConnect = un_servConnect
-    OnExecute = un_servExecute
-    OnDisconnect = un_servDisconnect
     Left = 432
     Top = 8
   end
   object InpuRecv: TTimer
     Interval = 10
-    OnTimer = InpuRecvTimer
     Left = 360
     Top = 472
-  end
-  object bum_status: TTimer
-    Enabled = False
-    Interval = 10
-    OnTimer = bum_statusTimer
-    Left = 712
-    Top = 72
   end
   object PopupMenu1: TPopupMenu
     Left = 224
     Top = 496
+  end
+  object DebugTimer: TTimer
+    Interval = 100
+    OnTimer = DebugTimerTimer
+    Left = 600
+    Top = 112
   end
 end

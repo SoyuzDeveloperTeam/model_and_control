@@ -76,6 +76,7 @@ double SA = Srenanom(JDJ2K);
 Jou("—редн€€ аномал€и - "+FloatToStr(SA));
 double Ecl = eclipticdolg(Lsun,SA);
 Jou("Ёклептичность - "+FloatToStr(Ecl));
+double r_sun = rsun(SA);
 kd[0] = StrToFloat(Edit1->Text);
 kd[1] = StrToFloat(Edit2->Text);
 kd[2] = StrToFloat(Edit3->Text);

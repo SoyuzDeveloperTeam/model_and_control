@@ -39,6 +39,7 @@ USEFORM("sps_frm.cpp", sps_form);
 USEFORM("bilu_format.cpp", bilu_frm);
 USEFORM("neptun\neptun.cpp", inpu_1);
 USEFORM("ssvp_form.cpp", ssvp_frm);
+USEFORM("CWFrm.cpp", cwform);
 USEFORM("krl_form.cpp", krl_frm);
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
@@ -84,6 +85,7 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
                  Application->CreateForm(__classid(Tbilu_frm), &bilu_frm);
                  Application->CreateForm(__classid(Tssvp_frm), &ssvp_frm);
                  Application->CreateForm(__classid(Tkrl_frm), &krl_frm);
+                 Application->CreateForm(__classid(Tcwform), &cwform);
                  Application->Run();
         }
         catch (Exception &exception)

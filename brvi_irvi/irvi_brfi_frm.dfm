@@ -1,6 +1,6 @@
 object IrBrForm: TIrBrForm
-  Left = 277
-  Top = 206
+  Left = 417
+  Top = 157
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1055#1056#1042#1048
@@ -187,6 +187,7 @@ object IrBrForm: TIrBrForm
     Top = 168
     Width = 40
     Height = 33
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -16
@@ -255,7 +256,7 @@ object IrBrForm: TIrBrForm
     ParentFont = False
     OnClick = SpeedButton17Click
   end
-  object SpeedButton18: TSpeedButton
+  object isp_btn: TSpeedButton
     Left = 323
     Top = 201
     Width = 40
@@ -268,7 +269,7 @@ object IrBrForm: TIrBrForm
     Font.Style = [fsBold]
     Layout = blGlyphBottom
     ParentFont = False
-    OnClick = SpeedButton18Click
+    OnClick = isp_btnClick
   end
   object SpeedButton1: TSpeedButton
     Left = 3

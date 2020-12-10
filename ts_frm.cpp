@@ -1,11 +1,10 @@
 //---------------------------------------------------------------------------
 #include <vcl.h>
 #pragma hdrstop
-// Отладка поиска зависания:
-// Отключил таймеры Timer1
 #include "ts_frm.h"
 #include "ts_header.h"
 #include "USOData.h"
+#include "argon/CtrlWord.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -18,6 +17,12 @@ __fastcall Tts_form::Tts_form(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall Tts_form::Timer1Timer(TObject *Sender)  // Таймер Индикации
 {
+
+/* Принцип работы:
+   - Если УС или признак УСО = 1 и в данном обработчике имеется этот признак/слово
+   - Производим индикацию оператору о состоянии признака/слова
+ */
+
 // ТС1
 if(USO_Booled[9][2]) // Авария Носителя
         {
@@ -219,8 +224,9 @@ if(TS8_pr[5])
          ts8_6->Color=clLime;
         } else ts8_6->Color=clGreen;
 // ДОП 1
-if(DOP1_pr[0])
+if(cw_b6[8]) // Разрешение сближения  12
         {
+         USO_Booled[12][3]=cw_b6[8]; // Выставляем признак УСО
          tsa1->Color=clLime;
         } else tsa1->Color=clGreen;
 if(DOP1_pr[1])

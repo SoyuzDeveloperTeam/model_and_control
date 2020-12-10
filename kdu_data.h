@@ -52,7 +52,7 @@ __published:	// IDE-managed Components
         TLabel *Label33;
         TLabel *Label34;
         TLabel *Label37;
-        TLabel *Label38;
+        TLabel *rash_ob;
         TLabel *Label39;
         TLabel *fuel_ost;
         TLabel *Label43;
@@ -84,7 +84,7 @@ __published:	// IDE-managed Components
         TButton *Button3;
         TLabel *Label6;
         TGroupBox *GroupBox6;
-        TSpeedButton *SpeedButton1;
+        TSpeedButton *skd_start;
         TSpeedButton *SpeedButton2;
         TDateTimePicker *Tskd;
         TLabel *Label8;
@@ -227,7 +227,7 @@ __published:	// IDE-managed Components
         TImage *dpo10;
         TImage *dpo12;
         void __fastcall Timer1Timer(TObject *Sender);
-        void __fastcall SpeedButton1Click(TObject *Sender);
+        void __fastcall skd_startClick(TObject *Sender);
         void __fastcall SpeedButton2Click(TObject *Sender);
         void __fastcall Button2Click(TObject *Sender);
         void __fastcall Button3Click(TObject *Sender);

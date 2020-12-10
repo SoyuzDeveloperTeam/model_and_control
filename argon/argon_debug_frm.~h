@@ -70,12 +70,18 @@ __published:	// IDE-managed Components
         TPanel *B_ch;
         TPanel *a_ch;
         TLabel *debug_pusk;
+        TLabel *Label8;
+        TTimer *Timer3;
+        TButton *CH_A;
+        TButton *Button1;
+        TButton *Button2;
         void __fastcall Button11Click(TObject *Sender);
         void __fastcall Button13Click(TObject *Sender);
         void __fastcall Timer1Timer(TObject *Sender);
         void __fastcall Button14Click(TObject *Sender);
         void __fastcall Timer2Timer(TObject *Sender);
         void __fastcall argon_dtTimer(TObject *Sender);
+        void __fastcall Timer3Timer(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall Targ_deb(TComponent* Owner);

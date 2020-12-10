@@ -9,7 +9,7 @@
 //#include <FlySsp.h>		// Численные алгоритмы "пакета SSP"
 //#include <FlyChebyshov.h>	// Апроксимация дискретной функции полиномами
 				// Чебышёва
-//#include <FlyCore.h>		// Собственоно сама модель движения
+//#include "md/FlyCore.h"		// Собственоно сама модель движения
 //#include <FlyCoreLink.h>	// Подключение всех необходимых библиотек
 //#include <FlyMagicLNS.h>	// Метод узловых точек
 

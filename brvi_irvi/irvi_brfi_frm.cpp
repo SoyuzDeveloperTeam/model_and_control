@@ -18,7 +18,7 @@ TIrBrForm *IrBrForm;
 static bool brvi_on;
 static bool halfe;
 
-void irvi_clear(void)
+void irvi_clear(void)  // Процедура очистки ИРВИ
 {
 IrBrForm->i1->Caption="";
 IrBrForm->i2->Caption="";
@@ -211,7 +211,7 @@ i14->Caption="";
 i15->Caption="";
 }
 //---------------------------------------------------------------------------
-void __fastcall TIrBrForm::SpeedButton18Click(TObject *Sender)
+void __fastcall TIrBrForm::isp_btnClick(TObject *Sender)
 {
 if(brvi_on) { // Если БРВИ вкл
 if(i1->Caption==""&&i2->Caption==""){  // Если первый и второй индикаторы пустые,

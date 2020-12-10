@@ -398,10 +398,6 @@ if (KSP_Let[10]){  // П                             Если выбранна буква
 KSP_Booled[10][0]=true;                         // Тогда выставляем признак Г1 - правда
 JPS(1,is_operator,is_miu,is_ksp,"П1"); } else   // Логируем выдачу команды
 
-if (KSP_Let[11]){  // Р                             Если выбранна буква
-KSP_Booled[11][0]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Р1"); } else   // Логируем выдачу команды
-
 if (KSP_Let[12]){  // С                            Если выбранна буква
 KSP_Booled[12][0]=true;                         // Тогда выставляем признак Д1 - правда
 JPS(1,is_operator,is_miu,is_ksp,"С1"); } else   // Логируем выдачу команды
@@ -409,10 +405,6 @@ JPS(1,is_operator,is_miu,is_ksp,"С1"); } else   // Логируем выдачу команды
 if (KSP_Let[13]){  // Т                             Если выбранна буква
 KSP_Booled[13][0]=true;                         // Тогда выставляем признак И1 - правда
 JPS(1,is_operator,is_miu,is_ksp,"Т1"); } else   // Логируем выдачу команды
-
-if (KSP_Let[14]){  // У
-KSP_Booled[14][0]=true;
-JPS(1,is_operator,is_miu,is_ksp,"У1"); } else
 
 if (KSP_Let[15]){  // Ф
 KSP_Booled[15][0]=true;
@@ -477,10 +469,6 @@ if (KSP_Let[10]){  // П                             Если выбранна буква
 KSP_Booled[10][1]=true;                         // Тогда выставляем признак - правда
 JPS(1,is_operator,is_miu,is_ksp,"П2"); } else   // Логируем выдачу команды
 
-if (KSP_Let[11]){  // Р                             Если выбранна буква
-KSP_Booled[11][1]=true;                         // Тогда выставляем признак - правда
-JPS(1,is_operator,is_miu,is_ksp,"Р2"); } else   // Логируем выдачу команды
-
 if (KSP_Let[12]){  // С                            Если выбранна буква
 KSP_Booled[12][1]=true;                         // Тогда выставляем признак - правда
 JPS(1,is_operator,is_miu,is_ksp,"С2"); } else   // Логируем выдачу команды
@@ -488,10 +476,6 @@ JPS(1,is_operator,is_miu,is_ksp,"С2"); } else   // Логируем выдачу команды
 if (KSP_Let[13]){  // Т                             Если выбранна буква
 KSP_Booled[13][1]=true;                         // Тогда выставляем признак - правда
 JPS(1,is_operator,is_miu,is_ksp,"Т2"); } else   // Логируем выдачу команды
-
-if (KSP_Let[14]){  // У
-KSP_Booled[14][1]=true;
-JPS(1,is_operator,is_miu,is_ksp,"У2"); } else
 
 if (KSP_Let[15]){  // Ф
 KSP_Booled[15][1]=true;
@@ -625,35 +609,35 @@ void __fastcall TKSP_right::ksp_4Click(TObject *Sender)
 {
 if (KSP_Let[8]){   // Б                            Если выбранна буква
 KSP_Booled[1][3]=true;                          // Тогда выставляем признак А1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Б1"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"Б4"); } else   // Логируем выдачу команды
 
 if (KSP_Let[9]){   // Н                            Если выбранна буква
 KSP_Booled[9][3]=true;                          // Тогда выставляем признак В1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Н1"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"Н4"); } else   // Логируем выдачу команды
 
 if (KSP_Let[10]){  // П                             Если выбранна буква
 KSP_Booled[10][3]=true;                         // Тогда выставляем признак Г1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"П1"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"П4"); } else   // Логируем выдачу команды
 
 if (KSP_Let[11]){  // Р                             Если выбранна буква
 KSP_Booled[11][3]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Р1"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"Р4"); } else   // Логируем выдачу команды
 
 if (KSP_Let[12]){  // С                            Если выбранна буква
 KSP_Booled[12][3]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"С1"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"С4"); } else   // Логируем выдачу команды
 
 if (KSP_Let[13]){  // Т                             Если выбранна буква
 KSP_Booled[13][3]=true;                         // Тогда выставляем признак И1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Т1"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"Т4"); } else   // Логируем выдачу команды
 
 if (KSP_Let[14]){  // У
 KSP_Booled[14][3]=true;
-JPS(1,is_operator,is_miu,is_ksp,"У1"); } else
+JPS(1,is_operator,is_miu,is_ksp,"У4"); } else
 
 if (KSP_Let[15]){  // Ф
 KSP_Booled[15][3]=true;
-JPS(1,is_operator,is_miu,is_ksp,"Ф1"); }
+JPS(1,is_operator,is_miu,is_ksp,"Ф4"); }
 
 KSP_R_B->Color=clBlack;
 KSP_R_B->Font->Color=clYellow;
@@ -704,35 +688,35 @@ void __fastcall TKSP_right::ksp_5Click(TObject *Sender)
 {
 if (KSP_Let[8]){   // Б                            Если выбранна буква
 KSP_Booled[1][4]=true;                          // Тогда выставляем признак А1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Б1"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"Б5"); } else   // Логируем выдачу команды
 
 if (KSP_Let[9]){   // Н                            Если выбранна буква
 KSP_Booled[9][4]=true;                          // Тогда выставляем признак В1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Н1"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"Н5"); } else   // Логируем выдачу команды
 
 if (KSP_Let[10]){  // П                             Если выбранна буква
 KSP_Booled[10][4]=true;                         // Тогда выставляем признак Г1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"П1"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"П5"); } else   // Логируем выдачу команды
 
 if (KSP_Let[11]){  // Р                             Если выбранна буква
 KSP_Booled[11][4]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Р1"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"Р5"); } else   // Логируем выдачу команды
 
 if (KSP_Let[12]){  // С                            Если выбранна буква
 KSP_Booled[12][4]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"С1"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"С5"); } else   // Логируем выдачу команды
 
 if (KSP_Let[13]){  // Т                             Если выбранна буква
 KSP_Booled[13][4]=true;                         // Тогда выставляем признак И1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Т1"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"Т5"); } else   // Логируем выдачу команды
 
 if (KSP_Let[14]){  // У
 KSP_Booled[14][4]=true;
-JPS(1,is_operator,is_miu,is_ksp,"У1"); } else
+JPS(1,is_operator,is_miu,is_ksp,"У5"); } else
 
 if (KSP_Let[15]){  // Ф
 KSP_Booled[15][4]=true;
-JPS(1,is_operator,is_miu,is_ksp,"Ф1"); }
+JPS(1,is_operator,is_miu,is_ksp,"Ф5"); }
 
 KSP_R_B->Color=clBlack;
 KSP_R_B->Font->Color=clYellow;
@@ -783,35 +767,35 @@ void __fastcall TKSP_right::ksp_6Click(TObject *Sender)
 {
 if (KSP_Let[8]){   // Б                            Если выбранна буква
 KSP_Booled[1][5]=true;                          // Тогда выставляем признак А1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Б1"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"Б6"); } else   // Логируем выдачу команды
 
 if (KSP_Let[9]){   // Н                            Если выбранна буква
 KSP_Booled[9][5]=true;                          // Тогда выставляем признак В1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Н1"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"Н6"); } else   // Логируем выдачу команды
 
 if (KSP_Let[10]){  // П                             Если выбранна буква
 KSP_Booled[10][5]=true;                         // Тогда выставляем признак Г1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"П1"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"П6"); } else   // Логируем выдачу команды
 
 if (KSP_Let[11]){  // Р                             Если выбранна буква
 KSP_Booled[11][5]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Р1"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"Р6"); } else   // Логируем выдачу команды
 
 if (KSP_Let[12]){  // С                            Если выбранна буква
 KSP_Booled[12][5]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"С1"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"С6"); } else   // Логируем выдачу команды
 
 if (KSP_Let[13]){  // Т                             Если выбранна буква
 KSP_Booled[13][5]=true;                         // Тогда выставляем признак И1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Т1"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"Т6"); } else   // Логируем выдачу команды
 
 if (KSP_Let[14]){  // У
 KSP_Booled[14][5]=true;
-JPS(1,is_operator,is_miu,is_ksp,"У1"); } else
+JPS(1,is_operator,is_miu,is_ksp,"У6"); } else
 
 if (KSP_Let[15]){  // Ф
 KSP_Booled[15][5]=true;
-JPS(1,is_operator,is_miu,is_ksp,"Ф1"); }
+JPS(1,is_operator,is_miu,is_ksp,"Ф6"); }
 
 KSP_R_B->Color=clBlack;
 KSP_R_B->Font->Color=clYellow;
@@ -862,35 +846,35 @@ void __fastcall TKSP_right::ksp_7Click(TObject *Sender)
 {
 if (KSP_Let[8]){   // Б                            Если выбранна буква
 KSP_Booled[1][6]=true;                          // Тогда выставляем признак А1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Б1"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"Б7"); } else   // Логируем выдачу команды
 
 if (KSP_Let[9]){   // Н                            Если выбранна буква
 KSP_Booled[9][6]=true;                          // Тогда выставляем признак В1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Н1"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"Н7"); } else   // Логируем выдачу команды
 
 if (KSP_Let[10]){  // П                             Если выбранна буква
 KSP_Booled[10][6]=true;                         // Тогда выставляем признак Г1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"П1"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"П7"); } else   // Логируем выдачу команды
 
 if (KSP_Let[11]){  // Р                             Если выбранна буква
 KSP_Booled[11][6]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Р1"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"Р7"); } else   // Логируем выдачу команды
 
 if (KSP_Let[12]){  // С                            Если выбранна буква
 KSP_Booled[12][6]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"С1"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"С7"); } else   // Логируем выдачу команды
 
 if (KSP_Let[13]){  // Т                             Если выбранна буква
 KSP_Booled[13][6]=true;                         // Тогда выставляем признак И1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Т1"); } else   // Логируем выдачу команды
+JPS(1,is_operator,is_miu,is_ksp,"Т7"); } else   // Логируем выдачу команды
 
 if (KSP_Let[14]){  // У
 KSP_Booled[14][6]=true;
-JPS(1,is_operator,is_miu,is_ksp,"У1"); } else
+JPS(1,is_operator,is_miu,is_ksp,"У7"); } else
 
 if (KSP_Let[15]){  // Ф
 KSP_Booled[15][6]=true;
-JPS(1,is_operator,is_miu,is_ksp,"Ф1"); }
+JPS(1,is_operator,is_miu,is_ksp,"Ф7"); }
 
 KSP_R_B->Color=clBlack;
 KSP_R_B->Font->Color=clYellow;
@@ -940,36 +924,36 @@ KSP_R_F_image->Enabled=true;
 void __fastcall TKSP_right::ksp_8Click(TObject *Sender)
 {
 if (KSP_Let[8]){   // Б                            Если выбранна буква
-KSP_Booled[1][0]=true;                          // Тогда выставляем признак А1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Б1"); } else   // Логируем выдачу команды
+KSP_Booled[1][7]=true;                          // Тогда выставляем признак А1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Б8"); } else   // Логируем выдачу команды
 
 if (KSP_Let[9]){   // Н                            Если выбранна буква
-KSP_Booled[9][0]=true;                          // Тогда выставляем признак В1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Н1"); } else   // Логируем выдачу команды
+KSP_Booled[9][7]=true;                          // Тогда выставляем признак В1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Н8"); } else   // Логируем выдачу команды
 
 if (KSP_Let[10]){  // П                             Если выбранна буква
-KSP_Booled[10][0]=true;                         // Тогда выставляем признак Г1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"П1"); } else   // Логируем выдачу команды
+KSP_Booled[10][7]=true;                         // Тогда выставляем признак Г1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"П8"); } else   // Логируем выдачу команды
 
 if (KSP_Let[11]){  // Р                             Если выбранна буква
-KSP_Booled[11][0]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Р1"); } else   // Логируем выдачу команды
+KSP_Booled[11][7]=true;                         // Тогда выставляем признак Д1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Р8"); } else   // Логируем выдачу команды
 
 if (KSP_Let[12]){  // С                            Если выбранна буква
-KSP_Booled[12][0]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"С1"); } else   // Логируем выдачу команды
+KSP_Booled[12][7]=true;                         // Тогда выставляем признак Д1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"С8"); } else   // Логируем выдачу команды
 
 if (KSP_Let[13]){  // Т                             Если выбранна буква
-KSP_Booled[13][0]=true;                         // Тогда выставляем признак И1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Т1"); } else   // Логируем выдачу команды
+KSP_Booled[13][7]=true;                         // Тогда выставляем признак И1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Т8"); } else   // Логируем выдачу команды
 
 if (KSP_Let[14]){  // У
-KSP_Booled[14][0]=true;
-JPS(1,is_operator,is_miu,is_ksp,"У1"); } else
+KSP_Booled[14][7]=true;
+JPS(1,is_operator,is_miu,is_ksp,"У8"); } else
 
 if (KSP_Let[15]){  // Ф
-KSP_Booled[15][0]=true;
-JPS(1,is_operator,is_miu,is_ksp,"Ф1"); }
+KSP_Booled[15][7]=true;
+JPS(1,is_operator,is_miu,is_ksp,"Ф8"); }
 
 KSP_R_B->Color=clBlack;
 KSP_R_B->Font->Color=clYellow;
@@ -1019,36 +1003,32 @@ KSP_R_F_image->Enabled=true;
 void __fastcall TKSP_right::ksp_9Click(TObject *Sender)
 {
 if (KSP_Let[8]){   // Б                            Если выбранна буква
-KSP_Booled[1][0]=true;                          // Тогда выставляем признак А1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Б1"); } else   // Логируем выдачу команды
+KSP_Booled[1][8]=true;                          // Тогда выставляем признак А1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Б9"); } else   // Логируем выдачу команды
 
 if (KSP_Let[9]){   // Н                            Если выбранна буква
-KSP_Booled[9][0]=true;                          // Тогда выставляем признак В1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Н1"); } else   // Логируем выдачу команды
+KSP_Booled[9][8]=true;                          // Тогда выставляем признак В1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Н9"); } else   // Логируем выдачу команды
 
 if (KSP_Let[10]){  // П                             Если выбранна буква
-KSP_Booled[10][0]=true;                         // Тогда выставляем признак Г1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"П1"); } else   // Логируем выдачу команды
+KSP_Booled[10][8]=true;                         // Тогда выставляем признак Г1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"П9"); } else   // Логируем выдачу команды
 
 if (KSP_Let[11]){  // Р                             Если выбранна буква
-KSP_Booled[11][0]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Р1"); } else   // Логируем выдачу команды
+KSP_Booled[11][8]=true;                         // Тогда выставляем признак Д1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Р9"); } else   // Логируем выдачу команды
 
 if (KSP_Let[12]){  // С                            Если выбранна буква
-KSP_Booled[12][0]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"С1"); } else   // Логируем выдачу команды
-
-if (KSP_Let[13]){  // Т                             Если выбранна буква
-KSP_Booled[13][0]=true;                         // Тогда выставляем признак И1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Т1"); } else   // Логируем выдачу команды
+KSP_Booled[12][8]=true;                         // Тогда выставляем признак Д1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"С9"); } else   // Логируем выдачу команды
 
 if (KSP_Let[14]){  // У
-KSP_Booled[14][0]=true;
-JPS(1,is_operator,is_miu,is_ksp,"У1"); } else
+KSP_Booled[14][8]=true;
+JPS(1,is_operator,is_miu,is_ksp,"У9"); } else
 
 if (KSP_Let[15]){  // Ф
-KSP_Booled[15][0]=true;
-JPS(1,is_operator,is_miu,is_ksp,"Ф1"); }
+KSP_Booled[15][8]=true;
+JPS(1,is_operator,is_miu,is_ksp,"Ф9"); }
 
 KSP_R_B->Color=clBlack;
 KSP_R_B->Font->Color=clYellow;
@@ -1091,43 +1071,39 @@ KSP_R_R_image->Enabled=true;
 KSP_R_S_image->Enabled=true;
 KSP_R_T_image->Enabled=true;
 KSP_R_U_image->Enabled=true;
-KSP_R_F_image->Enabled=true;        
+KSP_R_F_image->Enabled=true;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TKSP_right::ksp_10Click(TObject *Sender)
 {
 if (KSP_Let[8]){   // Б                            Если выбранна буква
-KSP_Booled[1][0]=true;                          // Тогда выставляем признак А1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Б1"); } else   // Логируем выдачу команды
+KSP_Booled[1][9]=true;                          // Тогда выставляем признак А1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Б10"); } else   // Логируем выдачу команды
 
 if (KSP_Let[9]){   // Н                            Если выбранна буква
-KSP_Booled[9][0]=true;                          // Тогда выставляем признак В1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Н1"); } else   // Логируем выдачу команды
+KSP_Booled[9][9]=true;                          // Тогда выставляем признак В1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Н10"); } else   // Логируем выдачу команды
 
 if (KSP_Let[10]){  // П                             Если выбранна буква
-KSP_Booled[10][0]=true;                         // Тогда выставляем признак Г1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"П1"); } else   // Логируем выдачу команды
+KSP_Booled[10][9]=true;                         // Тогда выставляем признак Г1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"П10"); } else   // Логируем выдачу команды
 
 if (KSP_Let[11]){  // Р                             Если выбранна буква
-KSP_Booled[11][0]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Р1"); } else   // Логируем выдачу команды
+KSP_Booled[11][9]=true;                         // Тогда выставляем признак Д1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Р10"); } else   // Логируем выдачу команды
 
 if (KSP_Let[12]){  // С                            Если выбранна буква
-KSP_Booled[12][0]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"С1"); } else   // Логируем выдачу команды
-
-if (KSP_Let[13]){  // Т                             Если выбранна буква
-KSP_Booled[13][0]=true;                         // Тогда выставляем признак И1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Т1"); } else   // Логируем выдачу команды
+KSP_Booled[12][9]=true;                         // Тогда выставляем признак Д1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"С10"); } else   // Логируем выдачу команды
 
 if (KSP_Let[14]){  // У
-KSP_Booled[14][0]=true;
-JPS(1,is_operator,is_miu,is_ksp,"У1"); } else
+KSP_Booled[14][9]=true;
+JPS(1,is_operator,is_miu,is_ksp,"У10"); } else
 
 if (KSP_Let[15]){  // Ф
-KSP_Booled[15][0]=true;
-JPS(1,is_operator,is_miu,is_ksp,"Ф1"); }
+KSP_Booled[15][9]=true;
+JPS(1,is_operator,is_miu,is_ksp,"Ф10"); }
 
 KSP_R_B->Color=clBlack;
 KSP_R_B->Font->Color=clYellow;
@@ -1177,36 +1153,28 @@ KSP_R_F_image->Enabled=true;
 void __fastcall TKSP_right::ksp_11Click(TObject *Sender)
 {
 if (KSP_Let[8]){   // Б                            Если выбранна буква
-KSP_Booled[1][0]=true;                          // Тогда выставляем признак А1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Б1"); } else   // Логируем выдачу команды
+KSP_Booled[1][10]=true;                          // Тогда выставляем признак А1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Б11"); } else   // Логируем выдачу команды
 
 if (KSP_Let[9]){   // Н                            Если выбранна буква
-KSP_Booled[9][0]=true;                          // Тогда выставляем признак В1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Н1"); } else   // Логируем выдачу команды
+KSP_Booled[9][10]=true;                          // Тогда выставляем признак В1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Н11"); } else   // Логируем выдачу команды
 
 if (KSP_Let[10]){  // П                             Если выбранна буква
-KSP_Booled[10][0]=true;                         // Тогда выставляем признак Г1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"П1"); } else   // Логируем выдачу команды
+KSP_Booled[10][10]=true;                         // Тогда выставляем признак Г1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"П11"); } else   // Логируем выдачу команды
 
 if (KSP_Let[11]){  // Р                             Если выбранна буква
-KSP_Booled[11][0]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Р1"); } else   // Логируем выдачу команды
+KSP_Booled[11][10]=true;                         // Тогда выставляем признак Д1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Р11"); } else   // Логируем выдачу команды
 
 if (KSP_Let[12]){  // С                            Если выбранна буква
-KSP_Booled[12][0]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"С1"); } else   // Логируем выдачу команды
-
-if (KSP_Let[13]){  // Т                             Если выбранна буква
-KSP_Booled[13][0]=true;                         // Тогда выставляем признак И1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Т1"); } else   // Логируем выдачу команды
+KSP_Booled[12][10]=true;                         // Тогда выставляем признак Д1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"С11"); } else   // Логируем выдачу команды
 
 if (KSP_Let[14]){  // У
-KSP_Booled[14][0]=true;
-JPS(1,is_operator,is_miu,is_ksp,"У1"); } else
-
-if (KSP_Let[15]){  // Ф
-KSP_Booled[15][0]=true;
-JPS(1,is_operator,is_miu,is_ksp,"Ф1"); }
+KSP_Booled[14][10]=true;
+JPS(1,is_operator,is_miu,is_ksp,"У11"); }
 
 KSP_R_B->Color=clBlack;
 KSP_R_B->Font->Color=clYellow;
@@ -1256,36 +1224,28 @@ KSP_R_F_image->Enabled=true;
 void __fastcall TKSP_right::ksp_12Click(TObject *Sender)
 {
 if (KSP_Let[8]){   // Б                            Если выбранна буква
-KSP_Booled[1][0]=true;                          // Тогда выставляем признак А1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Б1"); } else   // Логируем выдачу команды
+KSP_Booled[1][11]=true;                          // Тогда выставляем признак А1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Б12"); } else   // Логируем выдачу команды
 
 if (KSP_Let[9]){   // Н                            Если выбранна буква
-KSP_Booled[9][0]=true;                          // Тогда выставляем признак В1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Н1"); } else   // Логируем выдачу команды
+KSP_Booled[9][11]=true;                          // Тогда выставляем признак В1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Н12"); } else   // Логируем выдачу команды
 
 if (KSP_Let[10]){  // П                             Если выбранна буква
-KSP_Booled[10][0]=true;                         // Тогда выставляем признак Г1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"П1"); } else   // Логируем выдачу команды
+KSP_Booled[10][11]=true;                         // Тогда выставляем признак Г1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"П12"); } else   // Логируем выдачу команды
 
 if (KSP_Let[11]){  // Р                             Если выбранна буква
-KSP_Booled[11][0]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Р1"); } else   // Логируем выдачу команды
+KSP_Booled[11][11]=true;                         // Тогда выставляем признак Д1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Р12"); } else   // Логируем выдачу команды
 
 if (KSP_Let[12]){  // С                            Если выбранна буква
-KSP_Booled[12][0]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"С1"); } else   // Логируем выдачу команды
-
-if (KSP_Let[13]){  // Т                             Если выбранна буква
-KSP_Booled[13][0]=true;                         // Тогда выставляем признак И1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Т1"); } else   // Логируем выдачу команды
+KSP_Booled[12][11]=true;                         // Тогда выставляем признак Д1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"С12"); } else   // Логируем выдачу команды
 
 if (KSP_Let[14]){  // У
-KSP_Booled[14][0]=true;
-JPS(1,is_operator,is_miu,is_ksp,"У1"); } else
-
-if (KSP_Let[15]){  // Ф
-KSP_Booled[15][0]=true;
-JPS(1,is_operator,is_miu,is_ksp,"Ф1"); }
+KSP_Booled[14][11]=true;
+JPS(1,is_operator,is_miu,is_ksp,"У12"); }
 
 KSP_R_B->Color=clBlack;
 KSP_R_B->Font->Color=clYellow;
@@ -1335,36 +1295,36 @@ KSP_R_F_image->Enabled=true;
 void __fastcall TKSP_right::ksp_13Click(TObject *Sender)
 {
 if (KSP_Let[8]){   // Б                            Если выбранна буква
-KSP_Booled[1][0]=true;                          // Тогда выставляем признак А1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Б1"); } else   // Логируем выдачу команды
+KSP_Booled[1][12]=true;                          // Тогда выставляем признак А1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Б13"); } else   // Логируем выдачу команды
 
 if (KSP_Let[9]){   // Н                            Если выбранна буква
-KSP_Booled[9][0]=true;                          // Тогда выставляем признак В1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Н1"); } else   // Логируем выдачу команды
+KSP_Booled[9][12]=true;                          // Тогда выставляем признак В1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Н13"); } else   // Логируем выдачу команды
 
 if (KSP_Let[10]){  // П                             Если выбранна буква
-KSP_Booled[10][0]=true;                         // Тогда выставляем признак Г1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"П1"); } else   // Логируем выдачу команды
+KSP_Booled[10][12]=true;                         // Тогда выставляем признак Г1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"П13"); } else   // Логируем выдачу команды
 
 if (KSP_Let[11]){  // Р                             Если выбранна буква
-KSP_Booled[11][0]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Р1"); } else   // Логируем выдачу команды
+KSP_Booled[11][12]=true;                         // Тогда выставляем признак Д1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Р13"); } else   // Логируем выдачу команды
 
 if (KSP_Let[12]){  // С                            Если выбранна буква
-KSP_Booled[12][0]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"С1"); } else   // Логируем выдачу команды
+KSP_Booled[12][12]=true;                         // Тогда выставляем признак Д1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"С13"); } else   // Логируем выдачу команды
 
 if (KSP_Let[13]){  // Т                             Если выбранна буква
-KSP_Booled[13][0]=true;                         // Тогда выставляем признак И1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Т1"); } else   // Логируем выдачу команды
+KSP_Booled[13][12]=true;                         // Тогда выставляем признак И1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Т13"); } else   // Логируем выдачу команды
 
 if (KSP_Let[14]){  // У
-KSP_Booled[14][0]=true;
-JPS(1,is_operator,is_miu,is_ksp,"У1"); } else
+KSP_Booled[14][12]=true;
+JPS(1,is_operator,is_miu,is_ksp,"У13"); } else
 
 if (KSP_Let[15]){  // Ф
-KSP_Booled[15][0]=true;
-JPS(1,is_operator,is_miu,is_ksp,"Ф1"); }
+KSP_Booled[15][12]=true;
+JPS(1,is_operator,is_miu,is_ksp,"Ф13"); }
 
 KSP_R_B->Color=clBlack;
 KSP_R_B->Font->Color=clYellow;
@@ -1414,36 +1374,36 @@ KSP_R_F_image->Enabled=true;
 void __fastcall TKSP_right::ksp_14Click(TObject *Sender)
 {
 if (KSP_Let[8]){   // Б                            Если выбранна буква
-KSP_Booled[1][0]=true;                          // Тогда выставляем признак А1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Б1"); } else   // Логируем выдачу команды
+KSP_Booled[1][13]=true;                          // Тогда выставляем признак А1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Б14"); } else   // Логируем выдачу команды
 
 if (KSP_Let[9]){   // Н                            Если выбранна буква
-KSP_Booled[9][0]=true;                          // Тогда выставляем признак В1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Н1"); } else   // Логируем выдачу команды
+KSP_Booled[9][13]=true;                          // Тогда выставляем признак В1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Н14"); } else   // Логируем выдачу команды
 
 if (KSP_Let[10]){  // П                             Если выбранна буква
-KSP_Booled[10][0]=true;                         // Тогда выставляем признак Г1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"П1"); } else   // Логируем выдачу команды
+KSP_Booled[10][13]=true;                         // Тогда выставляем признак Г1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"П14"); } else   // Логируем выдачу команды
 
 if (KSP_Let[11]){  // Р                             Если выбранна буква
-KSP_Booled[11][0]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Р1"); } else   // Логируем выдачу команды
+KSP_Booled[11][13]=true;                         // Тогда выставляем признак Д1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Р14"); } else   // Логируем выдачу команды
 
 if (KSP_Let[12]){  // С                            Если выбранна буква
-KSP_Booled[12][0]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"С1"); } else   // Логируем выдачу команды
+KSP_Booled[12][13]=true;                         // Тогда выставляем признак Д1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"С14"); } else   // Логируем выдачу команды
 
 if (KSP_Let[13]){  // Т                             Если выбранна буква
-KSP_Booled[13][0]=true;                         // Тогда выставляем признак И1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Т1"); } else   // Логируем выдачу команды
+KSP_Booled[13][13]=true;                         // Тогда выставляем признак И1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Т14"); } else   // Логируем выдачу команды
 
 if (KSP_Let[14]){  // У
-KSP_Booled[14][0]=true;
-JPS(1,is_operator,is_miu,is_ksp,"У1"); } else
+KSP_Booled[14][13]=true;
+JPS(1,is_operator,is_miu,is_ksp,"У14"); } else
 
 if (KSP_Let[15]){  // Ф
-KSP_Booled[15][0]=true;
-JPS(1,is_operator,is_miu,is_ksp,"Ф1"); }
+KSP_Booled[15][13]=true;
+JPS(1,is_operator,is_miu,is_ksp,"Ф14"); }
 
 KSP_R_B->Color=clBlack;
 KSP_R_B->Font->Color=clYellow;
@@ -1493,36 +1453,24 @@ KSP_R_F_image->Enabled=true;
 void __fastcall TKSP_right::ksp_15Click(TObject *Sender)
 {
 if (KSP_Let[8]){   // Б                            Если выбранна буква
-KSP_Booled[1][0]=true;                          // Тогда выставляем признак А1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Б1"); } else   // Логируем выдачу команды
+KSP_Booled[1][14]=true;                          // Тогда выставляем признак А1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Б15"); } else   // Логируем выдачу команды
 
 if (KSP_Let[9]){   // Н                            Если выбранна буква
-KSP_Booled[9][0]=true;                          // Тогда выставляем признак В1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Н1"); } else   // Логируем выдачу команды
-
-if (KSP_Let[10]){  // П                             Если выбранна буква
-KSP_Booled[10][0]=true;                         // Тогда выставляем признак Г1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"П1"); } else   // Логируем выдачу команды
-
-if (KSP_Let[11]){  // Р                             Если выбранна буква
-KSP_Booled[11][0]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Р1"); } else   // Логируем выдачу команды
+KSP_Booled[9][14]=true;                          // Тогда выставляем признак В1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Н15"); } else   // Логируем выдачу команды
 
 if (KSP_Let[12]){  // С                            Если выбранна буква
-KSP_Booled[12][0]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"С1"); } else   // Логируем выдачу команды
-
-if (KSP_Let[13]){  // Т                             Если выбранна буква
-KSP_Booled[13][0]=true;                         // Тогда выставляем признак И1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Т1"); } else   // Логируем выдачу команды
+KSP_Booled[12][14]=true;                         // Тогда выставляем признак Д1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"С15"); } else   // Логируем выдачу команды
 
 if (KSP_Let[14]){  // У
-KSP_Booled[14][0]=true;
-JPS(1,is_operator,is_miu,is_ksp,"У1"); } else
+KSP_Booled[14][14]=true;
+JPS(1,is_operator,is_miu,is_ksp,"У15"); } else
 
 if (KSP_Let[15]){  // Ф
-KSP_Booled[15][0]=true;
-JPS(1,is_operator,is_miu,is_ksp,"Ф1"); }
+KSP_Booled[15][14]=true;
+JPS(1,is_operator,is_miu,is_ksp,"Ф15"); }
 
 KSP_R_B->Color=clBlack;
 KSP_R_B->Font->Color=clYellow;
@@ -1572,36 +1520,24 @@ KSP_R_F_image->Enabled=true;
 void __fastcall TKSP_right::ksp_16Click(TObject *Sender)
 {
 if (KSP_Let[8]){   // Б                            Если выбранна буква
-KSP_Booled[1][0]=true;                          // Тогда выставляем признак А1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Б1"); } else   // Логируем выдачу команды
+KSP_Booled[1][15]=true;                          // Тогда выставляем признак А1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Б16"); } else   // Логируем выдачу команды
 
 if (KSP_Let[9]){   // Н                            Если выбранна буква
-KSP_Booled[9][0]=true;                          // Тогда выставляем признак В1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Н1"); } else   // Логируем выдачу команды
-
-if (KSP_Let[10]){  // П                             Если выбранна буква
-KSP_Booled[10][0]=true;                         // Тогда выставляем признак Г1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"П1"); } else   // Логируем выдачу команды
-
-if (KSP_Let[11]){  // Р                             Если выбранна буква
-KSP_Booled[11][0]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Р1"); } else   // Логируем выдачу команды
+KSP_Booled[9][15]=true;                          // Тогда выставляем признак В1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Н16"); } else   // Логируем выдачу команды
 
 if (KSP_Let[12]){  // С                            Если выбранна буква
-KSP_Booled[12][0]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"С1"); } else   // Логируем выдачу команды
-
-if (KSP_Let[13]){  // Т                             Если выбранна буква
-KSP_Booled[13][0]=true;                         // Тогда выставляем признак И1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Т1"); } else   // Логируем выдачу команды
+KSP_Booled[12][15]=true;                         // Тогда выставляем признак Д1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"С16"); } else   // Логируем выдачу команды
 
 if (KSP_Let[14]){  // У
-KSP_Booled[14][0]=true;
-JPS(1,is_operator,is_miu,is_ksp,"У1"); } else
+KSP_Booled[14][15]=true;
+JPS(1,is_operator,is_miu,is_ksp,"У16"); } else
 
 if (KSP_Let[15]){  // Ф
-KSP_Booled[15][0]=true;
-JPS(1,is_operator,is_miu,is_ksp,"Ф1"); }
+KSP_Booled[15][15]=true;
+JPS(1,is_operator,is_miu,is_ksp,"Ф16"); }
 
 KSP_R_B->Color=clBlack;
 KSP_R_B->Font->Color=clYellow;
@@ -1650,37 +1586,25 @@ KSP_R_F_image->Enabled=true;
 
 void __fastcall TKSP_right::ksp_17Click(TObject *Sender)
 {
-if (KSP_Let[8]){   // Б                            Если выбранна буква
-KSP_Booled[1][0]=true;                          // Тогда выставляем признак А1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Б1"); } else   // Логируем выдачу команды
-
 if (KSP_Let[9]){   // Н                            Если выбранна буква
-KSP_Booled[9][0]=true;                          // Тогда выставляем признак В1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Н1"); } else   // Логируем выдачу команды
-
-if (KSP_Let[10]){  // П                             Если выбранна буква
-KSP_Booled[10][0]=true;                         // Тогда выставляем признак Г1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"П1"); } else   // Логируем выдачу команды
+KSP_Booled[9][16]=true;                          // Тогда выставляем признак В1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Н17"); } else   // Логируем выдачу команды
 
 if (KSP_Let[11]){  // Р                             Если выбранна буква
-KSP_Booled[11][0]=true;                         // Тогда выставляем признак Д1 - правда
+KSP_Booled[11][16]=true;                         // Тогда выставляем признак Д1 - правда
 JPS(1,is_operator,is_miu,is_ksp,"Р1"); } else   // Логируем выдачу команды
 
 if (KSP_Let[12]){  // С                            Если выбранна буква
-KSP_Booled[12][0]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"С1"); } else   // Логируем выдачу команды
+KSP_Booled[12][16]=true;                         // Тогда выставляем признак Д1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"С17"); } else   // Логируем выдачу команды
 
 if (KSP_Let[13]){  // Т                             Если выбранна буква
-KSP_Booled[13][0]=true;                         // Тогда выставляем признак И1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Т1"); } else   // Логируем выдачу команды
+KSP_Booled[13][16]=true;                         // Тогда выставляем признак И1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Т17"); } else   // Логируем выдачу команды
 
 if (KSP_Let[14]){  // У
-KSP_Booled[14][0]=true;
-JPS(1,is_operator,is_miu,is_ksp,"У1"); } else
-
-if (KSP_Let[15]){  // Ф
-KSP_Booled[15][0]=true;
-JPS(1,is_operator,is_miu,is_ksp,"Ф1"); }
+KSP_Booled[14][16]=true;
+JPS(1,is_operator,is_miu,is_ksp,"У17"); }
 
 KSP_R_B->Color=clBlack;
 KSP_R_B->Font->Color=clYellow;
@@ -1729,37 +1653,25 @@ KSP_R_F_image->Enabled=true;
 
 void __fastcall TKSP_right::ksp_18Click(TObject *Sender)
 {
-if (KSP_Let[8]){   // Б                            Если выбранна буква
-KSP_Booled[1][0]=true;                          // Тогда выставляем признак А1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Б1"); } else   // Логируем выдачу команды
-
 if (KSP_Let[9]){   // Н                            Если выбранна буква
-KSP_Booled[9][0]=true;                          // Тогда выставляем признак В1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Н1"); } else   // Логируем выдачу команды
-
-if (KSP_Let[10]){  // П                             Если выбранна буква
-KSP_Booled[10][0]=true;                         // Тогда выставляем признак Г1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"П1"); } else   // Логируем выдачу команды
+KSP_Booled[9][17]=true;                          // Тогда выставляем признак В1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Н18"); } else   // Логируем выдачу команды
 
 if (KSP_Let[11]){  // Р                             Если выбранна буква
-KSP_Booled[11][0]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Р1"); } else   // Логируем выдачу команды
+KSP_Booled[11][17]=true;                         // Тогда выставляем признак Д1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Р18"); } else   // Логируем выдачу команды
 
 if (KSP_Let[12]){  // С                            Если выбранна буква
-KSP_Booled[12][0]=true;                         // Тогда выставляем признак Д1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"С1"); } else   // Логируем выдачу команды
+KSP_Booled[12][17]=true;                         // Тогда выставляем признак Д1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"С18"); } else   // Логируем выдачу команды
 
 if (KSP_Let[13]){  // Т                             Если выбранна буква
-KSP_Booled[13][0]=true;                         // Тогда выставляем признак И1 - правда
-JPS(1,is_operator,is_miu,is_ksp,"Т1"); } else   // Логируем выдачу команды
+KSP_Booled[13][17]=true;                         // Тогда выставляем признак И1 - правда
+JPS(1,is_operator,is_miu,is_ksp,"Т18"); } else   // Логируем выдачу команды
 
 if (KSP_Let[14]){  // У
-KSP_Booled[14][0]=true;
-JPS(1,is_operator,is_miu,is_ksp,"У1"); } else
-
-if (KSP_Let[15]){  // Ф
-KSP_Booled[15][0]=true;
-JPS(1,is_operator,is_miu,is_ksp,"Ф1"); }
+KSP_Booled[14][17]=true;
+JPS(1,is_operator,is_miu,is_ksp,"У18"); }
 
 KSP_R_B->Color=clBlack;
 KSP_R_B->Font->Color=clYellow;

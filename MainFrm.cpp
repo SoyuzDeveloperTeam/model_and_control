@@ -16,6 +16,8 @@
 #include <vector.h>
 #include <math.h>
 #include <Tlhelp32.h>
+#include <windows.h>
+#include <mmsystem.h>
 //---------------------------------------------------------------------------
 //-----------------------------------------------------------------------------
 /* Заголовки */
@@ -45,6 +47,8 @@
 #include "neptun_main.cpp"              // Основные процедуры ПСА "Нептун-МЭ" - Main proc for Neptune model
 #include "unity_connect.cpp"            // Обмен с Юнити - Connect with Unity
 #include "inpuconnect.cpp"              // Обмен с ИнПУ  - Connect with InPU
+#include "md_main.cpp"                  // Motion Model
+#include "DConvert.cpp"                 // CW Convert Bool[16] to Oct
 //---------------------------------------------------------------------------
 /* Формы */
 //#include "help_form.cpp"              // Форма Поддержи - Help Form
@@ -79,6 +83,7 @@
 #include "otkazy.cpp"                   // Форма "Отказ Бортоввых Систем"
 #include "neptun.cpp"                   // Форма ПСА "Нептун-МЭ" -  ИнПУ1
 #include "sps_frm.cpp"                  // Форма СПС
+#include "CWFrm.cpp"                    // Форма Contrl Word (debug)
 // Форматы Laptop РС МКС (СМ)
 #include "sm_ssvp_PX.cpp"               // Формат СМ:ССВП:+Х
 //---------------------------------------------------------------------------
@@ -100,6 +105,7 @@ static double ghjh;
 // -- -- -- --
 
 HINSTANCE Lib = LoadLibrary("LIB_BNO.dll");                    // загружаем библиотеку динамически
+
 
 TInit Init = 0;                                                // Make object's
 TGetMagData GetMagData = 0;
@@ -146,7 +152,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 {
 MainForm->Caption="Симулятор Союз-ТМА  |  Версия: "+ActVer;
 StatusBar->Panels->Items[2]->Text="O";
-init=false;
+init=false; 
 con=false;
 //startdelay=true;
 err = WSAStartup(wVersionRequested, &wsaData);
@@ -266,7 +272,7 @@ AboutForm->Show();
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMainForm::Button6Click(TObject *Sender)
+void __fastcall TMainForm::close_socketClick(TObject *Sender)
 {
         iResult = closesocket(CtrlSocket);
         if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
@@ -280,7 +286,7 @@ void __fastcall TMainForm::Button6Click(TObject *Sender)
         init_->Enabled=true;
         if(with_unity->Checked){  // Если введен признак "With Unity"
         unity_s_h->Enabled=false;
-        } // with_unity
+                               }  // with_unity
         JPS(3, "Внимание: Сокеты обмена с БУМ закрыт!", "", "", "");
 }
 //---------------------------------------------------------------------------
@@ -298,6 +304,7 @@ LocalTime->Caption=Now().FormatString("hh:mm:ss");  // Вывод текущего времени ПК
 void __fastcall TMainForm::kspl_loadClick(TObject *Sender)  // Запуск Формата КСПл
 {
 ksplfrm->Show();
+
 }
 
 //------------------------------------------------//
@@ -328,13 +335,15 @@ dk_mass.size  = ntohl(48);
 
 Config_init(ExtractFilePath(Application->ExeName)+"miu_config.ini");  // Инициализация файла конфигурации
 
-if(md_status) { // Если выбрана работа с МД
+if(md_status->Checked) { // Если выбрана работа с МД
 fly_model_pr = 1; // Разрешаем работу всех процедур МД
 JPS(1,"","","Начало инициализации модели движения...","");
 #define FLY_LINK_CORE {\
 #pragma message ("    Подключение библиотеки FlyCore...")\
 #pragma comment(lib, "FlyCore.lib")\
 }
+init_md();
+// Инициализация МД
 
 } // md_status
 
@@ -507,7 +516,7 @@ if(init){   // Если есть признак инициализации, то...
 init_->Enabled=false;
 Button9->Enabled=true;
 Button4->Enabled=true;
-Button6->Enabled=true;
+close_socket->Enabled=true;
 if(WithoutBum->Checked){
  JPS(1,"","","Автономный вариант без моделей","");
 }
@@ -550,6 +559,7 @@ Timer2->Enabled=false; }
 
 void __fastcall TMainForm::FormCreate(TObject *Sender)
 {
+WithoutBum->Visible=true;
 ver_num=" 1.0.1.56";              // Переделать - выводить версию из атрибутов
 // --- Выставляем начальное состояние иконок моделей --- //
 ModelStatusPicList->GetBitmap(0, bum_status_pic->Picture->Bitmap);
@@ -674,11 +684,11 @@ JPS(1,is_operator,is_miu,"Выдана команда - отработка НУ.","");
   // Компоненты кватерниона разворота ССК ТК относительно J2000
         // Расчитывать из углов ориентации
   double q_tkn[4];
-  kgpt(StrToFloat(EnterNuForm->ang_psi_tk->Text),  // Формируем
+  /* kgpt(StrToFloat(EnterNuForm->ang_psi_tk->Text),  // Формируем    !!! sqrt: DOMAIN error !!!
        StrToFloat(EnterNuForm->ang_thetta_tk->Text),
        StrToFloat(EnterNuForm->ang_gamma_tk->Text),
        &q_tk[0],&q_tk[2],&q_tk[3],&q_tk[4]);
-  norm_q(q_tk,q_tkn);   // Нормируем
+  norm_q(q_tk,q_tkn);   // Нормируем   */
   NU_temp.Q_tk[0]= 1;   // Qs
   NU_temp.Q_tk[1]= 0;   // Qx
   NU_temp.Q_tk[2]= 0;   // Qy
@@ -926,6 +936,7 @@ CO_light->Color=StringToColor("0x45607B");
 Cl_blink=false;} else {
 CO_light->Color=clRed;
 Cl_blink=true;
+PlaySound("Data\\Sound\\nept_co.wav", NULL, SND_ASYNC);   // Звук ЦО
 }
 }
 }
@@ -1026,7 +1037,7 @@ JPS(4,is_operator,is_miu,"ОТЛАДОЧНОЕ - КУРС - Причаливание","");
 
 void __fastcall TMainForm::ChekTSKDTimer(TObject *Sender)
 {
-
+// Debug timer 
 if(OnboardModelTime.TimeString()==data_TSKD.TimeString()&&cw_b1[12]){     // Как лучше опрашивать? Перемена мест влияет?
  pr_TSKD=1;
  ChekTSKD->Enabled=false;
@@ -1107,10 +1118,10 @@ Label72->Caption="Пакетов СПС: "+IntToStr(CounterNo); }
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMainForm::Button15Click(TObject *Sender)
+void __fastcall TMainForm::sps_rec_btnClick(TObject *Sender)
 {
-SpsDataSt.TSpsParam[StrToInt(sps_num->Text)]=StrToInt(Edit1->Text);
-TSpsDataN[StrToInt(sps_num->Text)]=StrToInt(Edit1->Text);
+SpsDataSt.TSpsParam[StrToInt(sps_num->Text)]=StrToInt(Edit1->Text);   // Для Нептуна
+TSpsDataN[StrToInt(sps_num->Text)]=StrToInt(Edit1->Text);             // Для МиУ
 }
 //---------------------------------------------------------------------------
 
@@ -1197,160 +1208,20 @@ otkazy_frm->Show();
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMainForm::Button2Click(TObject *Sender)
+
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::N44Click(TObject *Sender)
 {
-if(bum_pr){
-SendToBum(0x00000301, 0, 0);       // Останов динамики - команда в БУМ (останов БММ)
-dk_to_bum->Enabled=false;           // Разрешение отправки параметров ДК в БУМ
-p_sost_from_bum->Enabled=false;}
-start_priz = false;
-PuskPr = false;
-ModelDateTime_Timer->Enabled=false;
-MainTimer->Enabled=false;
-ArgonTakt->Enabled=false;
-//Timer6->Enabled=false;
-pusk_btn->Enabled=true;
-arg_tst->Enabled=false;
-JPS(1,is_operator,is_miu,"Стоп моделирования","");
-StatusBar->Panels->Items[0]->Text="Процесс моделирования остановлен.";
+cwform->Show();        
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMainForm::N38Click(TObject *Sender)
+void __fastcall TMainForm::ArgonTaktTimer(TObject *Sender)
 {
-IrBrForm->Show();  // Форма ПРВИ
+  argon_takt();//StartArgon
 }
 //---------------------------------------------------------------------------
-
-
-
-void __fastcall TMainForm::Button11Click(TObject *Sender)
-{
-dk_mass.dk_per[0]=StrToFloat(Edit11->Text);
-dk_mass.dk_per[1]=StrToFloat(Edit10->Text);
-dk_mass.dk_per[2]=StrToFloat(Edit9->Text);
-dk_mass.dk_ori[0]=StrToFloat(Edit8->Text);
-dk_mass.dk_ori[1]=StrToFloat(Edit4->Text);
-dk_mass.dk_ori[2]=StrToFloat(Edit2->Text);
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::dk_to_bumTimer(TObject *Sender)
-{
-iResult = send( TeleSocket,(char *)&dk_mass,sizeof(dk_mass), 0);   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::Button13Click(TObject *Sender)
-{
-co_priz=0;        
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::unity_s_hTimer(TObject *Sender)
-{
-handle();
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::un_servExecute(TIdPeerThread *AThread)
-{
-un_serv->Bindings->Items[0]->Recv(&unity_arr,sizeof(&unity_arr),0);
-if(unity_arr.signature==0xD8A73F93)JPS(2,"Пакет удачно получен!","","","");
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::un_servConnect(TIdPeerThread *AThread)
-{
-JPS(1,"Клиент Юнити подключен... Ожидаю квитанции инициализации клиента.","","","");
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::un_servDisconnect(TIdPeerThread *AThread)
-{
-JPS(1,"Клиент Юнити отключён...","","","");
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::Button14Click(TObject *Sender)
-{
-unity_arr.signature=0xD8A73F93;
-un_serv->Bindings->Items[0]->Send((char *)&unity_arr,sizeof(&unity_arr),0);
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::Button17Click(TObject *Sender)
-{
-double ver_vec_iss, ver_vel_iss, ver_vec_tk, ver_vel_tk;
-double vz_d, vz_s;
-double ver_v2tk[3], ver_v2iss[3], v3_o_iss, v3_o_tk ;
-ver_vec_iss = sqrt(NU_temp.vec_j2000_mks[0]*NU_temp.vec_j2000_mks[0] +
-NU_temp.vec_j2000_mks[1]*NU_temp.vec_j2000_mks[1] +
-NU_temp.vec_j2000_mks[2]*NU_temp.vec_j2000_mks[2]);
-JPS(1,"Результат нормировки вектора положения МКС: "+FloatToStr(ver_vec_iss),"","","");
-ver_vel_iss = sqrt(pow(NU_temp.vel_j2000_mks[0],2) +
-pow(NU_temp.vel_j2000_mks[1],2) +
-pow(NU_temp.vel_j2000_mks[2],2));
-JPS(1,"Результат нормировки вектора скорости МКС: "+FloatToStr(ver_vel_iss),"","","");
-ver_vec_tk = sqrt(NU_temp.vec_j2000_tk[0]*NU_temp.vec_j2000_tk[0] +
-NU_temp.vec_j2000_tk[1]*NU_temp.vec_j2000_tk[1] +
-NU_temp.vec_j2000_tk[2]*NU_temp.vec_j2000_tk[2]);
-JPS(1,"Результат нормировки вектора положения ТК: "+FloatToStr(ver_vec_tk),"","","");
-ver_vel_tk = sqrt(NU_temp.vel_j2000_tk[0]*NU_temp.vel_j2000_tk[0] +
-NU_temp.vel_j2000_tk[1]*NU_temp.vel_j2000_tk[1] +
-NU_temp.vel_j2000_tk[2]*NU_temp.vel_j2000_tk[2]);
-JPS(1,"Результат нормировки вектора скорости ТК: "+FloatToStr(ver_vel_tk),"","","");
-vz_d = ver_vec_iss - ver_vec_tk;
-JPS(1,"Расстояние: "+FloatToStr(vz_d)," м","","");
-vz_s = ver_vel_iss - ver_vel_tk;
-JPS(1,"Скорость взаимная: "+FloatToStr(vz_s)," м/с","","");
-ver_v2iss[0]=NU_temp.vec_j2000_mks[0]*NU_temp.vel_j2000_mks[0];
-ver_v2iss[1]=NU_temp.vec_j2000_mks[1]*NU_temp.vel_j2000_mks[1];
-ver_v2iss[2]=NU_temp.vec_j2000_mks[2]*NU_temp.vel_j2000_mks[2];
-ver_v2tk[0]=NU_temp.vec_j2000_tk[0]*NU_temp.vel_j2000_tk[0];
-ver_v2tk[1]=NU_temp.vec_j2000_tk[1]*NU_temp.vel_j2000_tk[1];
-ver_v2tk[2]=NU_temp.vec_j2000_tk[2]*NU_temp.vel_j2000_tk[2];
-v3_o_iss=sqrt(ver_v2iss[0]*ver_v2iss[0]+ver_v2iss[1]*ver_v2iss[1]+ver_v2iss[2]*ver_v2iss[2]);
-JPS(1,"Результат нормировки вектора П: "+FloatToStr(v3_o_iss),"","","");
-if((ver_vec_iss<1000)||(ver_vel_iss<1000)||(ver_vec_tk<1000)||(ver_vel_tk<1000))
-JPS(3,"Верификация параметра НУ не пройдена!","","",""); else
-JPS(2,"Верификация параметра НУ пройдена!","","","");
-}
-//---------------------------------------------------------------------------
-
-
-
-TPacketHeader PH;
-
-void __fastcall TMainForm::InpuRecvTimer(TObject *Sender)
-{
-if(inpu_com2_connect_pr){
-nResult = recv(SPSSocket_ch1,(char *)&PH,12, 0);
-if(PH.Signature==0x71AF5D13){
- if(PH.PacketID==8)
- if(PH.PacketID==3) JPS(1,is_inpu1,is_miu,"Получен статусный пакет ","");
- if(PH.PacketID==4) { JPS(1,is_inpu1,is_miu,"Получен контрольный пакет "+IntToStr(PH.CodeType),"");
-
-        if(PH.CodeType==9){JPS(1,is_operator,is_inpu1,"Команда КСП     "+IntToStr(PH.DataType1)," "+IntToStr(PH.DataType2));
-        KSP_Booled[PH.DataType1][PH.DataType2-1]=true;}
-        if(PH.CodeType==10){JPS(1,is_operator,is_inpu1,"Нажата клавиша ПРВИ "+IntToStr(PH.DataType1)," "+IntToStr(PH.DataType2));
-        }
-        if(PH.CodeType==10){JPS(1,is_operator,is_inpu1,"Сообщение о телеметрии"+IntToStr(PH.DataType1)," "+IntToStr(PH.DataType2));
-        }
-
- }
-}}
-}
-//---------------------------------------------------------------------------
-
-
-void __fastcall TMainForm::N110Click(TObject *Sender)
-{
-inpu_1->Show();      // Загрузка ИнПУ-1
-}
-//---------------------------------------------------------------------------
-
 
 void __fastcall TMainForm::debug_statusClick(TObject *Sender)
 {
@@ -1364,7 +1235,7 @@ JPS(3,is_operator,is_miu,"ВНИМАНИЕ!!! Режим отладки снят!","");
 message_status[1]=1;}
 message_status[0] = 0;
 debug_panel->Visible=false;    // Скрываем отладочную панель
-WithoutBum->Visible=false;
+//WithoutBum->Visible=false;
 model_status_pics->Width=177;
 N35->Enabled=false;
 N22->Enabled=false;
@@ -1379,40 +1250,8 @@ model_status_pics->Width=241;  // Меняем размер окна состояния моделей
 N35->Enabled=true;
 N22->Enabled=true;
 }
- // Меняем размер окна состояния моделей
 }
 //---------------------------------------------------------------------------
-
-
-void __fastcall TMainForm::N40Click(TObject *Sender)
-{
-sps_form->Show(); // SPS Form 
-}
-//---------------------------------------------------------------------------
-int blabla;
-
-void __fastcall TMainForm::bum_statusTimer(TObject *Sender)
-{
-//if(bilu_work_pr==true){
-//Label8->Caption="Введен "+IntToStr(blabla);
-//blabla++;}else
-//Label8->Caption="Не Введен "+IntToStr(blabla);
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::biluClick(TObject *Sender)
-{
-bilu_frm->Show();
-}
-//---------------------------------------------------------------------------
-
-
-void __fastcall TMainForm::ssvpClick(TObject *Sender)
-{
-ssvp_frm->Show();
-}
-//---------------------------------------------------------------------------
-
 
 void __fastcall TMainForm::SpeedButton1Click(TObject *Sender)
 {
@@ -1420,13 +1259,50 @@ krl_frm->Show();
 }
 //---------------------------------------------------------------------------
 
-
-void __fastcall TMainForm::ArgonTaktTimer(TObject *Sender)
+void __fastcall TMainForm::tk_prvi_btnClick(TObject *Sender)
 {
-if(argon_ready){
-
-}        
+IrBrForm->Show(); // Load format IRVI
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TMainForm::Button13Click(TObject *Sender)
+{
+co_priz=0;
+CO_light->Color=StringToColor("0x45607B");
+Cl_blink=false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::co_test_btnClick(TObject *Sender)
+{
+char cw_out;
+cw_out = boolsToChar(cw_b1);
+Label21->Caption=cw_out;
+}
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::DebugTimerTimer(TObject *Sender)
+{
+AnsiString l;
+if(USO_Booled[3][2]) l="A - -"; else
+if(USO_Booled[3][3]) l="- Б -"; else
+if(USO_Booled[3][4]) l="- - В"; else
+if(USO_Booled[3][13])l="A Б В"; else l="- - -";
+arg_ch->Caption=l;
+debug_int_a->Caption=BoolToStr(KSP_Booled[5][10],false);
+debug_int_b->Caption=BoolToStr(KSP_Booled[5][12],false);
+debug_int_c->Caption=BoolToStr(KSP_Booled[5][14],false);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::ssvpClick(TObject *Sender)
+{
+ssvp_frm->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::N110Click(TObject *Sender)
+{
+inpu_1->Show();
+}
+//---------------------------------------------------------------------------
 

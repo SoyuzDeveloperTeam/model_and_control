@@ -24,6 +24,12 @@ double L = lh + 1.915*sin(g)+0.020*sin(2*g);
 return L;
 }
 
+double rsun(double g){
+double R = 1.14 - 0.01671*cos(g) - 0.00014*cos(2*g)
+return R;
+}
+
+
 
 
 //--------------------------------------------------------
@@ -265,4 +271,268 @@ void sun
           }
         decl = asin( sin(obliquity) * sin(eclplong) );
    }  // sun
+
+const double xmnpda = 1.44E3;
+const double ae      = 1.0;
+const double ck2     = 5.413079E-4;
+const double ck4     = 6.209887E-7;
+const double e6a     = 1.0E-6;
+const double tothrd  = 6.6666667E-1;
+const double xj2     = 1.0826158E-3;
+const double xj3     =-2.53881E-6;     
+const double xj4     =-1.65597E-6;
+const double xke     = 7.43669161E-2;
+const double xkmper  = 6.378135E3;
+const double ge      = 3.986008E5; 
+const double s       = 1.012229;
+const double qoms2t  = 1.880279E-09;
+
+const double  pi      = 3.14159265;
+const double  pio2    = 1.57079633;
+const double  x3pio2  = 4.71238898;
+const double  twopi   = 6.28318531; 
+
+const double POS_UNITS =  1000.0 * xkmper / ae; 
+const double VEL_UNITS = 1000*xkmper/ae*xmnpda/86400.0;
+
+int SGP4(int iflag,double dt, pos_vec* pos, vel_vec* vel)
+{
+    /* System generated locals */
+    double r__1, r__2;
+    if (iflag == 0) {
+	goto L100;
+    }
+
+	//restore xno units
+    xno = m_orb.xno*twopi/xmnpda;
+/*      RECOVER ORIGINAL MEAN MOTION (XNODP) AND SEMIMAJOR AXIS (AODP) */
+/*      FROM INPUT ELEMENTS */
+   // d__1 = ( double ) ( );
+   // d__2 = ( double )  ;
+    a1 = pow(xke / xno, tothrd);
+    cosio = cos(m_orb.xincl);
+    theta2 = cosio * cosio;
+    x3thm1 = theta2 *  3. -  1.;
+    eosq = m_orb.eo * m_orb.eo;
+    betao2 =  1. - eosq;
+    betao = sqrt(betao2);
+    del1 =  ck2 *  1.5 * x3thm1 / (a1 * a1 * betao * betao2);
+    ao = a1 * ( 1. - del1 * ( tothrd *  .5 + del1 * (del1 * 1.654320987654321 +  1.)));
+    delo =  ck2 *  1.5 * x3thm1 / (ao * ao * betao * betao2);
+    xnodp = xno / (delo +  1.);
+    aodp = ao / ( 1. - delo);
+/*      INITIALIZATION */
+/*      FOR PERIGEE LESS THAN 220 KILOMETERS, THE ISIMP FLAG IS SET AND */
+/*      THE EQUATIONS ARE TRUNCATED TO LINEAR VARIATION IN SQRT A AND */
+/*      QUADRATIC VARIATION IN MEAN ANOMALY.  ALSO, THE C3 TERM, THE */
+/*      DELTA OMEGA TERM, AND THE DELTA M TERM ARE DROPPED. */
+    isimp = 0;
+    if (aodp * ( 1. - m_orb.eo) /  ae <  220. /  xkmper + 
+	     ae) {
+	isimp = 1;
+    }
+/*      FOR PERIGEE BELOW 156 KM, THE VALUES OF */
+/*      S AND QOMS2T ARE ALTERED */
+    s4 =  s;
+    qoms24 =  qoms2t;
+    perige = (aodp * ( 1. - m_orb.eo) -  ae) *  xkmper;
+    if (perige >=  156.) {
+	goto L10;
+    }
+    s4 = perige -  78.;
+    if (perige >  98.) {
+	goto L9;
+    }
+    s4 =  20.;
+L9:
+/* Computing 4th power */
+    r__1 = ( 120. - s4) *  ae /  xkmper, r__1 *= r__1;
+    qoms24 = r__1 * r__1;
+    s4 = s4 /  xkmper +  ae;
+L10:
+    pinvsq =  1. / (aodp * aodp * betao2 * betao2);
+    tsi =  1. / (aodp - s4);
+    eta = aodp * m_orb.eo * tsi;
+    etasq = eta * eta;
+    eeta = m_orb.eo * eta;
+    psisq = fabs(1. - etasq);
+/* Computing 4th power */
+    coef = qoms24 * (tsi*tsi*tsi*tsi);
+    coef1 = coef / pow(psisq, 3.5);
+    c2 = coef1 * xnodp * (aodp * (etasq *  1.5 +  1. + eeta * (
+	    etasq +  4.)) +  ck2 *  .75 * tsi / psisq * 
+	    x3thm1 * (etasq *  3. * (etasq +  8.) +  8.));
+    c1 = m_orb.bstar * c2;
+    sinio = sin(m_orb.xincl);
+/* Computing 3rd power */
+    r__1 =  ae, r__2 = r__1;
+    a3ovk2 = -( double ) xj3 /  ck2 * (r__2 * (r__1 * r__1));
+    c3 = coef * tsi * a3ovk2 * xnodp *  ae * sinio / m_orb.eo;
+    x1mth2 =  1. - theta2;
+    c4 = xnodp *  2. * coef1 * aodp * betao2 * (eta * (etasq *  
+	    .5 +  2.) + m_orb.eo * (etasq *  2. +  .5) - 
+	     ck2 *  2. * tsi / (aodp * psisq) * (x3thm1 *  
+	    -3. * ( 1. - eeta *  2. + etasq * ( 1.5 - eeta *
+	      .5)) + x1mth2 *  .75 * (etasq *  2. - eeta * (
+	    etasq +  1.)) * cos(m_orb.omegao *  2.)));
+    c5 = coef1 *  2. * aodp * betao2 * ((etasq + eeta) *  2.75 + 1. + eeta * etasq);
+    theta4 = theta2 * theta2;
+    temp1 =  ck2 *  3. * pinvsq * xnodp;
+    temp2 = temp1 *  ck2 * pinvsq;
+    temp3 =  ck4 *  1.25 * pinvsq * pinvsq * xnodp;
+    xmdot = xnodp + temp1 *  .5 * betao * x3thm1 + temp2 *  .0625 
+	    * betao * ( 13. - theta2 *  78. + theta4 *  
+	    137.);
+    x1m5th =  1. - theta2 *  5.;
+    omgdot = temp1 *  -.5 * x1m5th + temp2 *  .0625 * ( 7. 
+	    - theta2 *  114. + theta4 *  395.) + temp3 * ( 
+	    3. - theta2 *  36. + theta4 *  49.);
+    xhdot1 = -( double )temp1 * cosio;
+    xnodot = xhdot1 + (temp2 *  .5 * ( 4. - theta2 *  19.) 
+	    + temp3 *  2. * ( 3. - theta2 *  7.)) * cosio;
+    omgcof = m_orb.bstar * c3 * cos(m_orb.omegao);
+    xmcof = -( double ) tothrd * coef * m_orb.bstar *  ae / eeta;
+    xnodcf = betao2 *  3.5 * xhdot1 * c1;
+    t2cof = c1 *  1.5;
+    xlcof = a3ovk2 *  .125 * sinio * (cosio *  5. +  3.) / (
+	    cosio +  1.);
+    aycof = a3ovk2 *  .25 * sinio;
+/* Computing 3rd power */
+    r__1 = eta * cos(m_orb.xmo) +  1., r__2 = r__1;
+    delmo = r__2 * (r__1 * r__1);
+    sinmo = sin(m_orb.xmo);
+    x7thm1 = theta2 *  7. -  1.;
+    if (isimp == 1) {
+	goto L90;
+    }
+    c1sq = c1 * c1;
+    d2 = aodp *  4. * tsi * c1sq;
+    temp = d2 * tsi * c1 /  3.;
+    d3 = (aodp *  17. + s4) * temp;
+    d4 = temp *  .5 * aodp * tsi * (aodp *  221. + s4 *  
+	    31.) * c1;
+    t3cof = d2 + c1sq *  2.;
+    t4cof = (d3 *  3. + c1 * (d2 *  12. + c1sq *  10.)) * (
+	    float).25;
+    t5cof = (d4 *  3. + c1 *  12. * d3 + d2 *  6. * d2 + 
+	    c1sq *  15. * (d2 *  2. + c1sq)) *  .2;
+L90:
+    //*iflag = 0;
+/*      UPDATE FOR SECULAR GRAVITY AND ATMOSPHERIC DRAG */
+L100:
+    xmdf = m_orb.xmo + xmdot * dt;
+    omgadf = m_orb.omegao + omgdot * dt;
+    xnoddf = m_orb.xnodeo + xnodot * dt;
+    omega = omgadf;
+    xmp = xmdf;
+    tsq = dt * dt;
+    xnode = xnoddf + xnodcf * tsq;
+    tempa =  1. - c1 * dt;
+    tempe = m_orb.bstar * c4 * dt;
+    templ = t2cof * tsq;
+    if (isimp == 1) {
+	goto L110;
+    }
+    delomg = omgcof * dt;
+/* Computing 3rd power */
+    r__1 = eta * cos(xmdf) +  1., r__2 = r__1;
+    delm = xmcof * (r__2 * (r__1 * r__1) - delmo);
+    temp = delomg + delm;
+    xmp = xmdf + temp;
+    omega = omgadf - temp;
+    tcube = tsq * dt;
+    tfour = dt * tcube;
+    tempa = tempa - d2 * tsq - d3 * tcube - d4 * tfour;
+    tempe += m_orb.bstar * c5 * (sin(xmp) - sinmo);
+    templ = templ + t3cof * tcube + tfour * (t4cof + dt * t5cof);
+L110:
+/* Computing 2nd power */
+    a = aodp * (tempa * tempa);
+    e = m_orb.eo - tempe;
+    xl = xmp + omega + xnode + xnodp * templ;
+    beta = sqrt( 1. - e * e);
+    xn =  xke / pow(a, 1.5);
+/*      LONG PERIOD PERIODICS */
+    axn = e * cos(omega);
+    temp =  1. / (a * beta * beta);
+    xll = temp * xlcof * axn;
+    aynl = temp * aycof;
+    xlt = xl + xll;
+    ayn = e * sin(omega) + aynl;
+/*      SOLVE KEPLERS EQUATION */
+
+    capu = fmod2pi(xlt - xnode);
+    temp2 = capu;
+    for (i = 1; i <= 10; ++i) {
+	sinepw = sin(temp2);
+	cosepw = cos(temp2);
+	temp3 = axn * sinepw;
+	temp4 = ayn * cosepw;
+	temp5 = axn * cosepw;
+	temp6 = ayn * sinepw;
+	epw = (capu - temp4 + temp3 - temp2) / ( 1. - temp5 - temp6) + 
+		temp2;
+	if (fabs(epw - temp2)<=  e6a) { goto L140; }
+/* L130: */
+	temp2 = epw;
+    }
+/*      SHORT PERIOD PRELIMINARY QUANTITIES */
+L140:
+    ecose = temp5 + temp6;
+    esine = temp3 - temp4;
+    elsq = axn * axn + ayn * ayn;
+    temp =  1. - elsq;
+    pl = a * temp;
+    r = a * ( 1. - ecose);
+    temp1 =  1. / r;
+    rdot =  xke * sqrt(a) * esine * temp1;
+    rfdot =  xke * sqrt(pl) * temp1;
+    temp2 = a * temp1;
+    betal = sqrt(temp);
+    temp3 =  1. / (betal +  1.);
+    cosu = temp2 * (cosepw - axn + ayn * esine * temp3);
+    sinu = temp2 * (sinepw - ayn - axn * esine * temp3);
+    u = actan(sinu, cosu);
+    sin2u = sinu *  2. * cosu;
+    cos2u = cosu *  2. * cosu -  1.;
+    temp =  1. / pl;
+    temp1 =  ck2 * temp;
+    temp2 = temp1 * temp;
+/*      UPDATE FOR SHORT PERIODICS */
+    rk = r * ( 1. - temp2 *  1.5 * betal * x3thm1) + temp1 * 0.5 * x1mth2 * cos2u;
+    uk = u - temp2 *  .25 * x7thm1 * sin2u;
+    xnodek = xnode + temp2 *  1.5 * cosio * sin2u;
+    xinck = m_orb.xincl + temp2 *  1.5 * cosio * sinio * cos2u;
+    rdotk = rdot - xn * temp1 * x1mth2 * sin2u;
+    rfdotk = rfdot + xn * temp1 * (x1mth2 * cos2u + x3thm1 *  1.5);
+/*      ORIENTATION VECTORS */
+    sinuk = sin(uk);
+    cosuk = cos(uk);
+    sinik = sin(xinck);
+    cosik = cos(xinck);
+    sinnok = sin(xnodek);
+    cosnok = cos(xnodek);
+    xmx = -( double )sinnok * cosik;
+    xmy = cosnok * cosik;
+    ux = xmx * sinuk + cosnok * cosuk;
+    uy = xmy * sinuk + sinnok * cosuk;
+    uz = sinik * sinuk;
+    vx = xmx * cosuk - cosnok * sinuk;
+    vy = xmy * cosuk - sinnok * sinuk;
+    vz = sinik * cosuk;
+/*      POSITION AND VELOCITY */
+	if (pos)
+	{
+		pos->x = rk * ux *POS_UNITS;
+		pos->y = rk * uy *POS_UNITS;
+		pos->z = rk * uz *POS_UNITS;
+	}
+	if (vel)
+	{
+		vel->x = (rdotk * ux + rfdotk * vx)*VEL_UNITS;
+		vel->y = (rdotk * uy + rfdotk * vy)*VEL_UNITS;
+		vel->z = (rdotk * uz + rfdotk * vz)*VEL_UNITS;
+	}
+    return 0;
+} /* sgp4_ */
 

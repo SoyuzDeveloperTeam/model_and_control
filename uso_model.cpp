@@ -8,6 +8,7 @@
 #include "JouStrings.h"
 #include "MainFrm.h"
 #include "ssvp_module.cpp"
+#include "kdu_math.h"        // Переменные КДУ
 #pragma  hdrstop
 
 #include "uso_model.h"
@@ -34,10 +35,13 @@ void USO_work(){
 // КСПл - Линейка А //
 
 if(KSP_Booled[0][0]) { // A 1
+// 6.5 Вкл шин пит привода крышки СКД
+// 6.7 Вкл привода крышки СКД на откр длит :01:
 // Временный алгоритм открытия крышки СКД (без проверки ПаО)
-if(i_test==80) { // Время открытия 16 секунд = 16000 мс = 80 тактов по 200 мс
+if(i_test==300) { // Время открытия 60 секунд = 60000 мс = 300 тактов по 200 мс
 USO_Booled[0][0]=true;   //
 JPS(1,"Крышка СКД открыта","","","");
+cw_a4[3]=1;
 KSP_Booled[0][0] = false;
 i_test=0;
 }else
@@ -45,9 +49,10 @@ i_test++;
 }
 
 if(KSP_Booled[0][1]) {  // A 2
-if(i_test==80) {
+if(i_test==300) {
 USO_Booled[0][0]=false;
 JPS(1,"Крышка СКД закрыта","","","");
+cw_a4[3]=0;
 KSP_Booled[0][1] = false;
 i_test=0;
 }else
@@ -57,6 +62,7 @@ i_test++;
 if(KSP_Booled[0][2]) {  // A 3   Наддув КДУ - ВКЛ
    KSP_Booled[0][2] = false;
         // Вкл. пит. клапана наддува ЭПКН1 и ЭПКН2
+        // ОК32 Вкл наддува КДУ
         if(USO_Booled[1][2])
         JPS(1,is_sudn,is_kdu,"Наддув КДУ 1 Секции     ВКЛ",""); else
         JPS(1,is_sudn,is_kdu,"Наддув КДУ 2 Секции     ВКЛ","");
@@ -66,6 +72,7 @@ if(KSP_Booled[0][2]) {  // A 3   Наддув КДУ - ВКЛ
 if(KSP_Booled[0][3]) {  // A 4   Наддув КДУ - ВЫКЛ
    KSP_Booled[0][3] = false;
         // Откл. пит. клап. наддува ЭПКН1, ЭПКН2
+        // ОК33 Откл наддува КДУ
         USO_Booled[0][1]=false;
         if(USO_Booled[1][2])
         JPS(1,is_sudn,is_kdu,"Наддув КДУ 1 Секции     ВЫКЛ",""); else
@@ -76,28 +83,35 @@ if(KSP_Booled[0][4]) { // A 5     СДР ОТКЛ
    KSP_Booled[0][4] = false;
         // 98 - Исключение СДН (СДР) из схемы управления
         USO_Booled[0][2]=true;
+        kdu_sdr = false;
 }
 
 if(KSP_Booled[0][5]) { // A 6
    KSP_Booled[0][5] = false;
         // -98 - Подключение СДН (СДР) к схеме управления
         USO_Booled[0][2]=false;
+        kdu_sdr = true;
 }
 
 if(KSP_Booled[0][6]) { // A 7
    KSP_Booled[0][6] = false;
+        // 95 Исключение СДД из схемы управления
         USO_Booled[0][3]=true;
+        kdu_sdd = false;
 }
 
 if(KSP_Booled[0][7]) { // A 8
    KSP_Booled[0][7] = false;
+        // -95 Подключение СДД к схеме управления
         USO_Booled[0][3]=false;
+        kdu_sdd = true;
 }
 
 if(KSP_Booled[0][8]) { // A 9 - Выбор ДПО-Б
    KSP_Booled[0][8] = false;
         // Команда в БА ДПО "Выбор ДПО-Б"
         USO_Booled[0][4]=true;
+        ba_dpo.b_com = true;
 }
 
 // А9 - безотбойная
@@ -105,6 +119,7 @@ if(KSP_Booled[0][8]) { // A 9 - Выбор ДПО-Б
 if(KSP_Booled[0][10]) { // A 11 - Выбор ДПО-М1
    KSP_Booled[0][10] = false;
         USO_Booled[0][5]=true;
+        ba_dpo.m1_com = true;
 }
 
 
@@ -114,6 +129,7 @@ if(KSP_Booled[0][12]) {  // A 13
         // Включаем ДПО №№ 2,4,6,8.10,12;
         dpo_v_pr[2,4,6,8,10,12]=1;
         USO_Booled[0][6]=true;
+        ba_dpo.m2_com = true;
 }
 
 if(KSP_Booled[0][14]) { // A 15
@@ -127,6 +143,32 @@ if(KSP_Booled[0][14]) { // A 15
 if(KSP_Booled[0][16]) {  // A 17
    KSP_Booled[0][16]=false;
         USO_Booled[0][8]=true;
+}
+
+// КСПп - Линейка Б //
+
+if(KSP_Booled[1][0]) {  // Б 1
+   KSP_Booled[1][0]=false;
+        // Автомат СЭП откл
+        USO_Booled[0][9]=true;
+}
+
+if(KSP_Booled[1][1]) {  // Б 2
+   KSP_Booled[1][1]=false;
+        // Автомат СЭП откл
+        USO_Booled[0][9]=false;
+}
+
+if(KSP_Booled[1][2]) {  // Б 3
+   KSP_Booled[1][2]=false;
+        // Автомат СЭП откл
+        USO_Booled[0][10]=true;
+}
+
+if(KSP_Booled[1][3]) {  // Б 2
+   KSP_Booled[1][3]=false;
+        // Автомат СЭП откл
+        USO_Booled[0][10]=false;
 }
 
 // КСПл - Линейка В //
@@ -275,7 +317,6 @@ if(KSP_Booled[3][12]) {  // Г 13 ОТКЛ КУРС
         //-27.2 Откл РП2, квит в БСУ-7 "ОТКЛ РП2"
         USO_Booled[2][0]=false;
         //-27.3 Откл РП3 , квит в БСУ-7 "ОТКЛ РП3"
-        KSP_Booled[3][12] = false;
 }
 if(KSP_Booled[3][14]) { // Г15
    KSP_Booled[3][14] = false;
@@ -350,17 +391,46 @@ if(KSP_Booled[6][10]) { // И11   -  ПУСК ЧАЙКИ
         apm=true; //Признак запуска чайки
 }
 
-if(KSP_Booled[6][14]) { // И 15
+if(KSP_Booled[6][12]){ // И13  -  ОДР
+   KSP_Booled[6][12] = false;
+        USO_Booled[3][12]=true;
+        // ОК39 Отключение динамических режимов
+        // -5.5 Отключение ЭКО1, ЭКГ1, ЭКО2, ЭКГ2
+        kdu_log_pr.eko1 = false;
+        kdu_log_pr.ekg1 = false;
+        kdu_log_pr.eko2 = false;
+        kdu_log_pr.ekg2 = false;
+        USO_Booled[3][10]=false; // Снимаем Питание чайки
+        USO_Booled[3][11]=false; // Снимаем Пуск чайки
+                arg_work_pr=0;
+                apm=false;
+                USO_Booled[11][6] = false;
+        USO_Booled[0][1]=false;  // Снимаем Наддув
+}
+
+if(KSP_Booled[6][14]) { // И 15 - БЦВК АБВ
    KSP_Booled[6][14] = false;
-        // Выбираем все каналы АБВ для БЦВК
-        USO_Booled[3][2]  = false;  // Ж11 БЦВК а
-        USO_Booled[3][3]  = false;  // Ж13 БЦВК а
-        USO_Booled[3][4]  = false;  // Ж15 БЦВК а
         USO_Booled[3][13] = true;   // И 15 АБВ
+        USO_Booled[3][2]  = false;  // Ж11 БЦВК А
+        USO_Booled[3][3]  = false;  // Ж13 БЦВК Б
+        USO_Booled[3][4]  = false;  // Ж15 БЦВК В
+        // Выбираем все каналы АБВ для БЦВК
+        JPS(1,is_argon,is_operator,"Выбраны каналы А Б В","");
+        cw_arg[4]=1;
         //(ДЛЯ ТЕСТА КСП - РАБОТАЕТ)
 }
 
-// КСПл - Линейка Ж //
+if(KSP_Booled[6][16]){ // И 17  - ТЕКУЩЕЕ ПОЛОЖЕНИЕ - ВКЛ
+   KSP_Booled[6][16] = false;
+        USO_Booled[3][14] = true;
+}
+
+if(KSP_Booled[6][17]){ // И 18  - ТЕКУЩЕЕ ПОЛОЖЕНИЕ - ОТКЛ
+   KSP_Booled[6][17] = false;
+        USO_Booled[3][14] = false;
+}
+
+//--\\ КСПл - Линейка Ж \\--//
 
 if(KSP_Booled[5][10]){  // KSP Ж11
    KSP_Booled[5][10] = false;
@@ -369,25 +439,31 @@ if(KSP_Booled[5][10]){  // KSP Ж11
         USO_Booled[3][3]  = false;
         USO_Booled[3][4]  = false;
         USO_Booled[3][13] = false;
+        JPS(1,is_argon,is_operator,"Выбран канал А","");
+
 }
 
 if(KSP_Booled[5][12]){  // KSP Ж13
    KSP_Booled[5][12] = false;
+        // Выбираем канал БЦВК - Б
+   /*     USO_Booled[3][3]  = true;
         USO_Booled[3][2]  = false;
-        USO_Booled[3][3]  = true;
         USO_Booled[3][4]  = false;
         USO_Booled[3][13] = false;
+        JPS(1,is_argon,is_operator,"Выбран канал Б","");   */
 }
 
 if(KSP_Booled[5][14]){  // KSP Ж15
    KSP_Booled[5][14] = false;
+   /*     // Выбираем канал БЦВК - В
+        USO_Booled[3][4] = true;
         USO_Booled[3][2] = false;
         USO_Booled[3][3] = false;
-        USO_Booled[3][4] = true;
         USO_Booled[3][13] = false;
+        JPS(1,is_argon,is_operator,"Выбран канал В","");     */
 }
 
-// КСПл - Линейка К //
+//--\\ КСПл - Линейка К \\--//
 
 if(KSP_Booled[7][16]) { // К 17
    KSP_Booled[7][16] = false;
@@ -401,7 +477,7 @@ if(KSP_Booled[7][17]) { // К 18
         sp_d_k = 0; // Короткая самопроверка БЦВК
 }
 
-// КСПл - Линейка Л //
+//--\\ КСПл - Линейка Л \\--//
 
 if(KSP_Booled[8][0]) { // Л1 - РО ДК
    KSP_Booled[8][0]=false;

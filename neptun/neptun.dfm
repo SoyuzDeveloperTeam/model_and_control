@@ -1,17 +1,19 @@
 object inpu_1: Tinpu_1
-  Left = 95
-  Top = 35
+  Left = 441
+  Top = 20
   BorderStyle = bsSingle
   Caption = 'inpu_1'
   ClientHeight = 661
   ClientWidth = 829
   Color = clActiveCaption
+  DefaultMonitor = dmMainForm
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13

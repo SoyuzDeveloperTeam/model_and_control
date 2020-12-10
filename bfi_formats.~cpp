@@ -175,7 +175,7 @@ f45_time->Caption=BFI_TimeString; f46_time->Caption=BFI_TimeString;
 // Вывод Т0
 if(t_krl_true[0])
 f41_t0->Caption="T0="+arg_T0.FormatString("hh:nn:ss"); else
-f41_t0->Caption="";
+f41_t0->Caption="T0=";
 
 if(t_krl_true[1])
 f41_t1->Caption=arg_T1.FormatString("hh:nn:ss"); else

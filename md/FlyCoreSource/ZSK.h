@@ -78,7 +78,7 @@ FLYCORE_API void  ZRLNtoASC(double *RV, double *RLN, double *ASC, bool andV = fa
 //		MRV - матрица пересчёта шестёрки (координаты и скорости)
 //		MR  - матрица пересчёта координат
 //		MV  - матрица пересчёта скоростей
-FLYCORE_API void  ZCalcM_ASCtoRLN(double *RV, double *MRV = nullptr, double* MR = nullptr, double* MV = nullptr, int Direct = 0, bool isInerc = false);
+FLYCORE_API void  ZCalcM_ASCtoRLN(double *RV, double *MRV = 0, double* MR = 0, double* MV = 0, int Direct = 0, bool isInerc = false);
 // Вычисление прямого восхождения и склонения по декартовым координатам
 //		x	- X, Y, Z
 //		ad	- прямое восхождение ad[0], склонение ad[1], радиус ad[2]

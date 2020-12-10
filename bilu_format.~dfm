@@ -1,6 +1,6 @@
 object bilu_frm: Tbilu_frm
-  Left = 191
-  Top = 497
+  Left = 682
+  Top = 469
   Width = 702
   Height = 422
   Caption = #1041#1048#1051#1059' - '#1050#1061'69-042'

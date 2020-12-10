@@ -1,6 +1,6 @@
 object IrBrForm: TIrBrForm
-  Left = 277
-  Top = 206
+  Left = 417
+  Top = 157
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1055#1056#1042#1048
@@ -187,6 +187,7 @@ object IrBrForm: TIrBrForm
     Top = 168
     Width = 40
     Height = 33
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -16

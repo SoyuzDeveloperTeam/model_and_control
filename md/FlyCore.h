@@ -25,9 +25,9 @@
 #pragma warning(disable : 4251)
 
 // Форматирование данных в строку и обратно
-#include <FlyCoreSource\ModType.h>
-#include <FlyCoreSource\ModSK.h>
-#include <FlyCoreSource\ModGlobal.h>
+#include "md/FlyCoreSource/ModType.h"
+#include "md/FlyCoreSource/ModSK.h"
+#include "md/FlyCoreSource/ModGlobal.h"
 // Программа управления движением центра масс, диспетчер ПУ
 #include <FlyCoreSource\ModPUManager.h>		
 // Двигательная установка

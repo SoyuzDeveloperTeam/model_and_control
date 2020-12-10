@@ -43,6 +43,11 @@ __published:	// IDE-managed Components
         TLabel *Label9;
         TLabel *bst;
         TTimer *bilust;
+        TPanel *Panel7;
+        TPanel *Panel8;
+        TPanel *Panel9;
+        TPanel *Panel10;
+        TPanel *Panel11;
         void __fastcall SpeedButton1Click(TObject *Sender);
         void __fastcall bilustTimer(TObject *Sender);
 private:	// User declarations

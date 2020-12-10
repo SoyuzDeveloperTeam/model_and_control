@@ -4,13 +4,13 @@
   Алгоритмы взяты из патента R U 40514 U 1
 
 Type c_Double = Double;             Const _c_Double = _Double;
-Type c_Float = Single;              Const _c_Float = _Single;
-Type c_Long = Longint;              Const _c_Long = _Longint;
-Type c_Ulong = Longint;             Const _c_Ulong = _Longint;
-Type c_Short = integer;             Const _c_Short = _SmallInt;
+Type c_Float  = Single;             Const _c_Float  = _Single;
+Type c_Long   = Longint;            Const _c_Long   = _Longint;
+Type c_Ulong  = Longint;            Const _c_Ulong  = _Longint;
+Type c_Short  = integer;            Const _c_Short  = _SmallInt;
 Type c_Ushort = word;               Const _c_Ushort = _word;
-Type c_Char = ShortInt;             Const _c_Char = _ShortInt;
-Type c_uchar = Byte;                Const _c_uchar = _Byte;
+Type c_Char   = ShortInt;           Const _c_Char   = _ShortInt;
+Type c_uchar  = Byte;               Const _c_uchar  = _Byte;
 */
 #ifndef ks020_modelH
 #define ks020_modelH
@@ -101,15 +101,15 @@ static const unsigned short Max_R_Cont_Size = 32-3; //Макс. размер вводимых данн
                                              // -контр. сумма
 
 enum{ksbNone,
-/* 1 */ ksbMP,        // МП                          "ИНК"  (2Ф44)
-/* 2 */ ksbSKD,       // СКД                         "БНО"  (2Ф45)
-/* 3 */ ksbDPOBT,     // ДПО-БТ                      "БНО"  (2Ф45)
+/* 1 */ ksbMP,        // МП                          "ИНК"     (2Ф44)
+/* 2 */ ksbSKD,       // СКД                         "БНО"     (2Ф45)
+/* 3 */ ksbDPOBT,     // ДПО-БТ                      "БНО"     (2Ф45)
 /* 4 */ ksbBD,        // Возврат к БД                "Транзит" (2Ф47)
-/* 5 */ ksbRecAvail,  // Разрешение записи           "СА"   (2Ф25)
-/* 6 */ ksbAP,        // АП                          "ИНК"  (2Ф44)
-/* 7 */ ksCalibrBilu, // Калибровка БИЛУ             "БИЛУ" (2Ф19)
-/* 8 */ ksZaprContIK, // Запрещение контроля ИК      "БИЛУ" (2Ф19)
-/* 9 */ ksZaprJustIK  // Запрещение юстировки ИК     "БИЛУ" (2Ф19)
+/* 5 */ ksbRecAvail,  // Разрешение записи           "СА"      (2Ф25)
+/* 6 */ ksbAP,        // АП                          "ИНК"     (2Ф44)
+/* 7 */ ksCalibrBilu, // Калибровка БИЛУ             "БИЛУ"    (2Ф19)
+/* 8 */ ksZaprContIK, // Запрещение контроля ИК      "БИЛУ"    (2Ф19)
+/* 9 */ ksZaprJustIK  // Запрещение юстировки ИК     "БИЛУ"    (2Ф19)
 }TKsButtons;
 
 #endif

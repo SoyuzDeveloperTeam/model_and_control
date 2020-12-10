@@ -19,9 +19,9 @@ object krl_frm: Tkrl_frm
     Top = 0
     Width = 781
     Height = 508
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Align = alClient
-    TabIndex = 2
+    TabIndex = 1
     TabOrder = 0
     object balform1: TTabSheet
       Caption = #1041#1060' 73'
@@ -717,6 +717,6 @@ object krl_frm: Tkrl_frm
   object Timer1: TTimer
     Interval = 100
     Left = 744
-    Top = 472
+    Top = 432
   end
 end

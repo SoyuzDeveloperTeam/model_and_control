@@ -1,6 +1,6 @@
 object ssvp_frm: Tssvp_frm
-  Left = 357
-  Top = 156
+  Left = 316
+  Top = 143
   Width = 463
   Height = 540
   Caption = #1057#1057#1042#1055' - '#1055#1088#1086#1094#1077#1089#1089' '#1089#1090#1099#1082#1086#1074#1082#1080' - '#1055#1088#1086#1094#1077#1089#1089#1091#1072#1083#1100#1085#1072#1103
@@ -11,6 +11,7 @@ object ssvp_frm: Tssvp_frm
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13

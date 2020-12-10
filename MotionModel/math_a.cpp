@@ -25,7 +25,8 @@ return L;
 }
 
 double rsun(double g){
-double R = 1.14 - 0.01671*cos(g) - 0.00014*cos(2*g)
+double R;
+R = 1.14 - 0.01671*cos(g) - 0.00014*cos(2*g);
 return R;
 }
 
@@ -271,4 +272,28 @@ void sun
           }
         decl = asin( sin(obliquity) * sin(eclplong) );
    }  // sun
+
+const double xmnpda = 1.44E3;
+const double ae      = 1.0;
+const double ck2     = 5.413079E-4;
+const double ck4     = 6.209887E-7;
+const double e6a     = 1.0E-6;
+const double tothrd  = 6.6666667E-1;
+const double xj2     = 1.0826158E-3;
+const double xj3     =-2.53881E-6;     
+const double xj4     =-1.65597E-6;
+const double xke     = 7.43669161E-2;
+const double xkmper  = 6.378135E3;
+const double ge      = 3.986008E5; 
+const double s       = 1.012229;
+const double qoms2t  = 1.880279E-09;
+
+const double  pi      = 3.14159265;
+const double  pio2    = 1.57079633;
+const double  x3pio2  = 4.71238898;
+const double  twopi   = 6.28318531; 
+
+const double POS_UNITS =  1000.0 * xkmper / ae; 
+const double VEL_UNITS = 1000*xkmper/ae*xmnpda/86400.0;
+
 

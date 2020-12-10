@@ -213,27 +213,27 @@ double r2z5; //Радиус-вектор ц.м. ДОС в ГрСК.
 double rosu; //Расстояние между центрами масс/стык.узлами ТК и ДОС.
 double rosu_pku; //Расстояние между центрами масс/стык.узлами ТК и ДОС для Ф отобр.
 double rz1; //Текущий радиус Земли для ТК.
-__declspec(dllimport) double s; //Промах.
-__declspec(dllimport) double s_pku; //Промах для Ф отобр.
-__declspec(dllimport) double sig1; //Аргумент широты перигея орбиты ТК. 
-__declspec(dllimport) double sig2; //Аргумент широты перигея орбиты ДОС.
-__declspec(dllimport) char skdoc; //СК НУ ориентации ДОС: 1-ИСК; 2-ОСК; 3-ВСК
-__declspec(dllimport) char sktk; //СК НУ ориентации ТК:0-состык.сост.; 1-ИСК; 2-ОСК; 3-ВСК
-__declspec(dllimport) double storm; //Тормозной путь.
-__declspec(dllimport) double storm_pku; //Тормозной путьдля Ф. отобр.
-__declspec(dllimport) char swp29; //признак состык. сост.(внутренний).
-__declspec(dllimport) double sy; //Составляющая промаха по оси КрСКП.
-__declspec(dllimport) double sy_pku; //Составляющая промаха по оси КрСКП для Ф. отобр.
-__declspec(dllimport) double sz; //Составляющая промаха по оси КрСКП.
-__declspec(dllimport) double sz_pku; //Составляющая промаха по оси КрСКП для Ф. отобр.
-__declspec(dllimport) char td; //число текущее.
-__declspec(dllimport) char td1; //число ТК (Форма1).
-__declspec(dllimport) char td2; //число ДОС (Форма1).
-__declspec(dllimport) double tdkt2; //Время до выхода из тени ДОС.
-__declspec(dllimport) double tdkt2_pku; //Время до выхода из тени ДОС для Ф. отобр.
-__declspec(dllimport) double tdnt2; //Время до входа в тень ДОС.
-__declspec(dllimport) double tdnt2_pku; //Время до входа в тень ДОС для Ф. отобр.
-__declspec(dllimport) double tet; //Углы ОСКП-->ВСК.
+double s; //Промах.
+double s_pku; //Промах для Ф отобр.
+double sig1; //Аргумент широты перигея орбиты ТК.
+double sig2; //Аргумент широты перигея орбиты ДОС.
+char skdoc; //СК НУ ориентации ДОС: 1-ИСК; 2-ОСК; 3-ВСК
+char sktk; //СК НУ ориентации ТК:0-состык.сост.; 1-ИСК; 2-ОСК; 3-ВСК
+double storm; //Тормозной путь.
+double storm_pku; //Тормозной путь для Ф. отобр.
+char swp29; //признак состык. сост.(внутренний).
+double sy; //Составляющая промаха по оси КрСКП.
+double sy_pku; //Составляющая промаха по оси КрСКП для Ф. отобр.
+double sz; //Составляющая промаха по оси КрСКП.
+double sz_pku; //Составляющая промаха по оси КрСКП для Ф. отобр.
+char td; //число текущее.
+char td1; //число ТК (Форма1).
+char td2; //число ДОС (Форма1).
+double tdkt2; //Время до выхода из тени ДОС.
+double tdkt2_pku; //Время до выхода из тени ДОС для Ф. отобр.
+double tdnt2; //Время до входа в тень ДОС.
+double tdnt2_pku; //Время до входа в тень ДОС для Ф. отобр.
+double tet; //Углы ОСКП-->ВСК.
 __declspec(dllimport) double tet11; //Углы ИСК-->ССКА.
 __declspec(dllimport) double tet12; //Углы ОСКА-->ССКА.
 __declspec(dllimport) double tet12_pku; //Углы ОСКА-->ССКА для Ф. отобр.
@@ -343,24 +343,24 @@ __declspec(dllimport) double t_vteni; //???
 
 
 
-__declspec(dllimport)  double otl_md[15];
-__declspec(dllimport) int otl_mi[15];
+double otl_md[15];
+int otl_mi[15];
 
-__declspec(dllimport)  double mj1_mas[9] ; // матрица mj1:ССКА-->гл. ц. оси в виде одномерного массива
+double mj1_mas[9] ; // матрица mj1:ССКА-->гл. ц. оси в виде одномерного массива
 
 
 //параметры для ДК 06.02.00 Романько
-__declspec(dllimport)  char nsu_for_dk;  // узел стыковки (на который для ДК задана стыковка)
-__declspec(dllimport)  double  Ro_ASF_AKR;//Расст. между АСФ ТК и АКР ДОС (СМ или ФГБ)
-__declspec(dllimport)  double  Ro_ASF_AR;//  Расст. между АСФТК и АРДОС 
-__declspec(dllimport)  double  Ro_vt;//Расст. от ц.м. ТК до точки, вынесенной на 300м 
+char nsu_for_dk;  // узел стыковки (на который для ДК задана стыковка)
+double  Ro_ASF_AKR;//Расст. между АСФ ТК и АКР ДОС (СМ или ФГБ)
+double  Ro_ASF_AR;//  Расст. между АСФТК и АРДОС
+double  Ro_vt;//Расст. от ц.м. ТК до точки, вынесенной на 300м
                                      // от плоскости стыка по оси +X КрСКП (для узла стыковки) 
-__declspec(dllimport)  double  Ro_t;//Скорость сближения ц.м. ТК и ДОС  
-__declspec(dllimport)  double  V_otn;//Модуль относительной скорости ц.м. ТК и ДОС  
-__declspec(dllimport)  double  Om_lv_CCKAd_Y, Om_lv_CCKAd_Z;//Проекции угловой скорости ЛВ 
+double  Ro_t;//Скорость сближения ц.м. ТК и ДОС
+double  V_otn;//Модуль относительной скорости ц.м. ТК и ДОС
+double  Om_lv_CCKAd_Y, Om_lv_CCKAd_Z;//Проекции угловой скорости ЛВ
                                                             //на оси ССКА(дин)    
-__declspec(dllimport)  double  Lamda[4];//Кватернион: ССКА(дин.) --> КрСКП (для узла стыковки)
-__declspec(dllimport)  double  Psi_ASF1_AKR, Tet_ASF1_AKR;//Углы пеленга направления от АСФ1 ТК
+double  Lamda[4];//Кватернион: ССКА(дин.) --> КрСКП (для узла стыковки)
+double  Psi_ASF1_AKR, Tet_ASF1_AKR;//Углы пеленга направления от АСФ1 ТК
                            // на ближайшую (от АСФ1 ТК) АКР СБ ДОС в осях АСФ1 ТК.
                            // Набор АКР СБ ДОС определяется узлом стыковки 
 __declspec(dllimport)  double  Psi_ASF1_AR,Tet_ASF1_AR;//Углы пеленга направления от АСФ1 ТК 
@@ -606,14 +606,14 @@ __declspec(dllimport) double	stab_vsk_psi;//угол разворота МКС относительно ВСК
 __declspec(dllimport) double	stab_vsk_tet;//угол разворота МКС относительно ВСК
 __declspec(dllimport) double	stab_vsk_gam;//угол разворота МКС относительно ВСК
 __declspec(dllimport) int stab_ock_nu;//режим стабилизации МКС по НУ
-__declspec(dllimport) double Ro_t_osuzel;//Проекция отн. скорости ц.м. ТК и МКС на ось стыковочного узла ДК
-__declspec(dllimport) double    rashod_ryd_man;
-__declspec(dllimport) double    rashod_ryo_man;
-__declspec(dllimport) double    rashod_man;
-__declspec(dllimport) double alpha_rot_ferm; // Угол, на который происходит поворот сегментов ферм P4-P6 и S4-S6
+double Ro_t_osuzel;//Проекция отн. скорости ц.м. ТК и МКС на ось стыковочного узла ДК
+double    rashod_ryd_man;
+double    rashod_ryo_man;
+double    rashod_man;
+double alpha_rot_ferm; // Угол, на который происходит поворот сегментов ферм P4-P6 и S4-S6
 
-__declspec(dllimport)  char k_l9b1; //Выбраны ДПО-Б1
-__declspec(dllimport)  char k_l9b2; //Выбраны ДПО-Б2
+char k_l9b1; //Выбраны ДПО-Б1
+char k_l9b2; //Выбраны ДПО-Б2
 
 // Массив точек трассы ТК и МКС (пред, тек и  след) в градусах
 double Trassa_tk1[2][100], Trassa_tk2[2][100], Trassa_tk3[2][100];

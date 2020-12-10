@@ -25,7 +25,7 @@ static struct{
 double shtanga_kon_p_j2000[3];
 }g_pos;
 
-static bool kruki; // 1 = закрыты, 0 = открты
+static bool kruki;   // 1 = закрыты, 0 = открты
 static bool pru_tol; // Пружинные толкатели (0 втянуты - 1 сработали)
 
 static int xod_shtangi; // Ход штанги
