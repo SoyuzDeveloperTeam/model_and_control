@@ -3,7 +3,7 @@
 #include <vcl.h>
 #pragma hdrstop
 
-#include "CWFrm.h"
+#include "forms/CWFrm.h"
 #include "argon/CtrlWord.h"             // ”правл€ющие слова јргона - Control words (flags) for argon
 //---------------------------------------------------------------------------
 #pragma package(smart_init)

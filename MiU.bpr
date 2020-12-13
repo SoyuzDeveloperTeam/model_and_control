@@ -61,7 +61,7 @@
     <USERDEFINES value=""/>
     <SYSDEFINES value="NO_STRICT"/>
     <MAINSOURCE value="MiU.cpp"/>
-    <INCLUDEPATH value="md\;md;miscdata;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl"/>
+    <INCLUDEPATH value="md\;md;miscdata;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl;forms"/>
     <LIBPATH value="md\;md;miscdata;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par"/>
     <OTHERFILES value=""/>
@@ -69,8 +69,8 @@
   <OPTIONS>
     <IDLCFLAGS value="-Imd\. -Imd -Imiscdata -IMotionModel -Ilib -Ikurs -Ineptun -Iks020 -Iargon 
       -IC:\Users\Professional\Documents -Ibrvi_irvi -Iiss -I$(BCB)\Projects 
-      -I$(BCB)\Projects\miu -I$(BCB)\include -I$(BCB)\include\vcl -src_suffix 
-      cpp -boa"/>
+      -I$(BCB)\Projects\miu -I$(BCB)\include -I$(BCB)\include\vcl -Iforms 
+      -src_suffix cpp -boa"/>
     <CFLAG1 value="-O2 -w- -Vx -Ve -X- -a1 -b- -k- -vi -c -tW -tWM"/>
     <PFLAGS value="-N2C:\model_and_control_new\miscdata -N0C:\model_and_control_new\miscdata 
       -$Y- -$L- -$D- -$A8 -v -JPHNE -M"/>
@@ -211,15 +211,16 @@ Comments=СПО &quot;Моделирование и Управление&quot;
 S_SK=F334-M9
 
 [HistoryLists\hlIncludePath]
-Count=8
-Item0=md\;md;miscdata;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
-Item1=md\;miscdata;md;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
-Item2=miscdata;md\;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
-Item3=MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
-Item4=kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
-Item5=neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
-Item6=ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
-Item7=C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+Count=9
+Item0=md\;md;miscdata;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl;forms
+Item1=md\;md;miscdata;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+Item2=md\;miscdata;md;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+Item3=miscdata;md\;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+Item4=MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+Item5=kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+Item6=neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+Item7=ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+Item8=C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
 
 [HistoryLists\hlLibraryPath]
 Count=9

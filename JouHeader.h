@@ -1,6 +1,6 @@
 #ifndef _JOUHEADER_H_
 #define _JOUHEADER_H_
-#include "JouLogFrm.h"
+#include "forms\JouLogFrm.h"
 #include "main_header.h"
 /*
 +------------------------------------------+
@@ -10,7 +10,7 @@
 void JPS(int tm, AnsiString Inst,AnsiString Pol,AnsiString Cmd,AnsiString zn){
 // Что бы ровно отображался номер
 AnsiString zero;
-if (JouLogForm->JouLB->Count<10){ 
+if (JouLogForm->JouLB->Count<10){
 zero = "000"; } else
 if (JouLogForm->JouLB->Count<100){
 zero = "00"; } else

@@ -57,37 +57,37 @@
 //---------------------------------------------------------------------------
 /* Формы */
 //#include "help_form.cpp"              // Форма Поддержи - Help Form
-#include "forms/bilu_format.cpp"              // Форма БИЛУ - BILU form
-#include "forms/vived_frm.cpp"                // Форма Выведение (график) - "LiftOff" chart
-#include "forms/brus_form.cpp"                // Форма БРУС - BRUS form
-#include "forms/ts_frm.cpp"                   // Форма ТС - TS Form
-#include "forms/bfi_formats.cpp"              // Форма "БФИ Символ" для А16 - BFI Data monitor ith VKU form
-#include "forms/toru_frm.cpp"                 // Форма пульта ПУ БПС ТОРУ - TORU Pult form
-#include "forms/EnterNuFrm.cpp"               // Форма ввода начальных условий (НУ)
-#include "forms/kdu_data.cpp"                 // Форма параметров КДУ
-#include "forms/clock_form.cpp"               // Форма БЧК-744К Бортовые Часы на РС МКС
-#include "forms/JouLogFrm.h"                  // Форма основного журнала
-#include "forms/ssvp_form.cpp"                // Форма ССВП - Процессуальная
-#include "forms/zakon_upr.cpp"                // Форма Закон Управления
-#include "forms/KSPLForm.cpp"                 // Форма КСП левое
-#include "forms/KSPPForm.cpp"                 // Форма КСП правое
-#include "forms/USOFrm.cpp"                   // Форма УСО
-#include "forms/krl_form.cpp"                 // Форма КРЛ
-#include "forms/cdn_clock_frm.cpp"            // Форма CDN clock MSK
-#include "forms/AboutFrm.cpp"                 // Форма "О программе..."
-#include "forms/BkuCFrm.cpp"                  // Форма БКУ-Ц "Символ-Ц"
-#include "brvi_irvi/irvi_brfi_frm.cpp"            // Форма ПРВИ
-#include "forms/graph_a1.cpp"                 // Форма графиков
-#include "forms/SOTR_frm.cpp"                 // Форма СОТР
-#include "forms/InstructorFormat_Form.cpp"    // Форма инструкторского формата
-#include "forms/vku_graph.cpp"                // Форма ВКУ графиком
-#include "forms/iss_per_tp.cpp"               // Форма Переход МКС в ТП
-#include "argon/argon_debug_frm.cpp"          // Форма отладки Аргона
-#include "forms/inpudebugf.cpp"               // Форма отладки обмена с ИнПУ
-#include "forms/otkazy.cpp"                   // Форма "Отказ Бортоввых Систем"
-#include "neptun/neptun.cpp"                   // Форма ПСА "Нептун-МЭ" -  ИнПУ1
-#include "forms/sps_frm.cpp"                  // Форма СПС
-#include "forms/CWFrm.cpp"                    // Форма Contrl Word (debug)
+#include "bilu_format.cpp"              // Форма БИЛУ - BILU form
+#include "vived_frm.cpp"                // Форма Выведение (график) - "LiftOff" chart
+#include "brus_form.cpp"                // Форма БРУС - BRUS form
+#include "ts_frm.cpp"                   // Форма ТС - TS Form
+#include "bfi_formats.cpp"              // Форма "БФИ Символ" для А16 - BFI Data monitor ith VKU form
+#include "toru_frm.cpp"                 // Форма пульта ПУ БПС ТОРУ - TORU Pult form
+#include "EnterNuFrm.cpp"               // Форма ввода начальных условий (НУ)
+#include "kdu_data.cpp"                 // Форма параметров КДУ
+#include "clock_form.cpp"               // Форма БЧК-744К Бортовые Часы на РС МКС
+#include "JouLogFrm.h"                  // Форма основного журнала
+#include "ssvp_form.cpp"                // Форма ССВП - Процессуальная
+#include "zakon_upr.cpp"                // Форма Закон Управления
+#include "KSPLForm.cpp"                 // Форма КСП левое
+#include "KSPPForm.cpp"                 // Форма КСП правое
+#include "USOFrm.cpp"                   // Форма УСО
+#include "krl_form.cpp"                 // Форма КРЛ
+#include "cdn_clock_frm.cpp"            // Форма CDN clock MSK
+#include "AboutFrm.cpp"                 // Форма "О программе..."
+#include "BkuCFrm.cpp"                  // Форма БКУ-Ц "Символ-Ц"
+#include "irvi_brfi_frm.cpp"            // Форма ПРВИ
+#include "graph_a1.cpp"                 // Форма графиков
+#include "SOTR_frm.cpp"                 // Форма СОТР
+#include "InstructorFormat_Form.cpp"    // Форма инструкторского формата
+#include "vku_graph.cpp"                // Форма ВКУ графиком
+#include "iss_per_tp.cpp"               // Форма Переход МКС в ТП
+#include "argon_debug_frm.cpp"          // Форма отладки Аргона
+#include "inpudebugf.cpp"               // Форма отладки обмена с ИнПУ
+#include "otkazy.cpp"                   // Форма "Отказ Бортоввых Систем"
+#include "neptun.cpp"                   // Форма ПСА "Нептун-МЭ" -  ИнПУ1
+#include "sps_frm.cpp"                  // Форма СПС
+#include "CWFrm.cpp"                    // Форма Contrl Word (debug)
 // Форматы Laptop РС МКС (СМ)
 #include "sm_ssvp_PX.cpp"               // Формат СМ:ССВП:+Х
 //---------------------------------------------------------------------------
