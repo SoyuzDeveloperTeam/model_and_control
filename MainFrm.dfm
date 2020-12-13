@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 622
-  Top = 72
+  Left = 168
+  Top = 93
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   ClientHeight = 570
@@ -2353,18 +2353,6 @@ object MainForm: TMainForm
     Interval = 500
     OnTimer = SpsSendTimer
     Left = 328
-    Top = 472
-  end
-  object p_sost_from_bum: TTimer
-    Enabled = False
-    Interval = 10
-    Left = 600
-    Top = 472
-  end
-  object dk_to_bum: TTimer
-    Enabled = False
-    Interval = 100
-    Left = 568
     Top = 472
   end
   object unity_s_h: TTimer

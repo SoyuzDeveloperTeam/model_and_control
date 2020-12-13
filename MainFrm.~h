@@ -29,7 +29,7 @@
 #include "main_header.h"                // Основной заголовок - main Header
 #include "JouHeader.h"                  // Заголовок для журнала - Header for Journal
 #include "arg_jou.h"                    // Журнал Аргона - argon journal
-#include "dta.cpp"                      // Данные для обмена с БУМ - BUM data
+#include "dta.cpp"                      // Данные для обмена
 #include "md_m.h"                       // Модельные переменные - Model data
 #include "ts_header.h"                  // Переменные ТС - TC data
 #include "ICN_header.h"                 // Данные для обмена с ИнПУ - data ffor connect with InPU
@@ -62,7 +62,6 @@
 #include "brus_form.cpp"                // Форма БРУС - BRUS form
 #include "ts_frm.cpp"                   // Форма ТС - TS Form
 #include "bfi_formats.cpp"              // Форма "БФИ Символ" для А16 - BFI Data monitor ith VKU form
-#include "bum_sett_frm.cpp"             // Форма вывода данных БУМ  - Data from BUM form
 #include "toru_frm.cpp"                 // Форма пульта ПУ БПС ТОРУ - TORU Pult form
 #include "EnterNuFrm.cpp"               // Форма ввода начальных условий (НУ)
 #include "kdu_data.cpp"                 // Форма параметров КДУ
@@ -84,7 +83,6 @@
 #include "vku_graph.cpp"                // Форма ВКУ графиком
 #include "iss_per_tp.cpp"               // Форма Переход МКС в ТП
 #include "argon_debug_frm.cpp"          // Форма отладки Аргона
-#include "debug_bum_frm.cpp"            // Форма отладки обмена с БУМ
 #include "inpudebugf.cpp"               // Форма отладки обмена с ИнПУ
 #include "otkazy.cpp"                   // Форма "Отказ Бортоввых Систем"
 #include "neptun.cpp"                   // Форма ПСА "Нептун-МЭ" -  ИнПУ1
@@ -300,26 +298,6 @@ __published:	// IDE-managed Components
         void __fastcall ssvpClick(TObject *Sender);
         void __fastcall N110Click(TObject *Sender);
         void __fastcall N38Click(TObject *Sender);
-        //void __fastcall N38Click(TObject *Sender);
-        //void __fastcall Button11Click(TObject *Sender);
-        //void __fastcall dk_to_bumTimer(TObject *Sender);
-        //void __fastcall Button13Click(TObject *Sender);
-        //void __fastcall unity_s_hTimer(TObject *Sender);
-        //void __fastcall un_servExecute(TIdPeerThread *AThread);
-        //void __fastcall un_servConnect(TIdPeerThread *AThread);
-        //void __fastcall un_servDisconnect(TIdPeerThread *AThread);
-        //void __fastcall Button14Click(TObject *Sender);
-        //void __fastcall Button17Click(TObject *Sender);
-        //void __fastcall InpuRecvTimer(TObject *Sender);
-        //void __fastcall N110Click(TObject *Sender);
-        //void __fastcall debug_statusClick(TObject *Sender);
-        //void __fastcall N40Click(TObject *Sender);
-        //void __fastcall bum_statusTimer(TObject *Sender);
-        //void __fastcall biluClick(TObject *Sender);
-        //void __fastcall ssvpClick(TObject *Sender);
-        //void __fastcall SpeedButton1Click(TObject *Sender);
-        //void __fastcall ArgonTaktTimer(TObject *Sender);
-        //void __fastcall N44Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TMainForm(TComponent* Owner);

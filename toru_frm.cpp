@@ -49,7 +49,6 @@ JPS(1,is_operator,is_pu_bps,cmd_204,"");
 
 void __fastcall Ttoru_pult::odrClick(TObject *Sender)
 {
-//For BUM - 00000205 1 1
 JPS(1,is_operator,is_pu_bps,cmd_205,"");
 
 }

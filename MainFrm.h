@@ -179,7 +179,6 @@ __published:	// IDE-managed Components
         TEdit *Edit3;
         TMenuItem *N34;
         TMenuItem *N161;
-        TTimer *p_sost_from_bum;
         TGroupBox *GroupBox7;
         TButton *Button8;
         TButton *Button5;
@@ -201,7 +200,6 @@ __published:	// IDE-managed Components
         TSpeedButton *SpeedButton1;
         TButton *Button7;
         TButton *Button1;
-        TTimer *dk_to_bum;
         TButton *Button13;
         TTimer *unity_s_h;
         TIdTCPServer *un_serv;
@@ -298,26 +296,6 @@ __published:	// IDE-managed Components
         void __fastcall ssvpClick(TObject *Sender);
         void __fastcall N110Click(TObject *Sender);
         void __fastcall N38Click(TObject *Sender);
-        //void __fastcall N38Click(TObject *Sender);
-        //void __fastcall Button11Click(TObject *Sender);
-        //void __fastcall dk_to_bumTimer(TObject *Sender);
-        //void __fastcall Button13Click(TObject *Sender);
-        //void __fastcall unity_s_hTimer(TObject *Sender);
-        //void __fastcall un_servExecute(TIdPeerThread *AThread);
-        //void __fastcall un_servConnect(TIdPeerThread *AThread);
-        //void __fastcall un_servDisconnect(TIdPeerThread *AThread);
-        //void __fastcall Button14Click(TObject *Sender);
-        //void __fastcall Button17Click(TObject *Sender);
-        //void __fastcall InpuRecvTimer(TObject *Sender);
-        //void __fastcall N110Click(TObject *Sender);
-        //void __fastcall debug_statusClick(TObject *Sender);
-        //void __fastcall N40Click(TObject *Sender);
-        //void __fastcall bum_statusTimer(TObject *Sender);
-        //void __fastcall biluClick(TObject *Sender);
-        //void __fastcall ssvpClick(TObject *Sender);
-        //void __fastcall SpeedButton1Click(TObject *Sender);
-        //void __fastcall ArgonTaktTimer(TObject *Sender);
-        //void __fastcall N44Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TMainForm(TComponent* Owner);

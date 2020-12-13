@@ -21,7 +21,7 @@ zero = "";
                       JouLogForm->JouLB->Count+   // Номер
   "  ["+Now().FormatString("hh.mm.ss.zzz")+"]"+   // Local Time (PC)
                                           "  "+   // Разделитель между Lt и Ot
-+"["+OnboardModelTime.FormatString("hh.nn.ss.zzz")+"]"+   // Onboard (model) time from BUM
++"["+OnboardModelTime.FormatString("hh.nn.ss.zzz")+"]"+   // Onboard (model) time
 
 
                                          "   "+   // Разделитель между Ot и Inst
