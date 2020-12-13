@@ -3,15 +3,5 @@
 #ifndef unity_connectH
 #define unity_connectH
 //---------------------------------------------------------------------------
-static AnsiString unity_ip;    // UnityIP адрес из конфигурации
-static AnsiString unity_port;  // Порт Unity из конфига
 
-static int uResult;
-
-static SOCKET unity_server;
-static SOCKADDR_IN addr;
-
-static SOCKET acceptS;
-static SOCKADDR_IN addr_c;
-static unsigned long ul = 1;
 #endif

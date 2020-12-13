@@ -12,15 +12,15 @@
       brus_form.obj vived_frm.obj iss\sm_ssvp_PX.obj argon\argon_debug_frm.obj 
       SOTR_frm.obj trassa.obj AboutFrm.obj otkazy.obj inpudebugf.obj sps_frm.obj 
       bilu_format.obj neptun\neptun.obj ssvp_form.obj CWFrm.obj krl_form.obj 
-      argon\bumconnect.obj MiU.obj dta.obj argon\arg_kdu_operations.obj 
-      argon\arg_prkrt.obj argon\arg_main.obj sotr_model.obj inpu_connect.obj 
-      MainCycle_PrObr.obj main_math.obj ks020\ks_main.obj neptun\nepthdr.obj 
-      argon\arg_pks.obj argon\arg_irvi.obj bum_connect.obj pults_tk.obj 
-      transit.obj neptun\neptun_main.obj unity_connect.obj winsock_ed.obj 
-      argon\argjh.obj kurs\kurs_main.obj inpuconnect.obj uso_model.obj 
-      ssvp_module.obj ks020\ks020_model.obj neptun\common.obj lib\StdAtmos.obj 
-      control.obj MotionModel\runge_kutta.obj fly_model.obj md\md_main.obj 
-      DConvert.obj miscdata\rdc_draph.obj inkmodel.obj macros.obj"/>
+      MiU.obj dta.obj argon\arg_kdu_operations.obj argon\arg_prkrt.obj 
+      argon\arg_main.obj sotr_model.obj inpu_connect.obj MainCycle_PrObr.obj 
+      main_math.obj ks020\ks_main.obj neptun\nepthdr.obj argon\arg_pks.obj 
+      argon\arg_irvi.obj pults_tk.obj transit.obj neptun\neptun_main.obj 
+      unity_connect.obj winsock_ed.obj argon\argjh.obj kurs\kurs_main.obj 
+      inpuconnect.obj uso_model.obj ssvp_module.obj ks020\ks020_model.obj 
+      neptun\common.obj lib\StdAtmos.obj control.obj MotionModel\runge_kutta.obj 
+      fly_model.obj md\md_main.obj DConvert.obj miscdata\rdc_draph.obj 
+      inkmodel.obj macros.obj"/>
     <RESFILES value="MiU.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -114,7 +114,6 @@
       <FILE FILENAME="ssvp_form.cpp" FORMNAME="ssvp_frm" UNITNAME="ssvp_form" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="CWFrm.cpp" FORMNAME="cwform" UNITNAME="CWFrm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="krl_form.cpp" FORMNAME="krl_frm" UNITNAME="krl_form" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="argon\bumconnect.cpp" FORMNAME="" UNITNAME="bumconnect" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="argon\CtrlWord.h" FORMNAME="" UNITNAME="CtrlWord.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="argon\arg_header.h" FORMNAME="" UNITNAME="arg_header.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="bfi_fmts_data.h" FORMNAME="" UNITNAME="bfi_fmts_data.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
@@ -144,7 +143,6 @@
       <FILE FILENAME="sotr_data.h" FORMNAME="" UNITNAME="sotr_data.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="argon\arg_pks.cpp" FORMNAME="" UNITNAME="arg_pks" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="argon\arg_irvi.cpp" FORMNAME="" UNITNAME="arg_irvi" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="bum_connect.cpp" FORMNAME="" UNITNAME="bum_connect" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="pults_tk.cpp" FORMNAME="" UNITNAME="pults_tk" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="transit.cpp" FORMNAME="" UNITNAME="transit" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="neptun\neptun_main.cpp" FORMNAME="" UNITNAME="neptun_main" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
@@ -163,20 +161,6 @@
       <FILE FILENAME="control.cpp" FORMNAME="" UNITNAME="control" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="MotionModel\runge_kutta.cpp" FORMNAME="" UNITNAME="runge_kutta" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="fly_model.cpp" FORMNAME="" UNITNAME="fly_model" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="md\FlyChebyshov.h" FORMNAME="" UNITNAME="FlyChebyshov.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="md\FlyCore.h" FORMNAME="" UNITNAME="FlyCore.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="md\FlyCoreLink.h" FORMNAME="" UNITNAME="FlyCoreLink.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="md\FlyFormat.h" FORMNAME="" UNITNAME="FlyFormat.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="md\FlyHtmlWriter.h" FORMNAME="" UNITNAME="FlyHtmlWriter.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="md\FlyMagicLNS.h" FORMNAME="" UNITNAME="FlyMagicLNS.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="md\FlyMMath.h" FORMNAME="" UNITNAME="FlyMMath.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="md\FlyOrbitDesign.h" FORMNAME="" UNITNAME="FlyOrbitDesign.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="md\FlySofa.h" FORMNAME="" UNITNAME="FlySofa.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="md\FlySSP.h" FORMNAME="" UNITNAME="FlySSP.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="md\FlyTime.h" FORMNAME="" UNITNAME="FlyTime.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="md\FlyUrlLoader.h" FORMNAME="" UNITNAME="FlyUrlLoader.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="md\FlyUrlLoaderLink.h" FORMNAME="" UNITNAME="FlyUrlLoaderLink.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="md\FlyZip.h" FORMNAME="" UNITNAME="FlyZip.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="md\md_main.cpp" FORMNAME="" UNITNAME="md_main" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="DConvert.cpp" FORMNAME="" UNITNAME="DConvert" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="miscdata\rdc_draph.cpp" FORMNAME="" UNITNAME="rdc_draph" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>

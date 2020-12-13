@@ -4,23 +4,31 @@
   <MACROS>
     <VERSION value="BCB.06.00"/>
     <PROJECT value="C:\miu\model_and_control\Out\MiU.exe"/>
-    <OBJFILES value="neptun\neptprim.obj MainFrm.obj ts_frm.obj toru_frm.obj EnterNuFrm.obj 
-      kdu_data.obj clock_form.obj JouLogFrm.obj BkuCFrm.obj 
-      brvi_irvi\irvi_brfi_frm.obj KSPLForm.obj KSPPForm.obj sepform.obj 
-      cdn_clock_frm.obj graph_a1.obj USOFrm.obj bfi_formats.obj zakon_upr.obj 
-      InstructorFormat_Form.obj help_form.obj iss_per_tp.obj vku_graph.obj 
-      brus_form.obj vived_frm.obj iss\sm_ssvp_PX.obj argon\argon_debug_frm.obj 
-      SOTR_frm.obj trassa.obj AboutFrm.obj otkazy.obj inpudebugf.obj sps_frm.obj 
-      bilu_format.obj neptun\neptun.obj ssvp_form.obj CWFrm.obj krl_form.obj 
-      MiU.obj dta.obj argon\arg_kdu_operations.obj argon\arg_prkrt.obj 
-      argon\arg_main.obj sotr_model.obj inpu_connect.obj MainCycle_PrObr.obj 
-      main_math.obj ks020\ks_main.obj neptun\nepthdr.obj argon\arg_pks.obj 
-      argon\arg_irvi.obj pults_tk.obj transit.obj neptun\neptun_main.obj 
-      unity_connect.obj winsock_ed.obj argon\argjh.obj kurs\kurs_main.obj 
-      inpuconnect.obj uso_model.obj ssvp_module.obj ks020\ks020_model.obj 
-      neptun\common.obj lib\StdAtmos.obj control.obj MotionModel\runge_kutta.obj 
-      fly_model.obj md\md_main.obj DConvert.obj miscdata\rdc_draph.obj 
-      inkmodel.obj macros.obj"/>
+    <OBJFILES value="miscdata\neptprim.obj miscdata\MainFrm.obj miscdata\ts_frm.obj 
+      miscdata\toru_frm.obj miscdata\EnterNuFrm.obj miscdata\kdu_data.obj 
+      miscdata\clock_form.obj miscdata\JouLogFrm.obj miscdata\BkuCFrm.obj 
+      miscdata\irvi_brfi_frm.obj miscdata\KSPLForm.obj miscdata\KSPPForm.obj 
+      miscdata\sepform.obj miscdata\cdn_clock_frm.obj miscdata\graph_a1.obj 
+      miscdata\USOFrm.obj miscdata\bfi_formats.obj miscdata\zakon_upr.obj 
+      miscdata\InstructorFormat_Form.obj miscdata\help_form.obj 
+      miscdata\iss_per_tp.obj miscdata\vku_graph.obj miscdata\brus_form.obj 
+      miscdata\vived_frm.obj miscdata\sm_ssvp_PX.obj 
+      miscdata\argon_debug_frm.obj miscdata\SOTR_frm.obj miscdata\trassa.obj 
+      miscdata\AboutFrm.obj miscdata\otkazy.obj miscdata\inpudebugf.obj 
+      miscdata\sps_frm.obj miscdata\bilu_format.obj miscdata\neptun.obj 
+      miscdata\ssvp_form.obj miscdata\CWFrm.obj miscdata\krl_form.obj 
+      miscdata\MiU.obj miscdata\dta.obj miscdata\arg_kdu_operations.obj 
+      miscdata\arg_prkrt.obj miscdata\arg_main.obj miscdata\sotr_model.obj 
+      miscdata\inpu_connect.obj miscdata\MainCycle_PrObr.obj 
+      miscdata\main_math.obj miscdata\ks_main.obj miscdata\nepthdr.obj 
+      miscdata\arg_pks.obj miscdata\arg_irvi.obj miscdata\pults_tk.obj 
+      miscdata\transit.obj miscdata\neptun_main.obj miscdata\unity_connect.obj 
+      miscdata\winsock_ed.obj miscdata\argjh.obj miscdata\kurs_main.obj 
+      miscdata\inpuconnect.obj miscdata\uso_model.obj miscdata\ssvp_module.obj 
+      miscdata\ks020_model.obj miscdata\common.obj miscdata\StdAtmos.obj 
+      miscdata\control.obj miscdata\runge_kutta.obj miscdata\fly_model.obj 
+      miscdata\md_main.obj miscdata\DConvert.obj miscdata\rdc_draph.obj 
+      miscdata\inkmodel.obj miscdata\macros.obj"/>
     <RESFILES value="MiU.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -64,10 +72,12 @@
       -I$(BCB)\Projects\miu -I$(BCB)\include -I$(BCB)\include\vcl -src_suffix 
       cpp -boa"/>
     <CFLAG1 value="-O2 -w- -Vx -Ve -X- -a1 -b- -k- -vi -c -tW -tWM"/>
-    <PFLAGS value="-$Y- -$L- -$D- -$A8 -v -JPHNE -M"/>
+    <PFLAGS value="-N2C:\model_and_control_new\miscdata -N0C:\model_and_control_new\miscdata 
+      -$Y- -$L- -$D- -$A8 -v -JPHNE -M"/>
     <RFLAGS value=""/>
     <AFLAGS value="/mu /w0 /zn"/>
-    <LFLAGS value="-lC:\miu\model_and_control\lib -D&quot;&quot; -aa -Tpe -x -Gn"/>
+    <LFLAGS value="-lC:\miu\model_and_control\lib -IC:\model_and_control_new\miscdata -D&quot;&quot; 
+      -aa -Tpe -x -Gn"/>
     <OTHERFILES value=""/>
   </OPTIONS>
   <LINKER>
@@ -201,25 +211,27 @@ Comments=СПО &quot;Моделирование и Управление&quot;
 S_SK=F334-M9
 
 [HistoryLists\hlIncludePath]
-Count=7
-Item0=md\;miscdata;md;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
-Item1=miscdata;md\;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
-Item2=MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
-Item3=kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
-Item4=neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
-Item5=ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
-Item6=C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+Count=8
+Item0=md\;md;miscdata;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+Item1=md\;miscdata;md;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+Item2=miscdata;md\;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+Item3=MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+Item4=kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+Item5=neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+Item6=ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
+Item7=C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
 
 [HistoryLists\hlLibraryPath]
-Count=8
-Item0=md\;miscdata;md;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
-Item1=miscdata;md\;md;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
-Item2=md;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
-Item3=MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
-Item4=kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
-Item5=neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
-Item6=ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
-Item7=C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Count=9
+Item0=md\;md;miscdata;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Item1=md\;miscdata;md;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Item2=miscdata;md\;md;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Item3=md;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Item4=MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Item5=kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Item6=neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Item7=ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Item8=C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
 
 [HistoryLists\hlDebugSourcePath]
 Count=1
@@ -228,6 +240,10 @@ Item0=$(BCB)\source\vcl
 [HistoryLists\hlConditionals]
 Count=1
 Item0=_DEBUG
+
+[HistoryLists\hlIntOutputDir]
+Count=1
+Item0=C:\model_and_control_new\miscdata
 
 [HistoryLists\hlFinalOutputDir]
 Count=7

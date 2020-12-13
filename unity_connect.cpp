@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 #pragma hdrstop
-#include <winsock.h>            // Для обмена с БУМ
+#include <winsock.h>            // Для обмена
 #include "unity_connect.h"
 #include "JouHeader.h"          // Заголовок для журнала
 #include "JouStrings.h"         // Строковые переменные для журнала

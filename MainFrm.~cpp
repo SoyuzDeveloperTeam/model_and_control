@@ -464,7 +464,6 @@ JPS(1,is_operator,is_miu,"Выдана команда - отработка НУ.","");
   // Set model Data and Time from NU form
   EnterNuForm->SetModelDatePicker->Time = EnterNuForm->SetModelTimePicker->Time;
   OnboardModelTime = EnterNuForm->SetModelDatePicker->Date;  // Выставляем модельное дату/время
-  onboard_dt = OnboardModelTime;                             // Создаем штамп времени для работы с БУМ
   onboardTimeLabel->Caption=OnboardModelTime.FormatString("hh:nn:ss");
   // ntohl
   // Тип корабля (тренажёра)

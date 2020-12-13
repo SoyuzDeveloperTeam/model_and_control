@@ -11,6 +11,18 @@
 
 #define DEFAULT_PORT "27015"   // Перенести в конфигурацию
 
+static AnsiString unity_ip;    // UnityIP адрес из конфигурации
+static AnsiString unity_port;  // Порт Unity из конфига
+
+static int uResult;
+
+static SOCKET unity_server;
+static SOCKADDR_IN addr;
+
+static SOCKET acceptS;
+static SOCKADDR_IN addr_c;
+static unsigned long ul = 1;
+
 void unity_server_init () {
 JPS(1,"Создание сервера для обмена с Юнити","","","");
         addr.sin_addr.s_addr = inet_addr("192.168.92.1");

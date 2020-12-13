@@ -29,7 +29,7 @@
 #include "main_header.h"                // Основной заголовок - main Header
 #include "JouHeader.h"                  // Заголовок для журнала - Header for Journal
 #include "arg_jou.h"                    // Журнал Аргона - argon journal
-#include "dta.cpp"                      // Данные для обмена с БУМ - BUM data
+#include "dta.cpp"                      // Данные для обмена
 #include "md_m.h"                       // Модельные переменные - Model data
 #include "ts_header.h"                  // Переменные ТС - TC data
 #include "ICN_header.h"                 // Данные для обмена с ИнПУ - data ffor connect with InPU
@@ -62,7 +62,6 @@
 #include "brus_form.cpp"                // Форма БРУС - BRUS form
 #include "ts_frm.cpp"                   // Форма ТС - TS Form
 #include "bfi_formats.cpp"              // Форма "БФИ Символ" для А16 - BFI Data monitor ith VKU form
-#include "bum_sett_frm.cpp"             // Форма вывода данных БУМ  - Data from BUM form
 #include "toru_frm.cpp"                 // Форма пульта ПУ БПС ТОРУ - TORU Pult form
 #include "EnterNuFrm.cpp"               // Форма ввода начальных условий (НУ)
 #include "kdu_data.cpp"                 // Форма параметров КДУ
@@ -84,7 +83,6 @@
 #include "vku_graph.cpp"                // Форма ВКУ графиком
 #include "iss_per_tp.cpp"               // Форма Переход МКС в ТП
 #include "argon_debug_frm.cpp"          // Форма отладки Аргона
-#include "debug_bum_frm.cpp"            // Форма отладки обмена с БУМ
 #include "inpudebugf.cpp"               // Форма отладки обмена с ИнПУ
 #include "otkazy.cpp"                   // Форма "Отказ Бортоввых Систем"
 #include "neptun.cpp"                   // Форма ПСА "Нептун-МЭ" -  ИнПУ1
