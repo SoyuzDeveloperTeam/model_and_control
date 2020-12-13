@@ -34,6 +34,16 @@ static int f_test;
 static TDateTime SFD_sec;
 static double ghjh;
 
+static WSADATA wsaData;                // Структура Win Socket
+static AnsiString WsaIpAddr;    // IP адрес из конфигурации
+
+static TIniFile *MiuConf;       // Файл конфигурации
+static AnsiString ConfFileName;
+
+static AnsiString inpu_con_data[8];
+static int iResult;                    // Результатирующая переменная
+
+
 // -- -- -- --
 
 HINSTANCE Lib = LoadLibrary("LIB_BNO.dll");                    // загружаем библиотеку динамически
@@ -183,6 +193,19 @@ void __fastcall TMainForm::N21Click(TObject *Sender)
 BkuC->Show();
 }
 //---------------------------------------------------------------------------
+
+void Config_init (AnsiString iniName) {  // Процедура инициализации файла конфигурации
+ConfFileName = "C:\1231231\Out\miu_config.ini";  // Создаем имя файла конфигурации
+MiuConf = new TIniFile(iniName);                                   // Присваиваем
+if(FileExists(iniName))                                            // Если такой файл существует, то...
+{
+JPS(1,"Чтение файла конфигурации...","","","");                         // Логируем о начале процесса чтения файла
+WsaIpAddr = MiuConf->ReadString("WSA","main_ip","0.0.0.0");             // Основной айпишник
+inpu_con_data[0] = WsaIpAddr;
+inpu_con_data[1] = MiuConf->ReadString("INPU","inpu1_port_com1","0000");
+inpu_con_data[2] = MiuConf->ReadString("INPU","inpu1_port_com2","0000");
+} else JPS(3,"Отсутствует файл конфигурации!","","","");
+}
 
 void __fastcall TMainForm::N12Click(TObject *Sender)
 {
@@ -441,7 +464,6 @@ JPS(1,is_operator,is_miu,"Выдана команда - отработка НУ.","");
   // Set model Data and Time from NU form
   EnterNuForm->SetModelDatePicker->Time = EnterNuForm->SetModelTimePicker->Time;
   OnboardModelTime = EnterNuForm->SetModelDatePicker->Date;  // Выставляем модельное дату/время
-  onboard_dt = OnboardModelTime;                             // Создаем штамп времени для работы с БУМ
   onboardTimeLabel->Caption=OnboardModelTime.FormatString("hh:nn:ss");
   // ntohl
   // Тип корабля (тренажёра)
@@ -736,7 +758,6 @@ mass_tk_full = NU_temp.m_tk + dynamics.rasp;  // Расчет текущей массы ТК
 
 Label15->Caption=tResult;   // Результатирующая переменная для проведения внутренних тестов Аргона (почеу она тут?)
 
-Label13->Caption=(ob_cur-onboard_dt).FormatString("hh:nn:ss");
 
 USO_Booled[10][7] = dpo_status_bit;
 if(USO_Booled[12][7])YzS1[0]=1;

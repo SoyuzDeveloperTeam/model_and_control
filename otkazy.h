@@ -115,12 +115,6 @@ __published:	// IDE-managed Components
         TCheckBox *CheckBox51;
         TCheckBox *CheckBox52;
         TTimer *Timer1;
-        void __fastcall CheckBox16Click(TObject *Sender);
-        void __fastcall CheckBox17Click(TObject *Sender);
-        void __fastcall CheckBox19Click(TObject *Sender);
-        void __fastcall CheckBox22Click(TObject *Sender);
-        void __fastcall CheckBox26Click(TObject *Sender);
-        void __fastcall CheckBox13Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall Totkazy_frm(TComponent* Owner);

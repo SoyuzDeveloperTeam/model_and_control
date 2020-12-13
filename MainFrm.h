@@ -47,7 +47,6 @@
 #include "fly_model.cpp"                // Модель движения
 #include "ssvp_module.h"                // Признаки ССВП
 #include "argon/arg_pks.cpp"            // Программы Аргона - Argon Programs
-#include "bumconnect.cpp"               // Обмен с БУМ - Connect wth BUM
 #include "neptun_main.cpp"              // Основные процедуры ПСА "Нептун-МЭ" - Main proc for Neptune model
 #include "unity_connect.cpp"            // Обмен с Юнити - Connect with Unity
 #include "inpuconnect.cpp"              // Обмен с ИнПУ  - Connect with InPU

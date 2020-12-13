@@ -8,7 +8,6 @@
 #include "main_header.h"
 #include "JouHeader.h"         // Заголовок для журнала
 #include "JouStrings.h"        // Строковые переменные для журнала
-#include "bumconnect.cpp"      // Обмен с БУМ
 #include "arg_header.h"
 #include "argon/CtrlWord.h"    // Управляющие Слова
 //---------------------------------------------------------------------------
@@ -28,7 +27,6 @@ void __fastcall Tksplfrm::ksp_1Click(TObject *Sender)
 {
 if (KSP_Let[0]){ // А                           // Если выбранна буква А
 KSP_Booled[0][0]=true;                          // Тогда выставляем признак А1 - правда (факт выдачи команды КСП)
-SendToBum(0x000002A8, 0, 0);       //Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"А1"); } else   // Логируем выдачу команды
 
 if (KSP_Let[1]){ // В                              Если выбранна буква В
@@ -45,23 +43,19 @@ JPS(1,is_operator,is_miu,is_ksp,"Д1"); } else   // Логируем выдачу команды
 
 if (KSP_Let[4]){  // Ж
 KSP_Booled[5][0]=true;
-SendToBum(0x0000029A, 1, 0);       //Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"ПЕРЕСВЕТКА");  // Резерв
 } else
 
 if (KSP_Let[5]){  // И                             Если выбранна буква И
 KSP_Booled[6][0]=true;                          // Тогда выставляем признак И1 - правда
-SendToBum(0x000002BA, 1, 0);       //Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"И1"); } else   // Логируем выдачу команды
 
 if (KSP_Let[6]){  // К
 KSP_Booled[7][0]=true;
-SendToBum(0x000002B0, 1, 0);       //Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"К1"); } else
 
 if (KSP_Let[7]){  // Л
 KSP_Booled[8][0]=true;
-SendToBum(0x00000281, 1, 0);                     //Команда в БУМ (РО ДК - вкл)
 JPS(1,is_operator,is_miu,is_ksp,"Л1"); }
 
 KSP_L_A->Color=clBlack;
@@ -116,7 +110,6 @@ void __fastcall Tksplfrm::ksp_2Click(TObject *Sender)
 {
 if (KSP_Let[0]){ // А                              Если выбранна буква А
 KSP_Booled[0][1]=true;                          // Тогда выставляем признак А2 - правда
-SendToBum(0x000002A8, 1, 0);       //Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"А2"); } else   // Логируем выдачу команды
 
 if (KSP_Let[1]){ // В                              Если выбранна буква B
@@ -137,17 +130,14 @@ JPS(1,is_operator,is_miu,is_ksp,"Ж2"); } else   */
 
 if (KSP_Let[5]){  // И
 KSP_Booled[6][1]=true;                          // Тогда выставляем признак И2 - правда
-SendToBum(0x000002BA, 0, 0);                    // Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"И2"); } else   // Логируем выдачу команды
 
 if (KSP_Let[6]){  // К
 KSP_Booled[7][1]=true;                          // Тогда выставляем признак B2 - правда
-SendToBum(0x000002B0, 0, 0);                    // Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"К2"); } else   // Логируем выдачу команды
 
 if (KSP_Let[7]){  // Л
 KSP_Booled[8][1]=true;                          // Тогда выставляем признак B2 - правда
-SendToBum(0x00000281, 0, 0);                    // Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"Л2"); }        // Логируем выдачу команды
 
 // Возвращаем цвет буквам КСП
@@ -844,7 +834,6 @@ JPS(1,is_operator,is_miu,is_ksp,"В3"); } else   // Логируем выдачу команды
 
 if (KSP_Let[2]){  // Г                             Если выбранна буква Г
 KSP_Booled[3][2]=true;                          // Тогда выставляем признак Г3 - правда
-SendToBum(0x00000296, 1, 0);       //Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"Г3"); } else   // Логируем выдачу команды
 
 if (KSP_Let[3]){  // Д                             Если выбранна буква Д
@@ -857,12 +846,10 @@ JPS(1,is_operator,is_miu,is_ksp,"Ж3"); } else   // Логируем выдачу команды
 
 if (KSP_Let[5]){  // И
 KSP_Booled[6][2]=true;                          // Тогда выставляем признак И3 - правда
-SendToBum(0x000002AE, 1, 0);       //Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"И3"); } else   // Логируем выдачу команды
 
 if (KSP_Let[6]){  // К
 KSP_Booled[7][2]=true;                          // Тогда выставляем признак К3 - правда
-SendToBum(0x000002B1, 1, 1);       //Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"К3"); } else   // Логируем выдачу команды
 
 if (KSP_Let[7]){  // Л
@@ -987,7 +974,6 @@ JPS(1,is_operator,is_miu,is_ksp,"Ж4"); } else   // Логируем выдачу команды
 
 if (KSP_Let[5]){  // И
 KSP_Booled[6][3]=true;                          // Тогда выставляем признак И4 - правда
-SendToBum(0x000002AE, 0, 0);       //Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"И4"); } else   // Логируем выдачу команды
 
 if (KSP_Let[6]){  // К
@@ -1050,12 +1036,10 @@ JPS(1,is_operator,is_miu,is_ksp,"А5"); } else   // Логируем выдачу команды
 
 if (KSP_Let[1]){ // В                              Если выбранна буква B
 KSP_Booled[2][4]=true;                          // Тогда выставляем признак B5 - правда
-SendToBum(0x00000295, 1, 0);                    // Команда в БУМ (АО-ВКА закр - резерв)
 JPS(1,is_operator,is_miu,is_ksp,"В5"); } else   // Логируем выдачу команды
 
 if (KSP_Let[2]){  // Г                             Если выбранна буква Г
 KSP_Booled[3][4]=true;                          // Тогда выставляем признак Г5 - правда
-SendToBum(0x00000289, 1, 1);                    // Команда в БУМ (АО-ВКА закр - резерв)
 JPS(1,is_operator,is_miu,is_ksp,"Г5"); } else   // Логируем выдачу команды
 
 if (KSP_Let[3]){  // Д                             Если выбранна буква Д
@@ -1134,7 +1118,6 @@ JPS(1,is_operator,is_miu,is_ksp,"А6"); } else   // Логируем выдачу команды
 
 if (KSP_Let[1]){ // В                              Если выбранна буква B
 KSP_Booled[2][5]=true;                          // Тогда выставляем признак B6 - правда
-SendToBum(0x00000295, 1, 1);                    //Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"В6"); } else   // Логируем выдачу команды
 
 if (KSP_Let[3]){  // Д                             Если выбранна буква Д
@@ -1210,7 +1193,6 @@ JPS(1,is_operator,is_miu,is_ksp,"А7"); } else   // Логируем выдачу команды
 if (KSP_Let[1]){ // В                              Если выбранна буква B
 KSP_Booled[2][6]=true;                          // Тогда выставляем признак B7 - правда
 cw_a8[14]=1;                                    // Логический признак "РУД Вкл."
-SendToBum(0x00000283, 1, 1);                    // Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"В7"); } else   // Логируем выдачу команды
 
 if (KSP_Let[2]){  // Г                             Если выбранна буква Г
@@ -1223,12 +1205,10 @@ JPS(1,is_operator,is_miu,is_ksp,"Д7"); } else   // Логируем выдачу команды
 
 if (KSP_Let[4]){  // Ж
 KSP_Booled[5][6]=true;                          // Тогда выставляем признак Ж7 - правда
-SendToBum(0x00000293, 1, 0);                    // Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"Ж7"); } else   // Логируем выдачу команды
 
 if (KSP_Let[5]){  // И
 KSP_Booled[6][6]=true;                          // Тогда выставляем признак И7 - правда
-SendToBum(0x0000029F, 1, 0);       //Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"И7"); } else   // Логируем выдачу команды
 
 if (KSP_Let[6]){  // К
@@ -1295,7 +1275,6 @@ JPS(1,is_operator,is_miu,is_ksp,"А8"); } else   // Логируем выдачу команды
 
 if (KSP_Let[1]){ // В                              Если выбранна буква B
 KSP_Booled[2][7]=true;                          // Тогда выставляем признак B8 - правда
-SendToBum(0x00000283, 1, 0);                    // Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"В8"); } else   // Логируем выдачу команды
 
 if (KSP_Let[3]){  // Д                             Если выбранна буква Д
@@ -1308,7 +1287,6 @@ JPS(1,is_operator,is_miu,is_ksp,"Ж8"); } else   // Логируем выдачу команды
 
 if (KSP_Let[5]){  // И
 KSP_Booled[6][7]=true;                          // Тогда выставляем признак И8 - правда
-SendToBum(0x0000029F, 0, 0);                    // Команда в БУМ (Выбор ДК)
 JPS(1,is_operator,is_miu,is_ksp,"И8"); } else   // Логируем выдачу команды
 
 if (KSP_Let[6]){  // К
@@ -1557,12 +1535,10 @@ KSP_Booled[5][10]=true;                          // Тогда выставляем признак Ж11
         USO_Booled[3][3]  = false;
         USO_Booled[3][4]  = false;
         USO_Booled[3][13] = false;
-SendToBum(0x000002B6, 1, 1);                  //Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"Ж11"); } else   // Логируем выдачу команды
 
 if (KSP_Let[5]){  // И
 KSP_Booled[6][10]=1;                          // Тогда выставляем признак И11 - правда
-SendToBum(0x000002A0, 1, 1);       //Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"И11"); } else   // Логируем выдачу команды
 
 if (KSP_Let[6]){  // К
@@ -1715,12 +1691,10 @@ JPS(1,is_operator,is_miu,is_ksp,"В13"); } else   // Логируем выдачу команды
 
 if (KSP_Let[2]){  // Г                             Если выбранна буква Г
 KSP_Booled[3][12]=true;                          // Тогда выставляем признак Г13 - правда
-SendToBum(0x000002AA, 1, 0);       //Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"Г13"); } else   // Логируем выдачу команды
 
 if (KSP_Let[3]){  // Д                             Если выбранна буква Д
 KSP_Booled[4][12]=true;                          // Тогда выставляем признак Д13 - правда
-SendToBum(0x000002A6, 1, 0);       //Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"Д13"); } else   // Логируем выдачу команды
 
 if (KSP_Let[4]){  // Ж
@@ -1729,13 +1703,11 @@ KSP_Booled[5][12]=true;                          // Тогда выставляем признак Ж13
         USO_Booled[3][2]  = false;
         USO_Booled[3][4]  = false;
         USO_Booled[3][13] = false;
-SendToBum(0x000002B7, 1, 0);       //Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"Ж13");
 JPS(1,is_argon,is_operator,"Выбран канал  Б  БЦВК","");} else   // Логируем выдачу команды
 
 if (KSP_Let[5]){  // И
 KSP_Booled[6][12]=true;                          // Тогда выставляем признак И13 - правда
-SendToBum(0x000002A1, 1, 0);                     //Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"И13"); } else   // Логируем выдачу команды
 
 if (KSP_Let[6]){  // К
@@ -1884,12 +1856,10 @@ JPS(1,is_operator,is_miu,is_ksp,"А15"); } else   // Логируем выдачу команды
 
 if (KSP_Let[1]){ // В                               Если выбранна буква B
 KSP_Booled[2][14]=true;                          // Тогда выставляем признак B15 - правда
-SendToBum(0x00000297, 1, 0);                     // Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"В15"); } else   // Логируем выдачу команды
 
 if (KSP_Let[2]){  // Г                              Если выбранна буква Г
 KSP_Booled[3][14]=true;                          // Тогда выставляем признак Г15 - правда
-SendToBum(0x00000286, 1, 0);                     // Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"Г15"); } else   // Логируем выдачу команды
 
 if (KSP_Let[3]){  // Д                              Если выбранна буква Д
@@ -1898,7 +1868,6 @@ JPS(1,is_operator,is_miu,is_ksp,"Д15"); } else   // Логируем выдачу команды
 
 if (KSP_Let[4]){  // Ж
 KSP_Booled[5][14]=true;                          // Тогда выставляем признак Ж15 - правда
-SendToBum(0x000002B8, 1, 1);                     // Команда в БУМ ()
         USO_Booled[3][4] = true;
         USO_Booled[3][2] = false;
         USO_Booled[3][3] = false;
@@ -1909,7 +1878,6 @@ JPS(1,is_argon,is_operator,"Выбран канал  В  БЦВК",""); } else   // Логируем выд
 
 if (KSP_Let[5]){  // И
 KSP_Booled[6][14]=true;                          // Тогда выставляем признак И15 - правда
-SendToBum(0x000002B9, 1, 1);                     // Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"И15"); } else   // Логируем выдачу команды
 
 if (KSP_Let[6]){  // К
@@ -2058,13 +2026,11 @@ JPS(1,is_operator,is_miu,is_ksp,"А17"); } else   // Логируем выдачу команды
 
 if (KSP_Let[1]){ // В                               Если выбранна буква B
 KSP_Booled[2][16]=true;                          // Тогда выставляем признак B16 - правда
-SendToBum(0x00000280, 1, 0);                     // Команда в БУМ ()
 cw_AC7[0]=1;                                     // Логический признак "визир-причал"
 JPS(1,is_operator,is_miu,is_ksp,"В17"); } else   // Логируем выдачу команды
 
 if (KSP_Let[2]){  // Г                              Если выбранна буква Г
 KSP_Booled[3][16]=true;                          // Тогда выставляем признак Г16 - правда
-SendToBum(0x000002A6, 0, 0);                     // Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"Г17"); } else   // Логируем выдачу команды
 
 if (KSP_Let[3]){  // Д                              Если выбранна буква Д
@@ -2073,12 +2039,10 @@ JPS(1,is_operator,is_miu,is_ksp,"Д17"); } else   // Логируем выдачу команды
 
 if (KSP_Let[4]){  // Ж
 KSP_Booled[5][16]=true;                          // Тогда выставляем признак Ж16 - правда
-SendToBum(0x000002BB, 1, 0);                     // Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"Ж17"); } else   // Логируем выдачу команды
 
 if (KSP_Let[5]){  // И
 KSP_Booled[6][16]=true;                          // Тогда выставляем признак И17 - правда
-SendToBum(0x000002BC, 1, 0);                     // Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"И17"); } else   // Логируем выдачу команды
 
 if (KSP_Let[6]){  // К
@@ -2087,7 +2051,6 @@ JPS(1,is_operator,is_miu,is_ksp,"К17"); } else   // Логируем выдачу команды
 
 if (KSP_Let[7]){  // Л
 KSP_Booled[8][16]=true;                          // Тогда выставляем признак Л17 - правда
-SendToBum(0x00000282, 1, 1);                     // Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"Л17"); }        // Логируем выдачу команды
 
 // Возвращаем цвет буквам КСП
@@ -2142,17 +2105,14 @@ void __fastcall Tksplfrm::ksp_18Click(TObject *Sender)
 {
 if (KSP_Let[1]){ // В                               Если выбранна буква B
 KSP_Booled[2][17]=true;                          // Тогда выставляем признак B16 - правда
-SendToBum(0x00000280, 0, 0);                     // Команда в БУМ (ВСК - причал)
 JPS(1,is_operator,is_miu,is_ksp,"В18"); } else   // Логируем выдачу команды
 
 if (KSP_Let[4]){  // Ж
 KSP_Booled[5][17]=true;                          // Тогда выставляем признак Ж16 - правда
-SendToBum(0x000002BB, 0, 0);                     // Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"Ж18"); } else   // Логируем выдачу команды
 
 if (KSP_Let[5]){  // И
 KSP_Booled[6][17]=true;                          // Тогда выставляем признак И16 - правда
-SendToBum(0x000002BC, 0, 0);                     // Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"И18"); } else   // Логируем выдачу команды
 
 if (KSP_Let[6]){  // К
@@ -2161,7 +2121,6 @@ JPS(1,is_operator,is_miu,is_ksp,"К18"); } else   // Логируем выдачу команды
 
 if (KSP_Let[7]){  // Л
 KSP_Booled[8][17]=true;                          // Тогда выставляем признак Л16 - правда
-SendToBum(0x00000282, 1, 0);                     // Команда в БУМ ()
 JPS(1,is_operator,is_miu,is_ksp,"Л18"); }        // Логируем выдачу команды
 
 // Возвращаем цвет буквам КСП

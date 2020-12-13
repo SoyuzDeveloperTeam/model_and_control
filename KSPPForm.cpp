@@ -8,7 +8,6 @@
 #include "main_header.h"
 #include "JouHeader.h"         // Заголовок для журнала
 #include "JouStrings.h"        // Строковые переменные для журнала
-#include "bumconnect.cpp"      // Обмен с БУМ
 #include "main_header.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)

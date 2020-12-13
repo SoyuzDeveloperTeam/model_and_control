@@ -261,7 +261,6 @@ object otkazy_frm: Totkazy_frm
       Height = 17
       Caption = 'X'
       TabOrder = 12
-      OnClick = CheckBox13Click
     end
     object CheckBox14: TCheckBox
       Left = 168
@@ -308,7 +307,6 @@ object otkazy_frm: Totkazy_frm
       Height = 17
       Caption = #1054#1090#1082#1072#1079' '#1059#1050#1042' '#1055#1056#1044' '#1086#1089#1085
       TabOrder = 0
-      OnClick = CheckBox16Click
     end
     object CheckBox17: TCheckBox
       Left = 8
@@ -317,7 +315,6 @@ object otkazy_frm: Totkazy_frm
       Height = 17
       Caption = #1054#1090#1082#1072#1079' '#1059#1050#1042' '#1055#1056#1044' '#1088#1077#1079
       TabOrder = 1
-      OnClick = CheckBox17Click
     end
     object CheckBox18: TCheckBox
       Left = 8
@@ -334,7 +331,6 @@ object otkazy_frm: Totkazy_frm
       Height = 17
       Caption = #1054#1090#1082#1072#1079' '#1059#1050#1042' '#1055#1056#1052' '#1088#1077#1079
       TabOrder = 3
-      OnClick = CheckBox19Click
     end
     object CheckBox20: TCheckBox
       Left = 8
@@ -367,7 +363,6 @@ object otkazy_frm: Totkazy_frm
       Height = 17
       Caption = #1054#1090#1082#1072#1079' '#1092#1072#1088#1099
       TabOrder = 0
-      OnClick = CheckBox22Click
     end
     object CheckBox23: TCheckBox
       Left = 8
@@ -400,7 +395,6 @@ object otkazy_frm: Totkazy_frm
       Height = 17
       Caption = #1054#1090#1082#1072#1079' '#1042#1058#1050
       TabOrder = 4
-      OnClick = CheckBox26Click
     end
     object CheckBox27: TCheckBox
       Left = 8

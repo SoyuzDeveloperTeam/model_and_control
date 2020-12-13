@@ -11,7 +11,6 @@
 #include "inpu_connect.cpp"
 #include "inpuconnect.cpp"
 #include "ICN_header.h"
-#include "bumconnect.cpp"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"

@@ -34,6 +34,16 @@ static int f_test;
 static TDateTime SFD_sec;
 static double ghjh;
 
+static WSADATA wsaData;                // Структура Win Socket
+static AnsiString WsaIpAddr;    // IP адрес из конфигурации
+
+static TIniFile *MiuConf;       // Файл конфигурации
+static AnsiString ConfFileName;
+
+static AnsiString inpu_con_data[8];
+static int iResult;                    // Результатирующая переменная
+
+
 // -- -- -- --
 
 HINSTANCE Lib = LoadLibrary("LIB_BNO.dll");                    // загружаем библиотеку динамически
@@ -94,7 +104,7 @@ err = WSAStartup(wVersionRequested, &wsaData);
 void __fastcall TMainForm::pusk_btnClick(TObject *Sender)
 { // Операции по нажатию кнопки "ПУСК"
 PuskPr = true;                     // Вводим признак "Пуск динамики"
-ModelDateTime_Timer->Enabled=true; // Запускаем таймер модельного времени (он и задает модельное время при отсутствии БУМ - иначе выводим от БУМа)
+ModelDateTime_Timer->Enabled=true; // Запускаем таймер модельного времени
 MainTimer->Enabled=true;           // Запуск глобального обработчика команд. Разрешение КСП, УСО и т.д.
 ChekTSKD->Enabled=true;            // Обработчик операций СКД
 pusk_btn->Enabled=false;           // Блокируем кнопку "ПУСК" во избежание сбоев при повторной выдаче в динамике.
@@ -110,11 +120,6 @@ void __fastcall TMainForm::N3Click(TObject *Sender)
 {
 ts_form->Show();  //Запуск формы "ТС"
 }
-//---------------------------------------------------------------------------
-//void GetStructFromBUM(struct STR_temp* s)   // Получить от БУМа структуру параметров
-//{
-//memcpy((void *)s,(void *)&DATA_FROM_MS_mas[n_act_str],sizeof(STR_temp));
-//}
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::N14Click(TObject *Sender)
 { // Запуск формы ТОРУ
@@ -189,6 +194,19 @@ BkuC->Show();
 }
 //---------------------------------------------------------------------------
 
+void Config_init (AnsiString iniName) {  // Процедура инициализации файла конфигурации
+ConfFileName = "C:\1231231\Out\miu_config.ini";  // Создаем имя файла конфигурации
+MiuConf = new TIniFile(iniName);                                   // Присваиваем
+if(FileExists(iniName))                                            // Если такой файл существует, то...
+{
+JPS(1,"Чтение файла конфигурации...","","","");                         // Логируем о начале процесса чтения файла
+WsaIpAddr = MiuConf->ReadString("WSA","main_ip","0.0.0.0");             // Основной айпишник
+inpu_con_data[0] = WsaIpAddr;
+inpu_con_data[1] = MiuConf->ReadString("INPU","inpu1_port_com1","0000");
+inpu_con_data[2] = MiuConf->ReadString("INPU","inpu1_port_com2","0000");
+} else JPS(3,"Отсутствует файл конфигурации!","","","");
+}
+
 void __fastcall TMainForm::N12Click(TObject *Sender)
 {
 AboutForm->Show();
@@ -227,12 +245,6 @@ ksplfrm->Show();
 VOID __fastcall TMainForm::init_Click(TObject *Sender)
 {
 JPS(1,is_operator,is_miu,"Запущен процесс инициализации.","");
-
-// Подготовка структуры параметров от ДК для БУМ-МС
-dk_mass.str_1 = 0x02000700;
-dk_mass.str_2 = 0x00001500;
-dk_mass.cmd   = 0x00200101;
-dk_mass.size  = ntohl(48);
 
   if( Lib >= (HINSTANCE)32 )  // Загружаем библиотеку для мат.моделирования
   {
@@ -274,10 +286,6 @@ iResult = WSAStartup(MAKEWORD(2,2), &wsaData); // Инициализируем...
                 WSACleanup(); }  else {        // Если удачная инициализация и подключение библы, то...
                 JPS(1,"Загруженна библиотека Winsock.dll","","","");}
 
-//---------//
-// 1.1.2. Объявление сокетов подключения к БУМ
-
-
 StatusBar->Panels->Items[2]->Text="И  П";   // Текущее состояние МиУ И - Инициализация, П - протокол
 
 //---------//
@@ -286,7 +294,7 @@ StatusBar->Panels->Items[2]->Text="И  П";   // Текущее состояние МиУ И - Инициал
 // inet_addr((unsigned char)MiuConf->ReadString("WSA","main_ip","0.0.0.0"))
 // "вынимаем" из файла конфигурации актуальные данные
 AnsiString fdsfd = MiuConf->ReadString("WSA","main_ip","0.0.0.0");
-char * ipaddress = fdsfd.c_str(); // Актуальный IP адрес (должнен быть так же указан в конфиге БУМа и БММ)
+char * ipaddress = fdsfd.c_str(); // Актуальный IP адрес
 
                  // То же + делать проверку на соответствие в конфиге БУМа
 
@@ -387,9 +395,7 @@ init_->Enabled=false;
 Button9->Enabled=true;
 Button4->Enabled=true;
 close_socket->Enabled=true;
-if(WithoutBum->Checked){
  JPS(1,"","","Автономный вариант без моделей","");
-}
 JPS(1,"Процедура инициализации завершена. ","","","");
 StatusBar->Panels->Items[0]->Text="Процедура инициализации завершена. Ожидание отработки начальных условий...";
 } else
@@ -418,11 +424,9 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
 {
 ver_num=" 1.0.1.56";              // Переделать - выводить версию из атрибутов
 // --- Выставляем начальное состояние иконок моделей --- //
-ModelStatusPicList->GetBitmap(0, bum_status_pic->Picture->Bitmap);
 ModelStatusPicList->GetBitmap(0, inpu_status_pic->Picture->Bitmap);
 ModelStatusPicList->GetBitmap(0, argon_status_pic->Picture->Bitmap);
 ModelStatusPicList->GetBitmap(0, SpsStatusPic->Picture->Bitmap);
-ModelStatusPicList->GetBitmap(0, bum_status_pic->Picture->Bitmap);
 image_index = 0;
 IdCanSend = false;
 PuskPr = false;  
@@ -755,7 +759,6 @@ mass_tk_full = NU_temp.m_tk + dynamics.rasp;  // Расчет текущей массы ТК
 
 Label15->Caption=tResult;   // Результатирующая переменная для проведения внутренних тестов Аргона (почеу она тут?)
 
-Label13->Caption=(ob_cur-onboard_dt).FormatString("hh:nn:ss");
 
 USO_Booled[10][7] = dpo_status_bit;
 if(USO_Booled[12][7])YzS1[0]=1;
@@ -955,69 +958,10 @@ arg_deb->Show();
 
 //---------------------------------------------------------------------------
 
-void __fastcall TMainForm::p_sost_from_bumTimer(TObject *Sender)
-{
-SendToBum(0x00102101, 907, 0);       //Команда в БУМ ()
-iResult = recv( TeleSocket,(char *)&PS_tk_iss,1025, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
-}
+//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
 
-void __fastcall TMainForm::Button1Click(TObject *Sender)
-{
-PS_tk_iss.fd_1=ntohl(0xcacacaca);
-PS_tk_iss.fd_2=ntohl(0xb4b4b4b4);
-PS_tk_iss.fd_3=ntohl(123);
-PS_tk_iss.fd_4=ntohl(123);
-PS_tk_iss.fd_5=ntohl(123);
-PS_tk_iss.fd_6=ntohl(123);
-PS_tk_iss.tk_type=ntohl(1);
-PS_tk_iss.model_sec=ntohl(6578);
-PS_tk_iss.milisec_ost=ntohl(987);
-PS_tk_iss.vec_j2000_mks[0]=0x7feffffc57ca82ae;
-PS_tk_iss.vec_j2000_mks[1]=0x7feffffc57ca82ae;
-PS_tk_iss.vec_j2000_mks[2]=0x7feffffc57ca82ae;
-PS_tk_iss.sun_vec[0]=0x7feffffc57ca82ae;
-PS_tk_iss.sun_vec[1]=0x7feffffc57ca82ae;
-PS_tk_iss.sun_vec[2]=0x7feffffc57ca82ae;
-PS_tk_iss.vec_tk_TPK[0]=0xc57ca82ae;
-PS_tk_iss.vec_tk_TPK[1]=0xc57ca82ae;
-PS_tk_iss.vec_tk_TPK[2]=0xc57ca82ae;
-PS_tk_iss.t_to_pt=123456789876;
-PS_tk_iss.pr_t_pt=1;
-PS_tk_iss.fara_pr=ntohl(3);
-PS_tk_iss.tv_pr=ntohl(4);
-PS_tk_iss.dpo_h[0]=0x7feffffc57ca82ae;
-PS_tk_iss.tv_pr=ntohl(9);
-PS_tk_iss.iss_tp_pr=3;
-PS_tk_iss.CIFC_Wdis[0]=0xDADADADA;
-PS_tk_iss.bsr_RUO[0]=0xAFAFAFAF;
-PS_tk_iss.bsr_RUO[1]=0xBABABABA;
-PS_tk_iss.bsr_RUO[2]=0xAFAFAFAF;
-iResult = send( TeleSocket,(char *)&PS_tk_iss,1000, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::Button10Click(TObject *Sender)
-{
-SendToBum(StrToInt(Edit5->Text),StrToInt(Edit6->Text),StrToInt(Edit7->Text));       //Команда в БУМ ()
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::N37Click(TObject *Sender)
-{
-otkazy_frm->Show();
-}
-//---------------------------------------------------------------------------
-
-
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::N44Click(TObject *Sender)
-{
-cwform->Show();        
-}
 //---------------------------------------------------------------------------
 
 void __fastcall TMainForm::ArgonTaktTimer(TObject *Sender)
@@ -1036,8 +980,6 @@ message_status[1]=1;}
 message_status[0] = 0;
 debug_panel->Visible=false;    // Скрываем отладочную панель
 model_status_pics->Width=177;
-N35->Enabled=false;
-N22->Enabled=false;
 } 
 if(debug_status->Checked){     // Если введен признак отладки
 debug_panel->Visible=true;
@@ -1045,9 +987,7 @@ if(message_status[0]==0){
 message_status[1] = 0;
 JPS(3,is_operator,is_miu,"ВНИМАНИЕ!!! Введен режим отладки!","");
 message_status[0]=1;}
-model_status_pics->Width=241;  // Меняем размер окна состояния моделей
-N35->Enabled=true;
-N22->Enabled=true;
+model_status_pics->Width=241;  // Меняем размер окна состояния моделей;
 }
 }
 //---------------------------------------------------------------------------

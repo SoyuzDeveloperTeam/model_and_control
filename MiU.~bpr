@@ -9,19 +9,18 @@
       brvi_irvi\irvi_brfi_frm.obj KSPLForm.obj KSPPForm.obj sepform.obj 
       cdn_clock_frm.obj graph_a1.obj USOFrm.obj bfi_formats.obj zakon_upr.obj 
       InstructorFormat_Form.obj help_form.obj iss_per_tp.obj vku_graph.obj 
-      brus_form.obj debug_bum_frm.obj vived_frm.obj iss\sm_ssvp_PX.obj 
-      argon\argon_debug_frm.obj SOTR_frm.obj trassa.obj AboutFrm.obj otkazy.obj 
-      inpudebugf.obj sps_frm.obj bilu_format.obj neptun\neptun.obj ssvp_form.obj 
-      CWFrm.obj krl_form.obj argon\bumconnect.obj MiU.obj dta.obj 
-      argon\arg_kdu_operations.obj argon\arg_prkrt.obj argon\arg_main.obj 
-      sotr_model.obj inpu_connect.obj MainCycle_PrObr.obj main_math.obj 
-      ks020\ks_main.obj neptun\nepthdr.obj argon\arg_pks.obj argon\arg_irvi.obj 
-      bum_connect.obj pults_tk.obj transit.obj neptun\neptun_main.obj 
-      unity_connect.obj winsock_ed.obj argon\argjh.obj kurs\kurs_main.obj 
-      inpuconnect.obj uso_model.obj ssvp_module.obj ks020\ks020_model.obj 
-      neptun\common.obj lib\StdAtmos.obj control.obj MotionModel\runge_kutta.obj 
-      fly_model.obj md\md_main.obj DConvert.obj miscdata\rdc_draph.obj 
-      inkmodel.obj macros.obj"/>
+      brus_form.obj vived_frm.obj iss\sm_ssvp_PX.obj argon\argon_debug_frm.obj 
+      SOTR_frm.obj trassa.obj AboutFrm.obj otkazy.obj inpudebugf.obj sps_frm.obj 
+      bilu_format.obj neptun\neptun.obj ssvp_form.obj CWFrm.obj krl_form.obj 
+      argon\bumconnect.obj MiU.obj dta.obj argon\arg_kdu_operations.obj 
+      argon\arg_prkrt.obj argon\arg_main.obj sotr_model.obj inpu_connect.obj 
+      MainCycle_PrObr.obj main_math.obj ks020\ks_main.obj neptun\nepthdr.obj 
+      argon\arg_pks.obj argon\arg_irvi.obj bum_connect.obj pults_tk.obj 
+      transit.obj neptun\neptun_main.obj unity_connect.obj winsock_ed.obj 
+      argon\argjh.obj kurs\kurs_main.obj inpuconnect.obj uso_model.obj 
+      ssvp_module.obj ks020\ks020_model.obj neptun\common.obj lib\StdAtmos.obj 
+      control.obj MotionModel\runge_kutta.obj fly_model.obj md\md_main.obj 
+      DConvert.obj miscdata\rdc_draph.obj inkmodel.obj macros.obj"/>
     <RESFILES value="MiU.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -31,10 +30,9 @@
       brvi_irvi\irvi_brfi_frm.dfm KSPLForm.dfm KSPPForm.dfm sepform.dfm 
       cdn_clock_frm.dfm graph_a1.dfm USOFrm.dfm bfi_formats.dfm zakon_upr.dfm 
       InstructorFormat_Form.dfm help_form.dfm iss_per_tp.dfm vku_graph.dfm 
-      brus_form.dfm debug_bum_frm.dfm vived_frm.dfm iss\sm_ssvp_PX.dfm 
-      argon\argon_debug_frm.dfm SOTR_frm.dfm trassa.dfm AboutFrm.dfm otkazy.dfm 
-      inpudebugf.dfm sps_frm.dfm bilu_format.dfm neptun\neptun.dfm ssvp_form.dfm 
-      CWFrm.dfm krl_form.dfm"/>
+      brus_form.dfm vived_frm.dfm iss\sm_ssvp_PX.dfm argon\argon_debug_frm.dfm 
+      SOTR_frm.dfm trassa.dfm AboutFrm.dfm otkazy.dfm inpudebugf.dfm sps_frm.dfm 
+      bilu_format.dfm neptun\neptun.dfm ssvp_form.dfm CWFrm.dfm krl_form.dfm"/>
     <LIBFILES value=""/>
     <LIBRARIES value="tee.lib bdertl.lib dbrtl.lib vcldb.lib inet.lib indy.lib rtl.lib vcl.lib"/>
     <SPARELIBS value="vcl.lib rtl.lib indy.lib inet.lib vcldb.lib dbrtl.lib bdertl.lib tee.lib"/>
@@ -102,7 +100,6 @@
       <FILE FILENAME="iss_per_tp.cpp" FORMNAME="iss_t_tp" UNITNAME="iss_per_tp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="vku_graph.cpp" FORMNAME="vkugraph" UNITNAME="vku_graph" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="brus_form.cpp" FORMNAME="brus_frm" UNITNAME="brus_form" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="debug_bum_frm.cpp" FORMNAME="bum_debug" UNITNAME="debug_bum_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="vived_frm.cpp" FORMNAME="liftoff_form" UNITNAME="vived_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="iss\sm_ssvp_PX.cpp" FORMNAME="sm_ssvp_plx_frm" UNITNAME="sm_ssvp_PX" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="argon\argon_debug_frm.cpp" FORMNAME="arg_deb" UNITNAME="argon_debug_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
