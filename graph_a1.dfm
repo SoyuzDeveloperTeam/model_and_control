@@ -1,10 +1,10 @@
 object graphics: Tgraphics
-  Left = -8
-  Top = 380
+  Left = -1
+  Top = 75
   BorderStyle = bsSingle
   Caption = 'graphics'
   ClientHeight = 672
-  ClientWidth = 1010
+  ClientWidth = 1012
   Color = clBackground
   DefaultMonitor = dmDesktop
   Font.Charset = DEFAULT_CHARSET
@@ -27,11 +27,11 @@ object graphics: Tgraphics
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 1010
+    Width = 1012
     Height = 672
-    ActivePage = TabSheet9
+    ActivePage = TabSheet11
     Align = alClient
-    TabIndex = 8
+    TabIndex = 10
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = #1050#1044#1059
@@ -1605,7 +1605,7 @@ object graphics: Tgraphics
       object Chart9: TChart
         Left = 0
         Top = 0
-        Width = 1002
+        Width = 1004
         Height = 644
         AllowPanning = pmNone
         AllowZoom = False
@@ -46836,12 +46836,12 @@ object graphics: Tgraphics
           Marks.Transparent = True
           Marks.Visible = False
           SeriesColor = clRed
-          Pointer.HorizSize = 51
+          Pointer.HorizSize = 45
           Pointer.InflateMargins = True
           Pointer.Pen.Style = psDashDot
           Pointer.Pen.Width = 11
           Pointer.Style = psCircle
-          Pointer.VertSize = 51
+          Pointer.VertSize = 45
           Pointer.Visible = True
           XValues.DateTime = False
           XValues.Name = 'X'
@@ -46855,6 +46855,52 @@ object graphics: Tgraphics
           RadiusValues.Name = 'Radius'
           RadiusValues.Multiplier = 1
           RadiusValues.Order = loNone
+        end
+      end
+    end
+    object TabSheet11: TTabSheet
+      Caption = #1058#1072#1073#1083#1080#1094#1099' '#1086#1087#1088'. '#1076'.'
+      ImageIndex = 10
+      object PageControl2: TPageControl
+        Left = 0
+        Top = 0
+        Width = 1004
+        Height = 644
+        ActivePage = TabSheet12
+        Align = alClient
+        TabIndex = 0
+        TabOrder = 0
+        object TabSheet12: TTabSheet
+          Caption = #1040#1054' '#1057#1052
+          object rdc_sm: TChart
+            Left = 8
+            Top = 8
+            Width = 777
+            Height = 393
+            BackWall.Brush.Color = clWhite
+            BackWall.Brush.Style = bsClear
+            Title.Text.Strings = (
+              'TChart')
+            View3D = False
+            TabOrder = 0
+            object Series13: TLineSeries
+              Marks.ArrowLength = 8
+              Marks.Visible = False
+              SeriesColor = clRed
+              Title = 'rds_sm_dsm_ch'
+              Pointer.InflateMargins = True
+              Pointer.Style = psRectangle
+              Pointer.Visible = False
+              XValues.DateTime = False
+              XValues.Name = 'X'
+              XValues.Multiplier = 1
+              XValues.Order = loAscending
+              YValues.DateTime = False
+              YValues.Name = 'Y'
+              YValues.Multiplier = 1
+              YValues.Order = loNone
+            end
+          end
         end
       end
     end

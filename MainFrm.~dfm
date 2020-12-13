@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 238
-  Top = 81
+  Left = 196
+  Top = 64
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   ClientHeight = 570
@@ -361,6 +361,13 @@ object MainForm: TMainForm
       0403000400000404010404040104040404040404040404040404020202020404
       000004040404040401040404040404040404040404040404040404040000}
     OnClick = SpeedButton1Click
+  end
+  object Label21: TLabel
+    Left = 392
+    Top = 464
+    Width = 49
+    Height = 14
+    Caption = 'Label21'
   end
   object GroupBox2: TGroupBox
     Left = 8
@@ -881,7 +888,6 @@ object MainForm: TMainForm
         Height = 25
         Caption = #1054#1090#1087#1088#1072#1074#1080#1090#1100
         TabOrder = 3
-        OnClick = Button10Click
       end
     end
     object Button3: TButton
@@ -908,7 +914,6 @@ object MainForm: TMainForm
       Height = 25
       Caption = #1061#1059
       TabOrder = 9
-      OnClick = Button1Click
     end
     object Edit2: TEdit
       Left = 584
@@ -1153,6 +1158,7 @@ object MainForm: TMainForm
     Height = 17
     Caption = #1054#1090#1083#1072#1076#1082#1072
     TabOrder = 10
+    Visible = False
     OnClick = debug_statusClick
   end
   object GroupBox3: TGroupBox
@@ -1279,7 +1285,7 @@ object MainForm: TMainForm
       end
       object N22: TMenuItem
         Caption = #1041#1059#1052
-        OnClick = N22Click
+        Visible = False
       end
       object N26: TMenuItem
         Caption = #1041#1060#1048'-'#1057#1080#1084#1074#1086#1083
@@ -1407,7 +1413,6 @@ object MainForm: TMainForm
       Caption = #1054#1090#1082#1072#1079#1099
       object N37: TMenuItem
         Caption = #1054#1090#1082#1072#1079#1099' '#1073#1086#1088#1090#1086#1074#1099#1093' '#1089#1080#1089#1090#1077#1084
-        OnClick = N37Click
       end
     end
     object N34: TMenuItem
@@ -1418,11 +1423,14 @@ object MainForm: TMainForm
       end
       object N35: TMenuItem
         Caption = #1054#1073#1084#1077#1085' '#1089' '#1041#1059#1052
-        OnClick = N35Click
+        Visible = False
       end
       object N44: TMenuItem
         Caption = #1059#1087#1088#1072#1074#1083#1103#1102#1097#1080#1077' '#1089#1083#1086#1074#1072
-        OnClick = N44Click
+      end
+      object N38: TMenuItem
+        Caption = #1054#1073#1084#1077#1085' '#1089' '#1048#1085#1055#1059
+        OnClick = N38Click
       end
     end
     object N9: TMenuItem
@@ -1448,7 +1456,6 @@ object MainForm: TMainForm
   end
   object Timer2: TTimer
     Interval = 50
-    OnTimer = Timer2Timer
     Left = 680
     Top = 520
   end
@@ -2510,7 +2517,6 @@ object MainForm: TMainForm
   object p_sost_from_bum: TTimer
     Enabled = False
     Interval = 10
-    OnTimer = p_sost_from_bumTimer
     Left = 600
     Top = 472
   end

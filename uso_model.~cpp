@@ -147,7 +147,29 @@ if(KSP_Booled[0][16]) {  // A 17
 
 // КСПп - Линейка Б //
 
+if(KSP_Booled[1][0]) {  // Б 1
+   KSP_Booled[1][0]=false;
+        // Автомат СЭП откл
+        USO_Booled[0][9]=true;
+}
 
+if(KSP_Booled[1][1]) {  // Б 2
+   KSP_Booled[1][1]=false;
+        // Автомат СЭП откл
+        USO_Booled[0][9]=false;
+}
+
+if(KSP_Booled[1][2]) {  // Б 3
+   KSP_Booled[1][2]=false;
+        // Автомат СЭП откл
+        USO_Booled[0][10]=true;
+}
+
+if(KSP_Booled[1][3]) {  // Б 2
+   KSP_Booled[1][3]=false;
+        // Автомат СЭП откл
+        USO_Booled[0][10]=false;
+}
 
 // КСПл - Линейка В //
 

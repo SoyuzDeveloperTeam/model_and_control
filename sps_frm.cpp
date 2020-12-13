@@ -20,6 +20,7 @@ void __fastcall Tsps_form::Timer1Timer(TObject *Sender)
 {
 //for (i_sps=0;i_sps=38;i_sps++){
 //TSpsDataN[i_sps]=SpsDataSt.TSpsParam[i_sps];}
+
 if(TSpsDataN[2]<5){
 sps_rh20->Color=clYellow;
 sps_rh20->Font->Color=clBlack;
@@ -37,5 +38,6 @@ sps_rh20->Color=clMaroon;
 sps_rh20->Font->Color=clYellow;
 sps_rh20->Caption=TSpsDataN[2];
 }
+
 }
 //---------------------------------------------------------------------------

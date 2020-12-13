@@ -22,5 +22,10 @@ Kontr_No        //11 - КОНТР
 const int SmallGlobusTraceWidth = 148;
 const int TraceArrayLength = 100;
 
+// Фоновая информация
+typedef struct{
+/* z150 */
+}ks_Fon_TypePrim;
+
 #endif ks_recs
  

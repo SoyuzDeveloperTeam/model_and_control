@@ -1,6 +1,6 @@
 object sps_form: Tsps_form
-  Left = 334
-  Top = 56
+  Left = 19
+  Top = 40
   BorderStyle = bsSingle
   Caption = #1057#1055#1057
   ClientHeight = 489

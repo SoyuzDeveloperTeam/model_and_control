@@ -1,6 +1,6 @@
 object KSP_right: TKSP_right
-  Left = 81
-  Top = 73
+  Left = 30
+  Top = 38
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1050#1057#1055' '#1087#1088#1072#1074#1086#1077

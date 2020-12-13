@@ -14,12 +14,10 @@ Type c_uchar  = Byte;               Const _c_uchar  = _Byte;
 */
 #ifndef ks020_modelH
 #define ks020_modelH
+#include "ks_recs.h"
 //---------------------------------------------------------------------------
 
-static const unsigned short SmallGlobusTraceWidth = 74; // Шаг для маленького глобуса
-static const unsigned short S_Din_DeltaSize = 2; // 1 CRC + 1 Control
-static const unsigned short S_Raz_DeltaSize = 3; // 1 CRC + 1 Control + 1 CN_S_Raz
-static const unsigned short S_Din_MaxSize = 32*320-2;
+
 
 // For MIL-1556 - Telemetry Model and DisKRY model
 
@@ -57,32 +55,13 @@ _r_A_16
 }tmk_R_Packets;
 
 
-/*
-  Фоновая инфорация.
-  Данные вывода (массив а1-фоновый) 8 слов
-*/
 
-typedef struct{
-short LongDeg;             // z150 - долгота подспутниковой точки
-short LatDeg;              // z151 - широта подспутниковой точки
-unsigned short LongPix;    // z180 - долгота подспутниковой точки (пикселы)
-unsigned short RadioH;     // z170 - часы времени зоны РВ
-unsigned short RadioM;     // z181 - минуты  времени зоны РВ
-unsigned short RadioS;     // z182 - секунды времени зоны РВ
-unsigned short SunH;       // z171 - часы времени восхода-захода
-unsigned short SunM;       // z183 - минуты  времени восхода-захода
-unsigned short SunS;       // z184 - секунды времени восхода-захода
-unsigned short z185;       // z185 - сообщение о ВС
-unsigned short z186;       // z186 - сообщение
-unsigned short z187;       // z187 - сообщение
-unsigned short DetachSign; // z188 - признак разделения
-}ks_Fon_TypePrim;
 
 typedef ks_Fon_TypePrim ks_Fon_Type;
 /*
   Данные вывода (массив а0-разовый)
 */
-static unsigned short SmallGlobusTraceType[SmallGlobusTraceWidth-1];
+
 
 typedef struct{
 unsigned char z081;  // Долгота точки восхода (пикселы)

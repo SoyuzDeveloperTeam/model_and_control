@@ -9,6 +9,7 @@
 #include "JouHeader.h"         // Заголовок для журнала
 #include "JouStrings.h"        // Строковые переменные для журнала
 #include "bumconnect.cpp"      // Обмен с БУМ
+#include "main_header.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -23,6 +24,7 @@ __fastcall TKSP_right::TKSP_right(TComponent* Owner)
 
 void __fastcall TKSP_right::KSP_R_B_imageClick(TObject *Sender)
 {
+if(PuskPr){
 KSP_Let[0]=false;
 KSP_Let[1]=false;
 KSP_Let[2]=false;
@@ -65,11 +67,12 @@ ksp_15->Enabled=true;
 ksp_16->Enabled=true;
 ksp_17->Enabled=true;
 ksp_18->Enabled=true;
-}
+}}
 //---------------------------------------------------------------------------
 
 void __fastcall TKSP_right::KSP_R_N_imageClick(TObject *Sender)
 {
+if(PuskPr){
 KSP_Let[0]=false;
 KSP_Let[1]=false;
 KSP_Let[2]=false;
@@ -113,13 +116,14 @@ ksp_15->Enabled=true;
 ksp_16->Enabled=true;
 ksp_17->Enabled=true;
 ksp_18->Enabled=true;
-}
+}}
 //---------------------------------------------------------------------------
 
 
 
 void __fastcall TKSP_right::KSP_R_T_imageClick(TObject *Sender)
 {
+if(PuskPr){
 byte i;
 for(i=0; i<=12; i++){
  KSP_Let[i]=false;
@@ -157,11 +161,12 @@ ksp_15->Enabled=true;
 ksp_16->Enabled=true;
 ksp_17->Enabled=true;
 ksp_18->Enabled=true;
-}
+}}
 //---------------------------------------------------------------------------
 
 void __fastcall TKSP_right::KSP_R_P_imageClick(TObject *Sender)
 {
+if(PuskPr){
 KSP_Let[0]=false;
 KSP_Let[1]=false;
 KSP_Let[2]=false;
@@ -206,11 +211,12 @@ ksp_15->Enabled=true;
 ksp_16->Enabled=true;
 ksp_17->Enabled=true;
 ksp_18->Enabled=true;
-}
+}}
 //---------------------------------------------------------------------------
 
 void __fastcall TKSP_right::KSP_R_R_imageClick(TObject *Sender)
 {
+if(PuskPr){
 KSP_Let[0]=false;
 KSP_Let[1]=false;
 KSP_Let[2]=false;
@@ -256,11 +262,12 @@ ksp_15->Enabled=true;
 ksp_16->Enabled=true;
 ksp_17->Enabled=true;
 ksp_18->Enabled=true;
-}
+}}
 //---------------------------------------------------------------------------
 
 void __fastcall TKSP_right::KSP_R_S_imageClick(TObject *Sender)
 {
+if(PuskPr){
 byte i;
 for(i=0; i<=11; i++){
  KSP_Let[i]=false;
@@ -298,11 +305,12 @@ ksp_15->Enabled=true;
 ksp_16->Enabled=true;
 ksp_17->Enabled=true;
 ksp_18->Enabled=true;
-}
+}}
 //---------------------------------------------------------------------------
 
 void __fastcall TKSP_right::KSP_R_U_imageClick(TObject *Sender)
 {
+if(PuskPr){
 byte i;
 for(i=0; i<=13; i++){
  KSP_Let[i]=false;
@@ -340,11 +348,12 @@ ksp_15->Enabled=true;
 ksp_16->Enabled=true;
 ksp_17->Enabled=true;
 ksp_18->Enabled=true;
-}
+}}
 //---------------------------------------------------------------------------
 
 void __fastcall TKSP_right::KSP_R_F_imageClick(TObject *Sender)
 {
+if(PuskPr){
 byte i;
 for(i=0; i<=14; i++){
  KSP_Let[i]=false;
@@ -381,7 +390,7 @@ ksp_15->Enabled=true;
 ksp_16->Enabled=true;
 ksp_17->Enabled=true;
 ksp_18->Enabled=true;
-}
+}}
 //---------------------------------------------------------------------------
 
 void __fastcall TKSP_right::ksp_1Click(TObject *Sender)

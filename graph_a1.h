@@ -114,6 +114,11 @@ __published:	// IDE-managed Components
         TRadioButton *RadioButton20;
         TRadioButton *RadioButton21;
         TEdit *Edit2;
+        TTabSheet *TabSheet11;
+        TPageControl *PageControl2;
+        TTabSheet *TabSheet12;
+        TChart *rdc_sm;
+        TLineSeries *Series13;
         void __fastcall Timer1Timer(TObject *Sender);
         void __fastcall N1Click(TObject *Sender);
         void __fastcall MenuItem1Click(TObject *Sender);

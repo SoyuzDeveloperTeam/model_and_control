@@ -214,6 +214,8 @@ switch (addr) {   // Обработчик режима
 */
 
 void ChekIrvi (AnsiString irvi_str){
+if(irvi_str.IsEmpty())JPS(3,is_miu,is_operator,"Пустой ввод!",""); else {
+
 irvi_type.mode = StrToInt(irvi_str.SubString(1,2)); // Вырезаем первые два символа строки ирви "режим"
 switch (irvi_type.mode) {   // Обработчик режима
         case 00: /* Приоритетный или принудительный режим выдачи пр-м 1 - 4 */ break;
@@ -223,16 +225,18 @@ switch (irvi_type.mode) {   // Обработчик режима
         case 11: /* Ввод уставки АУС 1-й группы */  break;
         case 12: /* Ввод уставки АУС 2-й группы */  break;
         case 14: /* Одиночный ввод 10-х чисел */                       // Если режим 14, то
+                 if((irvi_str.SubString(3,5)).IsEmpty())JPS(3,is_miu,is_operator,"Пустой адрес!",""); else {
                  irvi_type.addr = StrToInt(irvi_str.SubString(3,5));   // Присваиваем значение адреса
                  if(CorrectAddr(irvi_type.addr)) {                     // Проверяем корректность адреса, если корректен, то
+                 if((irvi_str.SubString(8,7)).IsEmpty())JPS(3,is_miu,is_operator,"Пустое число!",""); else {
                  irvi_type.value = StrToInt(irvi_str.SubString(8,7));  // Присваиваем значение
                  ArgonMemoryType[irvi_type.addr] = irvi_type.value;    // Записываем его в ячейку памяти Аргона
                  SetItvi(irvi_type.mode,irvi_type.addr,ArgonMemoryType[irvi_type.addr], irvi_type.z );   // Выставляем результат на ИРВИ
                  JPS(4,is_argon,is_irvi,"Запись числа "+               // Логируем результат (от имени Аргона)
-                 IntToStr(irvi_type.value)+" по адресу "+IntToStr(irvi_type.addr),"");}
+                 IntToStr(irvi_type.value)+" по адресу "+IntToStr(irvi_type.addr),"");}}
                  else {                                                 // Если адрес не корректен ,то
                  irvi_err = true;
-                 JPS(3,is_argon,is_operator,arg_addr_error,"");     }   // Логируем превышение допустимого значения памяти А16
+                 JPS(3,is_argon,is_operator,arg_addr_error,"");     } }  // Логируем превышение допустимого значения памяти А16
                  break;
         case 15: /* Одиночный ввод 8-х чисел */  break;
         case 17: /* Групповой ввод 10-х чисел */ break;
@@ -291,7 +295,7 @@ switch (irvi_type.mode) {   // Обработчик режима
         irvi_type.value = StrToInt(irvi_str.SubString(8,7));
 
         break;
-}
+} }
 
 }
 

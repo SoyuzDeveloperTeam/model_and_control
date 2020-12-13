@@ -1,6 +1,6 @@
 #ifndef MD_math_header
 #define MD_math_header
-#include "math.hpp"
+#include "math.h"
 
 // Описание глобальных переменных
 

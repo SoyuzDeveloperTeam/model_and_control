@@ -21,6 +21,7 @@ static AnsiString is_prvi     = "ПРВИ              ";
 static AnsiString is_brus     = "БРУС              ";
 static AnsiString is_argon    = "Аргон              ";
 static AnsiString is_kdu      = "КДУ               ";
+static AnsiString is_mcc      = "ЦУП-М              ";
 
 // Команды
 static AnsiString cmd_LoadToArgon = "Загрузка уставок на борт   ";

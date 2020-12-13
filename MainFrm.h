@@ -23,6 +23,76 @@
 #include <Buttons.hpp>
 #include <IdTCPServer.hpp>
 #include <IdDateTimeStamp.hpp>
+//-----------------------------------------------------------------------------
+/* Заголовки */
+#include "MD_math_header.h"
+#include "main_header.h"                // Основной заголовок - main Header
+#include "JouHeader.h"                  // Заголовок для журнала - Header for Journal
+#include "arg_jou.h"                    // Журнал Аргона - argon journal
+#include "dta.cpp"                      // Данные для обмена с БУМ - BUM data
+#include "md_m.h"                       // Модельные переменные - Model data
+#include "ts_header.h"                  // Переменные ТС - TC data
+#include "ICN_header.h"                 // Данные для обмена с ИнПУ - data ffor connect with InPU
+#include "JouStrings.h"                 // Строковые переменные для журнала - String's for JPS loging funtion
+#include "SPSHead.h"                    // Данные СПС ч.1 - SPS Data Part 1
+#include "USOData.h"                    // Параметры УСО - USO Data
+#include "uso_model.cpp"                // Модель УСО - USO Model
+#include "inpu_connect.cpp"             // Обмен с моделью ИнПУ - For connect with InPU
+#include "main_math.cpp"                // Математические модели - Math Models
+#include "argon/arg_header.h"           // Загогловок А16 - argon header #2 (?)
+#include "argon/CtrlWord.h"             // Управляющие слова Аргона - Control words (flags) for argon
+#include "argon/arg_kdu_operations.cpp" // Argon-16 программы КДУ
+#include "sotr_data.h"                  // Модель СОТР
+#include "DateUtils.hpp"
+#include "fly_model.cpp"                // Модель движения
+#include "ssvp_module.h"                // Признаки ССВП
+#include "argon/arg_pks.cpp"            // Программы Аргона - Argon Programs
+#include "bumconnect.cpp"               // Обмен с БУМ - Connect wth BUM
+#include "neptun_main.cpp"              // Основные процедуры ПСА "Нептун-МЭ" - Main proc for Neptune model
+#include "unity_connect.cpp"            // Обмен с Юнити - Connect with Unity
+#include "inpuconnect.cpp"              // Обмен с ИнПУ  - Connect with InPU
+#include "md_main.cpp"                  // Motion Model
+#include "DConvert.cpp"                 // CW Convert Bool[16] to Oct
+#include "miscdata/rdc_draph.cpp"       // Функции графиков определения расстояния до цели
+#include "fly_model.cpp"
+//---------------------------------------------------------------------------
+/* Формы */
+//#include "help_form.cpp"              // Форма Поддержи - Help Form
+#include "bilu_format.cpp"              // Форма БИЛУ - BILU form
+#include "vived_frm.cpp"                // Форма Выведение (график) - "LiftOff" chart
+#include "brus_form.cpp"                // Форма БРУС - BRUS form
+#include "ts_frm.cpp"                   // Форма ТС - TS Form
+#include "bfi_formats.cpp"              // Форма "БФИ Символ" для А16 - BFI Data monitor ith VKU form
+#include "bum_sett_frm.cpp"             // Форма вывода данных БУМ  - Data from BUM form
+#include "toru_frm.cpp"                 // Форма пульта ПУ БПС ТОРУ - TORU Pult form
+#include "EnterNuFrm.cpp"               // Форма ввода начальных условий (НУ)
+#include "kdu_data.cpp"                 // Форма параметров КДУ
+#include "clock_form.cpp"               // Форма БЧК-744К Бортовые Часы на РС МКС
+#include "JouLogFrm.h"                  // Форма основного журнала
+#include "ssvp_form.cpp"                // Форма ССВП - Процессуальная
+#include "zakon_upr.cpp"                // Форма Закон Управления
+#include "KSPLForm.cpp"                 // Форма КСП левое
+#include "KSPPForm.cpp"                 // Форма КСП правое
+#include "USOFrm.cpp"                   // Форма УСО
+#include "krl_form.cpp"                 // Форма КРЛ
+#include "cdn_clock_frm.cpp"            // Форма CDN clock MSK
+#include "AboutFrm.cpp"                 // Форма "О программе..."
+#include "BkuCFrm.cpp"                  // Форма БКУ-Ц "Символ-Ц"
+#include "irvi_brfi_frm.cpp"            // Форма ПРВИ
+#include "graph_a1.cpp"                 // Форма графиков
+#include "SOTR_frm.cpp"                 // Форма СОТР
+#include "InstructorFormat_Form.cpp"    // Форма инструкторского формата
+#include "vku_graph.cpp"                // Форма ВКУ графиком
+#include "iss_per_tp.cpp"               // Форма Переход МКС в ТП
+#include "argon_debug_frm.cpp"          // Форма отладки Аргона
+#include "debug_bum_frm.cpp"            // Форма отладки обмена с БУМ
+#include "inpudebugf.cpp"               // Форма отладки обмена с ИнПУ
+#include "otkazy.cpp"                   // Форма "Отказ Бортоввых Систем"
+#include "neptun.cpp"                   // Форма ПСА "Нептун-МЭ" -  ИнПУ1
+#include "sps_frm.cpp"                  // Форма СПС
+#include "CWFrm.cpp"                    // Форма Contrl Word (debug)
+// Форматы Laptop РС МКС (СМ)
+#include "sm_ssvp_PX.cpp"               // Формат СМ:ССВП:+Х
 //---------------------------------------------------------------------------
 class TMainForm : public TForm
 {
@@ -53,7 +123,6 @@ __published:	// IDE-managed Components
         TStatusBar *StatusBar;
         TGroupBox *model_status_pics;
         TImageList *ModelStatusPicList;
-        TLabel *bum_st_label;
         TImage *inpu_status_pic;
         TLabel *Label2;
         TLabel *Label3;
@@ -71,13 +140,11 @@ __published:	// IDE-managed Components
         TLabel *Label5;
         TLabel *Label6;
         TLabel *onboardTimeLabel;
-        TMenuItem *N22;
         TLabel *Label10;
         TImage *SpsStatusPic;
         TMenuItem *N4;
         TMenuItem *N23;
         TMenuItem *N24;
-        TImage *bum_status_pic;
         TTimer *PuskRgPr;
         TMenuItem *N25;
         TTimer *inpu_com2_connect;
@@ -115,7 +182,6 @@ __published:	// IDE-managed Components
         TEdit *Edit3;
         TMenuItem *N34;
         TMenuItem *N161;
-        TMenuItem *N35;
         TTimer *p_sost_from_bum;
         TGroupBox *GroupBox7;
         TButton *Button8;
@@ -131,14 +197,6 @@ __published:	// IDE-managed Components
         TMenuItem *N36;
         TMenuItem *N37;
         TButton *Button2;
-        TGroupBox *GroupBox9;
-        TEdit *Edit5;
-        TLabel *Label7;
-        TEdit *Edit6;
-        TEdit *Edit7;
-        TButton *Button10;
-        TLabel *Label9;
-        TLabel *Label14;
         TButton *Button3;
         TLabel *Label12;
         TLabel *Label13;
@@ -146,13 +204,6 @@ __published:	// IDE-managed Components
         TSpeedButton *SpeedButton1;
         TButton *Button7;
         TButton *Button1;
-        TEdit *Edit2;
-        TEdit *Edit4;
-        TEdit *Edit8;
-        TEdit *Edit9;
-        TEdit *Edit10;
-        TEdit *Edit11;
-        TButton *Button11;
         TTimer *dk_to_bum;
         TButton *Button13;
         TTimer *unity_s_h;
@@ -166,7 +217,6 @@ __published:	// IDE-managed Components
         TGroupBox *GroupBox3;
         TCheckBox *sps_model;
         TButton *init_;
-        TCheckBox *WithoutBum;
         TButton *close_socket;
         TCheckBox *with_unity;
         TMenuItem *N40;
@@ -195,6 +245,7 @@ __published:	// IDE-managed Components
         TLabel *debug_int_c;
         TTrackBar *TrackBar1;
         TLabel *Label21;
+        TMenuItem *N38;
         void __fastcall pusk_btnClick(TObject *Sender);
         void __fastcall N3Click(TObject *Sender);
         void __fastcall N14Click(TObject *Sender);
@@ -212,9 +263,7 @@ __published:	// IDE-managed Components
         void __fastcall kspl_loadClick(TObject *Sender);
         void __fastcall init_Click(TObject *Sender);
         void __fastcall SPSClientDisconnected(TObject *Sender);
-        void __fastcall N22Click(TObject *Sender);
         void __fastcall N4Click(TObject *Sender);
-        void __fastcall Timer2Timer(TObject *Sender);
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall N24Click(TObject *Sender);
         void __fastcall Button9Click(TObject *Sender);
@@ -242,12 +291,6 @@ __published:	// IDE-managed Components
         void __fastcall sps_rec_btnClick(TObject *Sender);
         void __fastcall Button16Click(TObject *Sender);
         void __fastcall N161Click(TObject *Sender);
-        void __fastcall N35Click(TObject *Sender);
-        void __fastcall p_sost_from_bumTimer(TObject *Sender);
-        void __fastcall Button1Click(TObject *Sender);
-        void __fastcall Button10Click(TObject *Sender);
-        void __fastcall N37Click(TObject *Sender);
-        void __fastcall N44Click(TObject *Sender);
         void __fastcall ArgonTaktTimer(TObject *Sender);
         void __fastcall debug_statusClick(TObject *Sender);
         void __fastcall SpeedButton1Click(TObject *Sender);
@@ -257,6 +300,7 @@ __published:	// IDE-managed Components
         void __fastcall DebugTimerTimer(TObject *Sender);
         void __fastcall ssvpClick(TObject *Sender);
         void __fastcall N110Click(TObject *Sender);
+        void __fastcall N38Click(TObject *Sender);
         //void __fastcall N38Click(TObject *Sender);
         //void __fastcall Button11Click(TObject *Sender);
         //void __fastcall dk_to_bumTimer(TObject *Sender);

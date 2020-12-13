@@ -200,6 +200,7 @@ KSP_L_L_image->Enabled=true;
 
 void __fastcall Tksplfrm::KSP_L_A_imageClick(TObject *Sender)
 {
+if(PuskPr){
 KSP_Let[0]=true;
 byte i;
 for(i=1; i<=16; i++){
@@ -233,11 +234,12 @@ ksp_15->Enabled=true;
 ksp_16->Enabled=true;
 ksp_17->Enabled=true;
 ksp_18->Enabled=true;
-}
+}}
 //---------------------------------------------------------------------------
 
 void __fastcall Tksplfrm::KSP_L_V_imageClick(TObject *Sender)
 {
+if(PuskPr){
 KSP_Let[0]=false;
 KSP_Let[1]=true;
 byte i;
@@ -272,11 +274,12 @@ ksp_15->Enabled=true;
 ksp_16->Enabled=true;
 ksp_17->Enabled=true;
 ksp_18->Enabled=true;        
-}
+}}
 //---------------------------------------------------------------------------
 
 void __fastcall Tksplfrm::KSP_L_G_imageClick(TObject *Sender)
 {
+if(PuskPr){
 KSP_Let[0]=false;
 KSP_Let[1]=false;
 KSP_Let[2]=true;
@@ -312,11 +315,12 @@ ksp_15->Enabled=true;
 ksp_16->Enabled=true;
 ksp_17->Enabled=true;
 ksp_18->Enabled=true;        
-}
+}}
 //---------------------------------------------------------------------------
 
 void __fastcall Tksplfrm::KSP_L_D_imageClick(TObject *Sender)
 {
+if(PuskPr){
 KSP_Let[0]=false;
 KSP_Let[1]=false;
 KSP_Let[2]=false;
@@ -353,12 +357,13 @@ ksp_15->Enabled=true;
 ksp_16->Enabled=true;
 ksp_17->Enabled=true;
 ksp_18->Enabled=true;
-}
+}}
 //---------------------------------------------------------------------------
 
 
 void __fastcall Tksplfrm::KSP_L_J_imageClick(TObject *Sender)
 {
+if(PuskPr){
 KSP_Let[0]=false;
 KSP_Let[1]=false;
 KSP_Let[2]=false;
@@ -396,11 +401,12 @@ ksp_15->Enabled=true;
 ksp_16->Enabled=true;
 ksp_17->Enabled=true;
 ksp_18->Enabled=true;
-}
+}}
 //---------------------------------------------------------------------------
 
 void __fastcall Tksplfrm::KSP_L_I_imageClick(TObject *Sender)
 {
+if(PuskPr){
 KSP_Let[0]=false;
 KSP_Let[1]=false;
 KSP_Let[2]=false;
@@ -439,15 +445,12 @@ ksp_15->Enabled=true;
 ksp_16->Enabled=true;
 ksp_17->Enabled=true;
 ksp_18->Enabled=true;
-}
+}}
 //---------------------------------------------------------------------------
-
-
-
-
 
 void __fastcall Tksplfrm::KSP_L_K_imageClick(TObject *Sender)
 {
+if(PuskPr){
 KSP_Let[0]=false;
 KSP_Let[1]=false;
 KSP_Let[2]=false;
@@ -487,11 +490,12 @@ ksp_15->Enabled=true;
 ksp_16->Enabled=true;
 ksp_17->Enabled=true;
 ksp_18->Enabled=true;
-}
+} }
 //---------------------------------------------------------------------------
 // ÒÀÉÌÅÐ ÈÍÄÈÊÀÖÈÈ ÒÐÀÍÑÏÀÐÀÍÒÎÂ ÊÑÏ
 void __fastcall Tksplfrm::STimer(TObject *Sender)
 {
+if(PuskPr){
 // Èíäèêàöèÿ òðàíñïàðàíòîâ ÊÑÏ
 if(USO_Booled[0][0]){  // KSP A1
 A1_LABEL->Color=clLime;
@@ -825,7 +829,7 @@ L17_LABEL->Color=clLime;
 L17_LABEL->Font->Color=clBlack;  } else {
 L17_LABEL->Color=clGreen;
 L17_LABEL->Font->Color=clYellow; }
-}
+}}
 //---------------------------------------------------------------------------
 
 void __fastcall Tksplfrm::ksp_3Click(TObject *Sender)
@@ -915,6 +919,7 @@ KSP_L_L_image->Enabled=true;
 
 void __fastcall Tksplfrm::KSP_L_L_imageClick(TObject *Sender)
 {
+if(PuskPr){
 KSP_Let[0]=false;
 KSP_Let[1]=false;
 KSP_Let[2]=false;
@@ -955,7 +960,7 @@ ksp_15->Enabled=true;
 ksp_16->Enabled=true;
 ksp_17->Enabled=true;
 ksp_18->Enabled=true;
-}
+}}
 //---------------------------------------------------------------------------
 
 void __fastcall Tksplfrm::ksp_4Click(TObject *Sender)

@@ -7,6 +7,7 @@
 #include "kdu_math.h"
 #include "arg_header.h"
 #include "SPSHead.h"
+#include "miscdata/rdc_draph.cpp"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -111,7 +112,7 @@ void __fastcall Tgraphics::SpeedButton1Click(TObject *Sender)
 double x, y;
 x = StrToFloat(Edit1->Text);
 y = StrToFloat(Edit2->Text);
-Series8->AddXY(x,y,"", clBlue);
+Series12->AddXY(x,y,"", clBlue);
 }
 //---------------------------------------------------------------------------
 

@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 326
-  Top = 43
+  Left = 196
+  Top = 64
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   ClientHeight = 570
@@ -455,25 +455,10 @@ object MainForm: TMainForm
   object model_status_pics: TGroupBox
     Left = 496
     Top = 0
-    Width = 181
+    Width = 185
     Height = 67
     Caption = ' '#1057#1086#1089#1090#1086#1103#1085#1080#1077' '#1084#1086#1076#1077#1083#1077#1081' '
     TabOrder = 2
-    object bum_st_label: TLabel
-      Left = 186
-      Top = 43
-      Width = 43
-      Height = 20
-      Alignment = taCenter
-      AutoSize = False
-      Caption = #1041#1059#1052
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-    end
     object inpu_status_pic: TImage
       Left = 68
       Top = 16
@@ -535,14 +520,6 @@ object MainForm: TMainForm
     end
     object SpsStatusPic: TImage
       Left = 9
-      Top = 16
-      Width = 46
-      Height = 26
-      Center = True
-      Transparent = True
-    end
-    object bum_status_pic: TImage
-      Left = 185
       Top = 16
       Width = 46
       Height = 26
@@ -829,75 +806,13 @@ object MainForm: TMainForm
         OnClick = sps_rec_btnClick
       end
     end
-    object GroupBox9: TGroupBox
-      Left = 8
-      Top = 187
-      Width = 246
-      Height = 95
-      Caption = ' '#1042#1099#1076#1072#1095#1072' '#1082#1086#1084#1072#1085#1076#1099' '#1074' '#1041#1059#1052' '
-      TabOrder = 6
-      object Label7: TLabel
-        Left = 8
-        Top = 24
-        Width = 105
-        Height = 14
-        Caption = #1053#1086#1084#1077#1088' '#1087#1072#1088#1072#1084#1077#1090#1088#1072
-      end
-      object Label9: TLabel
-        Left = 94
-        Top = 49
-        Width = 21
-        Height = 14
-        Caption = #8470' 1'
-      end
-      object Label14: TLabel
-        Left = 94
-        Top = 73
-        Width = 21
-        Height = 14
-        Caption = #8470' 2'
-      end
-      object Edit5: TEdit
-        Left = 121
-        Top = 21
-        Width = 121
-        Height = 22
-        TabOrder = 0
-        Text = '0'
-      end
-      object Edit6: TEdit
-        Left = 121
-        Top = 45
-        Width = 121
-        Height = 22
-        TabOrder = 1
-        Text = '0'
-      end
-      object Edit7: TEdit
-        Left = 121
-        Top = 69
-        Width = 121
-        Height = 22
-        TabOrder = 2
-        Text = '0'
-      end
-      object Button10: TButton
-        Left = 8
-        Top = 53
-        Width = 75
-        Height = 25
-        Caption = #1054#1090#1087#1088#1072#1074#1080#1090#1100
-        TabOrder = 3
-        OnClick = Button10Click
-      end
-    end
     object Button3: TButton
       Left = 264
       Top = 224
       Width = 289
       Height = 25
       Caption = #1040#1088#1075#1086#1085' - '#1058#1077#1089#1090' '#1080#1085#1090#1077#1075#1088#1072#1090#1086#1088#1086#1074' '#1074' '#1076#1080#1085#1072#1084#1080#1082#1077
-      TabOrder = 7
+      TabOrder = 6
     end
     object Button7: TButton
       Left = 192
@@ -905,7 +820,7 @@ object MainForm: TMainForm
       Width = 57
       Height = 25
       Caption = 'SPS_S'
-      TabOrder = 8
+      TabOrder = 7
       OnClick = Button7Click
     end
     object Button1: TButton
@@ -914,64 +829,7 @@ object MainForm: TMainForm
       Width = 25
       Height = 25
       Caption = #1061#1059
-      TabOrder = 9
-      OnClick = Button1Click
-    end
-    object Edit2: TEdit
-      Left = 584
-      Top = 258
-      Width = 137
-      Height = 22
-      TabOrder = 10
-      Text = '0'
-    end
-    object Edit4: TEdit
-      Left = 584
-      Top = 234
-      Width = 137
-      Height = 22
-      TabOrder = 11
-      Text = '0'
-    end
-    object Edit8: TEdit
-      Left = 584
-      Top = 210
-      Width = 137
-      Height = 22
-      TabOrder = 12
-      Text = '0'
-    end
-    object Edit9: TEdit
-      Left = 584
-      Top = 186
-      Width = 137
-      Height = 22
-      TabOrder = 13
-      Text = '0'
-    end
-    object Edit10: TEdit
-      Left = 584
-      Top = 162
-      Width = 137
-      Height = 22
-      TabOrder = 14
-      Text = '0'
-    end
-    object Edit11: TEdit
-      Left = 584
-      Top = 138
-      Width = 137
-      Height = 22
-      TabOrder = 15
-      Text = '0'
-    end
-    object Button11: TButton
-      Left = 584
-      Top = 110
-      Width = 137
-      Height = 25
-      Caption = #1047#1072#1087#1080#1089#1100' '#1044#1050
-      TabOrder = 16
+      TabOrder = 8
     end
     object Button14: TButton
       Left = 402
@@ -979,7 +837,7 @@ object MainForm: TMainForm
       Width = 151
       Height = 25
       Caption = #1054#1090#1087#1088#1072#1074#1080#1090#1100' '#1079#1072#1075#1086#1083#1086#1074#1086#1082
-      TabOrder = 17
+      TabOrder = 9
     end
     object Button17: TButton
       Left = 408
@@ -987,7 +845,7 @@ object MainForm: TMainForm
       Width = 145
       Height = 25
       Caption = #1042#1077#1088#1077#1092#1080#1082#1072#1094#1080#1103' '#1053#1059
-      TabOrder = 18
+      TabOrder = 10
     end
     object md_status: TCheckBox
       Left = 256
@@ -995,7 +853,7 @@ object MainForm: TMainForm
       Width = 161
       Height = 17
       Caption = #1052#1086#1076#1077#1083#1100' '#1044#1074#1080#1078#1077#1085#1080#1103
-      TabOrder = 19
+      TabOrder = 11
     end
   end
   object GroupBox6: TGroupBox
@@ -1160,17 +1018,18 @@ object MainForm: TMainForm
     Height = 17
     Caption = #1054#1090#1083#1072#1076#1082#1072
     TabOrder = 10
+    Visible = False
     OnClick = debug_statusClick
   end
   object GroupBox3: TGroupBox
     Left = 344
     Top = 72
     Width = 249
-    Height = 81
+    Height = 67
     TabOrder = 11
     object sps_model: TCheckBox
       Left = 128
-      Top = 61
+      Top = 46
       Width = 105
       Height = 17
       Caption = #1054#1073#1084#1077#1085' '#1089' '#1048#1085#1055#1059
@@ -1192,34 +1051,23 @@ object MainForm: TMainForm
       TabOrder = 1
       OnClick = init_Click
     end
-    object WithoutBum: TCheckBox
-      Left = 128
-      Top = 42
-      Width = 69
-      Height = 17
-      Caption = #1041#1077#1079' '#1041#1059#1052
-      Checked = True
-      State = cbChecked
-      TabOrder = 2
-      Visible = False
-    end
     object close_socket: TButton
       Left = 128
       Top = 11
-      Width = 113
-      Height = 25
+      Width = 114
+      Height = 32
       Caption = #1047#1072#1082#1088#1099#1090#1100' '#1089#1086#1082#1077#1090#1099
       Enabled = False
-      TabOrder = 3
+      TabOrder = 2
       OnClick = close_socketClick
     end
     object with_unity: TCheckBox
-      Left = 8
-      Top = 56
+      Left = 28
+      Top = 46
       Width = 97
       Height = 17
       Caption = 'With Unity'
-      TabOrder = 4
+      TabOrder = 3
     end
   end
   object set_lang: TButton
@@ -1283,10 +1131,6 @@ object MainForm: TMainForm
         Caption = #1050#1044#1059
         ShortCut = 16459
         OnClick = N15Click
-      end
-      object N22: TMenuItem
-        Caption = #1041#1059#1052
-        OnClick = N22Click
       end
       object N26: TMenuItem
         Caption = #1041#1060#1048'-'#1057#1080#1084#1074#1086#1083
@@ -1414,7 +1258,6 @@ object MainForm: TMainForm
       Caption = #1054#1090#1082#1072#1079#1099
       object N37: TMenuItem
         Caption = #1054#1090#1082#1072#1079#1099' '#1073#1086#1088#1090#1086#1074#1099#1093' '#1089#1080#1089#1090#1077#1084
-        OnClick = N37Click
       end
     end
     object N34: TMenuItem
@@ -1423,13 +1266,12 @@ object MainForm: TMainForm
         Caption = #1040#1088#1075#1086#1085'-16'
         OnClick = N161Click
       end
-      object N35: TMenuItem
-        Caption = #1054#1073#1084#1077#1085' '#1089' '#1041#1059#1052
-        OnClick = N35Click
-      end
       object N44: TMenuItem
         Caption = #1059#1087#1088#1072#1074#1083#1103#1102#1097#1080#1077' '#1089#1083#1086#1074#1072
-        OnClick = N44Click
+      end
+      object N38: TMenuItem
+        Caption = #1054#1073#1084#1077#1085' '#1089' '#1048#1085#1055#1059
+        OnClick = N38Click
       end
     end
     object N9: TMenuItem
@@ -1455,7 +1297,6 @@ object MainForm: TMainForm
   end
   object Timer2: TTimer
     Interval = 50
-    OnTimer = Timer2Timer
     Left = 680
     Top = 520
   end
@@ -2517,7 +2358,6 @@ object MainForm: TMainForm
   object p_sost_from_bum: TTimer
     Enabled = False
     Interval = 10
-    OnTimer = p_sost_from_bumTimer
     Left = 600
     Top = 472
   end

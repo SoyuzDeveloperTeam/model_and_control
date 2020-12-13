@@ -1,6 +1,6 @@
 object clock_frm: Tclock_frm
-  Left = 991
-  Top = 260
+  Left = 281
+  Top = 236
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1063#1072#1089#1099' 744'#1050

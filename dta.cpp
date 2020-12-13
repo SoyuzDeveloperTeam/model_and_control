@@ -20,24 +20,14 @@ unsigned int u_mode_type;    // Режим работы Юнити относительно МиУ
 //- О Б М Е Н   С   Б У М -
 //-------------------------
 
-static struct {
-int str_1;
-int str_2;
-int cmd;
-int size;
-double dk_per[3];   // Массив времени работы ДПО на пермещение
-double dk_ori[3];   // Массив времени работы ДПО на ориентацию
-} dk_mass;          // Дополнительный параметр от ДК для БУМ
-
-static struct {    //Структура параметра НУ в БУМ
-//Переменные для команды в БУМ-МС
+static struct {    //Структура параметра НУ
 unsigned long i;
 unsigned long s;
 unsigned long aa;
 unsigned long ddd;
 double ssaafd;
 //// Т И П  К О Р А Б Л Я ////
-unsigned long n_tr;                     // 1   Тип корабля (0 - ТГК, 1 - ТПК, 2 - МЛМ)
+unsigned long n_tr;                     // 1   Тип корабля (0 - ТГК, 1 - ТПК)
 //// Д А Т А ////
 unsigned long nu_day;                   // 2   Модельная дата - день
 unsigned long nu_month;                 // 3   Модельная дата - Месяц
@@ -74,12 +64,6 @@ unsigned long nr_sudn;                  // 69  Начальный режим работы СУДН ТК (1
 
 
 
-void NU_pack_for_bum (void) //упаковка НУ для БУМ
-{
-//double milli =0.001;
-
-}
-
 
 static struct{
 unsigned long a;
@@ -88,13 +72,7 @@ unsigned long model_sec;
 unsigned long milisec_ost;
 }fdd;
 
-static struct {                                // Параметр от БУМ в МиУ (по интерфейсу Телеоператор)
-unsigned long fd_1;                     // Начальное смещение
-unsigned long fd_2;
-unsigned long fd_3;
-unsigned long fd_4;
-unsigned long fd_5;
-unsigned long fd_6;
+static struct {                                // Параметр МиУ
 unsigned long tk_type;                  // Тип корабля
 unsigned long model_sec;                // Время от начала режима (секунды)
 unsigned long milisec_ost;              // Остаток времени (мс)

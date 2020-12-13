@@ -371,7 +371,6 @@ if(KSP_Booled[6][3]) { // И4 АКС
 
 if(KSP_Booled[6][8]) {  // И9 ПИТАНИЕ ЧАЙКИ
    KSP_Booled[6][8] = false;
-        // Посылаем команду в БУМ
         //USO_Booled[0][8]=false;
         USO_Booled[3][10]=true; // Признак питание чайки
         JPS(1,is_argon,is_operator,"Организовано питание контура управления и БЦВК","");
@@ -482,13 +481,11 @@ if(KSP_Booled[7][17]) { // К 18
 if(KSP_Booled[8][0]) { // Л1 - РО ДК
    KSP_Booled[8][0]=false;
         USO_Booled[1][1]=true;
-         // Разрешение отправки параметров ДК в БУМ
 }
 
 if(KSP_Booled[8][1]) { // Л1 - РО ДК
    KSP_Booled[8][1]=false;
         USO_Booled[1][1]=false;
-        d2b=false;           // Разрешение отправки параметров ДК в БУМ
 }
 
 // КСПп - Линейка Т //

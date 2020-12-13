@@ -11,7 +11,6 @@ static AnsiString is_neptun   = "ОВК               ";
 static AnsiString is_sudn     = "СУБК               ";
 static AnsiString is_miu      = "МиУ               ";
 static AnsiString is_ksp      = "КСП               ";
-static AnsiString is_bum      = "БУМ                ";
 static AnsiString tj_error    = "Ошибка             ";
 static AnsiString is_pu_bps   = "ПУ БПС            ";
 static AnsiString is_iss      = "МКС                ";
@@ -27,8 +26,6 @@ static AnsiString is_mcc      = "ЦУП-М              ";
 static AnsiString cmd_LoadToArgon = "Загрузка уставок на борт   ";
 static AnsiString cmd_DynStart    = "\"Пуск\" Динамики            ";
 static AnsiString cmd_DynStop     = "\"Стоп\" Динамики            ";
-static AnsiString cmd_BumClose    = "БУМ Выгружен               ";
-static AnsiString cmd_BumLoad     = "Подключен БУМ              ";
 static AnsiString cmd_loadmiu     = "Загрузка МиУ               ";
 static AnsiString cmd_readcmdb    = "Команда с сервера          ";
   // Команды БРВИ

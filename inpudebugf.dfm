@@ -1,16 +1,20 @@
 object NeptDebug: TNeptDebug
-  Left = 14
-  Top = 148
-  Width = 975
-  Height = 474
+  Left = 303
+  Top = 208
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
   Caption = #1054#1090#1083#1072#1076#1082#1072' '#1086#1073#1084#1077#1085#1072' '#1089' '#1048#1085#1055#1059
+  ClientHeight = 435
+  ClientWidth = 959
   Color = clBtnFace
+  DefaultMonitor = dmDesktop
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
   object PageControl1: TPageControl
@@ -18,9 +22,9 @@ object NeptDebug: TNeptDebug
     Top = 0
     Width = 959
     Height = 435
-    ActivePage = TabSheet3
+    ActivePage = TabSheet1
     Align = alClient
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = #1040#1085#1072#1083#1080#1079' '#1087#1072#1082#1077#1090#1086#1074' RS-232'
@@ -50,11 +54,12 @@ object NeptDebug: TNeptDebug
           Font.Style = []
           ParentFont = False
         end
-        object Label2: TLabel
+        object PacketNo_write: TLabel
           Left = 152
           Top = 96
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label3: TLabel
@@ -75,6 +80,7 @@ object NeptDebug: TNeptDebug
           Top = 128
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label5: TLabel
@@ -134,6 +140,7 @@ object NeptDebug: TNeptDebug
           Top = 144
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label10: TLabel
@@ -141,6 +148,7 @@ object NeptDebug: TNeptDebug
           Top = 160
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label11: TLabel
@@ -148,6 +156,7 @@ object NeptDebug: TNeptDebug
           Top = 176
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label12: TLabel
@@ -155,6 +164,7 @@ object NeptDebug: TNeptDebug
           Top = 192
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label13: TLabel
@@ -169,6 +179,7 @@ object NeptDebug: TNeptDebug
           Top = 224
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label15: TLabel
@@ -186,7 +197,7 @@ object NeptDebug: TNeptDebug
         end
         object Label16: TLabel
           Left = 8
-          Top = 208
+          Top = 240
           Width = 24
           Height = 18
           Caption = 'Uso'
@@ -293,6 +304,7 @@ object NeptDebug: TNeptDebug
           Top = 240
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label25: TLabel
@@ -300,6 +312,7 @@ object NeptDebug: TNeptDebug
           Top = 256
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label26: TLabel
@@ -307,6 +320,7 @@ object NeptDebug: TNeptDebug
           Top = 272
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label27: TLabel
@@ -314,6 +328,7 @@ object NeptDebug: TNeptDebug
           Top = 288
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label28: TLabel
@@ -321,6 +336,7 @@ object NeptDebug: TNeptDebug
           Top = 304
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label29: TLabel
@@ -328,6 +344,7 @@ object NeptDebug: TNeptDebug
           Top = 320
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label30: TLabel
@@ -335,6 +352,7 @@ object NeptDebug: TNeptDebug
           Top = 336
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label31: TLabel
@@ -342,6 +360,7 @@ object NeptDebug: TNeptDebug
           Top = 352
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label32: TLabel
@@ -370,11 +389,12 @@ object NeptDebug: TNeptDebug
           Font.Style = []
           ParentFont = False
         end
-        object Label34: TLabel
+        object PacketNo_send: TLabel
           Left = 248
           Top = 96
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label35: TLabel
@@ -382,6 +402,7 @@ object NeptDebug: TNeptDebug
           Top = 128
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label36: TLabel
@@ -389,6 +410,7 @@ object NeptDebug: TNeptDebug
           Top = 144
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label37: TLabel
@@ -396,6 +418,7 @@ object NeptDebug: TNeptDebug
           Top = 160
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label38: TLabel
@@ -403,6 +426,7 @@ object NeptDebug: TNeptDebug
           Top = 176
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label39: TLabel
@@ -410,6 +434,7 @@ object NeptDebug: TNeptDebug
           Top = 192
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label40: TLabel
@@ -424,6 +449,7 @@ object NeptDebug: TNeptDebug
           Top = 224
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label42: TLabel
@@ -431,6 +457,7 @@ object NeptDebug: TNeptDebug
           Top = 240
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label43: TLabel
@@ -438,6 +465,7 @@ object NeptDebug: TNeptDebug
           Top = 256
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label44: TLabel
@@ -445,6 +473,7 @@ object NeptDebug: TNeptDebug
           Top = 272
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label45: TLabel
@@ -452,6 +481,7 @@ object NeptDebug: TNeptDebug
           Top = 288
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label46: TLabel
@@ -459,6 +489,7 @@ object NeptDebug: TNeptDebug
           Top = 304
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label47: TLabel
@@ -466,6 +497,7 @@ object NeptDebug: TNeptDebug
           Top = 320
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label48: TLabel
@@ -473,6 +505,7 @@ object NeptDebug: TNeptDebug
           Top = 336
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label49: TLabel
@@ -480,6 +513,7 @@ object NeptDebug: TNeptDebug
           Top = 352
           Width = 8
           Height = 18
+          Alignment = taRightJustify
           Caption = '0'
         end
         object Label50: TLabel
@@ -501,19 +535,6 @@ object NeptDebug: TNeptDebug
           Width = 64
           Height = 18
           Caption = 'BadBytes'
-          Font.Charset = RUSSIAN_CHARSET
-          Font.Color = clLime
-          Font.Height = -15
-          Font.Name = 'Consolas'
-          Font.Style = []
-          ParentFont = False
-        end
-        object Label52: TLabel
-          Left = 16
-          Top = 296
-          Width = 32
-          Height = 18
-          Caption = 'ClbF'
           Font.Charset = RUSSIAN_CHARSET
           Font.Color = clLime
           Font.Height = -15
@@ -547,34 +568,8 @@ object NeptDebug: TNeptDebug
           Font.Style = []
           ParentFont = False
         end
-        object Label55: TLabel
-          Left = 248
-          Top = 64
-          Width = 8
-          Height = 18
-          Caption = '0'
-          Font.Charset = RUSSIAN_CHARSET
-          Font.Color = clRed
-          Font.Height = -15
-          Font.Name = 'Consolas'
-          Font.Style = []
-          ParentFont = False
-        end
         object Label56: TLabel
           Left = 152
-          Top = 48
-          Width = 8
-          Height = 18
-          Caption = '0'
-          Font.Charset = RUSSIAN_CHARSET
-          Font.Color = clRed
-          Font.Height = -15
-          Font.Name = 'Consolas'
-          Font.Style = []
-          ParentFont = False
-        end
-        object Label57: TLabel
-          Left = 248
           Top = 48
           Width = 8
           Height = 18
@@ -3307,7 +3302,7 @@ object NeptDebug: TNeptDebug
         object Label247: TLabel
           Left = 1
           Top = 1
-          Width = 60
+          Width = 56
           Height = 18
           Caption = ' R_Cont'
           Color = clYellow
@@ -3410,5 +3405,11 @@ object NeptDebug: TNeptDebug
         TabOrder = 2
       end
     end
+  end
+  object inpu_dbg_timer: TTimer
+    Interval = 100
+    OnTimer = inpu_dbg_timerTimer
+    Left = 920
+    Top = 400
   end
 end

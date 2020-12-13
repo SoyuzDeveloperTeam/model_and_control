@@ -1,6 +1,6 @@
 object EnterNuForm: TEnterNuForm
-  Left = 63
-  Top = 37
+  Left = 251
+  Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1042#1074#1086#1076' '#1053#1091
@@ -71,9 +71,9 @@ object EnterNuForm: TEnterNuForm
     Top = 0
     Width = 507
     Height = 641
-    ActivePage = ParAndOr
+    ActivePage = TabSheet1
     Align = alTop
-    TabIndex = 2
+    TabIndex = 3
     TabOrder = 0
     object complex_tab: TTabSheet
       Caption = #1050#1086#1084#1087#1083#1077#1082#1089#1085#1099#1081
@@ -3480,6 +3480,7 @@ object EnterNuForm: TEnterNuForm
           Caption = #1052#1051#1052' ('#1089#1077#1088#1100#1105#1079#1085#1086'?)'
           Enabled = False
           TabOrder = 2
+          Visible = False
         end
       end
       object GroupBox14: TGroupBox
@@ -3638,6 +3639,7 @@ object EnterNuForm: TEnterNuForm
     TabOrder = 4
   end
   object LoadNuFromFile: TOpenDialog
+    DefaultExt = 'Data\Scenary'
     Filter = '.ini'
     Left = 320
     Top = 656

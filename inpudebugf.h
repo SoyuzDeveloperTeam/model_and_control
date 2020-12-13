@@ -20,7 +20,7 @@ __published:	// IDE-managed Components
         TTabSheet *TabSheet3;
         TPanel *Panel1;
         TLabel *Label1;
-        TLabel *Label2;
+        TLabel *PacketNo_write;
         TLabel *Label3;
         TLabel *Label4;
         TLabel *Label5;
@@ -52,7 +52,7 @@ __published:	// IDE-managed Components
         TLabel *Label31;
         TLabel *Label32;
         TLabel *Label33;
-        TLabel *Label34;
+        TLabel *PacketNo_send;
         TLabel *Label35;
         TLabel *Label36;
         TLabel *Label37;
@@ -70,12 +70,9 @@ __published:	// IDE-managed Components
         TLabel *Label49;
         TLabel *Label50;
         TLabel *Label51;
-        TLabel *Label52;
         TLabel *Label53;
         TLabel *Label54;
-        TLabel *Label55;
         TLabel *Label56;
-        TLabel *Label57;
         TLabel *Label59;
         TPanel *Panel2;
         TLabel *Label64;
@@ -299,6 +296,8 @@ __published:	// IDE-managed Components
         TLabel *Label250;
         TLabel *Label251;
         TLabel *Label252;
+        TTimer *inpu_dbg_timer;
+        void __fastcall inpu_dbg_timerTimer(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TNeptDebug(TComponent* Owner);

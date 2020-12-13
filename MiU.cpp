@@ -5,7 +5,6 @@
 //---------------------------------------------------------------------------
 USEFORM("MainFrm.cpp", MainForm);
 USEFORM("ts_frm.cpp", ts_form);
-USEFORM("bum_sett_frm.cpp", bum_settings);
 USEFORM("toru_frm.cpp", toru_pult);
 USEFORM("EnterNuFrm.cpp", EnterNuForm);
 USEFORM("kdu_data.cpp", KDUform);
@@ -26,7 +25,6 @@ USEFORM("help_form.cpp", help_frm);
 USEFORM("iss_per_tp.cpp", iss_t_tp);
 USEFORM("vku_graph.cpp", vkugraph);
 USEFORM("brus_form.cpp", brus_frm);
-USEFORM("debug_bum_frm.cpp", bum_debug);
 USEFORM("vived_frm.cpp", liftoff_form);
 USEFORM("iss\sm_ssvp_PX.cpp", sm_ssvp_plx_frm);
 USEFORM("argon\argon_debug_frm.cpp", arg_deb);
@@ -50,7 +48,6 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
                  Application->Title = "MIU";
                  Application->CreateForm(__classid(TMainForm), &MainForm);
                  Application->CreateForm(__classid(Tts_form), &ts_form);
-                 Application->CreateForm(__classid(Tbum_settings), &bum_settings);
                  Application->CreateForm(__classid(Ttoru_pult), &toru_pult);
                  Application->CreateForm(__classid(TEnterNuForm), &EnterNuForm);
                  Application->CreateForm(__classid(TKDUform), &KDUform);
@@ -78,7 +75,6 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
                  Application->CreateForm(__classid(Tliftoff_form), &liftoff_form);
                  Application->CreateForm(__classid(Tsm_ssvp_plx_frm), &sm_ssvp_plx_frm);
                  Application->CreateForm(__classid(Targ_deb), &arg_deb);
-                 Application->CreateForm(__classid(Tbum_debug), &bum_debug);
                  Application->CreateForm(__classid(Tinpu_1), &inpu_1);
                  Application->CreateForm(__classid(TNeptDebug), &NeptDebug);
                  Application->CreateForm(__classid(Tsps_form), &sps_form);

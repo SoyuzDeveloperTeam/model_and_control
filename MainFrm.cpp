@@ -19,74 +19,6 @@
 #include <windows.h>
 #include <mmsystem.h>
 //---------------------------------------------------------------------------
-//-----------------------------------------------------------------------------
-/* Заголовки */
-#include "MD_math_header.h"
-#include "main_header.h"                // Основной заголовок - main Header
-#include "JouHeader.h"                  // Заголовок для журнала - Header for Journal
-#include "arg_jou.h"                    // Журнал Аргона - argon journal
-#include "dta.cpp"                      // Данные для обмена с БУМ - BUM data
-#include "md_m.h"                       // Модельные переменные - Model data
-#include "ts_header.h"                  // Переменные ТС - TC data
-#include "ICN_header.h"                 // Данные для обмена с ИнПУ - data ffor connect with InPU
-#include "JouStrings.h"                 // Строковые переменные для журнала - String's for JPS loging funtion
-#include "SPSHead.h"                    // Данные СПС ч.1 - SPS Data Part 1
-#include "USOData.h"                    // Параметры УСО - USO Data
-#include "uso_model.cpp"                // Модель УСО - USO Model
-#include "inpu_connect.cpp"             // Обмен с моделью ИнПУ - For connect with InPU
-#include "main_math.cpp"                // Математические модели - Math Models
-#include "argon/arg_header.h"           // Загогловок А16 - argon header #2 (?)
-#include "argon/CtrlWord.h"             // Управляющие слова Аргона - Control words (flags) for argon
-#include "argon/arg_kdu_operations.cpp" // Argon-16 программы КДУ
-#include "sotr_data.h"                  // Модель СОТР
-#include "DateUtils.hpp"
-#include "fly_model.cpp"                // Модель движения
-#include "ssvp_module.h"                // Признаки ССВП
-#include "argon/arg_pks.cpp"            // Программы Аргона - Argon Programs
-#include "bumconnect.cpp"               // Обмен с БУМ - Connect wth BUM
-#include "neptun_main.cpp"              // Основные процедуры ПСА "Нептун-МЭ" - Main proc for Neptune model
-#include "unity_connect.cpp"            // Обмен с Юнити - Connect with Unity
-#include "inpuconnect.cpp"              // Обмен с ИнПУ  - Connect with InPU
-#include "md_main.cpp"                  // Motion Model
-#include "DConvert.cpp"                 // CW Convert Bool[16] to Oct
-//---------------------------------------------------------------------------
-/* Формы */
-//#include "help_form.cpp"              // Форма Поддержи - Help Form
-#include "bilu_format.cpp"              // Форма БИЛУ - BILU form
-#include "vived_frm.cpp"                // Форма Выведение (график) - "LiftOff" chart
-#include "brus_form.cpp"                // Форма БРУС - BRUS form
-#include "ts_frm.cpp"                   // Форма ТС - TS Form
-#include "bfi_formats.cpp"              // Форма "БФИ Символ" для А16 - BFI Data monitor ith VKU form
-#include "bum_sett_frm.cpp"             // Форма вывода данных БУМ  - Data from BUM form
-#include "toru_frm.cpp"                 // Форма пульта ПУ БПС ТОРУ - TORU Pult form
-#include "EnterNuFrm.cpp"               // Форма ввода начальных условий (НУ)
-#include "kdu_data.cpp"                 // Форма параметров КДУ
-#include "clock_form.cpp"               // Форма БЧК-744К Бортовые Часы на РС МКС
-#include "JouLogFrm.h"                  // Форма основного журнала
-#include "ssvp_form.cpp"                // Форма ССВП - Процессуальная
-#include "zakon_upr.cpp"                // Форма Закон Управления
-#include "KSPLForm.cpp"                 // Форма КСП левое
-#include "KSPPForm.cpp"                 // Форма КСП правое
-#include "USOFrm.cpp"                   // Форма УСО
-#include "krl_form.cpp"                 // Форма КРЛ
-#include "cdn_clock_frm.cpp"            // Форма CDN clock MSK
-#include "AboutFrm.cpp"                 // Форма "О программе..."
-#include "BkuCFrm.cpp"                  // Форма БКУ-Ц "Символ-Ц"
-#include "irvi_brfi_frm.cpp"            // Форма ПРВИ
-#include "graph_a1.cpp"                 // Форма графиков
-#include "SOTR_frm.cpp"                 // Форма СОТР
-#include "InstructorFormat_Form.cpp"    // Форма инструкторского формата
-#include "vku_graph.cpp"                // Форма ВКУ графиком
-#include "iss_per_tp.cpp"               // Форма Переход МКС в ТП
-#include "argon_debug_frm.cpp"          // Форма отладки Аргона
-#include "debug_bum_frm.cpp"            // Форма отладки обмена с БУМ
-#include "otkazy.cpp"                   // Форма "Отказ Бортоввых Систем"
-#include "neptun.cpp"                   // Форма ПСА "Нептун-МЭ" -  ИнПУ1
-#include "sps_frm.cpp"                  // Форма СПС
-#include "CWFrm.cpp"                    // Форма Contrl Word (debug)
-// Форматы Laptop РС МКС (СМ)
-#include "sm_ssvp_PX.cpp"               // Формат СМ:ССВП:+Х
-//---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 TMainForm *MainForm;
@@ -161,12 +93,8 @@ err = WSAStartup(wVersionRequested, &wsaData);
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::pusk_btnClick(TObject *Sender)
 { // Операции по нажатию кнопки "ПУСК"
-if(bum_pr){                        // Есл есть признак обмена с БУМ, то...
-p_sost_from_bum->Enabled=true;
-start_priz = true;                 // признак запуска для бум
-SendToBum(0x00000301, 2, 1); }     //Пуск динамики - команда в БУМ ()
 PuskPr = true;                     // Вводим признак "Пуск динамики"
-ModelDateTime_Timer->Enabled=true; // Запускаем таймер модельного времени (он и задает модельное время при отсутствии БУМ - иначе выводим от БУМа)
+ModelDateTime_Timer->Enabled=true; // Запускаем таймер модельного времени
 MainTimer->Enabled=true;           // Запуск глобального обработчика команд. Разрешение КСП, УСО и т.д.
 ChekTSKD->Enabled=true;            // Обработчик операций СКД
 pusk_btn->Enabled=false;           // Блокируем кнопку "ПУСК" во избежание сбоев при повторной выдаче в динамике.
@@ -182,11 +110,6 @@ void __fastcall TMainForm::N3Click(TObject *Sender)
 {
 ts_form->Show();  //Запуск формы "ТС"
 }
-//---------------------------------------------------------------------------
-//void GetStructFromBUM(struct STR_temp* s)   // Получить от БУМа структуру параметров
-//{
-//memcpy((void *)s,(void *)&DATA_FROM_MS_mas[n_act_str],sizeof(STR_temp));
-//}
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::N14Click(TObject *Sender)
 { // Запуск формы ТОРУ
@@ -236,11 +159,6 @@ JouLogForm->Show();
 
 void __fastcall TMainForm::Button4Click(TObject *Sender)
 {
-if(bum_pr){
-SendToBum(0x00000301, 2, 0);       // Пауза динамики - команда в БУМ ()
-start_priz = false;                // Снимаем признак запуска БУМа
-dk_to_bum->Enabled=false;           // Разрешение отправки параметров ДК в БУМ
-p_sost_from_bum->Enabled=false;}
 PuskPr = false;
 ModelDateTime_Timer->Enabled=false;
 MainTimer->Enabled=false;
@@ -274,15 +192,6 @@ AboutForm->Show();
 
 void __fastcall TMainForm::close_socketClick(TObject *Sender)
 {
-        iResult = closesocket(CtrlSocket);
-        if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
-        iResult = closesocket(TmtcSocket);
-        if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
-        iResult = closesocket(ModelSocket);
-        if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
-        iResult = closesocket(TeleSocket);
-        if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
-        bum_pr = 0;
         init_->Enabled=true;
         if(with_unity->Checked){  // Если введен признак "With Unity"
         unity_s_h->Enabled=false;
@@ -314,12 +223,6 @@ VOID __fastcall TMainForm::init_Click(TObject *Sender)
 {
 JPS(1,is_operator,is_miu,"Запущен процесс инициализации.","");
 
-// Подготовка структуры параметров от ДК для БУМ-МС
-dk_mass.str_1 = 0x02000700;
-dk_mass.str_2 = 0x00001500;
-dk_mass.cmd   = 0x00200101;
-dk_mass.size  = ntohl(48);
-
   if( Lib >= (HINSTANCE)32 )  // Загружаем библиотеку для мат.моделирования
   {
     Init = (TInit)GetProcAddress( Lib, "_Init");
@@ -346,21 +249,6 @@ init_md();
 // Инициализация МД
 
 } // md_status
-
-if(!WithoutBum->Checked){ // Если нет признака "Без БУМ"
-bum_pr = true;
-/*
-  Операция попытки подключения должна повторятся
-  циклично до момента установки соеденения с БУМ.
-
-  Создаем последовательно все сокеты обмена с БУМ
-  ----------
-  В конфигурации симулятора инициализация должна
-  проводится автоматически по запуску симулятора.
-  Журналирование должно идти в консоль, а так же в консоль сервера.
-*/
-JPS(1,"Начало инициализации протокола обмена с БУМ","","","");  // Логируем о начале
-}
 //---------//
 // 1.1.1. Инициализация Winsock //
 
@@ -375,20 +263,6 @@ iResult = WSAStartup(MAKEWORD(2,2), &wsaData); // Инициализируем...
                 WSACleanup(); }  else {        // Если удачная инициализация и подключение библы, то...
                 JPS(1,"Загруженна библиотека Winsock.dll","","","");}
 
-//---------//
-// 1.1.2. Объявление сокетов подключения к БУМ
-
-CtrlSocket = socket(AF_INET, // Семейство адресов Интернет-протокола версии 4 (IPv4).
-                 SOCK_DGRAM, // Этот тип сокета использует протокол пользовательских дейтаграмм (UDP)
-                IPPROTO_UDP  // Протокол пользовательских дейтаграмм (UDP).
-                );           // Сокет управляющего интерфейса
-TmtcSocket = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);           // Сокет КТМ
-ModelSocket= socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);           // Сокет Model
-TeleSocket = socket(AF_INET, // Семейство адресов Интернет-протокола версии 4 (IPv4).
-                SOCK_STREAM, // Этот тип сокета использует протокол управления передачей (TCP)
-                IPPROTO_TCP  // Протокол управления передачей (TCP).
-                );           // Сокет телеоператор
-
 StatusBar->Panels->Items[2]->Text="И  П";   // Текущее состояние МиУ И - Инициализация, П - протокол
 
 //---------//
@@ -397,52 +271,15 @@ StatusBar->Panels->Items[2]->Text="И  П";   // Текущее состояние МиУ И - Инициал
 // inet_addr((unsigned char)MiuConf->ReadString("WSA","main_ip","0.0.0.0"))
 // "вынимаем" из файла конфигурации актуальные данные
 AnsiString fdsfd = MiuConf->ReadString("WSA","main_ip","0.0.0.0");
-char * ipaddress = fdsfd.c_str(); // Актуальный IP адрес (должнен быть так же указан в конфиге БУМа и БММ)
+char * ipaddress = fdsfd.c_str(); // Актуальный IP адрес
 
-// Teleoperator
-tele_sock.sin_family = AF_INET;                    // Семейство адресов Интернет-протокола версии 4 (IPv4).
-tele_sock.sin_addr.s_addr = inet_addr(ipaddress);  //
-tele_sock.sin_port = htons(WsaPortTele.ToInt());   // То же + делать проверку на соответствие в конфиге БУМа
-
-// TMTC
-tmtc_sock.sin_family = AF_INET;                    // Всегда равно AF_INET !
-tmtc_sock.sin_addr.s_addr = inet_addr(ipaddress);  //
-tmtc_sock.sin_port = htons(inpu_con_data[4].ToInt());     // То же + делать проверку на соответствие в конфиге БУМа
-
-// Модельный интерфейс (СКГИ)
-model_sock.sin_family = AF_INET;                   // Всегда равно AF_INET !
-model_sock.sin_addr.s_addr = inet_addr(ipaddress); //
-model_sock.sin_port = htons(inpu_con_data[5].ToInt());                // То же + делать проверку на соответствие в конфиге БУМа
-
-// Сокет управляющего интерфейса
-ctrl_sock.sin_family = AF_INET;                    // Всегда равно AF_INET !
-ctrl_sock.sin_addr.s_addr = inet_addr(ipaddress);  //
-ctrl_sock.sin_port = htons(inpu_con_data[3].ToInt());                 // То же + делать проверку на соответствие в конфиге БУМа
+                 // То же + делать проверку на соответствие в конфиге БУМа
 
 //---------//
 // 1.1.4. Попытка подключения к серверу
-if(!WithoutBum->Checked){
-/* iResult = bind(CtrlSocket,  (SOCKADDR *) & ctrl_sock,  sizeof (ctrl_sock));  // Подключаемся
-        if (iResult == SOCKET_ERROR) { GetWsaError(WSAGetLastError());  } else { JPS(4,"БУМ - Есть подключение к командному интерфейсу","","","");  }
-iResult = bind(TmtcSocket,  (SOCKADDR *) & tmtc_sock,  sizeof (tmtc_sock));
-        if (iResult == SOCKET_ERROR) { GetWsaError(WSAGetLastError());  } else { JPS(4,"БУМ - Есть подключение к КТМ интерфейсу","","",""); }
-iResult = bind(ModelSocket, (SOCKADDR *) & model_sock, sizeof (model_sock));
-        if (iResult == SOCKET_ERROR) { GetWsaError(WSAGetLastError());  } else { JPS(4,"БУМ - Есть подключение к модельному интерфейсу","","","");  }  */
-iResult = connect(TeleSocket,  (SOCKADDR *) & tele_sock,  sizeof (tele_sock));
-        if (iResult == SOCKET_ERROR) { GetWsaError(WSAGetLastError());  } else { // Если подключение успешно, то...
-          JPS(4,"БУМ - Есть подключение к интерфейсу Телеоператор","","","");
-          JPS(4,"Подключение к БУМ - Успешно","","","");
-          init=true;      // Выставляем признак успешной инициализации подключения - можно посылать команды
-          //ModelStatusPicList->GetBitmap(1, bum_status_pic->Picture->Bitmap);
-          con=true;
-          //SocketTeleConnectTimer->Enabled=false;
-          }         // Выставляем признак успешного подключения
-StatusBar->Panels->Items[2]->Text="И  О";                 // Меняем статус МИУ на О - Отправка команды
-}
-if(WithoutBum->Checked){
+
  init=true;
  con=true;
-}
 
 if(with_unity->Checked){  // Если введен признак "With Unity"
 unity_server_init ();
@@ -484,6 +321,24 @@ r_m[29] = 2900;
 r_m[30] = 3000;
 r_m[31] = 5000;
 
+rdc_init(); // Инициализация данных для графиков определения расстояния до цели
+graphics->Series13->AddXY(rdc_sm_dsm[0],0.5,"",clBlack);
+graphics->Series13->AddXY(rdc_sm_dsm[1],1,"",clBlack);
+graphics->Series13->AddXY(rdc_sm_dsm[2],1.5,"",clBlack);
+graphics->Series13->AddXY(rdc_sm_dsm[3],2,"",clBlack);
+graphics->Series13->AddXY(rdc_sm_dsm[4],2.5,"",clBlack);
+graphics->Series13->AddXY(rdc_sm_dsm[5],3,"",clBlack);
+graphics->Series13->AddXY(rdc_sm_dsm[6],3.5,"",clBlack);
+graphics->Series13->AddXY(rdc_sm_dsm[7],4,"",clBlack);
+graphics->Series13->AddXY(rdc_sm_dsm[8],4.5,"",clBlack);
+graphics->Series13->AddXY(rdc_sm_dsm[9],5,"",clBlack);
+graphics->Series13->AddXY(rdc_sm_dsm[10],5.5,"",clBlack);
+graphics->Series13->AddXY(rdc_sm_dsm[11],6,"",clBlack);
+graphics->Series13->AddXY(rdc_sm_dsm[12],6.5,"",clBlack);
+graphics->Series13->AddXY(rdc_sm_dsm[13],7,"",clBlack);
+graphics->Series13->AddXY(rdc_sm_dsm[14],7.5,"",clBlack);
+graphics->Series13->AddXY(rdc_sm_dsm[15],8,"",clBlack);
+
 int isd = 0;
 
 for(isd; isd<=31; isd++){   // Производим расчет парабол для ЗУ
@@ -517,9 +372,7 @@ init_->Enabled=false;
 Button9->Enabled=true;
 Button4->Enabled=true;
 close_socket->Enabled=true;
-if(WithoutBum->Checked){
  JPS(1,"","","Автономный вариант без моделей","");
-}
 JPS(1,"Процедура инициализации завершена. ","","","");
 StatusBar->Panels->Items[0]->Text="Процедура инициализации завершена. Ожидание отработки начальных условий...";
 } else
@@ -532,10 +385,7 @@ JPS(1,"СПС Отключен. ","","","");
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMainForm::N22Click(TObject *Sender)
-{
-bum_settings->Show();
-}
+
 //---------------------------------------------------------------------------
 
 void __fastcall TMainForm::N4Click(TObject *Sender)
@@ -544,29 +394,16 @@ UsoForm->Show();
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMainForm::Timer2Timer(TObject *Sender)
-{
-if(con){                        // Если есть признак подключения
-if(!WithoutBum->Checked){       // Если нет влага "Без БУМ"
-bum_status_pic->Invalidate();   // Обновляем иконку-статус БУМ
-bum_status_pic->Invalidate();
-bum_status_pic->Invalidate();
-ModelStatusPicList->GetBitmap(1, bum_status_pic->Picture->Bitmap);
-}
-Timer2->Enabled=false; }
-}
+
 //---------------------------------------------------------------------------
 
 void __fastcall TMainForm::FormCreate(TObject *Sender)
 {
-WithoutBum->Visible=true;
 ver_num=" 1.0.1.56";              // Переделать - выводить версию из атрибутов
 // --- Выставляем начальное состояние иконок моделей --- //
-ModelStatusPicList->GetBitmap(0, bum_status_pic->Picture->Bitmap);
 ModelStatusPicList->GetBitmap(0, inpu_status_pic->Picture->Bitmap);
 ModelStatusPicList->GetBitmap(0, argon_status_pic->Picture->Bitmap);
 ModelStatusPicList->GetBitmap(0, SpsStatusPic->Picture->Bitmap);
-ModelStatusPicList->GetBitmap(0, bum_status_pic->Picture->Bitmap);
 image_index = 0;
 IdCanSend = false;
 PuskPr = false;  
@@ -751,7 +588,7 @@ J[6]=NU_temp.mi_tk[2][0];
 J[7]=NU_temp.mi_tk[2][1];
 J[8]=NU_temp.mi_tk[2][2];
 
-// -- НУ для остальных систем/моделей --
+// -- НУ для остальных систем/моделей --  ONLY FOR DEBUG !!!
 // Записываем параметры СОТР
 SpsDataSt.TSpsParam[20] = 2300.0;
 SpsDataSt.TSpsParam[14] = 2200.0;
@@ -788,16 +625,6 @@ unsigned long c_b;
 unsigned long c_c;
 }assa;
 
-if(bum_pr){
-NU_temp.i = 0x02000700;
-NU_temp.s = 0x00001500;
-NU_temp.aa = ntohl(0x00100101);
-NU_temp.ddd = ntohl(500);
-iResult = send( TeleSocket,(char *)&NU_temp,524, 0  );        //
-if (iResult == SOCKET_ERROR) { GetWsaError(WSAGetLastError()); } else {
-StatusBar->Panels->Items[0]->Text="Выдана команда - отработка НУ! Ожидание запуска моделирования...";  }
-iResult = recv( TeleSocket,(char *)&PS_tk_iss,1025, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError()); else JPS(1,is_bum,is_miu,"Полученно начальное состояние","");  } else
 StatusBar->Panels->Items[0]->Text="Выдана команда - отработка НУ! Ожидание запуска моделирования...";
 // получать подтверждение от БУМ //
 }
@@ -880,46 +707,7 @@ S_00[1]+= (int)USO_Booled[0][5];  //  00A - KSP A11
 S_00[1]+= (int)USO_Booled[0][6];  //  009 - KSP A13
 S_00[1]+= (int)USO_Booled[0][7];  //  008 - KSP A15
 
-S_00[2]+= (int)USO_Booled[0][8];  //  007 - KSP A17
-S_00[2]+= (int)USO_Booled[0][9];  //  006 - KSP b1
-S_00[2]+= (int)USO_Booled[0][10]; //  005 - KSP b3
-S_00[2]+= (int)USO_Booled[0][11]; //  004 - KSP b5
-
-S_00[3]+= (int)USO_Booled[0][12]; //  003 - KSP b7
-S_00[3]+= (int)USO_Booled[0][13]; //  002 - KSP b9
-S_00[3]+= (int)USO_Booled[0][14]; //  001 - KSP b11
-S_00[3]+= (int)USO_Booled[0][15]; //  000 - KSP b13
-
-/* Слово 00 */
-BinA[0]=XtoY(Trim(S_00[0]), StrToIntDef(2, 10), StrToIntDef(16, 10));
-BinA[1]=XtoY(Trim(S_00[1]), StrToIntDef(2, 10), StrToIntDef(16, 10));
-BinA[2]=XtoY(Trim(S_00[2]), StrToIntDef(2, 10), StrToIntDef(16, 10));
-BinA[3]=XtoY(Trim(S_00[3]), StrToIntDef(2, 10), StrToIntDef(16, 10));
-
-/* Слово 10 */
-//Bin_USO_10[0]=XtoY(Trim(S_10[0]), StrToIntDef(2, 10), StrToIntDef(16, 10));  // ИРВИ - И1
-//Bin_USO_10[1]=XtoY(Trim(S_10[1]), StrToIntDef(2, 10), StrToIntDef(16, 10));  // ИРВИ - И2
-//Bin_USO_10[2]=XtoY(Trim(S_10[2]), StrToIntDef(2, 10), StrToIntDef(16, 10));  // ИРВИ - И3
-//Bin_USO_10[3]=XtoY(Trim(S_10[3]), StrToIntDef(2, 10), StrToIntDef(16, 10));  // ИРВИ - И4
-
-dOUT = "0x"+BinA[0]+BinA[1]+BinA[2]+BinA[3];                             // 00
-//S_10_out = "0x"+Bin_USO_10[0]+Bin_USO_10[1]+Bin_USO_10[2]+Bin_USO_10[3]; // 10
-
-STR_00 = StrToInt(dOUT);
-//STR_10 = StrToInt(S_10_out);
-
-USO_BT[0] = STR_00;
-//USO_BT[16] = STR_10;
-iResult = send(SPSSocket_ch1,(char *)&PacketHeaderType,9, 0  );       // Посылаем заголовок пакета
-iResult = send(SPSSocket_ch1,(char *)&USO_BT,sizeof(USO_BT), 0  );    // Посылаем пакет
-for (int i=0; i<3; i++)                                               // Clear S_
-{
-S_00[i]="0";
 }
-/*
-*/
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TMainForm::N5Click(TObject *Sender)   // KSP Right
 {
@@ -1146,75 +934,12 @@ arg_deb->Show();
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMainForm::N35Click(TObject *Sender)
-{
-bum_debug->Show();
-}
 //---------------------------------------------------------------------------
 
-void __fastcall TMainForm::p_sost_from_bumTimer(TObject *Sender)
-{
-SendToBum(0x00102101, 907, 0);       //Команда в БУМ ()
-iResult = recv( TeleSocket,(char *)&PS_tk_iss,1025, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
-}
+//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
 
-void __fastcall TMainForm::Button1Click(TObject *Sender)
-{
-PS_tk_iss.fd_1=ntohl(0xcacacaca);
-PS_tk_iss.fd_2=ntohl(0xb4b4b4b4);
-PS_tk_iss.fd_3=ntohl(123);
-PS_tk_iss.fd_4=ntohl(123);
-PS_tk_iss.fd_5=ntohl(123);
-PS_tk_iss.fd_6=ntohl(123);
-PS_tk_iss.tk_type=ntohl(1);
-PS_tk_iss.model_sec=ntohl(6578);
-PS_tk_iss.milisec_ost=ntohl(987);
-PS_tk_iss.vec_j2000_mks[0]=0x7feffffc57ca82ae;
-PS_tk_iss.vec_j2000_mks[1]=0x7feffffc57ca82ae;
-PS_tk_iss.vec_j2000_mks[2]=0x7feffffc57ca82ae;
-PS_tk_iss.sun_vec[0]=0x7feffffc57ca82ae;
-PS_tk_iss.sun_vec[1]=0x7feffffc57ca82ae;
-PS_tk_iss.sun_vec[2]=0x7feffffc57ca82ae;
-PS_tk_iss.vec_tk_TPK[0]=0xc57ca82ae;
-PS_tk_iss.vec_tk_TPK[1]=0xc57ca82ae;
-PS_tk_iss.vec_tk_TPK[2]=0xc57ca82ae;
-PS_tk_iss.t_to_pt=123456789876;
-PS_tk_iss.pr_t_pt=1;
-PS_tk_iss.fara_pr=ntohl(3);
-PS_tk_iss.tv_pr=ntohl(4);
-PS_tk_iss.dpo_h[0]=0x7feffffc57ca82ae;
-PS_tk_iss.tv_pr=ntohl(9);
-PS_tk_iss.iss_tp_pr=3;
-PS_tk_iss.CIFC_Wdis[0]=0xDADADADA;
-PS_tk_iss.bsr_RUO[0]=0xAFAFAFAF;
-PS_tk_iss.bsr_RUO[1]=0xBABABABA;
-PS_tk_iss.bsr_RUO[2]=0xAFAFAFAF;
-iResult = send( TeleSocket,(char *)&PS_tk_iss,1000, 0  );   //
-if (iResult == SOCKET_ERROR) GetWsaError(WSAGetLastError());
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::Button10Click(TObject *Sender)
-{
-SendToBum(StrToInt(Edit5->Text),StrToInt(Edit6->Text),StrToInt(Edit7->Text));       //Команда в БУМ ()
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::N37Click(TObject *Sender)
-{
-otkazy_frm->Show();
-}
-//---------------------------------------------------------------------------
-
-
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::N44Click(TObject *Sender)
-{
-cwform->Show();        
-}
 //---------------------------------------------------------------------------
 
 void __fastcall TMainForm::ArgonTaktTimer(TObject *Sender)
@@ -1225,20 +950,14 @@ void __fastcall TMainForm::ArgonTaktTimer(TObject *Sender)
 
 void __fastcall TMainForm::debug_statusClick(TObject *Sender)
 {
-/**************************/
-/* РАБОТА С СТАТУСОМ БУМа */
-/**************************/
-bool message_status[2];           // Message BUM Status booled - recode for good work!
+bool message_status[2];           // Message Status booled - recode for good work!
 if(!debug_status->Checked) {
 if(message_status[1]==0){
 JPS(3,is_operator,is_miu,"ВНИМАНИЕ!!! Режим отладки снят!","");
 message_status[1]=1;}
 message_status[0] = 0;
 debug_panel->Visible=false;    // Скрываем отладочную панель
-//WithoutBum->Visible=false;
 model_status_pics->Width=177;
-N35->Enabled=false;
-N22->Enabled=false;
 } 
 if(debug_status->Checked){     // Если введен признак отладки
 debug_panel->Visible=true;
@@ -1246,9 +965,7 @@ if(message_status[0]==0){
 message_status[1] = 0;
 JPS(3,is_operator,is_miu,"ВНИМАНИЕ!!! Введен режим отладки!","");
 message_status[0]=1;}
-model_status_pics->Width=241;  // Меняем размер окна состояния моделей
-N35->Enabled=true;
-N22->Enabled=true;
+model_status_pics->Width=241;  // Меняем размер окна состояния моделей;
 }
 }
 //---------------------------------------------------------------------------
@@ -1275,9 +992,9 @@ Cl_blink=false;
 
 void __fastcall TMainForm::co_test_btnClick(TObject *Sender)
 {
-char cw_out;
-cw_out = boolsToChar(cw_b1);
-Label21->Caption=cw_out;
+double ret_r;
+ret_r = ikv_TwoAlpha(300);
+Label21->Caption=FormatFloat("",ret_r);
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::DebugTimerTimer(TObject *Sender)
@@ -1303,6 +1020,12 @@ ssvp_frm->Show();
 void __fastcall TMainForm::N110Click(TObject *Sender)
 {
 inpu_1->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::N38Click(TObject *Sender)
+{
+NeptDebug->Show();
 }
 //---------------------------------------------------------------------------
 

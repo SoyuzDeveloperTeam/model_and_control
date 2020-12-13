@@ -219,7 +219,6 @@ object bum_settings: Tbum_settings
     FFFF3FFFFFFF3FFFFFFF3FFFFFFF003FFFFF003FFFFF}
   OldCreateOrder = False
   Position = poDesktopCenter
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -1705,7 +1704,6 @@ object bum_settings: Tbum_settings
     Height = 25
     Caption = 'Button3'
     TabOrder = 10
-    OnClick = Button3Click
   end
   object Button4: TButton
     Left = 544
@@ -1717,7 +1715,6 @@ object bum_settings: Tbum_settings
   end
   object bum_desc: TTimer
     Interval = 5
-    OnTimer = bum_descTimer
     Left = 896
     Top = 24
   end
@@ -1729,14 +1726,12 @@ object bum_settings: Tbum_settings
   end
   object Timer1: TTimer
     Enabled = False
-    OnTimer = Timer1Timer
     Left = 1128
     Top = 24
   end
   object Timer2: TTimer
     Enabled = False
     Interval = 10
-    OnTimer = Timer2Timer
     Left = 1136
     Top = 256
   end
