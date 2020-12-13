@@ -1,4 +1,7 @@
 $ cat .gitignore
+/miscdata/
+/DLLs/
+/PO_Planirovanie/
 
 *.obj
 *.~dpp
