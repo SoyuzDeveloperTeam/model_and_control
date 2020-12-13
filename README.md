@@ -7,4 +7,4 @@ SS "Model and Control" (MaC)
 ---
 This software is designed to debug and verify dynamic simulation of the onboard systems of a transport manned spacecraft (TPK) Soyuz TMA (11F732 A17) 200 series during the preparation and transfer of onboard systems models to a computer game simulator.
 
-Руководство пользователя: https://docs.google.com/document/d/1Kx3sfOkBG-kjL28b9sbJToHH7b2Ain-G/edit
+Руководство пользователя: https://soyuzdeveloper.wixsite.com/vsoyuz/downloads
