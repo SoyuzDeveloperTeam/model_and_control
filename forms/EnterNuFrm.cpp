@@ -1,4 +1,12 @@
+/*
+  Структура данных начальных условий
 
+    NN0000.nu      - Файл с набором параметров начальных условий
+    NN0000_uso.bin - Файл состояниея УСО
+    NN0000_cw.bin  - Файл состояниея УС
+    NN0000_sc.XX   - Файл сценария ввода НшС (БортВремя - НшС - данные о НшС)
+
+*/
 //---------------------------------------------------------------------------
 #include <vcl.h>
 #pragma hdrstop
@@ -9,6 +17,8 @@
 #include "IniFiles.hpp"
 #include "JouHeader.h"
 #include "JouStrings.h"
+#include "USOData.h"
+#include <stdio.h>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -16,7 +26,30 @@ TEnterNuForm *EnterNuForm;
 static AnsiString F;
 static byte reg2;
 static TIniFile *FNUfile;
+AnsiString NU_ID;            // Идентификатор НУ
 //---------------------------------------------------------------------------
+
+// ВЗАИМОДЕЙСТВИЕ С ДАННЫМИ УСО //
+AnsiString USOFileName = ExtractFileDir(Application->ExeName)+"\\data\\";
+
+void SaveUSO(AnsiString fname){  // Запись файла состояния УСО
+//int arr[100];
+//for (int i=0; i < sizeof(arr)/sizeof(arr[0]); i++) arr[i] = i+100;
+FILE *fout;
+fout = fopen((USOFileName+fname).c_str(), "wb");
+fwrite(USO_Booled, 1, sizeof(USO_Booled), fout);
+fclose(fout);
+}
+
+void LoadUSO(AnsiString fname){ // Чтение файла состояния УСО
+//int arr[100];
+//for (int i=0; i < sizeof(arr)/sizeof(arr[0]); i++) arr[i] = i+100;
+FILE *fout;
+fout = fopen((USOFileName+fname).c_str(), "rb");
+fread (USO_Booled, 1, sizeof(USO_Booled), fout);
+fclose(fout);
+}
+
 __fastcall TEnterNuForm::TEnterNuForm(TComponent* Owner)
         : TForm(Owner)
 {
@@ -34,6 +67,7 @@ LoadNuFromFile->InitialDir=ExtractFileDir(Application->ExeName)+"\\data";
 if(LoadNuFromFile->Execute()){
 //if(FileExists(LoadNuFromFile->FileName)) {
 FNUfile = new TIniFile(LoadNuFromFile->FileName);
+
 // TK
 Jxx_tk->Text=FNUfile->ReadString("ComplexF_TK","Jxx","0");
 Jyy_tk->Text=FNUfile->ReadString("ComplexF_TK","Jyy","0");
@@ -130,9 +164,11 @@ if(reg2==1) reg_00->Checked; else
 if(reg2==2) reg_00->Checked; else
 if(reg2==3) reg_00->Checked; else
 if(reg2==4) reg_00->Checked; else
-if(reg2==5) reg_00->Checked; 
+if(reg2==5) reg_00->Checked;
+nuid->Text=FNUfile->ReadString("Other","NU_ID","0");
+NU_ID = nuid->Text;
 FNUfile->Free();
-JPS(1,"Загруженны НУ из файла.","","","");
+JPS(1,"Загруженны НУ "+NU_ID," из файла ",LoadNuFromFile->FileName,"");
 }}
 //---------------------------------------------------------------------------
 
@@ -226,6 +262,7 @@ if(sk_iss_tp->Checked) FNUfile->WriteString("Orient_ISS","sk","1"); else
 if(sk_iss_osk->Checked) FNUfile->WriteString("Orient_ISS","sk","2"); else
 if(sk_iss_vsk->Checked) FNUfile->WriteString("Orient_ISS","sk","3");
 //MISC
+FNUfile->WriteString("Other","NU_ID",nuid->Text);
 if(docking_pr->Checked)FNUfile->WriteString("Orient_MISC","rgn","1"); else
 if(redock10_pr->Checked)FNUfile->WriteString("Orient_MISC","rgn","2"); else
 if(avtsbl_pr->Checked)FNUfile->WriteString("Orient_MISC","rgn","3"); else
@@ -239,11 +276,18 @@ if(reg_02->Checked) FNUfile->WriteString("Other","Flight Mode","2"); else
 if(reg_03->Checked) FNUfile->WriteString("Other","Flight Mode","3"); else
 if(reg_04->Checked) FNUfile->WriteString("Other","Flight Mode","4"); else
 if(reg_05->Checked) FNUfile->WriteString("Other","Flight Mode","5");
-JPS(1,"НУ успешно сохранены.","","","");
+JPS(1,"НУ успешно сохранены."," ИД: "+nuid->Text," Файл: "+SaveNuToFile->FileName,"");
 }}
 //---------------------------------------------------------------------------
 
 
 
 
+
+
+void __fastcall TEnterNuForm::Button4Click(TObject *Sender)
+{
+LoadUSO("test");
+}
+//---------------------------------------------------------------------------
 

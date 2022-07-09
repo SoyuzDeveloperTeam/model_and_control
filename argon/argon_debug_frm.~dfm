@@ -6339,13 +6339,31 @@ object arg_deb: Targ_deb
       Height = 19
       Style = csOwnerDrawVariable
       ItemHeight = 13
+      ItemIndex = 0
       TabOrder = 3
+      Text = 'B1'
       Items.Strings = (
         'B1'
+        'B2'
         'B6'
+        'B10'
         'R1'
         'R6'
-        'B10'
+        'R17'
+        'A2'
+        'A3'
+        'A4'
+        'A5'
+        'A6'
+        'A7'
+        'A8'
+        'A9'
+        'A10'
+        'A11'
+        'A12'
+        'A13'
+        'A14'
+        'A16'
         #1040'18'
         'A19'
         'A20'

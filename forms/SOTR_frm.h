@@ -44,9 +44,9 @@ __published:	// IDE-managed Components
         TLabel *Label11;
         TLabel *Label12;
         TLabel *Label25;
-        TLabel *Label26;
+        TLabel *ts2_5;
         TLabel *Label27;
-        TLabel *Label28;
+        TLabel *ts2_6;
         TLabel *Label29;
         TLabel *Label30;
         TGroupBox *GroupBox2;
@@ -152,11 +152,11 @@ __published:	// IDE-managed Components
         TButton *Button29;
         TButton *Button30;
         TGroupBox *GroupBox5;
-        TSpeedButton *SpeedButton1;
-        TSpeedButton *SpeedButton2;
-        TSpeedButton *SpeedButton3;
-        TSpeedButton *SpeedButton4;
-        TSpeedButton *SpeedButton6;
+        TSpeedButton *krl_cmd1;
+        TSpeedButton *krl_cmd2;
+        TSpeedButton *krl_cmd3;
+        TSpeedButton *krl_cmd5;
+        TSpeedButton *krl_cmd4;
         TGroupBox *GroupBox6;
         TSpeedButton *SpeedButton5;
         TLabel *Label59;
@@ -238,6 +238,7 @@ __published:	// IDE-managed Components
         TImage *Image4;
         TTabSheet *TabSheet3;
         TButton *input_sps_data;
+        TTimer *USOTimer;
         void __fastcall Label59Click(TObject *Sender);
         void __fastcall Label60Click(TObject *Sender);
         void __fastcall Label75Click(TObject *Sender);
@@ -257,6 +258,11 @@ __published:	// IDE-managed Components
         void __fastcall Image2Click(TObject *Sender);
         void __fastcall Image4Click(TObject *Sender);
         void __fastcall input_sps_dataClick(TObject *Sender);
+        void __fastcall USOTimerTimer(TObject *Sender);
+        void __fastcall Button1Click(TObject *Sender);
+        void __fastcall Button2Click(TObject *Sender);
+        void __fastcall Button4Click(TObject *Sender);
+        void __fastcall Button3Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall Tsotr(TComponent* Owner);

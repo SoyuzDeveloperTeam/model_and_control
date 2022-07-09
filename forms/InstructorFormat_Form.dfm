@@ -1,6 +1,6 @@
 object InstructorFormat_FRM: TInstructorFormat_FRM
-  Left = 16
-  Top = 150
+  Left = 35
+  Top = 153
   Width = 934
   Height = 543
   Caption = #1048#1085#1089#1090#1088#1091#1082#1090#1086#1088#1089#1082#1080#1081' '#1092#1086#1088#1084#1072#1090
@@ -154,8 +154,8 @@ object InstructorFormat_FRM: TInstructorFormat_FRM
     object Label7: TLabel
       Left = 408
       Top = 104
-      Width = 30
-      Height = 17
+      Width = 31
+      Height = 19
       Caption = #1056#1059#1044
       Font.Charset = RUSSIAN_CHARSET
       Font.Color = clWindowText
@@ -167,8 +167,8 @@ object InstructorFormat_FRM: TInstructorFormat_FRM
     object Label8: TLabel
       Left = 600
       Top = 104
-      Width = 30
-      Height = 17
+      Width = 33
+      Height = 19
       Caption = #1056#1059#1054
       Font.Charset = RUSSIAN_CHARSET
       Font.Color = clWindowText
@@ -1135,8 +1135,8 @@ object InstructorFormat_FRM: TInstructorFormat_FRM
     object Label15: TLabel
       Left = 302
       Top = 20
-      Width = 54
-      Height = 17
+      Width = 47
+      Height = 18
       Caption = #1058#1076#1086' '#1074#1093
       Font.Charset = RUSSIAN_CHARSET
       Font.Color = clWindowText
@@ -1164,8 +1164,8 @@ object InstructorFormat_FRM: TInstructorFormat_FRM
     object Label17: TLabel
       Left = 302
       Top = 45
-      Width = 63
-      Height = 17
+      Width = 59
+      Height = 18
       Caption = #1058#1076#1086' '#1074#1099#1093
       Font.Charset = RUSSIAN_CHARSET
       Font.Color = clWindowText
@@ -1528,8 +1528,8 @@ object InstructorFormat_FRM: TInstructorFormat_FRM
     object Label67: TLabel
       Left = 542
       Top = 20
-      Width = 27
-      Height = 17
+      Width = 25
+      Height = 18
       Caption = #1058#1087#1088
       Font.Charset = RUSSIAN_CHARSET
       Font.Color = clWindowText
@@ -2264,5 +2264,9 @@ object InstructorFormat_FRM: TInstructorFormat_FRM
     OnTimer = Timer2Timer
     Left = 752
     Top = 272
+  end
+  object Timer3: TTimer
+    Left = 768
+    Top = 160
   end
 end

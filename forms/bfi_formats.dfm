@@ -1,6 +1,6 @@
 object BFI_Simvol_form: TBFI_Simvol_form
-  Left = 523
-  Top = 80
+  Left = 456
+  Top = 92
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1060#1086#1088#1084#1072#1090#1099' '#1041#1062#1042#1050' '#1040#1088#1075#1086#1085'-16'
@@ -2336,8 +2336,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label50: TLabel
           Left = 9
           Top = 8
-          Width = 140
-          Height = 19
+          Width = 120
+          Height = 22
           Caption = 'V45 NAOFCR'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2349,8 +2349,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label130: TLabel
           Left = 309
           Top = 8
-          Width = 168
-          Height = 19
+          Width = 122
+          Height = 22
           Caption = 'TN=23:17:35 '
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2362,8 +2362,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label140: TLabel
           Left = 9
           Top = 32
-          Width = 84
-          Height = 19
+          Width = 69
+          Height = 22
           Caption = 'RFHJN:'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2389,8 +2389,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label195: TLabel
           Left = 323
           Top = 56
-          Width = 112
-          Height = 19
+          Width = 104
+          Height = 22
           Caption = 'HHHHHHHH'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2402,8 +2402,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label200: TLabel
           Left = 400
           Top = 32
-          Width = 14
-          Height = 19
+          Width = 5
+          Height = 22
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
           Font.Height = -19
@@ -2414,8 +2414,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label203: TLabel
           Left = 39
           Top = 128
-          Width = 238
-          Height = 19
+          Width = 203
+          Height = 22
           Caption = 'PQFRAXJJ LPOXA CX'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2427,8 +2427,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label205: TLabel
           Left = 99
           Top = 152
-          Width = 140
-          Height = 19
+          Width = 128
+          Height = 22
           Caption = 'QPCTPRO DX'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2440,8 +2440,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label208: TLabel
           Left = 99
           Top = 176
-          Width = 168
-          Height = 19
+          Width = 151
+          Height = 22
           Caption = 'SBM QPSMF DX'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2453,8 +2453,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label209: TLabel
           Left = 54
           Top = 200
-          Width = 112
-          Height = 19
+          Width = 95
+          Height = 22
           Caption = 'USTACLJ:'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2466,8 +2466,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label216: TLabel
           Left = 25
           Top = 368
-          Width = 14
-          Height = 19
+          Width = 13
+          Height = 22
           Caption = 'A'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2479,8 +2479,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label232: TLabel
           Left = 54
           Top = 368
-          Width = 84
-          Height = 19
+          Width = 78
+          Height = 22
           Caption = 'HHHHHH'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2492,8 +2492,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label233: TLabel
           Left = 159
           Top = 368
-          Width = 28
-          Height = 19
+          Width = 22
+          Height = 22
           Caption = '00'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2505,8 +2505,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label234: TLabel
           Left = 249
           Top = 368
-          Width = 28
-          Height = 19
+          Width = 26
+          Height = 22
           Caption = 'JO'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2518,8 +2518,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label235: TLabel
           Left = 295
           Top = 368
-          Width = 84
-          Height = 19
+          Width = 78
+          Height = 22
           Caption = 'HHHHHH'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2531,8 +2531,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label236: TLabel
           Left = 280
           Top = 344
-          Width = 126
-          Height = 19
+          Width = 79
+          Height = 22
           Caption = 'CK     LD'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2544,8 +2544,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label237: TLabel
           Left = 39
           Top = 320
-          Width = 37
-          Height = 19
+          Width = 33
+          Height = 22
           Caption = 'e3='
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2557,8 +2557,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label238: TLabel
           Left = 39
           Top = 296
-          Width = 37
-          Height = 19
+          Width = 33
+          Height = 22
           Caption = 'e2='
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2570,8 +2570,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label239: TLabel
           Left = 39
           Top = 272
-          Width = 37
-          Height = 19
+          Width = 33
+          Height = 22
           Caption = 'e1='
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2583,8 +2583,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label240: TLabel
           Left = 39
           Top = 248
-          Width = 37
-          Height = 19
+          Width = 33
+          Height = 22
           Caption = 'e0='
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2596,8 +2596,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label241: TLabel
           Left = 39
           Top = 224
-          Width = 37
-          Height = 19
+          Width = 34
+          Height = 22
           Caption = 'h1='
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2609,8 +2609,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label242: TLabel
           Left = 339
           Top = 176
-          Width = 107
-          Height = 19
+          Width = 88
+          Height = 22
           Caption = 'CcLM Y-3'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2622,8 +2622,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label243: TLabel
           Left = 354
           Top = 152
-          Width = 42
-          Height = 19
+          Width = 31
+          Height = 22
           Caption = 'SPI'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2635,8 +2635,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label244: TLabel
           Left = 83
           Top = 320
-          Width = 98
-          Height = 19
+          Width = 71
+          Height = 22
           Caption = '0.00000'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2648,8 +2648,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label245: TLabel
           Left = 83
           Top = 296
-          Width = 98
-          Height = 19
+          Width = 71
+          Height = 22
           Caption = '0.00000'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2661,8 +2661,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label246: TLabel
           Left = 83
           Top = 272
-          Width = 98
-          Height = 19
+          Width = 71
+          Height = 22
           Caption = '0.00000'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2688,8 +2688,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label248: TLabel
           Left = 173
           Top = 224
-          Width = 43
-          Height = 19
+          Width = 31
+          Height = 22
           Caption = 'N/S'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2701,8 +2701,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label249: TLabel
           Left = 9
           Top = 56
-          Width = 126
-          Height = 19
+          Width = 108
+          Height = 22
           Caption = 'PQFRAXJJ:'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2728,8 +2728,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label251: TLabel
           Left = 400
           Top = 32
-          Width = 70
-          Height = 19
+          Width = 55
+          Height = 22
           Caption = '12345'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2741,8 +2741,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label252: TLabel
           Left = 339
           Top = 32
-          Width = 42
-          Height = 19
+          Width = 40
+          Height = 22
           Caption = 'DSP'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2754,8 +2754,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label253: TLabel
           Left = 83
           Top = 248
-          Width = 98
-          Height = 19
+          Width = 71
+          Height = 22
           Caption = '0.00000'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2795,8 +2795,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label256: TLabel
           Left = 413
           Top = 224
-          Width = 43
-          Height = 19
+          Width = 31
+          Height = 22
           Caption = 'N/S'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2808,8 +2808,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label257: TLabel
           Left = 250
           Top = 248
-          Width = 47
-          Height = 19
+          Width = 44
+          Height = 22
           Caption = 'fCX='
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2821,8 +2821,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label258: TLabel
           Left = 309
           Top = 248
-          Width = 112
-          Height = 19
+          Width = 76
+          Height = 22
           Caption = '00.00.00'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow
@@ -2834,8 +2834,8 @@ object BFI_Simvol_form: TBFI_Simvol_form
         object Label259: TLabel
           Left = 429
           Top = 248
-          Width = 14
-          Height = 19
+          Width = 13
+          Height = 22
           Caption = 'S'
           Font.Charset = ANSI_CHARSET
           Font.Color = clYellow

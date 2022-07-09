@@ -17,14 +17,15 @@ static TDateTime data_TSKD;
 static TDateTime data_TSKD_m8 = StrToTime("00:08:00");
 
 static String dOUT;
-static int fdh;
+//static int fdh;
 static int int_model;
 
 //Half-flag's
 static bool arg_half_false[166];
 // 1 - Признак "Причаливание"
 
-static bool pr_TSKD;
+static bool pr_TSKD;  //Логический признак ТСКД
+static AnsiString IrviStringRT;
 //int i_takt;
 
 static bool NUotr,      // Признак отработки НУ
@@ -48,17 +49,17 @@ static String S_00[4]; // USO SLOVO 00
 static int STR_00;
 static String S_01[4]; // USO SLOVO 01
 static int STR_01;
-static String S_02[4]; // USO SLOVO 01
+static String S_02[4]; // USO SLOVO 02
 static int STR_02;
-static String S_03[4]; // USO SLOVO 01
+static String S_03[4]; // USO SLOVO 03
 static int STR_03;
-static String S_04[4]; // USO SLOVO 01
-static String S_05[4]; // USO SLOVO 01
-static String S_06[4]; // USO SLOVO 01
-static String S_07[4]; // USO SLOVO 01
-static String S_08[4]; // USO SLOVO 01
-static String S_09[4]; // USO SLOVO 01
-static String S_0A[4]; // USO SLOVO 01
+static String S_04[4]; // USO SLOVO 04
+static String S_05[4]; // USO SLOVO 05
+static String S_06[4]; // USO SLOVO 06
+static String S_07[4]; // USO SLOVO 07
+static String S_08[4]; // USO SLOVO 08
+static String S_09[4]; // USO SLOVO 09
+static String S_0A[4]; // USO SLOVO 0A
 static String S_0B[4]; // USO SLOVO 01
 static String S_0C[4]; // USO SLOVO 01
 static String S_0D[4]; // USO SLOVO 01
@@ -79,7 +80,7 @@ static char BinC[4];
 static char BinD[4];
 static String Bin_USO_10[4];
 
-static bool co_pr;
+static bool co_pr;    // Логический признак ЦО
 
 // Для работы с эпохой J2000
 // JD 2451545.0

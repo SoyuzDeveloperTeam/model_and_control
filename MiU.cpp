@@ -4,41 +4,42 @@
 #pragma hdrstop
 //---------------------------------------------------------------------------
 USEFORM("MainFrm.cpp", MainForm);
-USEFORM("ts_frm.cpp", ts_form);
-USEFORM("toru_frm.cpp", toru_pult);
-USEFORM("EnterNuFrm.cpp", EnterNuForm);
-USEFORM("kdu_data.cpp", KDUform);
-USEFORM("clock_form.cpp", clock_frm);
-USEFORM("JouLogFrm.cpp", JouLogForm);
-USEFORM("BkuCFrm.cpp", BkuC);
+USEFORM("forms\toru_frm.cpp", toru_pult);
+USEFORM("forms\EnterNuFrm.cpp", EnterNuForm);
+USEFORM("forms\kdu_data.cpp", KDUform);
+USEFORM("forms\clock_form.cpp", clock_frm);
+USEFORM("forms\JouLogFrm.cpp", JouLogForm);
+USEFORM("forms\BkuCFrm.cpp", BkuC);
 USEFORM("brvi_irvi\irvi_brfi_frm.cpp", IrBrForm);
-USEFORM("KSPLForm.cpp", ksplfrm);
-USEFORM("KSPPForm.cpp", KSP_right);
-USEFORM("sepform.cpp", sep_form);
-USEFORM("cdn_clock_frm.cpp", CDN_CLOCK);
-USEFORM("graph_a1.cpp", graphics);
-USEFORM("USOFrm.cpp", UsoForm);
-USEFORM("bfi_formats.cpp", BFI_Simvol_form);
-USEFORM("zakon_upr.cpp", zakon_upr_frm);
-USEFORM("InstructorFormat_Form.cpp", InstructorFormat_FRM);
-USEFORM("help_form.cpp", help_frm);
-USEFORM("iss_per_tp.cpp", iss_t_tp);
-USEFORM("vku_graph.cpp", vkugraph);
-USEFORM("brus_form.cpp", brus_frm);
-USEFORM("vived_frm.cpp", liftoff_form);
+USEFORM("forms\KSPLForm.cpp", ksplfrm);
+USEFORM("forms\KSPPForm.cpp", KSP_right);
+USEFORM("forms\sepform.cpp", sep_form);
+USEFORM("forms\cdn_clock_frm.cpp", CDN_CLOCK);
+USEFORM("forms\graph_a1.cpp", graphics);
+USEFORM("forms\USOFrm.cpp", UsoForm);
+USEFORM("forms\bfi_formats.cpp", BFI_Simvol_form);
+USEFORM("forms\zakon_upr.cpp", zakon_upr_frm);
+USEFORM("forms\InstructorFormat_Form.cpp", InstructorFormat_FRM);
+USEFORM("forms\help_form.cpp", help_frm);
+USEFORM("forms\iss_per_tp.cpp", iss_t_tp);
+USEFORM("forms\vku_graph.cpp", vkugraph);
+USEFORM("forms\brus_form.cpp", brus_frm);
+USEFORM("forms\vived_frm.cpp", liftoff_form);
 USEFORM("iss\sm_ssvp_PX.cpp", sm_ssvp_plx_frm);
 USEFORM("argon\argon_debug_frm.cpp", arg_deb);
-USEFORM("SOTR_frm.cpp", sotr);
-USEFORM("trassa.cpp", trace);
-USEFORM("AboutFrm.cpp", AboutForm);
-USEFORM("otkazy.cpp", otkazy_frm);
-USEFORM("inpudebugf.cpp", NeptDebug);
-USEFORM("sps_frm.cpp", sps_form);
-USEFORM("bilu_format.cpp", bilu_frm);
+USEFORM("forms\SOTR_frm.cpp", sotr);
+USEFORM("forms\AboutFrm.cpp", AboutForm);
+USEFORM("forms\otkazy.cpp", otkazy_frm);
+USEFORM("forms\inpudebugf.cpp", NeptDebug);
+USEFORM("forms\sps_frm.cpp", sps_form);
+USEFORM("forms\bilu_format.cpp", bilu_frm);
 USEFORM("neptun\neptun.cpp", inpu_1);
-USEFORM("ssvp_form.cpp", ssvp_frm);
-USEFORM("CWFrm.cpp", cwform);
-USEFORM("krl_form.cpp", krl_frm);
+USEFORM("forms\ssvp_form.cpp", ssvp_frm);
+USEFORM("forms\CWFrm.cpp", cwform);
+USEFORM("forms\krl_form.cpp", krl_frm);
+USEFORM("forms\ts_frm.cpp", ts_form);
+USEFORM("forms\mmTestF.cpp", MDTestForm);
+USEFORM("forms\spgs_form.cpp", spgsfrm);
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
@@ -47,7 +48,6 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
                  Application->Initialize();
                  Application->Title = "MIU";
                  Application->CreateForm(__classid(TMainForm), &MainForm);
-                 Application->CreateForm(__classid(Tts_form), &ts_form);
                  Application->CreateForm(__classid(Ttoru_pult), &toru_pult);
                  Application->CreateForm(__classid(TEnterNuForm), &EnterNuForm);
                  Application->CreateForm(__classid(TKDUform), &KDUform);
@@ -69,7 +69,6 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
                  Application->CreateForm(__classid(Thelp_frm), &help_frm);
                  Application->CreateForm(__classid(Tvkugraph), &vkugraph);
                  Application->CreateForm(__classid(Tiss_t_tp), &iss_t_tp);
-                 Application->CreateForm(__classid(Ttrace), &trace);
                  Application->CreateForm(__classid(Tbrus_frm), &brus_frm);
                  Application->CreateForm(__classid(Totkazy_frm), &otkazy_frm);
                  Application->CreateForm(__classid(Tliftoff_form), &liftoff_form);
@@ -82,6 +81,9 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
                  Application->CreateForm(__classid(Tssvp_frm), &ssvp_frm);
                  Application->CreateForm(__classid(Tkrl_frm), &krl_frm);
                  Application->CreateForm(__classid(Tcwform), &cwform);
+                 Application->CreateForm(__classid(Tts_form), &ts_form);
+                 Application->CreateForm(__classid(TMDTestForm), &MDTestForm);
+                 Application->CreateForm(__classid(Tspgsfrm), &spgsfrm);
                  Application->Run();
         }
         catch (Exception &exception)

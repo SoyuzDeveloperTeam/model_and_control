@@ -1,5 +1,7 @@
 //---------------------------------------------------------------------------
 #include "kdu_math.h"
+#include "JouStrings.h"
+#include "JouHeader.h"
 #include <vcl.h>
 #pragma hdrstop
 
@@ -71,6 +73,7 @@ void __fastcall TInstructorFormat_FRM::rud_upMouseDown(TObject *Sender,
 dynamics.ay = 2 * 0.01915;
 dpo_status_bit = 1;
 dpo_v_pr[23]=1;  dpo_v_pr[24]=1;
+JPS(1,is_operator,is_rud,"¬¬≈–’","");
 }
 //---------------------------------------------------------------------------
 
@@ -81,6 +84,7 @@ void __fastcall TInstructorFormat_FRM::rud_upMouseUp(TObject *Sender,
 dpo_status_bit = 0;
 dynamics.ay = 0;
 dpo_v_pr[23]=0;  dpo_v_pr[24]=0;
+JPS(1,is_operator,is_rud,"ÕŒ–Ã¿À‹","");
 }
 //---------------------------------------------------------------------------
 
@@ -94,6 +98,7 @@ void __fastcall TInstructorFormat_FRM::rud_leftMouseDown(TObject *Sender,
 dpo_status_bit = 1;
 dynamics.az = 2 * 0.01897;
 dpo_v_pr[21]=1;  dpo_v_pr[22]=1;
+JPS(1,is_operator,is_rud,"À≈¬Œ","");
 }
 //---------------------------------------------------------------------------
 
@@ -103,6 +108,7 @@ void __fastcall TInstructorFormat_FRM::rud_leftMouseUp(TObject *Sender,
 dpo_status_bit = 0;
 dynamics.az = 0;
 dpo_v_pr[21]=0;  dpo_v_pr[22]=0;
+JPS(1,is_operator,is_rud,"ÕŒ–Ã¿À‹","");
 }
 //---------------------------------------------------------------------------
 
@@ -113,6 +119,7 @@ void __fastcall TInstructorFormat_FRM::Image10MouseDown(TObject *Sender,
   dpo_status_bit = 1;
 dynamics.ax = -0.018 * 2;    // Õ‡ Û‚ÂÎË˜ÂÌËÂ ÒÍÓÓÒÚË
 dpo_v_pr[14]=1;  dpo_v_pr[16]=1;  // œËÁÌ‡Í ‡·ÓÚ˚ ‰Îˇ Í‡Ê‰Ó„Ó ƒœŒ
+JPS(1,is_operator,is_rud,"–¿«√ŒÕ","");
 }
 //---------------------------------------------------------------------------
 
@@ -122,6 +129,7 @@ void __fastcall TInstructorFormat_FRM::Image10MouseUp(TObject *Sender,
 dynamics.ax = 0;
 dpo_status_bit = 0;
 dpo_v_pr[14]=0;  dpo_v_pr[16]=0;
+JPS(1,is_operator,is_rud,"“”Ã¡À≈– - ","ÕŒ–Ã¿À‹");
 }
 //---------------------------------------------------------------------------
 
@@ -132,6 +140,7 @@ void __fastcall TInstructorFormat_FRM::tormMouseDown(TObject *Sender,
 dpo_status_bit=1;
 dynamics.ax = 2 * 0.01849;
 dpo_v_pr[17]=1;  dpo_v_pr[18]=1;
+JPS(1,is_operator,is_rud,"“Œ–ÃŒ∆≈Õ»≈","");
 }
 //---------------------------------------------------------------------------
 
@@ -141,6 +150,7 @@ void __fastcall TInstructorFormat_FRM::tormMouseUp(TObject *Sender,
 dynamics.ax = 0;
 dpo_status_bit=0;
 dpo_v_pr[17]=0;  dpo_v_pr[18]=0;
+JPS(1,is_operator,is_rud,"“”Ã¡À≈– - ÕŒ–Ã¿À‹","");
 }
 //---------------------------------------------------------------------------
 
@@ -152,6 +162,7 @@ void __fastcall TInstructorFormat_FRM::rud_rightMouseDown(TObject *Sender,
 dynamics.az = -0.01897 * 2;
 dpo_status_bit = 1;
 dpo_v_pr[25]=1;  dpo_v_pr[26]=1;
+JPS(1,is_operator,is_rud,"¬œ–¿¬Œ","");
 }
 //---------------------------------------------------------------------------
 
@@ -161,6 +172,7 @@ void __fastcall TInstructorFormat_FRM::rud_rightMouseUp(TObject *Sender,
 dynamics.az = 0;
 dpo_status_bit = 0;
 dpo_v_pr[25]=0;  dpo_v_pr[26]=0;
+JPS(1,is_operator,is_rud,"ÕŒ–Ã¿À‹","");
 }
 //---------------------------------------------------------------------------
 
@@ -267,6 +279,7 @@ dynamics.ay = 0;
 dpo_v_pr[19]=0;  dpo_v_pr[20]=0;
 }
 //---------------------------------------------------------------------------
+
 
 
 

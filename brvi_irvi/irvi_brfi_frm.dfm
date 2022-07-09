@@ -1,6 +1,6 @@
 object IrBrForm: TIrBrForm
-  Left = 417
-  Top = 157
+  Left = 383
+  Top = 220
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1055#1056#1042#1048
@@ -1632,5 +1632,11 @@ object IrBrForm: TIrBrForm
     OnTimer = Timer1Timer
     Left = 320
     Top = 48
+  end
+  object USOt: TTimer
+    Interval = 100
+    OnTimer = USOtTimer
+    Left = 320
+    Top = 80
   end
 end

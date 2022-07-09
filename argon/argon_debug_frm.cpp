@@ -23,6 +23,14 @@ __fastcall Targ_deb::Targ_deb(TComponent* Owner)
 }
 //---------------------------------------------------------------------------
 
+// «апись в журнал јргон-16
+// MSG - сообщение в журнал
+// half - признак того, что сообщение состоит из нескольких строк.
+void mtaj(AnsiString Msg, bool half){
+AnsiString DT = Now().FormatString("[hh:nn:ss.zzz] - ");
+if(half) arg_deb->ArgonJou->Items->Add(Msg); else
+arg_deb->ArgonJou->Items->Add(DT+Msg);
+}
 void __fastcall Targ_deb::Button11Click(TObject *Sender)
 {
 if(ctrlword_enter->ItemIndex==0)   // B1
@@ -222,3 +230,4 @@ void __fastcall Targ_deb::Timer3Timer(TObject *Sender)
 // }
 }
 //---------------------------------------------------------------------------
+

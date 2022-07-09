@@ -1,6 +1,6 @@
 object inpu_1: Tinpu_1
-  Left = 441
-  Top = 20
+  Left = 203
+  Top = 35
   BorderStyle = bsSingle
   Caption = 'inpu_1'
   ClientHeight = 661

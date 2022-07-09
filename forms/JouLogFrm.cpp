@@ -52,7 +52,7 @@ JouLB->Clear();
 
 void __fastcall TJouLogForm::SpeedButton2Click(TObject *Sender)
 {
-AnsiString filename=Now().FormatString("ddmmyy-hh_mm_ss_")+"JOU_log.txt";
+AnsiString filename=Now().FormatString("ddmmyy-hh_mm_ss_")+"JOU_log.mjf";
 
 SJ->FileName=filename;
 SJ->Options<<ofPathMustExist << ofOverwritePrompt;

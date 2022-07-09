@@ -7,6 +7,7 @@
 #include "sotr_model.cpp"
 #include "sotr_data.h"
 #include "SPSHead.h"
+#include "USOData.h"
 #include <math.h>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -211,8 +212,52 @@ void __fastcall Tsotr::input_sps_dataClick(TObject *Sender)
 {
 TSpsDataN[13]=StrToFloat(Tsa_input->Text);
 TSpsDataN[10]=StrToFloat(Tbo_input->Text);
-TSpsDataN[12]=StrToFloat(Tpo_input->Text); //(TЖО?)
+TSpsDataN[12]=StrToFloat(Tpo_input->Text);
+TSpsDataN[19]=StrToFloat(Psa_input->Text);
 // и  далее весь СПС по такому же принципу
 }
 //---------------------------------------------------------------------------
+
+
+
+
+
+void __fastcall Tsotr::USOTimerTimer(TObject *Sender)
+{
+if(USO_Booled[9][10])
+        {
+         ts2_5->Color=clRed;
+        } else ts2_5->Color=clMaroon;
+if(USO_Booled[9][13])
+        {
+         ts2_6->Color=clRed;
+        } else ts2_6->Color=clMaroon;
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall Tsotr::Button1Click(TObject *Sender)
+{
+KSP_Booled[14][2]=true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall Tsotr::Button2Click(TObject *Sender)
+{
+KSP_Booled[14][3]=true;        
+}
+//---------------------------------------------------------------------------
+
+void __fastcall Tsotr::Button4Click(TObject *Sender)
+{
+KSP_Booled[14][4]=true;        
+}
+//---------------------------------------------------------------------------
+
+void __fastcall Tsotr::Button3Click(TObject *Sender)
+{
+KSP_Booled[14][5]=true;        
+}
+//---------------------------------------------------------------------------
+
 

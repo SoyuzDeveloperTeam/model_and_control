@@ -76,7 +76,7 @@
 #include "forms/cdn_clock_frm.cpp"            // Форма CDN clock MSK
 #include "forms/AboutFrm.cpp"                 // Форма "О программе..."
 #include "forms/BkuCFrm.cpp"                  // Форма БКУ-Ц "Символ-Ц"
-#include "brvi_irvi/irvi_brfi_frm.cpp"            // Форма ПРВИ
+#include "brvi_irvi/irvi_brfi_frm.cpp"        // Форма ПРВИ
 #include "forms/graph_a1.cpp"                 // Форма графиков
 #include "forms/SOTR_frm.cpp"                 // Форма СОТР
 #include "forms/InstructorFormat_Form.cpp"    // Форма инструкторского формата
@@ -85,9 +85,11 @@
 #include "argon/argon_debug_frm.cpp"          // Форма отладки Аргона
 #include "forms/inpudebugf.cpp"               // Форма отладки обмена с ИнПУ
 #include "forms/otkazy.cpp"                   // Форма "Отказ Бортоввых Систем"
-#include "neptun/neptun.cpp"                   // Форма ПСА "Нептун-МЭ" -  ИнПУ1
+#include "neptun/neptun.cpp"                  // Форма ПСА "Нептун-МЭ" -  ИнПУ1
 #include "forms/sps_frm.cpp"                  // Форма СПС
 #include "forms/CWFrm.cpp"                    // Форма Contrl Word (debug)
+#include "forms/mmTestF.cpp"                  // Форма отладки Модели ДВижения
+#include "spgs_form.cpp"                      // Форма СПГС
 // Форматы Laptop РС МКС (СМ)
 #include "sm_ssvp_PX.cpp"               // Формат СМ:ССВП:+Х
 //---------------------------------------------------------------------------
@@ -175,7 +177,6 @@ __published:	// IDE-managed Components
         TMenuItem *N32;
         TMenuItem *N33;
         TTimer *SpsSend;
-        TButton *Button16;
         TEdit *Edit3;
         TMenuItem *N34;
         TMenuItem *N161;
@@ -230,7 +231,6 @@ __published:	// IDE-managed Components
         TCheckBox *md_status;
         TMenuItem *N44;
         TButton *set_lang;
-        TButton *co_test_btn;
         TLabel *Label18;
         TLabel *arg_ch;
         TTimer *DebugTimer;
@@ -241,6 +241,14 @@ __published:	// IDE-managed Components
         TTrackBar *TrackBar1;
         TLabel *Label21;
         TMenuItem *N38;
+        TMenuItem *N22;
+        TMenuItem *N35;
+        TMenuItem *N45;
+        TMenuItem *N46;
+        TButton *co_test_btn;
+        TButton *Button16;
+        TButton *Button6;
+        TMenuItem *CDN1;
         void __fastcall pusk_btnClick(TObject *Sender);
         void __fastcall N3Click(TObject *Sender);
         void __fastcall N14Click(TObject *Sender);
@@ -296,6 +304,14 @@ __published:	// IDE-managed Components
         void __fastcall ssvpClick(TObject *Sender);
         void __fastcall N110Click(TObject *Sender);
         void __fastcall N38Click(TObject *Sender);
+        void __fastcall N40Click(TObject *Sender);
+        void __fastcall N22Click(TObject *Sender);
+        void __fastcall RadioButton1Click(TObject *Sender);
+        void __fastcall RadioButton2Click(TObject *Sender);
+        void __fastcall RadioButton3Click(TObject *Sender);
+        void __fastcall N35Click(TObject *Sender);
+        void __fastcall Button6Click(TObject *Sender);
+        void __fastcall CDN1Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TMainForm(TComponent* Owner);

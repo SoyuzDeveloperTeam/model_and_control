@@ -1,6 +1,6 @@
 object brus_frm: Tbrus_frm
-  Left = 268
-  Top = 125
+  Left = 355
+  Top = 149
   Width = 514
   Height = 382
   Caption = #1041#1056#1059#1057

@@ -61,13 +61,13 @@ __published:	// IDE-managed Components
         TLabel *Label36;
         TLabel *Label40;
         TLabel *Label41;
-        TLabel *Label45;
+        TLabel *dpo_rash;
         TLabel *Label46;
         TLabel *Label47;
         TLabel *Label48;
         TLabel *rud_rash;
         TLabel *Label50;
-        TLabel *Label51;
+        TLabel *skd_rash;
         TLabel *Label53;
         TGroupBox *GroupBox5;
         TLabel *Label44;
@@ -226,7 +226,6 @@ __published:	// IDE-managed Components
         TImage *dpo8;
         TImage *dpo10;
         TImage *dpo12;
-        void __fastcall Timer1Timer(TObject *Sender);
         void __fastcall skd_startClick(TObject *Sender);
         void __fastcall SpeedButton2Click(TObject *Sender);
         void __fastcall Button2Click(TObject *Sender);

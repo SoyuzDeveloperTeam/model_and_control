@@ -32,6 +32,18 @@ static bool SkdOnPr;
 static int timeed;
 
 static double v_tek;
+
+void RashModel(){
+// Включаем расход СКД
+// Произвести перерасчёт данного значения исходя
+// из массы ТК и особенностей СКД
+dynamics.rasp = dynamics.rasp - 0.535; // Высчитываем каждый тик 0.535 кг
+if(skd_on_pr)dynamics.rasp_skd = dynamics.rasp_skd - skd_sec_ras;
+// ВЫВОД //
+KDUform->skd_rash->Caption=FormatFloat("000.00",dynamics.rasp_skd);
+KDUform->dpo_rash->Caption=FormatFloat("000.00",dynamics.rasp_dpo);
+}
+
 //---------------------------------------------------------------------------
 __fastcall TKDUform::TKDUform(TComponent* Owner)
         : TForm(Owner)
@@ -41,19 +53,12 @@ KDUform->Position=poDesktopCenter;
 //---------------------------------------------------------------------------
 
 
-void __fastcall TKDUform::Timer1Timer(TObject *Sender)
-{
-// Включаем расход СКД
-// Произвести перерасчёт данного значения исходя
-// из массы ТК и особенностей СКД
-dynamics.rasp = dynamics.rasp - 0.535; // Высчитываем каждый тик 0.535 кг
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TKDUform::skd_startClick(TObject *Sender)
 {
 cw_a3[0]=1;  // Логический признак "СКД Вкл."
 JPS(1,is_sudn,is_operator,"Включение СКД     ","");
+Timer2->Enabled=1;
 }
 //---------------------------------------------------------------------------
 
@@ -94,7 +99,7 @@ Label12->Caption=TimeSKD++;
  data_vtek = v_tek;
  data_num_t = timeed;
 fuel_ost->Caption=dynamics.rasp;
-Label51->Caption=dynamics.rasp;
+//Label51->Caption=dynamics.rasp;
 upp--;
 Label68->Caption=upp;
 }
@@ -225,6 +230,7 @@ Label115->Caption=FormatFloat("000.000",SpsDataSt.TSpsParam[32]);
 
 void __fastcall TKDUform::kdu_math_tTimer(TObject *Sender)
 {
+// ПЕРЕНЕСТИ В МОДУЛЬ КДУ
 // Тестовый алгоритм для реализации процесса Наддува О и Г
 // Штатно формируется по всем командам, которые готовят включение КДУ.
 // Добавить обработчик по секциям наддува
@@ -280,6 +286,10 @@ dpo27->Visible=dpo_v_pr[27];    dpo28->Visible=dpo_v_pr[28];
 
 }
 //---------------------------------------------------------------------------
+
+
+
+
 
 
 

@@ -1,6 +1,6 @@
 object arg_deb: Targ_deb
-  Left = 189
-  Top = 118
+  Left = 93
+  Top = 151
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1054#1090#1083#1072#1076#1082#1072' '#1040#1088#1075#1086#1085'-16'

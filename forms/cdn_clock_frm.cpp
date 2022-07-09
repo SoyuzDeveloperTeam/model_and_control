@@ -20,7 +20,7 @@ void __fastcall TCDN_CLOCK::Timer1Timer(TObject *Sender)
 {
 Label5->Caption=Now().FormatString("hh");
 Label1->Caption=Now().FormatString("nn");
-Label4->Caption=Now().FormatString("hh");
+Label4->Caption=Now().FormatString("ss");
 f++;
 Label7->Caption=f;
 /* if(Now().FormatString("hh")<12){

@@ -2091,7 +2091,7 @@ F15_LABEL->Color=clLime;
 F15_LABEL->Font->Color=clBlack;  } else {
 F15_LABEL->Color=clGreen;
 F15_LABEL->Font->Color=clYellow; }
-if(USO_Booled[9][1]){  // KSP т17
+if(USO_Booled[9][1]){  // KSP т17 (мер)
 F17_LABEL->Color=clLime;
 F17_LABEL->Font->Color=clBlack;  } else {
 F17_LABEL->Color=clGreen;

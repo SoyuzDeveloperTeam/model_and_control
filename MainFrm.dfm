@@ -1,9 +1,9 @@
 object MainForm: TMainForm
-  Left = 168
-  Top = 93
+  Left = 208
+  Top = 82
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  ClientHeight = 570
+  ClientHeight = 532
   ClientWidth = 748
   Color = clActiveBorder
   DefaultMonitor = dmDesktop
@@ -363,8 +363,8 @@ object MainForm: TMainForm
     OnClick = SpeedButton1Click
   end
   object Label21: TLabel
-    Left = 392
-    Top = 464
+    Left = 208
+    Top = 424
     Width = 49
     Height = 14
     Caption = 'Label21'
@@ -436,7 +436,7 @@ object MainForm: TMainForm
   end
   object StatusBar: TStatusBar
     Left = 0
-    Top = 553
+    Top = 515
     Width = 748
     Height = 17
     Panels = <
@@ -457,7 +457,9 @@ object MainForm: TMainForm
     Top = 0
     Width = 185
     Height = 67
+    BiDiMode = bdLeftToRight
     Caption = ' '#1057#1086#1089#1090#1086#1103#1085#1080#1077' '#1084#1086#1076#1077#1083#1077#1081' '
+    ParentBiDiMode = False
     TabOrder = 2
     object inpu_status_pic: TImage
       Left = 68
@@ -531,10 +533,9 @@ object MainForm: TMainForm
     Left = 8
     Top = 168
     Width = 729
-    Height = 289
+    Height = 249
     Caption = ' '#1054#1090#1083#1072#1076#1082#1072' '
     TabOrder = 3
-    Visible = False
     object tskd_time_label: TLabel
       Left = 256
       Top = 112
@@ -662,8 +663,8 @@ object MainForm: TMainForm
       Caption = '0'
     end
     object hhm: TComboBox
-      Left = 264
-      Top = 202
+      Left = 8
+      Top = 210
       Width = 97
       Height = 19
       Style = csOwnerDrawFixed
@@ -679,8 +680,8 @@ object MainForm: TMainForm
         'none')
     end
     object testb: TComboBox
-      Left = 264
-      Top = 178
+      Left = 8
+      Top = 186
       Width = 137
       Height = 22
       ItemHeight = 14
@@ -697,8 +698,8 @@ object MainForm: TMainForm
         '6')
     end
     object Button12: TButton
-      Left = 264
-      Top = 256
+      Left = 152
+      Top = 216
       Width = 289
       Height = 25
       Caption = #1042#1074#1086#1076' '#1089#1086#1089#1090#1086#1103#1085#1080#1103' '#1050#1059#1056#1057' "'#1087#1077#1088#1077#1076' '#1089#1090#1099#1082#1086#1074#1082#1086#1081'"'
@@ -807,8 +808,8 @@ object MainForm: TMainForm
       end
     end
     object Button3: TButton
-      Left = 264
-      Top = 224
+      Left = 152
+      Top = 188
       Width = 289
       Height = 25
       Caption = #1040#1088#1075#1086#1085' - '#1058#1077#1089#1090' '#1080#1085#1090#1077#1075#1088#1072#1090#1086#1088#1086#1074' '#1074' '#1076#1080#1085#1072#1084#1080#1082#1077
@@ -832,16 +833,16 @@ object MainForm: TMainForm
       TabOrder = 8
     end
     object Button14: TButton
-      Left = 402
-      Top = 190
+      Left = 570
+      Top = 150
       Width = 151
       Height = 25
       Caption = #1054#1090#1087#1088#1072#1074#1080#1090#1100' '#1079#1072#1075#1086#1083#1086#1074#1086#1082
       TabOrder = 9
     end
     object Button17: TButton
-      Left = 408
-      Top = 160
+      Left = 576
+      Top = 120
       Width = 145
       Height = 25
       Caption = #1042#1077#1088#1077#1092#1080#1082#1072#1094#1080#1103' '#1053#1059
@@ -854,6 +855,33 @@ object MainForm: TMainForm
       Height = 17
       Caption = #1052#1086#1076#1077#1083#1100' '#1044#1074#1080#1078#1077#1085#1080#1103
       TabOrder = 11
+    end
+    object co_test_btn: TButton
+      Left = 623
+      Top = 180
+      Width = 97
+      Height = 25
+      Caption = 'co_test_btn'
+      TabOrder = 12
+      OnClick = co_test_btnClick
+    end
+    object Button16: TButton
+      Left = 644
+      Top = 209
+      Width = 75
+      Height = 25
+      Caption = #1041#1054' '#1055#1054' '#1080#1089#1093
+      TabOrder = 13
+      OnClick = Button16Click
+    end
+    object Button6: TButton
+      Left = 448
+      Top = 168
+      Width = 97
+      Height = 25
+      Caption = 'ych_Rg15[0]'
+      TabOrder = 14
+      OnClick = Button6Click
     end
   end
   object GroupBox6: TGroupBox
@@ -936,8 +964,8 @@ object MainForm: TMainForm
     end
   end
   object CO_light: TPanel
-    Left = 360
-    Top = 8
+    Left = 376
+    Top = 24
     Width = 57
     Height = 33
     BorderStyle = bsSingle
@@ -965,6 +993,7 @@ object MainForm: TMainForm
       Height = 17
       Caption = ' '#1059#1089#1086
       TabOrder = 0
+      OnClick = RadioButton1Click
     end
     object RadioButton2: TRadioButton
       Left = 8
@@ -975,6 +1004,7 @@ object MainForm: TMainForm
       Checked = True
       TabOrder = 1
       TabStop = True
+      OnClick = RadioButton2Click
     end
     object RadioButton3: TRadioButton
       Left = 8
@@ -983,32 +1013,24 @@ object MainForm: TMainForm
       Height = 17
       Caption = ' '#1044#1078#1086#1081#1089#1090#1080#1082
       TabOrder = 2
+      OnClick = RadioButton3Click
     end
-  end
-  object Button16: TButton
-    Left = 8
-    Top = 464
-    Width = 75
-    Height = 25
-    Caption = #1041#1054' '#1055#1054' '#1080#1089#1093
-    TabOrder = 7
-    OnClick = Button16Click
   end
   object Edit3: TEdit
     Left = 8
-    Top = 528
+    Top = 488
     Width = 121
     Height = 22
-    TabOrder = 8
+    TabOrder = 7
     Text = '0'
   end
   object Button13: TButton
     Left = 8
-    Top = 496
+    Top = 456
     Width = 185
     Height = 25
     Caption = #1057#1073#1088#1086#1089' '#1072#1074#1072#1088#1080#1081#1085#1086#1075#1086' '#1089#1080#1075#1085#1072#1083#1072
-    TabOrder = 9
+    TabOrder = 8
     OnClick = Button13Click
   end
   object debug_status: TCheckBox
@@ -1017,7 +1039,7 @@ object MainForm: TMainForm
     Width = 97
     Height = 17
     Caption = #1054#1090#1083#1072#1076#1082#1072
-    TabOrder = 10
+    TabOrder = 9
     Visible = False
     OnClick = debug_statusClick
   end
@@ -1026,7 +1048,7 @@ object MainForm: TMainForm
     Top = 72
     Width = 249
     Height = 67
-    TabOrder = 11
+    TabOrder = 10
     object sps_model: TCheckBox
       Left = 128
       Top = 46
@@ -1068,6 +1090,7 @@ object MainForm: TMainForm
       Height = 17
       Caption = 'With Unity'
       TabOrder = 3
+      Visible = False
     end
   end
   object set_lang: TButton
@@ -1076,16 +1099,7 @@ object MainForm: TMainForm
     Width = 49
     Height = 25
     Caption = 'ENG'
-    TabOrder = 12
-  end
-  object co_test_btn: TButton
-    Left = 96
-    Top = 464
-    Width = 97
-    Height = 25
-    Caption = 'co_test_btn'
-    TabOrder = 13
-    OnClick = co_test_btnClick
+    TabOrder = 11
   end
   object TrackBar1: TTrackBar
     Left = 653
@@ -1098,14 +1112,14 @@ object MainForm: TMainForm
     Position = 0
     SelEnd = 0
     SelStart = 0
-    TabOrder = 14
+    TabOrder = 12
     ThumbLength = 16
     TickMarks = tmBottomRight
     TickStyle = tsAuto
   end
   object MainMenu1: TMainMenu
     Left = 296
-    Top = 504
+    Top = 448
     object N1: TMenuItem
       Caption = #1053#1072#1095#1072#1083#1100#1085#1099#1077' '#1091#1089#1083#1086#1074#1080#1103
       OnClick = N1Click
@@ -1127,26 +1141,41 @@ object MainForm: TMainForm
     end
     object N6: TMenuItem
       Caption = #1060#1086#1088#1084#1072#1090#1099
-      object N15: TMenuItem
-        Caption = #1050#1044#1059
-        ShortCut = 16459
-        OnClick = N15Click
-      end
       object N26: TMenuItem
         Caption = #1041#1060#1048'-'#1057#1080#1084#1074#1086#1083
         ShortCut = 16449
         OnClick = N26Click
       end
-      object N40: TMenuItem
-        Caption = #1057#1055#1057
-      end
-      object N25: TMenuItem
-        Caption = #1057#1054#1058#1056
-        OnClick = N25Click
-      end
-      object N4: TMenuItem
-        Caption = #1059#1057#1054
-        OnClick = N4Click
+      object N45: TMenuItem
+        Caption = #1057#1080#1089#1090#1077#1084#1099
+        object bilu: TMenuItem
+          Caption = #1041#1048#1051#1059
+        end
+        object N15: TMenuItem
+          Caption = #1050#1044#1059
+          ShortCut = 16459
+          OnClick = N15Click
+        end
+        object N25: TMenuItem
+          Caption = #1057#1054#1058#1056
+          OnClick = N25Click
+        end
+        object N35: TMenuItem
+          Caption = #1057#1055#1043#1057
+          OnClick = N35Click
+        end
+        object N40: TMenuItem
+          Caption = #1057#1055#1057
+          OnClick = N40Click
+        end
+        object ssvp: TMenuItem
+          Caption = #1057#1057#1042#1055
+          OnClick = ssvpClick
+        end
+        object N4: TMenuItem
+          Caption = #1059#1057#1054
+          OnClick = N4Click
+        end
       end
       object N31: TMenuItem
         Caption = #1055#1091#1083#1100#1090#1099' '#1058#1050
@@ -1164,6 +1193,9 @@ object MainForm: TMainForm
             Caption = #1048#1085#1055#1059' 1'
             OnClick = N110Click
           end
+        end
+        object N46: TMenuItem
+          Caption = #1057#1040' - '#1056#1055#1042' '#1069#1055#1050
         end
       end
       object N23: TMenuItem
@@ -1193,13 +1225,6 @@ object MainForm: TMainForm
       object N33: TMenuItem
         Caption = #1042#1099#1074#1077#1076#1077#1085#1080#1077
         OnClick = N33Click
-      end
-      object bilu: TMenuItem
-        Caption = #1041#1048#1051#1059
-      end
-      object ssvp: TMenuItem
-        Caption = #1057#1057#1042#1055
-        OnClick = ssvpClick
       end
     end
     object N7: TMenuItem
@@ -1253,6 +1278,10 @@ object MainForm: TMainForm
           Caption = #1060#1043#1041
         end
       end
+      object CDN1: TMenuItem
+        Caption = 'CDN'
+        OnClick = CDN1Click
+      end
     end
     object N36: TMenuItem
       Caption = #1054#1090#1082#1072#1079#1099
@@ -1272,6 +1301,10 @@ object MainForm: TMainForm
       object N38: TMenuItem
         Caption = #1054#1073#1084#1077#1085' '#1089' '#1048#1085#1055#1059
         OnClick = N38Click
+      end
+      object N22: TMenuItem
+        Caption = #1052#1086#1076#1077#1083#1100' '#1044#1074#1080#1078#1077#1085#1080#1103
+        OnClick = N22Click
       end
     end
     object N9: TMenuItem
@@ -1293,12 +1326,12 @@ object MainForm: TMainForm
     Interval = 200
     OnTimer = ArgonTaktTimer
     Left = 712
-    Top = 488
+    Top = 432
   end
   object Timer2: TTimer
     Interval = 50
     Left = 680
-    Top = 520
+    Top = 464
   end
   object ModelStatusPicList: TImageList
     Height = 46
@@ -1306,7 +1339,7 @@ object MainForm: TMainForm
     ShareImages = True
     Width = 41
     Left = 296
-    Top = 472
+    Top = 416
     Bitmap = {
       494C010102000400040029002E00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000A40000002E0000000100200000000000E075
@@ -2295,71 +2328,71 @@ object MainForm: TMainForm
   object LocalTimeTimer: TTimer
     OnTimer = LocalTimeTimerTimer
     Left = 360
-    Top = 520
+    Top = 464
   end
   object PuskRgPr: TTimer
     Interval = 100
     OnTimer = PuskRgPrTimer
     Left = 552
-    Top = 520
+    Top = 464
   end
   object inpu_com2_connect: TTimer
     Enabled = False
     OnTimer = inpu_com2_connectTimer
     Left = 456
-    Top = 520
+    Top = 464
   end
   object arg_tst: TTimer
     Enabled = False
     Interval = 500
     OnTimer = arg_tstTimer
     Left = 712
-    Top = 520
+    Top = 464
   end
   object CentralLightBlink: TTimer
     Interval = 192
     OnTimer = CentralLightBlinkTimer
     Left = 488
-    Top = 520
+    Top = 464
   end
   object MainTimer: TTimer
     Enabled = False
     Interval = 200
     OnTimer = MainTimerTimer
     Left = 584
-    Top = 512
+    Top = 456
   end
   object ModelDateTime_Timer: TTimer
     Enabled = False
     OnTimer = ModelDateTime_TimerTimer
     Left = 520
-    Top = 520
+    Top = 464
   end
   object ChekTSKD: TTimer
     Enabled = False
     Interval = 200
     OnTimer = ChekTSKDTimer
     Left = 328
-    Top = 520
+    Top = 464
   end
   object villt: TTimer
     Enabled = False
     Interval = 1
     Left = 424
-    Top = 520
+    Top = 464
   end
   object SpsSend: TTimer
     Enabled = False
     Interval = 500
     OnTimer = SpsSendTimer
     Left = 328
-    Top = 472
+    Top = 416
   end
   object unity_s_h: TTimer
     Enabled = False
     Interval = 100
     Left = 392
-    Top = 504
+    Top = 448
   end
   object un_serv: TIdTCPServer
     Bindings = <
@@ -2374,11 +2407,11 @@ object MainForm: TMainForm
   object InpuRecv: TTimer
     Interval = 10
     Left = 360
-    Top = 472
+    Top = 416
   end
   object PopupMenu1: TPopupMenu
-    Left = 224
-    Top = 496
+    Left = 232
+    Top = 456
   end
   object DebugTimer: TTimer
     Interval = 100

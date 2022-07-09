@@ -10,6 +10,7 @@ static bool sto_pnk;     // Признак СТО ПНК
 static bool apm;         // Признак УСО для запуска такта Аргона - Argon Power Flag for USO
 
 static bool brvi_pr;     // Признак разрешения обмена с БРВИ
+static bool irvi_a;      // Признак А в первом ИНД
 
 static bool bilu_work_pr;
 
@@ -126,11 +127,13 @@ double Spr;  // Промах S
 
 double vbok;   //
 
-double rasp;   // Расход общий
-double rudkg;  // Топливо от РУД
-double ruokgx; // ROU x
-double ruokgy; // ROU y
-double ruokgz; // ROU z
+double rasp;     // Расход общий
+double rasp_skd; // Расход СКД
+double rasp_dpo; // Расход ДПО
+double rudkg;    // Топливо от РУД
+double ruokgx;   // ROU x
+double ruokgy;   // ROU y
+double ruokgz;   // ROU z
 
 double kvkg;   //
 

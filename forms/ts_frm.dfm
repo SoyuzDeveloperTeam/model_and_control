@@ -1,6 +1,6 @@
 object ts_form: Tts_form
-  Left = 92
-  Top = 101
+  Left = 39
+  Top = 73
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1058#1057

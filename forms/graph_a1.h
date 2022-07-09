@@ -119,12 +119,28 @@ __published:	// IDE-managed Components
         TTabSheet *TabSheet12;
         TChart *rdc_sm;
         TLineSeries *Series13;
+        TImage *Image1;
+        TImage *ssvp_sh;
+        TChart *ssvp_chart1;
+        TLabel *Label12;
+        TLineSeries *hsh_line;
+        TTrackBar *TrackBar1;
+        TButton *Button1;
+        TButton *Button2;
+        TImage *psa_konus;
+        TImage *Image2;
+        TChart *ssvp_chart2;
+        TLineSeries *LineSeries10;
         void __fastcall Timer1Timer(TObject *Sender);
         void __fastcall N1Click(TObject *Sender);
         void __fastcall MenuItem1Click(TObject *Sender);
         void __fastcall Timer2Timer(TObject *Sender);
         void __fastcall FormShow(TObject *Sender);
         void __fastcall SpeedButton1Click(TObject *Sender);
+        void __fastcall TrackBar1Change(TObject *Sender);
+        void __fastcall Timer3Timer(TObject *Sender);
+        void __fastcall Button1Click(TObject *Sender);
+        void __fastcall Button2Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall Tgraphics(TComponent* Owner);

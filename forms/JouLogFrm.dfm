@@ -1,6 +1,6 @@
 object JouLogForm: TJouLogForm
-  Left = 313
-  Top = 330
+  Left = 45
+  Top = 77
   VertScrollBar.Smooth = True
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
@@ -128,7 +128,7 @@ object JouLogForm: TJouLogForm
     Width = 33
     Height = 28
     Hint = #1054#1095#1080#1089#1090#1080#1090#1100' '#1090#1077#1082#1091#1097#1080#1081' '#1078#1091#1088#1085#1072#1083
-    Caption = #1054#1095#1080#1089
+    Caption = 'CLS'
     OnClick = SpeedButton1Click
   end
   object JouLB: TListBox

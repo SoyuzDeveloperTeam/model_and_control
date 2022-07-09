@@ -504,6 +504,12 @@ if(KSP_Booled[13][2]) { // Н 3
         JPS(1,"Подано питание на УКВ ПРМд","","","");
 }
 
+if(KSP_Booled[15][14]){ // Ф 15
+   KSP_Booled[15][14]=false;
+        USO_Booled[9][0]=true;
+        JPS(1,"Вентеляция дыхания","","","");
+}
+
 uso_change(USO_Booled);
 
 }

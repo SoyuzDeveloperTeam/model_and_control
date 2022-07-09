@@ -1,6 +1,6 @@
 object sm_ssvp_plx_frm: Tsm_ssvp_plx_frm
-  Left = 875
-  Top = 131
+  Left = 391
+  Top = 258
   BorderStyle = bsSingle
   Caption = #1057#1052':'#1057#1057#1042#1055':+'#1061
   ClientHeight = 359

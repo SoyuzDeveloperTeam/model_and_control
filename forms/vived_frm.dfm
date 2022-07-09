@@ -1,7 +1,7 @@
 object liftoff_form: Tliftoff_form
-  Left = 25
-  Top = 133
-  Width = 905
+  Left = 19
+  Top = 165
+  Width = 1003
   Height = 477
   Caption = #1042#1099#1074#1077#1076#1077#1085#1080#1077
   Color = clBtnFace

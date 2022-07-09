@@ -285,12 +285,12 @@ __published:	// IDE-managed Components
         TStaticText *StaticText1;
         TStaticText *StaticText2;
         TLabel *Label245;
-        TStaticText *StaticText3;
+        TStaticText *diskru_pr;
         TLabel *Label246;
         TLabel *cn_r_stat_label;
         TPanel *Panel14;
         TLabel *Label247;
-        TStaticText *StaticText4;
+        TStaticText *inpu_ob_st;
         TLabel *Label248;
         TLabel *Label249;
         TLabel *Label250;

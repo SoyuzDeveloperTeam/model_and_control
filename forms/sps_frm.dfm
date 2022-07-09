@@ -1,6 +1,6 @@
 object sps_form: Tsps_form
-  Left = 19
-  Top = 40
+  Left = 437
+  Top = 115
   BorderStyle = bsSingle
   Caption = #1057#1055#1057
   ClientHeight = 489
@@ -85,7 +85,7 @@ object sps_form: Tsps_form
       Height = 13
       Caption = #1058#1046
     end
-    object sps_ro2: TPanel
+    object sps_03: TPanel
       Left = 48
       Top = 24
       Width = 57
@@ -100,7 +100,7 @@ object sps_form: Tsps_form
       ParentFont = False
       TabOrder = 0
     end
-    object sps_rco2: TPanel
+    object sps_04: TPanel
       Left = 48
       Top = 56
       Width = 57
@@ -115,7 +115,7 @@ object sps_form: Tsps_form
       ParentFont = False
       TabOrder = 1
     end
-    object sps_rh20: TPanel
+    object sps_02: TPanel
       Left = 48
       Top = 88
       Width = 57
@@ -175,7 +175,7 @@ object sps_form: Tsps_form
       ParentFont = False
       TabOrder = 5
     end
-    object sps_tsa: TPanel
+    object sps_14: TPanel
       Left = 168
       Top = 24
       Width = 57
@@ -191,7 +191,7 @@ object sps_form: Tsps_form
       ParentFont = False
       TabOrder = 6
     end
-    object sps_tbo: TPanel
+    object sps_11: TPanel
       Left = 168
       Top = 56
       Width = 57
@@ -250,7 +250,7 @@ object sps_form: Tsps_form
       Height = 13
       Caption = #1056#1054'2-3'
     end
-    object sps_ro21: TPanel
+    object sps_15: TPanel
       Left = 48
       Top = 24
       Width = 57
@@ -265,7 +265,7 @@ object sps_form: Tsps_form
       ParentFont = False
       TabOrder = 0
     end
-    object sps_ro22: TPanel
+    object sps_16: TPanel
       Left = 48
       Top = 56
       Width = 57
@@ -317,7 +317,7 @@ object sps_form: Tsps_form
       Height = 13
       Caption = #1056#1050#1053#1056
     end
-    object sps_rkjo: TPanel
+    object sps_17: TPanel
       Left = 48
       Top = 24
       Width = 57
@@ -332,7 +332,7 @@ object sps_form: Tsps_form
       ParentFont = False
       TabOrder = 0
     end
-    object sps_pknr: TPanel
+    object sps_18: TPanel
       Left = 48
       Top = 56
       Width = 57
@@ -566,7 +566,7 @@ object sps_form: Tsps_form
   object GroupBox6: TGroupBox
     Left = 256
     Top = 200
-    Width = 233
+    Width = 241
     Height = 89
     Caption = ' '#1057#1048#1054#1057' '
     TabOrder = 5
@@ -585,14 +585,14 @@ object sps_form: Tsps_form
       Caption = #1056#1085#1072#1076#1076'-2'
     end
     object Label30: TLabel
-      Left = 132
+      Left = 137
       Top = 29
       Width = 34
       Height = 13
       Caption = #1056#1087#1077#1088'-1'
     end
     object Label31: TLabel
-      Left = 132
+      Left = 137
       Top = 61
       Width = 34
       Height = 13
@@ -629,7 +629,7 @@ object sps_form: Tsps_form
       TabOrder = 1
     end
     object sps_rper1: TPanel
-      Left = 168
+      Left = 177
       Top = 24
       Width = 57
       Height = 25
@@ -644,7 +644,7 @@ object sps_form: Tsps_form
       TabOrder = 2
     end
     object sps_rper2: TPanel
-      Left = 168
+      Left = 177
       Top = 56
       Width = 57
       Height = 25
@@ -747,7 +747,7 @@ object sps_form: Tsps_form
       ParentFont = False
       TabOrder = 0
     end
-    object sps_tpo: TPanel
+    object sps_12: TPanel
       Left = 48
       Top = 56
       Width = 57
@@ -763,10 +763,25 @@ object sps_form: Tsps_form
       TabOrder = 1
     end
   end
+  object GroupBox9: TGroupBox
+    Left = 256
+    Top = 392
+    Width = 241
+    Height = 89
+    Caption = ' '#1057#1090#1072#1090#1091#1089' '
+    TabOrder = 8
+    object Label32: TLabel
+      Left = 8
+      Top = 24
+      Width = 68
+      Height = 13
+      Caption = #1055#1072#1082#1077#1090#1086#1074' '#1057#1055#1057
+    end
+  end
   object Timer1: TTimer
     Interval = 250
     OnTimer = Timer1Timer
-    Left = 472
-    Top = 456
+    Left = 448
+    Top = 312
   end
 end

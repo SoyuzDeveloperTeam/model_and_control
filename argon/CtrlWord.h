@@ -11,6 +11,8 @@
 /* +-------------------------------------+
 */
 
+// Адрес - 
+
 //             Word        Addres (EEPROM)
 static bool cw_b1[16];  // 040
 static bool cw_b2[16];  //
@@ -24,7 +26,7 @@ static bool cw_a3[16];  // 464
 static bool cw_a4[16];  // 053
 static bool cw_a5[16];  // 054
 static bool cw_a6[16];  //
-static bool cw_a7[16];  // 
+static bool cw_a7[16];  //
 static bool cw_a8[16];  // 055
 static bool cw_a9[16];  // 470
 static bool cw_a10[16]; //
@@ -49,10 +51,10 @@ static bool cw_a33[16]; //
 static bool cw_a34[16]; // 1542
 static bool cw_a35[16]; // 250
 static bool cw_a40[16]; //
-static bool cw_c1[16];  // 
+static bool cw_c1[16];  //
 static bool cw_c2[16];  // 463
 static bool cw_c3[16];  // 465
-static bool cw_c6[16];  // 
+static bool cw_c6[16];  //
 static bool cw_c7[16];  //
 static bool cw_c8[16];  // 462
 static bool cw_c10[16]; //
@@ -61,31 +63,31 @@ static bool cw_x17[16]; // 273
 static bool cw_i17[16]; // 254
 
 // Команды
-static bool cw_K1[16];  //
-static bool cw_K2[16];  //
-static bool cw_K3[16];  //
-static bool cw_K4[16];  //
+static bool cw_K1[16];   //
+static bool cw_K2[16];   //
+static bool cw_K3[16];   //
+static bool cw_K4[16];   //
 
-static bool cw_AC7[16]; //
+static bool cw_AC7[16];  //
 
-static bool cw_TA1[16]; // 061 - Текущие Аварии
-static bool cw_SA[16];  // 060 - Срочные Аварии
-static bool cw_TA00[16];//
-static bool cw_TA01[16];// ТА ИКВ-1
-static bool cw_TA02[16];// ТА ИКВ-2
-static bool cw_TA03[16];// ТА БДУС1-1
-static bool cw_TA04[16];// ТА БДУС1-2
-static bool cw_TA05[16];// ТА ДПО-Б
-static bool cw_TA06[16];// ТА ДПО-М1
-static bool cw_TA07[16];// ТА ДПО-М2
-static bool cw_TA08[16];// ТА СКД (ДПО)
-static bool cw_TA09[16];// ТА ОТКАЗ ДУ (ВЫБОР ДПО-БТ)
-static bool cw_TA10[16];// ТА АВАРИЯ АКСЕЛЕРОМЕТРА
-static bool cw_TA11[16];// ТА
-static bool cw_TA12[16];// ТА
-static bool cw_TA13[16];// ТА
-static bool cw_TA14[16];// ТА
-static bool cw_TA15[16];// ТА
+static bool cw_TA1[16];  // 061 - Текущие Аварии
+static bool cw_SA[16];   // 060 - Срочные Аварии
+static bool cw_TA00[16]; //
+static bool cw_TA01[16]; // ТА ИКВ-1
+static bool cw_TA02[16]; // ТА ИКВ-2
+static bool cw_TA03[16]; // ТА БДУС1-1
+static bool cw_TA04[16]; // ТА БДУС1-2
+static bool cw_TA05[16]; // ТА ДПО-Б
+static bool cw_TA06[16]; // ТА ДПО-М1
+static bool cw_TA07[16]; // ТА ДПО-М2
+static bool cw_TA08[16]; // ТА СКД (ДПО)
+static bool cw_TA09[16]; // ТА ОТКАЗ ДУ (ВЫБОР ДПО-БТ)
+static bool cw_TA10[16]; // ТА АВАРИЯ АКСЕЛЕРОМЕТРА
+static bool cw_TA11[16]; // ТА
+static bool cw_TA12[16]; // ТА
+static bool cw_TA13[16]; // ТА
+static bool cw_TA14[16]; // ТА
+static bool cw_TA15[16]; // ТА
 
 // Ячейки контроля состояния
 static bool cw_KC1[16]; // 520
@@ -93,7 +95,7 @@ static bool cw_KC2[16]; // 521
 static bool cw_KC3[16]; // 522
 static bool cw_Ta1[16]; // 500
 
-static bool ych_z1[16]; // ych - Ячейки
+static bool ych_z1[16];   // ych - Ячейки
 static bool ych_POZ[16];
 static bool ych_Rg15[16]; // Яч Рг
 static bool ych_RrP[16];  // RrП
@@ -119,6 +121,8 @@ static bool cw_arg[16];
 [4] - Выбран канал БЦВК АБВ
 [5] - ЦО
 [6] -
+[7] -
+[8] -
 */
 
 #endif // _ctrlwrd

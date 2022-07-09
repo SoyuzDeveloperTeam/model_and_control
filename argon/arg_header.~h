@@ -10,6 +10,7 @@ static bool sto_pnk;     // Признак СТО ПНК
 static bool apm;         // Признак УСО для запуска такта Аргона - Argon Power Flag for USO
 
 static bool brvi_pr;     // Признак разрешения обмена с БРВИ
+static bool irvi_a;      // Признак А в первом ИНД
 
 static bool bilu_work_pr;
 
@@ -18,6 +19,7 @@ static bool mode18act;      // Признак режима для ирви 18
 // Память Аргона (по данным ИнПУ) - требуется подтверждение кол-ва ячеек памяти
 
 static double ArgonMemoryType[4096];
+static unsigned short ArgonMemory;
 // в аргоне имеет тип размером 2 байта
 
 static bool t_krl_true[5];   //

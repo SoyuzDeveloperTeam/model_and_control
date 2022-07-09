@@ -1,6 +1,6 @@
 object CDN_CLOCK: TCDN_CLOCK
-  Left = 344
-  Top = 224
+  Left = 651
+  Top = 181
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'CDN Clock'
@@ -5405,7 +5405,6 @@ object CDN_CLOCK: TCDN_CLOCK
     Caption = 'Label7'
   end
   object Timer1: TTimer
-    Enabled = False
     OnTimer = Timer1Timer
     Left = 224
     Top = 184

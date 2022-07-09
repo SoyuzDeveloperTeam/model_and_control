@@ -88,5 +88,6 @@ public:		// User declarations
 };
 //---------------------------------------------------------------------------
 extern PACKAGE Targ_deb *arg_deb;
+void mtaj(AnsiString Msg, bool half);
 //---------------------------------------------------------------------------
 #endif

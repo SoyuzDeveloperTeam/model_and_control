@@ -4,11 +4,11 @@
 
 #include <vcl.h>
 #pragma hdrstop
-#include "JouHeader.h"  // 
+#include "JouHeader.h"  // For Jou Work
 #include "JouStrings.h"
 #include "USOData.h"
 #include "main_header.h"
-#include "argon/arg_header.h"  // Загогловок А16
+#include "argon/arg_header.h"  // Argon-16 Header
 #include "irvi_brfi_frm.h"
 #include "argon/arg_main.cpp"
 //---------------------------------------------------------------------------
@@ -18,7 +18,239 @@ TIrBrForm *IrBrForm;
 static bool brvi_on;
 static bool halfe;
 
-void irvi_clear(void)  // Процедура очистки ИРВИ
+AnsiString IrStrRT(){  //IrviStringRT
+AnsiString RTt;
+RTt.SubString(1,1) = IrBrForm->i1->Caption;
+RTt.SubString(2,1) = IrBrForm->i2->Caption;
+RTt.SubString(3,1) = IrBrForm->i3->Caption;
+RTt.SubString(4,1) = IrBrForm->i4->Caption;
+RTt.SubString(5,1) = IrBrForm->i5->Caption;
+RTt.SubString(6,1) = IrBrForm->i6->Caption;
+RTt.SubString(7,1) = IrBrForm->i7->Caption;
+RTt.SubString(8,1) = IrBrForm->i8->Caption;
+RTt.SubString(9,1) = IrBrForm->i9->Caption;
+RTt.SubString(10,1) = IrBrForm->i10->Caption;
+RTt.SubString(11,1) = IrBrForm->i11->Caption;
+RTt.SubString(12,1) = IrBrForm->i12->Caption;
+RTt.SubString(13,1) = IrBrForm->i13->Caption;
+RTt.SubString(14,1) = IrBrForm->i14->Caption;
+return RTt;
+}
+
+AnsiString DecToBin(int i){
+  if(i==0) return "1111"; else
+  if(i==1) return "0111"; else
+  if(i==2) return "1011"; else
+  if(i==3) return "0011"; else
+  if(i==4) return "1101"; else
+  if(i==5) return "0101"; else
+  if(i==6) return "1001"; else
+  if(i==7) return "0001"; else
+  if(i==8) return "1110"; else
+  if(i==9) return "0110";
+}
+
+void IrviUSOSt(){
+if(brvi_on){
+if(!irvi_a){        // If not sign А ("AA" Error)
+  //USO_Booled[16]
+AnsiString TempStr;
+  if(IrBrForm->i1->Caption.IsEmpty()){
+   USO_Booled[16][0] = 0;
+   USO_Booled[16][1] = 0;
+   USO_Booled[16][2] = 0;
+   USO_Booled[16][3] = 0;
+  } else {
+   TempStr = DecToBin(StrToInt(IrBrForm->i1->Caption));
+   USO_Booled[16][0] = StrToInt(TempStr.SubString(1,1));
+   USO_Booled[16][1] = StrToInt(TempStr.SubString(2,1));
+   USO_Booled[16][2] = StrToInt(TempStr.SubString(3,1));
+   USO_Booled[16][3] = StrToInt(TempStr.SubString(4,1));
+  }
+
+  if(IrBrForm->i2->Caption.IsEmpty()){
+   USO_Booled[16][4] = 0;
+   USO_Booled[16][5] = 0;
+   USO_Booled[16][6] = 0;
+   USO_Booled[16][7] = 0;
+  } else {
+   TempStr = DecToBin(StrToInt(IrBrForm->i2->Caption));
+   USO_Booled[16][4] = StrToInt(TempStr.SubString(1,1));
+   USO_Booled[16][5] = StrToInt(TempStr.SubString(2,1));
+   USO_Booled[16][6] = StrToInt(TempStr.SubString(3,1));
+   USO_Booled[16][7] = StrToInt(TempStr.SubString(4,1));
+  }
+
+  if(IrBrForm->i3->Caption.IsEmpty()){
+   USO_Booled[16][8] = 0;
+   USO_Booled[16][9] = 0;
+   USO_Booled[16][10] = 0;
+   USO_Booled[16][11] = 0;
+  } else {
+   TempStr = DecToBin(StrToInt(IrBrForm->i3->Caption));
+   USO_Booled[16][8] = StrToInt(TempStr.SubString(1,1));
+   USO_Booled[16][9] = StrToInt(TempStr.SubString(2,1));
+   USO_Booled[16][10] = StrToInt(TempStr.SubString(3,1));
+   USO_Booled[16][11] = StrToInt(TempStr.SubString(4,1));
+  }
+
+    if(IrBrForm->i4->Caption.IsEmpty()){
+   USO_Booled[16][12] = 0;
+   USO_Booled[16][13] = 0;
+   USO_Booled[16][14] = 0;
+   USO_Booled[16][15] = 0;
+  } else {
+   TempStr = DecToBin(StrToInt(IrBrForm->i4->Caption));
+   USO_Booled[16][12] = StrToInt(TempStr.SubString(1,1));
+   USO_Booled[16][13] = StrToInt(TempStr.SubString(2,1));
+   USO_Booled[16][14] = StrToInt(TempStr.SubString(3,1));
+   USO_Booled[16][15] = StrToInt(TempStr.SubString(4,1));
+  }
+
+    if(IrBrForm->i5->Caption.IsEmpty()){
+   USO_Booled[17][0] = 0;
+   USO_Booled[17][1] = 0;
+   USO_Booled[17][2] = 0;
+   USO_Booled[17][3] = 0;
+  } else {
+   TempStr = DecToBin(StrToInt(IrBrForm->i5->Caption));
+   USO_Booled[17][0] = StrToInt(TempStr.SubString(1,1));
+   USO_Booled[17][1] = StrToInt(TempStr.SubString(2,1));
+   USO_Booled[17][2] = StrToInt(TempStr.SubString(3,1));
+   USO_Booled[17][3] = StrToInt(TempStr.SubString(4,1));
+  }
+
+    if(IrBrForm->i6->Caption.IsEmpty()){
+   USO_Booled[17][4] = 0;
+   USO_Booled[17][5] = 0;
+   USO_Booled[17][6] = 0;
+   USO_Booled[17][7] = 0;
+  } else {
+   TempStr = DecToBin(StrToInt(IrBrForm->i6->Caption));
+   USO_Booled[17][4] = StrToInt(TempStr.SubString(1,1));
+   USO_Booled[17][5] = StrToInt(TempStr.SubString(2,1));
+   USO_Booled[17][6] = StrToInt(TempStr.SubString(3,1));
+   USO_Booled[17][7] = StrToInt(TempStr.SubString(4,1));
+  }
+
+      if(IrBrForm->i7->Caption.IsEmpty()){
+   USO_Booled[17][8] = 0;
+   USO_Booled[17][9] = 0;
+   USO_Booled[17][10] = 0;
+   USO_Booled[17][11] = 0;
+  } else {
+   TempStr = DecToBin(StrToInt(IrBrForm->i7->Caption));
+   USO_Booled[17][8] = StrToInt(TempStr.SubString(1,1));
+   USO_Booled[17][9] = StrToInt(TempStr.SubString(2,1));
+   USO_Booled[17][10] = StrToInt(TempStr.SubString(3,1));
+   USO_Booled[17][11] = StrToInt(TempStr.SubString(4,1));
+  }
+
+      if(IrBrForm->i8->Caption.IsEmpty()){
+   USO_Booled[17][12] = 0;
+   USO_Booled[17][13] = 0;
+   USO_Booled[17][14] = 0;
+   USO_Booled[17][15] = 0;
+  } else {
+   TempStr = DecToBin(StrToInt(IrBrForm->i8->Caption));
+   USO_Booled[17][12] = StrToInt(TempStr.SubString(1,1));
+   USO_Booled[17][13] = StrToInt(TempStr.SubString(2,1));
+   USO_Booled[17][14] = StrToInt(TempStr.SubString(3,1));
+   USO_Booled[17][15] = StrToInt(TempStr.SubString(4,1));
+  }
+
+      if(IrBrForm->i9->Caption.IsEmpty()){
+   USO_Booled[18][0] = 0;
+   USO_Booled[18][1] = 0;
+   USO_Booled[18][2] = 0;
+   USO_Booled[18][3] = 0;
+  } else {
+   TempStr = DecToBin(StrToInt(IrBrForm->i9->Caption));
+   USO_Booled[18][0] = StrToInt(TempStr.SubString(1,1));
+   USO_Booled[18][1] = StrToInt(TempStr.SubString(2,1));
+   USO_Booled[18][2] = StrToInt(TempStr.SubString(3,1));
+   USO_Booled[18][3] = StrToInt(TempStr.SubString(4,1));
+  }
+
+      if(IrBrForm->i10->Caption.IsEmpty()){
+   USO_Booled[18][4] = 0;
+   USO_Booled[18][5] = 0;
+   USO_Booled[18][6] = 0;
+   USO_Booled[18][7] = 0;
+  } else {
+   TempStr = DecToBin(StrToInt(IrBrForm->i10->Caption));
+   USO_Booled[18][4] = StrToInt(TempStr.SubString(1,1));
+   USO_Booled[18][5] = StrToInt(TempStr.SubString(2,1));
+   USO_Booled[18][6] = StrToInt(TempStr.SubString(3,1));
+   USO_Booled[18][7] = StrToInt(TempStr.SubString(4,1));
+  }
+
+        if(IrBrForm->i11->Caption.IsEmpty()){
+   USO_Booled[18][8] = 0;
+   USO_Booled[18][9] = 0;
+   USO_Booled[18][10] = 0;
+   USO_Booled[18][11] = 0;
+  } else {
+   TempStr = DecToBin(StrToInt(IrBrForm->i11->Caption));
+   USO_Booled[18][8] = StrToInt(TempStr.SubString(1,1));
+   USO_Booled[18][9] = StrToInt(TempStr.SubString(2,1));
+   USO_Booled[18][10] = StrToInt(TempStr.SubString(3,1));
+   USO_Booled[18][11] = StrToInt(TempStr.SubString(4,1));
+  }
+
+        if(IrBrForm->i12->Caption.IsEmpty()){
+   USO_Booled[18][12] = 0;
+   USO_Booled[18][13] = 0;
+   USO_Booled[18][14] = 0;
+   USO_Booled[18][15] = 0;
+  } else {
+   TempStr = DecToBin(StrToInt(IrBrForm->i12->Caption));
+   USO_Booled[18][12] = StrToInt(TempStr.SubString(1,1));
+   USO_Booled[18][13] = StrToInt(TempStr.SubString(2,1));
+   USO_Booled[18][14] = StrToInt(TempStr.SubString(3,1));
+   USO_Booled[18][15] = StrToInt(TempStr.SubString(4,1));
+  }
+
+        if(IrBrForm->i13->Caption.IsEmpty()){
+   USO_Booled[19][0] = 0;
+   USO_Booled[19][1] = 0;
+   USO_Booled[19][2] = 0;
+   USO_Booled[19][3] = 0;
+  } else {
+   TempStr = DecToBin(StrToInt(IrBrForm->i13->Caption));
+   USO_Booled[19][0] = StrToInt(TempStr.SubString(1,1));
+   USO_Booled[19][1] = StrToInt(TempStr.SubString(2,1));
+   USO_Booled[19][2] = StrToInt(TempStr.SubString(3,1));
+   USO_Booled[19][3] = StrToInt(TempStr.SubString(4,1)); }
+
+           if(IrBrForm->i14->Caption.IsEmpty()){
+   USO_Booled[19][4] = 0;
+   USO_Booled[19][5] = 0;
+   USO_Booled[19][6] = 0;
+   USO_Booled[19][7] = 0;
+  } else {
+   TempStr = DecToBin(StrToInt(IrBrForm->i14->Caption));
+   USO_Booled[19][4] = StrToInt(TempStr.SubString(1,1));
+   USO_Booled[19][5] = StrToInt(TempStr.SubString(2,1));
+   USO_Booled[19][6] = StrToInt(TempStr.SubString(3,1));
+   USO_Booled[19][7] = StrToInt(TempStr.SubString(4,1));
+  }
+
+  if(IrBrForm->i15->Caption.IsEmpty()){
+   USO_Booled[19][8] = 0;
+   USO_Booled[19][8] = 0;
+  } else if(IrBrForm->i15->Caption=="+"){
+   USO_Booled[19][8] = 1;
+   USO_Booled[19][8] = 0;
+  }  else if(IrBrForm->i15->Caption=="-"){
+   USO_Booled[19][8] = 0;
+   USO_Booled[19][8] = 1;
+  }
+  } // A
+ } //brvi_on
+}
+
+void irvi_clear(void)  // IRVI Clear Indicators Procedure
 {
 IrBrForm->i1->Caption="";
 IrBrForm->i2->Caption="";
@@ -59,10 +291,12 @@ IrBrForm->i11->Caption="A";
 IrBrForm->i12->Caption="A";
 IrBrForm->i13->Caption="A";
 IrBrForm->i14->Caption="A";
-IrBrForm->i15->Caption=""; }
+IrBrForm->i15->Caption="";
+irvi_a = 1; }
 
 else if(i1=="A"){
 int f;
+irvi_a = 1;
  if (i3=="") f=1;//Ситуация АА, переводим каретку на И3
 
 }
@@ -194,6 +428,7 @@ Panel1->Color=clLime;
 //---------------------------------------------------------------------------
 void __fastcall TIrBrForm::SpeedButton16Click(TObject *Sender)
 {
+irvi_a = 0;
 i1->Caption="";
 i2->Caption="";
 i3->Caption="";
@@ -213,247 +448,26 @@ i15->Caption="";
 //---------------------------------------------------------------------------
 void __fastcall TIrBrForm::isp_btnClick(TObject *Sender)
 {
-if(brvi_on) { // Если БРВИ вкл
-if(i1->Caption==""&&i2->Caption==""){  // Если первый и второй индикаторы пустые,
-i1->Caption=="A";     // Тогда сообщение АА
+if(brvi_on) { // If BRVI is ON
+if(i1->Caption==""&&i2->Caption==""){  // If first and second empty,
+i1->Caption=="A";     // Then error-message "AA"
 i2->Caption=="A";
-JPS(3,is_irvi,is_operator,"АА","");  // и лог в журнал
+JPS(3,is_irvi,is_operator,"АА","");  // and log to jou
 } else {              // или (если 1И и 2И не пустые)
 AnsiString brvi_msg = i1->Caption+i2->Caption+i3->Caption+i4->Caption+    // Создаем строку текущего состояния И ИРВИ
 i5->Caption+i6->Caption+i7->Caption+i8->Caption+i9->Caption+i10->Caption+
 i11->Caption+i12->Caption+i13->Caption+i14->Caption+i15->Caption;
 
-//   // Логируем (перенести в обработчик аргона)
-
-//if(i1->Caption=="A") JPS(3,is_irvi,is_operator,brvi_msg,""); else
-//                     JPS(1,is_irvi,is_operator,brvi_msg,"");
-
-//} else
-
 JPS(1,is_operator,is_irvi,brvi_msg,"");
 
 Timer1->Enabled=true;  // Включаем таймер задержки индикации
 
-// Обнуляем индикаторы перед индикацией
-i1->Caption="";
-i2->Caption="";
-i3->Caption="";
-i4->Caption="";
-i5->Caption="";
-i6->Caption="";
-i7->Caption="";
-i8->Caption="";
-i9->Caption="";
-i10->Caption="";
-i11->Caption="";
-i12->Caption="";
-i13->Caption="";
-i14->Caption="";
-i15->Caption="";
+irvi_clear();
 
 irvi_string = brvi_msg; // Присваиваем глобальной переменной значение ИРВИ
 
 ChekIrvi(irvi_string); }}else  // Если БРВИ выключен
 JPS(3,is_miu,is_operator,cmd_brvi_error,"");   // Ошибка в Журнал
-
-
-////////////////////// И 1
-/* if(i1->Caption=="0"){
-  // IIII
-  S_10[0] = "1111";
-  Bin_USO_10[0] = "F";
-} else
-if(i1->Caption=="1"){
-  // .III
-  S_10[0] = "0111";
-  Bin_USO_10[0] = "7";
-} else
-if(i1->Caption=="2"){
-  // I.II
-  S_10[0] = "1011";
-  Bin_USO_10[0] = "B";
-} else
-if(i1->Caption=="3"){
-  // ..II
-  S_10[0] = "0011";
-  Bin_USO_10[0] = "3";
-} else
-if(i1->Caption=="4"){
-  // II.I
-  S_10[0] = "1101";
-  Bin_USO_10[0] = "D";
-} else
-if(i1->Caption=="5"){
-  // .I.I
-  S_10[0] = "0101";
-  Bin_USO_10[0] = "5";
-} else
-if(i1->Caption=="6"){
-  // I..I
-  S_10[0] = "1001";
-  Bin_USO_10[0] = "9";
-} else
-if(i1->Caption=="7"){
-  // ...I
-  S_10[0] = "0001";
-  Bin_USO_10[0] = "1";
-} else
-if(i1->Caption=="8"){
-  // III.
-  S_10[0] = "1110";
-  Bin_USO_10[0] = "E";
-} else
-if(i1->Caption=="9"){
-  // .II.
-  S_10[0] = "0110";
-  Bin_USO_10[0] = "6";
-} else
-if(i1->Caption=="A"){
-  // I.I.
-  S_10[0] = "1010";
-  Bin_USO_10[0] = "A";
-}
-////////////////////// И 2
-if(i2->Caption=="0"){
-  // IIII
-  S_10[1] = "1111";
-} else
-if(i2->Caption=="1"){
-  // .III
-  S_10[1] = "0111";
-} else
-if(i2->Caption=="2"){
-  // I.II
-  S_10[1] = "1011";
-} else
-if(i2->Caption=="3"){
-  // ..II
-  S_10[1] = "0011";
-} else
-if(i2->Caption=="4"){
-  // II.I
-  S_10[1] = "1101";
-} else
-if(i2->Caption=="5"){
-  // .I.I
-  S_10[1] = "0101";
-} else
-if(i2->Caption=="6"){
-  // I..I
-  S_10[1] = "1001";
-} else
-if(i2->Caption=="7"){
-  // ...I
-  S_10[1] = "0001";
-} else
-if(i2->Caption=="8"){
-  // III.
-  S_10[1] = "1110";
-} else
-if(i2->Caption=="9"){
-  // .II.
-  S_10[1] = "0110";
-} else
-if(i2->Caption=="A"){
-  // I.I.
-  S_10[1] = "1010";
-}
-
-////////////////////// И 3
-if(i3->Caption=="0"){
-  // IIII
-  S_10[2] = "1111";
-} else
-if(i3->Caption=="1"){
-  // .III
-  S_10[2] = "0111";
-} else
-if(i3->Caption=="2"){
-  // I.II
-  S_10[2] = "1011";
-} else
-if(i3->Caption=="3"){
-  // ..II
-  S_10[2] = "0011";
-} else
-if(i3->Caption=="4"){
-  // II.I
-  S_10[2] = "1101";
-} else
-if(i3->Caption=="5"){
-  // .I.I
-  S_10[2] = "0101";
-} else
-if(i3->Caption=="6"){
-  // I..I
-  S_10[2] = "1001";
-} else
-if(i3->Caption=="7"){
-  // ...I
-  S_10[2] = "0001";
-} else
-if(i3->Caption=="8"){
-  // III.
-  S_10[2] = "1110";
-} else
-if(i3->Caption=="9"){
-  // .II.
-  S_10[2] = "0110";
-} else
-if(i3->Caption=="A"){
-  // I.I.
-  S_10[2] = "1010";
-}
-////////////////////// И 4
-if(i4->Caption=="0"){
-  // IIII
-  S_10[3] = "1111";
-} else
-if(i4->Caption=="1"){
-  // .III
-  S_10[3] = "0111";
-} else
-if(i4->Caption=="2"){
-  // I.II
-  S_10[3] = "1011";
-} else
-if(i4->Caption=="3"){
-  // ..II
-  S_10[3] = "0011";
-} else
-if(i4->Caption=="4"){
-  // II.I
-  S_10[3] = "1101";
-} else
-if(i4->Caption=="5"){
-  // .I.I
-  S_10[3] = "0101";
-} else
-if(i4->Caption=="6"){
-  // I..I
-  S_10[3] = "1001";
-} else
-if(i4->Caption=="7"){
-  // ...I
-  S_10[3] = "0001";
-} else
-if(i4->Caption=="8"){
-  // III.
-  S_10[3] = "1110";
-} else
-if(i4->Caption=="9"){
-  // .II.
-  S_10[3] = "0110";
-} else
-if(i4->Caption=="A"){
-  // I.I.
-  S_10[3] = "1010";
-} */
-// - 01
-// + 10
-
-
-
 }
 //---------------------------------------------------------------------------
 void __fastcall TIrBrForm::SpeedButton1Click(TObject *Sender)
@@ -909,7 +923,11 @@ irvi_send_t->Enabled=true;
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TIrBrForm::USOtTimer(TObject *Sender)
+{
+//IrviUSOSt();
+IrviStringRT = IrStrRT();
+}
 
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 #endif // IRVI
-

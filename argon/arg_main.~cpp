@@ -290,6 +290,7 @@ switch (irvi_type.mode) {   // Обработчик режима
         break;
         default: irvi_err = true;       // Флаг ошибки (для индикации на ИРВИ)
                  JPS(3,is_argon,is_irvi,"АА","");        // Логируем ошибку о несуществующием режиме
+                 irvi_a = 1;
                  JPS(3,is_miu,is_operator,"Несуществующий режим!","");
         irvi_type.addr = StrToInt(irvi_str.SubString(3,5));
         irvi_type.value = StrToInt(irvi_str.SubString(8,7));
@@ -452,7 +453,7 @@ dynamics.omz0 = dynamics.omz;
 dynamics.Y2 = pow((2 * dynamics.ax1 * (dynamics.rs - 202)),0.5);
 
 if(dynamics.sks > dynamics.Y2){
-JPS(3,"Диспетчер Аргон-16  -  ","ОПАСНО |V|>9 m/s","","");
+//JPS(3,"Диспетчер Аргон-16  -  ","ОПАСНО |V|>9 m/s","","");
 }
 
 // Подпрограмма Контроля Расхода (КОРА)
@@ -658,9 +659,8 @@ if(cw_b1[7]) { // If "IR" true
    Перенос в прорамы БЦВК*/
 //if(cw_b6[13]) { // "Разрешение причаливания"
 // Гасим "ЗАВ КОН" (почему?)
-//if(!WithoutBum->Checked&&!arg_half_false[1]){
+//if(!arg_half_false[1]){
 //JPS(4,"ОТЛАДОЧНОЕ: Прошла команда в СУБК \"Причаливание\", запуск процедуры...","","","");
-//SendToBum(0x0000029D, 1, 1);
 //arg_half_false[1]=true;}
 //}
 

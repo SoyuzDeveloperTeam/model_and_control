@@ -1,10 +1,10 @@
 object EnterNuForm: TEnterNuForm
-  Left = 251
-  Top = 0
+  Left = 499
+  Top = 1
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1042#1074#1086#1076' '#1053#1091
-  ClientHeight = 714
+  ClientHeight = 713
   ClientWidth = 507
   Color = clBtnFace
   DefaultMonitor = dmDesktop
@@ -71,9 +71,9 @@ object EnterNuForm: TEnterNuForm
     Top = 0
     Width = 507
     Height = 641
-    ActivePage = TabSheet1
+    ActivePage = complex_tab
     Align = alTop
-    TabIndex = 3
+    TabIndex = 0
     TabOrder = 0
     object complex_tab: TTabSheet
       Caption = #1050#1086#1084#1087#1083#1077#1082#1089#1085#1099#1081
@@ -1103,6 +1103,7 @@ object EnterNuForm: TEnterNuForm
           Width = 81
           Height = 21
           TabOrder = 1
+          Text = '0'
         end
         object dol_v_tk: TEdit
           Left = 133
@@ -1110,6 +1111,7 @@ object EnterNuForm: TEnterNuForm
           Width = 81
           Height = 21
           TabOrder = 2
+          Text = '0'
         end
         object i_tk: TEdit
           Left = 133
@@ -1117,6 +1119,7 @@ object EnterNuForm: TEnterNuForm
           Width = 81
           Height = 21
           TabOrder = 3
+          Text = '0'
         end
         object arg_per_tk: TEdit
           Left = 133
@@ -1124,6 +1127,7 @@ object EnterNuForm: TEnterNuForm
           Width = 81
           Height = 21
           TabOrder = 4
+          Text = '0'
         end
         object an_is_tk: TEdit
           Left = 133
@@ -1131,6 +1135,7 @@ object EnterNuForm: TEnterNuForm
           Width = 81
           Height = 21
           TabOrder = 5
+          Text = '0'
         end
         object ball_coef_tk: TEdit
           Left = 133
@@ -1138,6 +1143,7 @@ object EnterNuForm: TEnterNuForm
           Width = 81
           Height = 21
           TabOrder = 6
+          Text = '0'
         end
         object GroupBox19: TGroupBox
           Left = 248
@@ -3271,19 +3277,25 @@ object EnterNuForm: TEnterNuForm
           Height = 13
           Caption = #1058' '#1074' '#1090#1077#1085#1080
         end
-        object Edit16: TEdit
+        object MaskEdit1: TMaskEdit
           Left = 32
-          Top = 34
-          Width = 97
+          Top = 32
+          Width = 96
           Height = 21
+          EditMask = '!90:00:00;1;*'
+          MaxLength = 8
           TabOrder = 0
+          Text = '  :  :  '
         end
-        object Edit77: TEdit
+        object MaskEdit2: TMaskEdit
           Left = 32
-          Top = 79
-          Width = 97
+          Top = 73
+          Width = 96
           Height = 21
+          EditMask = '!90:00:00;1;*'
+          MaxLength = 8
           TabOrder = 1
+          Text = '  :  :  '
         end
       end
       object GroupBox30: TGroupBox
@@ -3396,6 +3408,13 @@ object EnterNuForm: TEnterNuForm
     object TabSheet1: TTabSheet
       Caption = #1056#1077#1078#1080#1084
       ImageIndex = 3
+      object Label112: TLabel
+        Left = 8
+        Top = 272
+        Width = 99
+        Height = 13
+        Caption = #1048#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088' '#1053#1059
+      end
       object reg_00: TRadioButton
         Left = 8
         Top = 8
@@ -3490,6 +3509,46 @@ object EnterNuForm: TEnterNuForm
         Height = 249
         Caption = ' '#1053#1072#1095#1072#1083#1100#1085#1086#1077' '#1057#1086#1089#1090#1086#1103#1085#1080#1103' '#1041#1086#1088#1090#1086#1074#1099#1093' '#1057#1080#1089#1090#1077#1084' '
         TabOrder = 7
+        object Button2: TButton
+          Left = 8
+          Top = 24
+          Width = 153
+          Height = 25
+          Caption = #1047#1072#1075#1088#1091#1079#1080#1090#1100' '#1089#1086#1089#1090#1086#1103#1085#1080#1077' '#1059#1057
+          TabOrder = 0
+        end
+        object Button3: TButton
+          Left = 8
+          Top = 56
+          Width = 153
+          Height = 25
+          Caption = #1047#1072#1075#1088#1091#1079#1080#1090#1100' '#1053#1096#1057
+          TabOrder = 1
+        end
+        object Button4: TButton
+          Left = 8
+          Top = 88
+          Width = 153
+          Height = 25
+          Caption = #1047#1072#1075#1088#1091#1079#1080#1090#1100' '#1059#1057#1054
+          TabOrder = 2
+          OnClick = Button4Click
+        end
+        object CheckBox7: TCheckBox
+          Left = 8
+          Top = 128
+          Width = 273
+          Height = 17
+          Caption = #1040#1074#1090#1086#1084#1072#1090#1080#1095#1077#1089#1082#1072#1103' '#1074#1099#1075#1088#1091#1079#1082#1072' '#1080#1079' '#1092#1072#1081#1083#1072' '#1089#1094#1077#1085#1072#1088#1080#1103
+          TabOrder = 3
+        end
+      end
+      object nuid: TEdit
+        Left = 120
+        Top = 269
+        Width = 121
+        Height = 21
+        TabOrder = 8
       end
     end
   end
@@ -3651,10 +3710,5 @@ object EnterNuForm: TEnterNuForm
     Title = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1092#1086#1088#1084#1091' '#1085#1072#1095#1072#1083#1100#1085#1099#1093' '#1091#1089#1083#1086#1074#1080#1081
     Left = 288
     Top = 656
-  end
-  object Timer1: TTimer
-    Interval = 100
-    Left = 472
-    Top = 8
   end
 end

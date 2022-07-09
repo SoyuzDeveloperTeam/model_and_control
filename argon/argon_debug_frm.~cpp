@@ -27,62 +27,53 @@ void __fastcall Targ_deb::Button11Click(TObject *Sender)
 {
 if(ctrlword_enter->ItemIndex==0)   // B1
        cw_b1[cw_num_cb->ItemIndex] = 1;  else
+if(ctrlword_enter->ItemIndex==1)   // B2
+       cw_b2[cw_num_cb->ItemIndex] = 1;  else
 if(ctrlword_enter->ItemIndex==1)   // B6
        cw_b6[cw_num_cb->ItemIndex] = 1;  else
-if(ctrlword_enter->ItemIndex==2) {  // R1
-       if(cw_num_cb->ItemIndex==0)  cw_r1[0] = 1;  else
-       if(cw_num_cb->ItemIndex==1)  cw_r1[1] = 1;  else
-       if(cw_num_cb->ItemIndex==2)  cw_r1[2] = 1;  else
-       if(cw_num_cb->ItemIndex==3)  cw_r1[3] = 1;  else
-       if(cw_num_cb->ItemIndex==4)  cw_r1[4] = 1;  else
-       if(cw_num_cb->ItemIndex==5)  cw_r1[5] = 1;  else
-       if(cw_num_cb->ItemIndex==6)  cw_r1[6] = 1;  else
-       if(cw_num_cb->ItemIndex==7)  cw_r1[7] = 1;  else
-       if(cw_num_cb->ItemIndex==8)  cw_r1[8] = 1;  else
-       if(cw_num_cb->ItemIndex==9)  cw_r1[9] = 1;  else
-       if(cw_num_cb->ItemIndex==10) cw_r1[10] = 1;  else
-       if(cw_num_cb->ItemIndex==11) cw_r1[11] = 1;  else
-       if(cw_num_cb->ItemIndex==12) cw_r1[12] = 1;  else
-       if(cw_num_cb->ItemIndex==13) cw_r1[13] = 1;  else
-       if(cw_num_cb->ItemIndex==14) cw_r1[14] = 1;  else
-       if(cw_num_cb->ItemIndex==15) cw_r1[15] = 1;
-        }
-if(ctrlword_enter->ItemIndex==5) {  // A19
-       if(cw_num_cb->ItemIndex==0)  cw_a19[0] = 1;  else
-       if(cw_num_cb->ItemIndex==1)  cw_a19[1] = 1;  else
-       if(cw_num_cb->ItemIndex==2)  cw_a19[2] = 1;  else
-       if(cw_num_cb->ItemIndex==3)  cw_a19[3] = 1;  else
-       if(cw_num_cb->ItemIndex==4)  cw_a19[4] = 1;  else
-       if(cw_num_cb->ItemIndex==5)  cw_a19[5] = 1;  else
-       if(cw_num_cb->ItemIndex==6)  cw_a19[6] = 1;  else
-       if(cw_num_cb->ItemIndex==7)  cw_a19[7] = 1;  else
-       if(cw_num_cb->ItemIndex==8)  cw_a19[8] = 1;  else
-       if(cw_num_cb->ItemIndex==9)  cw_a19[9] = 1;  else
-       if(cw_num_cb->ItemIndex==10) cw_a19[10] = 1;  else
-       if(cw_num_cb->ItemIndex==11) cw_a19[11] = 1;  else
-       if(cw_num_cb->ItemIndex==12) cw_a19[12] = 1;  else
-       if(cw_num_cb->ItemIndex==13) cw_a19[13] = 1;  else
-       if(cw_num_cb->ItemIndex==14) cw_a19[14] = 1;  else
-       if(cw_num_cb->ItemIndex==15) cw_a19[15] = 1;
-        }
-if(ctrlword_enter->ItemIndex==6) {  // A20
-       if(cw_num_cb->ItemIndex==0)  cw_a20[0] = 1;  else
-       if(cw_num_cb->ItemIndex==1)  cw_a20[1] = 1;  else
-       if(cw_num_cb->ItemIndex==2)  cw_a20[2] = 1;  else
-       if(cw_num_cb->ItemIndex==3)  cw_a20[3] = 1;  else
-       if(cw_num_cb->ItemIndex==4)  cw_a20[4] = 1;  else
-       if(cw_num_cb->ItemIndex==5)  cw_a20[5] = 1;  else
-       if(cw_num_cb->ItemIndex==6)  cw_a20[6] = 1;  else
-       if(cw_num_cb->ItemIndex==7)  cw_a20[7] = 1;  else
-       if(cw_num_cb->ItemIndex==8)  cw_a20[8] = 1;  else
-       if(cw_num_cb->ItemIndex==9)  cw_a20[9] = 1;  else
-       if(cw_num_cb->ItemIndex==10) cw_a20[10] = 1;  else
-       if(cw_num_cb->ItemIndex==11) cw_a20[11] = 1;  else
-       if(cw_num_cb->ItemIndex==12) cw_a20[12] = 1;  else
-       if(cw_num_cb->ItemIndex==13) cw_a20[13] = 1;  else
-       if(cw_num_cb->ItemIndex==14) cw_a20[14] = 1;  else
-       if(cw_num_cb->ItemIndex==15) cw_a20[15] = 1;
-        }
+if(ctrlword_enter->ItemIndex==1)   // B10
+       cw_b10[cw_num_cb->ItemIndex] = 1;  else
+if(ctrlword_enter->ItemIndex==2)   // R1
+       cw_r1[cw_num_cb->ItemIndex] = 1;  else
+if(ctrlword_enter->ItemIndex==2)   // R6
+       cw_r6[cw_num_cb->ItemIndex] = 1;  else
+if(ctrlword_enter->ItemIndex==2)   // R17
+       cw_r17[cw_num_cb->ItemIndex] = 1;  else
+if(ctrlword_enter->ItemIndex==2)   // À2
+       cw_a2[cw_num_cb->ItemIndex] = 1;  else
+if(ctrlword_enter->ItemIndex==2)   // À3
+       cw_a3[cw_num_cb->ItemIndex] = 1;  else
+if(ctrlword_enter->ItemIndex==2)   // À4
+       cw_a4[cw_num_cb->ItemIndex] = 1;  else
+if(ctrlword_enter->ItemIndex==2)   // À5
+       cw_a5[cw_num_cb->ItemIndex] = 1;  else
+if(ctrlword_enter->ItemIndex==2)   // À6
+       cw_a6[cw_num_cb->ItemIndex] = 1;  else
+if(ctrlword_enter->ItemIndex==2)   // À7
+       cw_a7[cw_num_cb->ItemIndex] = 1;  else
+if(ctrlword_enter->ItemIndex==2)   // À8
+       cw_a8[cw_num_cb->ItemIndex] = 1;  else
+if(ctrlword_enter->ItemIndex==2)   // À9
+       cw_a9[cw_num_cb->ItemIndex] = 1;  else
+if(ctrlword_enter->ItemIndex==2)   // À10
+       cw_a10[cw_num_cb->ItemIndex] = 1;  else
+if(ctrlword_enter->ItemIndex==2)   // À11
+       cw_a11[cw_num_cb->ItemIndex] = 1;  else
+if(ctrlword_enter->ItemIndex==2)   // À12
+       cw_a12[cw_num_cb->ItemIndex] = 1;  else
+if(ctrlword_enter->ItemIndex==2)   // À13
+       cw_a13[cw_num_cb->ItemIndex] = 1;  else
+if(ctrlword_enter->ItemIndex==2)   // À14
+       cw_a14[cw_num_cb->ItemIndex] = 1;  else
+if(ctrlword_enter->ItemIndex==2)   // À16
+       cw_a16[cw_num_cb->ItemIndex] = 1;  else
+if(ctrlword_enter->ItemIndex==2)   // À18
+       cw_a18[cw_num_cb->ItemIndex] = 1;  else
+if(ctrlword_enter->ItemIndex==5)   // A19
+       cw_a19[cw_num_cb->ItemIndex] = 1;  else
+if(ctrlword_enter->ItemIndex==6)   // A20
+       cw_a20[cw_num_cb->ItemIndex] = 1;  else
+
 JPS(1,"ÎÒËÀÄÎ×ÍÎÅ: Ââîä ñîñòîÿíèÿ ÓÑ â ÁÖÂÊ îïåðàòîðîì. ",ctrlword_enter->Text+"["+cw_num_cb->Text+"]=","1","");
 }
 //---------------------------------------------------------------------------

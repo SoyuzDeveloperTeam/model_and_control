@@ -77,12 +77,16 @@ __published:	// IDE-managed Components
         TRadioButton *RadioButton2;
         TRadioButton *RadioButton3;
         TTabSheet *TabSheet3;
-        TSpeedButton *SpeedButton2;
-        TSpeedButton *SpeedButton3;
+        TSpeedButton *rrp_btn;
+        TSpeedButton *zrp_btn;
         TListBox *ListBox1;
         TButton *Button2;
         TTimer *Timer1;
+        TButton *tofile;
+        TTabSheet *TabSheet4;
+        TButton *testpacket;
         void __fastcall SpeedButton1Click(TObject *Sender);
+        void __fastcall rrp_btnClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 
@@ -91,4 +95,13 @@ public:		// User declarations
 //---------------------------------------------------------------------------
 extern PACKAGE Tkrl_frm *krl_frm;
 //---------------------------------------------------------------------------
+static int kol_k;
+double* Mast1 = new double[kol_k];
+
+typedef struct{
+bool rrp;
+bool zrp;
+}TKrlCmd; // Команды передаваемые по КРЛ
+
+TKrlCmd KrlCmd_main;
 #endif

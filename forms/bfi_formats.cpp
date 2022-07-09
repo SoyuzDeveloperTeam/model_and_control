@@ -53,6 +53,38 @@ static String R6_string[5];
 static String R6_forDBG[5];
 static String R6_bfi;
 
+void display_show(bool power){  // Режим работы Дисплей
+if(power){
+/* BFI_Simvol_form->Label2->Visible=0;
+BFI_Simvol_form->f41_time->Visible=0;
+BFI_Simvol_form->Label26->Visible=0;
+BFI_Simvol_form->f41_t0->Visible=0;
+BFI_Simvol_form->Label54->Visible=0;
+BFI_Simvol_form->Label55->Visible=0;
+BFI_Simvol_form->Label57->Visible=0;
+BFI_Simvol_form->Label61->Visible=0;
+BFI_Simvol_form->Label26->Visible=0;
+BFI_Simvol_form->  */
+BFI_Simvol_form->Panel6->Visible=1;
+BFI_Simvol_form->Panel10->Visible=1;
+BFI_Simvol_form->Panel7->Visible=1;
+BFI_Simvol_form->Panel8->Visible=1;
+BFI_Simvol_form->Panel1->Visible=1;
+BFI_Simvol_form->Panel9->Visible=1;
+         } else {
+BFI_Simvol_form->Panel6->Visible=0;
+BFI_Simvol_form->Panel10->Visible=0;
+BFI_Simvol_form->Panel7->Visible=0;
+BFI_Simvol_form->Panel8->Visible=0;
+BFI_Simvol_form->Panel1->Visible=0;
+BFI_Simvol_form->Panel9->Visible=0;
+         }
+}
+
+void in_a(){
+
+}
+
 //---------------------------------------------------------------------------
 __fastcall TBFI_Simvol_form::TBFI_Simvol_form(TComponent* Owner)
         : TForm(Owner)
@@ -495,4 +527,5 @@ nResult = send(SPSSocket_ch1,(char *)&PacketHeaderType,9, 0  );
 nResult = send(SPSSocket_ch1,(char *)&packet,6, 0  );
 }
 //---------------------------------------------------------------------------
+
 

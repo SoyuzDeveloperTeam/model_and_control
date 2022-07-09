@@ -12,6 +12,7 @@
 #include <Graphics.hpp>
 #include <Buttons.hpp>
 #include <Dialogs.hpp>
+#include <Mask.hpp>
 //---------------------------------------------------------------------------
 class TEnterNuForm : public TForm
 {
@@ -220,10 +221,8 @@ __published:	// IDE-managed Components
         TCheckBox *CheckBox5;
         TCheckBox *CheckBox6;
         TGroupBox *GroupBox29;
-        TEdit *Edit16;
         TLabel *Label81;
         TLabel *Label99;
-        TEdit *Edit77;
         TGroupBox *GroupBox30;
         TComboBox *docking_uz;
         TGroupBox *GroupBox31;
@@ -320,9 +319,17 @@ __published:	// IDE-managed Components
         TComboBox *Spaceship;
         TLabel *Label111;
         TGroupBox *GroupBox14;
-        TTimer *Timer1;
+        TMaskEdit *MaskEdit1;
+        TButton *Button2;
+        TButton *Button3;
+        TButton *Button4;
+        TMaskEdit *MaskEdit2;
+        TLabel *Label112;
+        TEdit *nuid;
+        TCheckBox *CheckBox7;
         void __fastcall LoadFromFileBtnClick(TObject *Sender);
         void __fastcall BitBtn1Click(TObject *Sender);
+        void __fastcall Button4Click(TObject *Sender);
         //void __fastcall TabControl1Change(TObject *Sender);
         //void __fastcall NuParamTabsChange(TObject *Sender);
 private:	// User declarations

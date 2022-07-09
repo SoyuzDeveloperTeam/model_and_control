@@ -126,6 +126,7 @@ __published:	// IDE-managed Components
         TImage *gamma_tk_image;
         TLabel *gamma_tk;
         TLabel *Label69;
+        TTimer *Timer3;
         void __fastcall Image3MouseDown(TObject *Sender,
           TMouseButton Button, TShiftState Shift, int X, int Y);
         void __fastcall Timer1Timer(TObject *Sender);

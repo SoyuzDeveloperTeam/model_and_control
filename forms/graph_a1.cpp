@@ -8,6 +8,7 @@
 #include "arg_header.h"
 #include "SPSHead.h"
 #include "miscdata/rdc_draph.cpp"
+#include "ssvp_module.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -15,6 +16,8 @@ Tgraphics *graphics;
 static int shhh;
 static int i_fds;
 static int shag_a;
+TDateTime myDate;
+static int t_time;
 //---------------------------------------------------------------------------
 __fastcall Tgraphics::Tgraphics(TComponent* Owner)
         : TForm(Owner)
@@ -23,7 +26,32 @@ __fastcall Tgraphics::Tgraphics(TComponent* Owner)
 }
 //---------------------------------------------------------------------------
 
+void ssvp_work(){
+        if(s_pos>=0) graphics->ssvp_sh->Left=60;
+        if(s_pos>=25) graphics->ssvp_sh->Left=65;
+        if(s_pos>=50) graphics->ssvp_sh->Left=70;
+        if(s_pos>=75) graphics->ssvp_sh->Left=75;
+        if(s_pos>=101) graphics->ssvp_sh->Left=80;
+        if(s_pos>=126) graphics->ssvp_sh->Left=85;
+        if(s_pos>=151) graphics->ssvp_sh->Left=90;
+        if(s_pos>=176) graphics->ssvp_sh->Left=95;
+        if(s_pos>=202) graphics->ssvp_sh->Left=100;
+        if(s_pos>=226) graphics->ssvp_sh->Left=105;
+        if(s_pos>=252) graphics->ssvp_sh->Left=110;
+        if(s_pos>=276) graphics->ssvp_sh->Left=115;
+        if(s_pos>=303) graphics->ssvp_sh->Left=120;
+        if(s_pos>=327) graphics->ssvp_sh->Left=125;
+        if(s_pos>=353) graphics->ssvp_sh->Left=130;
+        if(s_pos>=377) graphics->ssvp_sh->Left=135;
+        if(s_pos==404) graphics->ssvp_sh->Left=142;
+}
 
+/*
+  60  64  68  72  76  80  84  88  92  96  100  104  108  112  116  120  124  128  132  136  140  144  148  152  156
+
+  0                   101                 202                      303                      7
+
+  */
 
 void __fastcall Tgraphics::Timer1Timer(TObject *Sender)
 {
@@ -64,6 +92,10 @@ Chart1->CopyToClipboardBitmap();
 
 void __fastcall Tgraphics::Timer2Timer(TObject *Sender)
 {
+// DATE TIME //
+
+
+// CHK BTN //
 if(RadioButton1->Checked)  shag_a = 500;   else
 if(RadioButton2->Checked)  shag_a = 300;   else
 if(RadioButton3->Checked)  shag_a = 150;   else
@@ -94,6 +126,14 @@ Series6->AddXY(dynamics.zpr,dynamics.ypr,"", clGreen);   // Sy, Sz
 Series9->AddXY(dynamics.zpr,dynamics.rs,"", clGreen);   // Sy, Sz
 
 //Series9->AddBubble(30, 30, 1, "", clRed);
+
+// S S V P //
+ssvp_work();
+//ssvp_chart1->BottomAxis->Minimum = Now();
+//ssvp_chart1->BottomAxis->Maximum = IncMinute(Now(), 3);
+//hsh_line->AddXY(dynamics.zpr,Now(),"", clGreen); //Õîä øòàíãè ÑÑÂÏ
+s_pos = TrackBar1->Position;
+ssvp_chart1->Series[0]->AddXY(data_num_t ,s_pos, "", clLime);
 }
 //---------------------------------------------------------------------------
 
@@ -116,4 +156,33 @@ Series12->AddXY(x,y,"", clBlue);
 }
 //---------------------------------------------------------------------------
 
+
+
+
+
+
+void __fastcall Tgraphics::TrackBar1Change(TObject *Sender)
+{
+//TrackBar1->Position;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall Tgraphics::Timer3Timer(TObject *Sender)
+{
+if(shtanga_w)
+t_time++;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall Tgraphics::Button1Click(TObject *Sender)
+{
+t_time=0;        
+}
+//---------------------------------------------------------------------------
+
+void __fastcall Tgraphics::Button2Click(TObject *Sender)
+{
+shtanga_w=1;
+}
+//---------------------------------------------------------------------------
 

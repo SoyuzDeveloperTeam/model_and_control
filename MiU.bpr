@@ -4,43 +4,95 @@
   <MACROS>
     <VERSION value="BCB.06.00"/>
     <PROJECT value="C:\miu\model_and_control\Out\MiU.exe"/>
-    <OBJFILES value="miscdata\neptprim.obj miscdata\MainFrm.obj miscdata\ts_frm.obj 
-      miscdata\toru_frm.obj miscdata\EnterNuFrm.obj miscdata\kdu_data.obj 
-      miscdata\clock_form.obj miscdata\JouLogFrm.obj miscdata\BkuCFrm.obj 
-      miscdata\irvi_brfi_frm.obj miscdata\KSPLForm.obj miscdata\KSPPForm.obj 
-      miscdata\sepform.obj miscdata\cdn_clock_frm.obj miscdata\graph_a1.obj 
-      miscdata\USOFrm.obj miscdata\bfi_formats.obj miscdata\zakon_upr.obj 
-      miscdata\InstructorFormat_Form.obj miscdata\help_form.obj 
-      miscdata\iss_per_tp.obj miscdata\vku_graph.obj miscdata\brus_form.obj 
-      miscdata\vived_frm.obj miscdata\sm_ssvp_PX.obj 
-      miscdata\argon_debug_frm.obj miscdata\SOTR_frm.obj miscdata\trassa.obj 
-      miscdata\AboutFrm.obj miscdata\otkazy.obj miscdata\inpudebugf.obj 
-      miscdata\sps_frm.obj miscdata\bilu_format.obj miscdata\neptun.obj 
-      miscdata\ssvp_form.obj miscdata\CWFrm.obj miscdata\krl_form.obj 
-      miscdata\MiU.obj miscdata\dta.obj miscdata\arg_kdu_operations.obj 
-      miscdata\arg_prkrt.obj miscdata\arg_main.obj miscdata\sotr_model.obj 
-      miscdata\inpu_connect.obj miscdata\MainCycle_PrObr.obj 
-      miscdata\main_math.obj miscdata\ks_main.obj miscdata\nepthdr.obj 
-      miscdata\arg_pks.obj miscdata\arg_irvi.obj miscdata\pults_tk.obj 
-      miscdata\transit.obj miscdata\neptun_main.obj miscdata\unity_connect.obj 
-      miscdata\winsock_ed.obj miscdata\argjh.obj miscdata\kurs_main.obj 
-      miscdata\inpuconnect.obj miscdata\uso_model.obj miscdata\ssvp_module.obj 
-      miscdata\ks020_model.obj miscdata\common.obj miscdata\StdAtmos.obj 
-      miscdata\control.obj miscdata\runge_kutta.obj miscdata\fly_model.obj 
-      miscdata\md_main.obj miscdata\DConvert.obj miscdata\rdc_draph.obj 
-      miscdata\inkmodel.obj miscdata\macros.obj"/>
+    <OBJFILES value="C:\model_and_control_new\miscdata\neptprim.obj 
+      C:\model_and_control_new\miscdata\MainFrm.obj 
+      C:\model_and_control_new\miscdata\toru_frm.obj 
+      C:\model_and_control_new\miscdata\EnterNuFrm.obj 
+      C:\model_and_control_new\miscdata\kdu_data.obj 
+      C:\model_and_control_new\miscdata\clock_form.obj 
+      C:\model_and_control_new\miscdata\JouLogFrm.obj 
+      C:\model_and_control_new\miscdata\BkuCFrm.obj 
+      C:\model_and_control_new\miscdata\irvi_brfi_frm.obj 
+      C:\model_and_control_new\miscdata\KSPLForm.obj 
+      C:\model_and_control_new\miscdata\KSPPForm.obj 
+      C:\model_and_control_new\miscdata\sepform.obj 
+      C:\model_and_control_new\miscdata\cdn_clock_frm.obj 
+      C:\model_and_control_new\miscdata\graph_a1.obj 
+      C:\model_and_control_new\miscdata\USOFrm.obj 
+      C:\model_and_control_new\miscdata\bfi_formats.obj 
+      C:\model_and_control_new\miscdata\zakon_upr.obj 
+      C:\model_and_control_new\miscdata\InstructorFormat_Form.obj 
+      C:\model_and_control_new\miscdata\help_form.obj 
+      C:\model_and_control_new\miscdata\iss_per_tp.obj 
+      C:\model_and_control_new\miscdata\vku_graph.obj 
+      C:\model_and_control_new\miscdata\brus_form.obj 
+      C:\model_and_control_new\miscdata\vived_frm.obj 
+      C:\model_and_control_new\miscdata\sm_ssvp_PX.obj 
+      C:\model_and_control_new\miscdata\argon_debug_frm.obj 
+      C:\model_and_control_new\miscdata\SOTR_frm.obj 
+      C:\model_and_control_new\miscdata\AboutFrm.obj 
+      C:\model_and_control_new\miscdata\otkazy.obj 
+      C:\model_and_control_new\miscdata\inpudebugf.obj 
+      C:\model_and_control_new\miscdata\sps_frm.obj 
+      C:\model_and_control_new\miscdata\bilu_format.obj 
+      C:\model_and_control_new\miscdata\neptun.obj 
+      C:\model_and_control_new\miscdata\ssvp_form.obj 
+      C:\model_and_control_new\miscdata\CWFrm.obj 
+      C:\model_and_control_new\miscdata\krl_form.obj 
+      C:\model_and_control_new\miscdata\MiU.obj 
+      C:\model_and_control_new\miscdata\dta.obj 
+      C:\model_and_control_new\miscdata\arg_kdu_operations.obj 
+      C:\model_and_control_new\miscdata\arg_prkrt.obj 
+      C:\model_and_control_new\miscdata\arg_main.obj 
+      C:\model_and_control_new\miscdata\sotr_model.obj 
+      C:\model_and_control_new\miscdata\inpu_connect.obj 
+      C:\model_and_control_new\miscdata\MainCycle_PrObr.obj 
+      C:\model_and_control_new\miscdata\main_math.obj 
+      C:\model_and_control_new\miscdata\ks_main.obj 
+      C:\model_and_control_new\miscdata\nepthdr.obj 
+      C:\model_and_control_new\miscdata\arg_pks.obj 
+      C:\model_and_control_new\miscdata\arg_irvi.obj 
+      C:\model_and_control_new\miscdata\pults_tk.obj 
+      C:\model_and_control_new\miscdata\transit.obj 
+      C:\model_and_control_new\miscdata\neptun_main.obj 
+      C:\model_and_control_new\miscdata\unity_connect.obj 
+      C:\model_and_control_new\miscdata\winsock_ed.obj 
+      C:\model_and_control_new\miscdata\argjh.obj 
+      C:\model_and_control_new\miscdata\kurs_main.obj 
+      C:\model_and_control_new\miscdata\inpuconnect.obj 
+      C:\model_and_control_new\miscdata\uso_model.obj 
+      C:\model_and_control_new\miscdata\ssvp_module.obj 
+      C:\model_and_control_new\miscdata\ks020_model.obj 
+      C:\model_and_control_new\miscdata\common.obj 
+      C:\model_and_control_new\miscdata\StdAtmos.obj 
+      C:\model_and_control_new\miscdata\control.obj 
+      C:\model_and_control_new\miscdata\runge_kutta.obj 
+      C:\model_and_control_new\miscdata\fly_model.obj 
+      C:\model_and_control_new\miscdata\md_main.obj 
+      C:\model_and_control_new\miscdata\DConvert.obj 
+      C:\model_and_control_new\miscdata\rdc_draph.obj 
+      C:\model_and_control_new\miscdata\inkmodel.obj 
+      C:\model_and_control_new\miscdata\macros.obj 
+      C:\model_and_control_new\miscdata\ts_frm.obj 
+      C:\model_and_control_new\miscdata\mmTestF.obj 
+      C:\model_and_control_new\miscdata\spgs_form.obj 
+      C:\model_and_control_new\miscdata\setlangmodule.obj"/>
     <RESFILES value="MiU.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
     <DEFFILE value=""/>
-    <RESDEPEN value="$(RESFILES) MainFrm.dfm ts_frm.dfm toru_frm.dfm EnterNuFrm.dfm 
-      kdu_data.dfm clock_form.dfm JouLogFrm.dfm BkuCFrm.dfm 
-      brvi_irvi\irvi_brfi_frm.dfm KSPLForm.dfm KSPPForm.dfm sepform.dfm 
-      cdn_clock_frm.dfm graph_a1.dfm USOFrm.dfm bfi_formats.dfm zakon_upr.dfm 
-      InstructorFormat_Form.dfm help_form.dfm iss_per_tp.dfm vku_graph.dfm 
-      brus_form.dfm vived_frm.dfm iss\sm_ssvp_PX.dfm argon\argon_debug_frm.dfm 
-      SOTR_frm.dfm trassa.dfm AboutFrm.dfm otkazy.dfm inpudebugf.dfm sps_frm.dfm 
-      bilu_format.dfm neptun\neptun.dfm ssvp_form.dfm CWFrm.dfm krl_form.dfm"/>
+    <RESDEPEN value="$(RESFILES) MainFrm.dfm forms\toru_frm.dfm forms\EnterNuFrm.dfm 
+      forms\kdu_data.dfm forms\clock_form.dfm forms\JouLogFrm.dfm 
+      forms\BkuCFrm.dfm brvi_irvi\irvi_brfi_frm.dfm forms\KSPLForm.dfm 
+      forms\KSPPForm.dfm forms\sepform.dfm forms\cdn_clock_frm.dfm 
+      forms\graph_a1.dfm forms\USOFrm.dfm forms\bfi_formats.dfm 
+      forms\zakon_upr.dfm forms\InstructorFormat_Form.dfm forms\help_form.dfm 
+      forms\iss_per_tp.dfm forms\vku_graph.dfm forms\brus_form.dfm 
+      forms\vived_frm.dfm iss\sm_ssvp_PX.dfm argon\argon_debug_frm.dfm 
+      forms\SOTR_frm.dfm forms\AboutFrm.dfm forms\otkazy.dfm 
+      forms\inpudebugf.dfm forms\sps_frm.dfm forms\bilu_format.dfm 
+      neptun\neptun.dfm forms\ssvp_form.dfm forms\CWFrm.dfm forms\krl_form.dfm 
+      forms\ts_frm.dfm forms\mmTestF.dfm forms\spgs_form.dfm"/>
     <LIBFILES value=""/>
     <LIBRARIES value="tee.lib bdertl.lib dbrtl.lib vcldb.lib inet.lib indy.lib rtl.lib vcl.lib"/>
     <SPARELIBS value="vcl.lib rtl.lib indy.lib inet.lib vcldb.lib dbrtl.lib bdertl.lib tee.lib"/>
@@ -51,7 +103,7 @@
       inetdbbde.bpi inetdbxpress.bpi inetdb.bpi nmfast.bpi webdsnap.bpi 
       bcbie.bpi websnap.bpi soaprtl.bpi dclocx.bpi dbexpress.bpi dbxcds.bpi 
       indy.bpi bcb2kaxserver.bpi"/>
-    <PATHCPP value=".;neptun;brvi_irvi;iss;argon;ks020;kurs;lib;MotionModel;md;miscdata"/>
+    <PATHCPP value=".;neptun;forms;forms;forms;forms;forms;forms;brvi_irvi;forms;forms;forms;forms;forms;forms;forms;forms;forms;forms;forms;forms;forms;forms;iss;argon;forms;forms;forms;forms;forms;forms;neptun;forms;forms;forms;argon;argon;argon;ks020;neptun;argon;argon;neptun;argon;kurs;ks020;neptun;lib;MotionModel;md;miscdata;forms;forms;forms;localization"/>
     <PATHPAS value=".;"/>
     <PATHRC value=".;"/>
     <PATHASM value=".;"/>
@@ -61,16 +113,16 @@
     <USERDEFINES value=""/>
     <SYSDEFINES value="NO_STRICT"/>
     <MAINSOURCE value="MiU.cpp"/>
-    <INCLUDEPATH value="md\;md;miscdata;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl;forms"/>
-    <LIBPATH value="md\;md;miscdata;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <INCLUDEPATH value="localization;md\;md;miscdata;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl;forms"/>
+    <LIBPATH value="localization;md\;md;miscdata;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib;forms"/>
     <WARNINGS value="-w-par"/>
     <OTHERFILES value=""/>
   </MACROS>
   <OPTIONS>
-    <IDLCFLAGS value="-Imd\. -Imd -Imiscdata -IMotionModel -Ilib -Ikurs -Ineptun -Iks020 -Iargon 
-      -IC:\Users\Professional\Documents -Ibrvi_irvi -Iiss -I$(BCB)\Projects 
-      -I$(BCB)\Projects\miu -I$(BCB)\include -I$(BCB)\include\vcl -Iforms 
-      -src_suffix cpp -boa"/>
+    <IDLCFLAGS value="-Ilocalization -Imd\. -Imd -Imiscdata -IMotionModel -Ilib -Ikurs -Ineptun 
+      -Iks020 -Iargon -IC:\Users\Professional\Documents -Ibrvi_irvi -Iiss 
+      -I$(BCB)\Projects -I$(BCB)\Projects\miu -I$(BCB)\include 
+      -I$(BCB)\include\vcl -Iforms -src_suffix cpp -boa"/>
     <CFLAG1 value="-O2 -w- -Vx -Ve -X- -a1 -b- -k- -vi -c -tW -tWM"/>
     <PFLAGS value="-N2C:\model_and_control_new\miscdata -N0C:\model_and_control_new\miscdata 
       -$Y- -$L- -$D- -$A8 -v -JPHNE -M"/>
@@ -89,41 +141,39 @@
   <FILELIST>
       <FILE FILENAME="neptun\neptprim.cpp" FORMNAME="" UNITNAME="neptprim" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="MainFrm.cpp" FORMNAME="MainForm" UNITNAME="MainFrm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="ts_frm.cpp" FORMNAME="ts_form" UNITNAME="ts_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="toru_frm.cpp" FORMNAME="toru_pult" UNITNAME="toru_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="EnterNuFrm.cpp" FORMNAME="EnterNuForm" UNITNAME="EnterNuFrm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="kdu_data.cpp" FORMNAME="KDUform" UNITNAME="kdu_data" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="clock_form.cpp" FORMNAME="clock_frm" UNITNAME="clock_form" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="JouLogFrm.cpp" FORMNAME="JouLogForm" UNITNAME="JouLogFrm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="BkuCFrm.cpp" FORMNAME="BkuC" UNITNAME="BkuCFrm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\toru_frm.cpp" FORMNAME="toru_pult" UNITNAME="toru_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\EnterNuFrm.cpp" FORMNAME="EnterNuForm" UNITNAME="EnterNuFrm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\kdu_data.cpp" FORMNAME="KDUform" UNITNAME="kdu_data" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\clock_form.cpp" FORMNAME="clock_frm" UNITNAME="clock_form" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\JouLogFrm.cpp" FORMNAME="JouLogForm" UNITNAME="JouLogFrm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\BkuCFrm.cpp" FORMNAME="BkuC" UNITNAME="BkuCFrm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="brvi_irvi\irvi_brfi_frm.cpp" FORMNAME="IrBrForm" UNITNAME="irvi_brfi_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="KSPLForm.cpp" FORMNAME="ksplfrm" UNITNAME="KSPLForm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="KSPPForm.cpp" FORMNAME="KSP_right" UNITNAME="KSPPForm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="sepform.cpp" FORMNAME="sep_form" UNITNAME="sepform" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="cdn_clock_frm.cpp" FORMNAME="CDN_CLOCK" UNITNAME="cdn_clock_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="graph_a1.cpp" FORMNAME="graphics" UNITNAME="graph_a1" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="USOFrm.cpp" FORMNAME="UsoForm" UNITNAME="USOFrm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="bfi_formats.cpp" FORMNAME="BFI_Simvol_form" UNITNAME="bfi_formats" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="zakon_upr.cpp" FORMNAME="zakon_upr_frm" UNITNAME="zakon_upr" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="InstructorFormat_Form.cpp" FORMNAME="InstructorFormat_FRM" UNITNAME="InstructorFormat_Form" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="help_form.cpp" FORMNAME="help_frm" UNITNAME="help_form" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="iss_per_tp.cpp" FORMNAME="iss_t_tp" UNITNAME="iss_per_tp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="vku_graph.cpp" FORMNAME="vkugraph" UNITNAME="vku_graph" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="brus_form.cpp" FORMNAME="brus_frm" UNITNAME="brus_form" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="vived_frm.cpp" FORMNAME="liftoff_form" UNITNAME="vived_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\KSPLForm.cpp" FORMNAME="ksplfrm" UNITNAME="KSPLForm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\KSPPForm.cpp" FORMNAME="KSP_right" UNITNAME="KSPPForm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\sepform.cpp" FORMNAME="sep_form" UNITNAME="sepform" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\cdn_clock_frm.cpp" FORMNAME="CDN_CLOCK" UNITNAME="cdn_clock_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\graph_a1.cpp" FORMNAME="graphics" UNITNAME="graph_a1" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\USOFrm.cpp" FORMNAME="UsoForm" UNITNAME="USOFrm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\bfi_formats.cpp" FORMNAME="BFI_Simvol_form" UNITNAME="bfi_formats" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\zakon_upr.cpp" FORMNAME="zakon_upr_frm" UNITNAME="zakon_upr" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\InstructorFormat_Form.cpp" FORMNAME="InstructorFormat_FRM" UNITNAME="InstructorFormat_Form" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\help_form.cpp" FORMNAME="help_frm" UNITNAME="help_form" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\iss_per_tp.cpp" FORMNAME="iss_t_tp" UNITNAME="iss_per_tp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\vku_graph.cpp" FORMNAME="vkugraph" UNITNAME="vku_graph" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\brus_form.cpp" FORMNAME="brus_frm" UNITNAME="brus_form" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\vived_frm.cpp" FORMNAME="liftoff_form" UNITNAME="vived_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="iss\sm_ssvp_PX.cpp" FORMNAME="sm_ssvp_plx_frm" UNITNAME="sm_ssvp_PX" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="argon\argon_debug_frm.cpp" FORMNAME="arg_deb" UNITNAME="argon_debug_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="SOTR_frm.cpp" FORMNAME="sotr" UNITNAME="SOTR_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="trassa.cpp" FORMNAME="trace" UNITNAME="trassa" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="AboutFrm.cpp" FORMNAME="AboutForm" UNITNAME="AboutFrm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="otkazy.cpp" FORMNAME="otkazy_frm" UNITNAME="otkazy" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="inpudebugf.cpp" FORMNAME="NeptDebug" UNITNAME="inpudebugf" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="sps_frm.cpp" FORMNAME="sps_form" UNITNAME="sps_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="bilu_format.cpp" FORMNAME="bilu_frm" UNITNAME="bilu_format" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\SOTR_frm.cpp" FORMNAME="sotr" UNITNAME="SOTR_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\AboutFrm.cpp" FORMNAME="AboutForm" UNITNAME="AboutFrm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\otkazy.cpp" FORMNAME="otkazy_frm" UNITNAME="otkazy" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\inpudebugf.cpp" FORMNAME="NeptDebug" UNITNAME="inpudebugf" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\sps_frm.cpp" FORMNAME="sps_form" UNITNAME="sps_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\bilu_format.cpp" FORMNAME="bilu_frm" UNITNAME="bilu_format" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="neptun\neptun.cpp" FORMNAME="inpu_1" UNITNAME="neptun" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="ssvp_form.cpp" FORMNAME="ssvp_frm" UNITNAME="ssvp_form" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="CWFrm.cpp" FORMNAME="cwform" UNITNAME="CWFrm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="krl_form.cpp" FORMNAME="krl_frm" UNITNAME="krl_form" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\ssvp_form.cpp" FORMNAME="ssvp_frm" UNITNAME="ssvp_form" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\CWFrm.cpp" FORMNAME="cwform" UNITNAME="CWFrm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\krl_form.cpp" FORMNAME="krl_frm" UNITNAME="krl_form" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="argon\CtrlWord.h" FORMNAME="" UNITNAME="CtrlWord.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="argon\arg_header.h" FORMNAME="" UNITNAME="arg_header.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="bfi_fmts_data.h" FORMNAME="" UNITNAME="bfi_fmts_data.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
@@ -177,6 +227,10 @@
       <FILE FILENAME="ks020\ks_recs.h" FORMNAME="" UNITNAME="ks_recs.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="inkmodel.cpp" FORMNAME="" UNITNAME="inkmodel" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="macros.cpp" FORMNAME="" UNITNAME="macros" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\ts_frm.cpp" FORMNAME="ts_form" UNITNAME="ts_frm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\mmTestF.cpp" FORMNAME="MDTestForm" UNITNAME="mmTestF" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="forms\spgs_form.cpp" FORMNAME="spgsfrm" UNITNAME="spgs_form" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="localization\setlangmodule.cpp" FORMNAME="" UNITNAME="setlangmodule" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>
@@ -223,16 +277,17 @@ Item7=ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;
 Item8=C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\include;$(BCB)\include\vcl
 
 [HistoryLists\hlLibraryPath]
-Count=9
-Item0=md\;md;miscdata;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
-Item1=md\;miscdata;md;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
-Item2=miscdata;md\;md;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
-Item3=md;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
-Item4=MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
-Item5=kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
-Item6=neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
-Item7=ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
-Item8=C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Count=10
+Item0=md\;md;miscdata;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib;forms\
+Item1=md\;md;miscdata;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Item2=md\;miscdata;md;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Item3=miscdata;md\;md;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Item4=md;MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Item5=MotionModel;lib;kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Item6=kurs;neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Item7=neptun;ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Item8=ks020;argon;C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
+Item9=C:\Users\Professional\Documents;brvi_irvi;iss;$(BCB)\Projects;$(BCB)\Projects\miu;$(BCB)\lib\obj;$(BCB)\lib
 
 [HistoryLists\hlDebugSourcePath]
 Count=1

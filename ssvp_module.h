@@ -6,9 +6,11 @@
 
 const double max_speed_pt_w = 0.15; // m/c
 const int max_probe = 404;  // мм
+static bool shtanga_w; // Признак движения штанги (актив. по запуску дв.)
+static int s_pos;      // Положение штанги от нуля
 
 static bool ssvp_otstr; // Признак "Отстрел ССВП"
-static bool ssvp_ready; 
+static bool ssvp_ready; // 
 
 static struct{
 bool dk_1[4];     // Депестки

@@ -9,6 +9,10 @@
 #pragma resource "*.dfm"
 Tliftoff_form *liftoff_form;
 static int d;
+/*
+  Тут должен быть модуль, который имея параметры РН (высота, удаление от СП и др.)
+  формирует график функции.
+*/
 
 //---------------------------------------------------------------------------
 __fastcall Tliftoff_form::Tliftoff_form(TComponent* Owner)
@@ -79,7 +83,7 @@ Series2->AddXY(520,205,clBlack);
 
 void __fastcall Tliftoff_form::Button1Click(TObject *Sender)
 {
-//Series1->GetVertAxis->CalcYPosValue(50);
+Series1->GetVertAxis->CalcYPosValue(50);
 Series1->Clear();
 //Series1->AddXY(d,Series1->YValues ,clBlack);
 Label3->Caption=IntToStr(Series1->XValues);

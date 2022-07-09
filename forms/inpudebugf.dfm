@@ -1,6 +1,6 @@
 object NeptDebug: TNeptDebug
-  Left = 303
-  Top = 208
+  Left = 25
+  Top = 205
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1054#1090#1083#1072#1076#1082#1072' '#1086#1073#1084#1077#1085#1072' '#1089' '#1048#1085#1055#1059
@@ -22,9 +22,9 @@ object NeptDebug: TNeptDebug
     Top = 0
     Width = 959
     Height = 435
-    ActivePage = TabSheet1
+    ActivePage = TabSheet3
     Align = alClient
-    TabIndex = 0
+    TabIndex = 2
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = #1040#1085#1072#1083#1080#1079' '#1087#1072#1082#1077#1090#1086#1074' RS-232'
@@ -3315,7 +3315,7 @@ object NeptDebug: TNeptDebug
           ParentFont = False
         end
       end
-      object StaticText4: TStaticText
+      object inpu_ob_st: TStaticText
         Left = 584
         Top = 16
         Width = 97
@@ -3387,7 +3387,7 @@ object NeptDebug: TNeptDebug
         ParentFont = False
         TabOrder = 1
       end
-      object StaticText3: TStaticText
+      object diskru_pr: TStaticText
         Left = 360
         Top = 8
         Width = 97

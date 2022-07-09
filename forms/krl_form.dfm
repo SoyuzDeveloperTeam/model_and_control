@@ -1,6 +1,6 @@
 object krl_frm: Tkrl_frm
-  Left = 62
-  Top = 162
+  Left = 33
+  Top = 124
   BorderStyle = bsSingle
   Caption = #1050#1086#1084#1072#1085#1076#1085#1072#1103' '#1056#1072#1076#1080#1086' '#1051#1080#1085#1080#1103
   ClientHeight = 527
@@ -19,9 +19,9 @@ object krl_frm: Tkrl_frm
     Top = 0
     Width = 781
     Height = 508
-    ActivePage = TabSheet1
+    ActivePage = TabSheet4
     Align = alClient
-    TabIndex = 1
+    TabIndex = 4
     TabOrder = 0
     object balform1: TTabSheet
       Caption = #1041#1060' 73'
@@ -508,6 +508,14 @@ object krl_frm: Tkrl_frm
         ReadOnly = True
         TabOrder = 21
       end
+      object tofile: TButton
+        Left = 536
+        Top = 88
+        Width = 113
+        Height = 25
+        Caption = #1042#1099#1075#1088#1091#1079#1080#1090#1100' '#1074' '#1092#1072#1081#1083' '
+        TabOrder = 22
+      end
     end
     object TabSheet1: TTabSheet
       Caption = #1042#1074#1086#1076' '#1091#1089#1090#1072#1074#1086#1082
@@ -667,7 +675,7 @@ object krl_frm: Tkrl_frm
     object TabSheet3: TTabSheet
       Caption = #1050#1086#1084#1072#1085#1076#1099
       ImageIndex = 3
-      object SpeedButton2: TSpeedButton
+      object rrp_btn: TSpeedButton
         Left = 8
         Top = 8
         Width = 57
@@ -680,8 +688,9 @@ object krl_frm: Tkrl_frm
         Font.Style = [fsBold]
         Layout = blGlyphBottom
         ParentFont = False
+        OnClick = rrp_btnClick
       end
-      object SpeedButton3: TSpeedButton
+      object zrp_btn: TSpeedButton
         Left = 72
         Top = 8
         Width = 57
@@ -694,6 +703,18 @@ object krl_frm: Tkrl_frm
         Font.Style = [fsBold]
         Layout = blGlyphBottom
         ParentFont = False
+      end
+    end
+    object TabSheet4: TTabSheet
+      Caption = #1055#1077#1088#1077#1076#1072#1095#1072
+      ImageIndex = 4
+      object testpacket: TButton
+        Left = 8
+        Top = 8
+        Width = 153
+        Height = 25
+        Caption = #1055#1088#1086#1074#1077#1088#1080#1090#1100' '#1087#1072#1082#1077#1090
+        TabOrder = 0
       end
     end
   end

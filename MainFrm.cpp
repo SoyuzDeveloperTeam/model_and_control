@@ -7,6 +7,8 @@
 /* ориентацией модели корабля как в автоматическом, так и в ручном режимах */
 /* согласно штатной логике вычислительных устройств, алгоритмы которых     */
 /* реализованы в данном ПО.                                                */
+/*                                                                         */
+/* Автор: Смирягин М. И.                                                   */
 /*-------------------------------------------------------------------------*/
 /***************************************************************************/
 //---------------------------------------------------------------------------
@@ -23,7 +25,6 @@
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 //---------------------------------------------------------------------------
-#define n_act_str 5    //Номер актуальной струтуры
 static AnsiString StrForDebug;
 
 // Для тестов  (ОПИСАТЬ!)
@@ -34,19 +35,20 @@ static int f_test;
 static TDateTime SFD_sec;
 static double ghjh;
 
-static WSADATA wsaData;                // Структура Win Socket
-static AnsiString WsaIpAddr;    // IP адрес из конфигурации
+static int lang; // Language. 0 = RUS, 1 = ENG
 
-static TIniFile *MiuConf;       // Файл конфигурации
-static AnsiString ConfFileName;
+static WSADATA wsaData;         // Win Socket Struct
+static AnsiString WsaIpAddr;    // IP from INI config
+
+static TIniFile *MiuConf;       // Main Config File
 
 static AnsiString inpu_con_data[8];
-static int iResult;                    // Результатирующая переменная
+static int iResult;
 
 
 // -- -- -- --
 
-HINSTANCE Lib = LoadLibrary("LIB_BNO.dll");                    // загружаем библиотеку динамически
+HINSTANCE Lib = LoadLibrary("LIB_BNO.dll");
 
 
 TInit Init = 0;                                                // Make object's
@@ -77,10 +79,10 @@ static int qwe;
 
 const int MAX_BUF_SIZE = 1024;
 
-static bool init;            // Признак успешной инициализации  (перенести в main?)
+static bool init;            // Sign of successful initialization
 static int err;
-static bool con;             // Признак удачного подключения для активации кнопок
-static bool inpu_com2_connect_pr; // Признак связи с ИнПУ
+static bool con;             // Sign of a successful connection (to activate buttons)
+static bool inpu_com2_connect_pr; // Sign of connection with InPU
 WORD wVersionRequested;
 
 //---------------------------------------------------------------------------
@@ -102,10 +104,10 @@ err = WSAStartup(wVersionRequested, &wsaData);
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::pusk_btnClick(TObject *Sender)
-{ // Операции по нажатию кнопки "ПУСК"
-PuskPr = true;                     // Вводим признак "Пуск динамики"
-ModelDateTime_Timer->Enabled=true; // Запускаем таймер модельного времени
-MainTimer->Enabled=true;           // Запуск глобального обработчика команд. Разрешение КСП, УСО и т.д.
+{ // Operations by pressing the "PUSK" button
+PuskPr = true;                     // We enter the sign "Start dynamics" (Пуск динамики)
+ModelDateTime_Timer->Enabled=true; // Starting the timer of "Model Time"
+MainTimer->Enabled=true;           // Launching the global command handler. Разрешение КСП, УСО и т.д.
 ChekTSKD->Enabled=true;            // Обработчик операций СКД
 pusk_btn->Enabled=false;           // Блокируем кнопку "ПУСК" во избежание сбоев при повторной выдаче в динамике.
 //Timer6->Enabled=true;
@@ -116,33 +118,14 @@ StatusBar->Panels->Items[0]->Text="Запущен процесс моделирования...";
 // и переименовывать ее в кнопку "подключится"
 }
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::N3Click(TObject *Sender)
-{
-ts_form->Show();  //Запуск формы "ТС"
-}
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::N14Click(TObject *Sender)
-{ // Запуск формы ТОРУ
-toru_pult->Show();
-}
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::N1Click(TObject *Sender)      // Ввод НУ
-{
-EnterNuForm->Show();
-}
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::N15Click(TObject *Sender)     // Параметры КДУ
-{
-KDUform->Show();
-}
-//----------------------------------------//
-// Процедуры по закрытию формы оператором //
-//----------------------------------------//
+//-------------------------------------------------//
+// Procedures for closing the form by the operator //
+//-------------------------------------------------//
 void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
 {
 un_serv->Active=false;
-if(PuskPr){ // Если на момент закрытия введен признак "Пуск динамики", то...
-if(         // Выводим MessageBox
+if(PuskPr){ // If at the time of closing the sign "Starting dynamics" is entered, then ...
+if(         // Show MessageBox
 Application->MessageBox(
 "Запущен процесс моделирования! \nВсе равно выйти?",
 "Внимание!",
@@ -151,19 +134,7 @@ MB_ICONINFORMATION) == IDNO){
 Abort();
 }
 } // if PuskPr
-WSACleanup();  // Так же в любом случае закрываем все сокеты
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::N16Click(TObject *Sender)
-{
-clock_frm->Show();
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::N7Click(TObject *Sender)
-{
-JouLogForm->Show();
+WSACleanup();  // Also, in any case, close all sockets
 }
 //---------------------------------------------------------------------------
 
@@ -188,30 +159,17 @@ StatusBar->Panels->Items[0]->Text="["+Now().FormatString("hh.mm.ss.zzz")+"]  -  
 
 char buff[5]={72,101,108, 108, 111};
 
-void __fastcall TMainForm::N21Click(TObject *Sender)
+void Config_init (AnsiString iniName) {  // Configuration file initialization procedure
+MiuConf = new TIniFile(iniName);         // Присваиваем
+if(FileExists(iniName))    // Если такой файл существует, то...
 {
-BkuC->Show();
-}
-//---------------------------------------------------------------------------
-
-void Config_init (AnsiString iniName) {  // Процедура инициализации файла конфигурации
-ConfFileName = "C:\1231231\Out\miu_config.ini";  // Создаем имя файла конфигурации
-MiuConf = new TIniFile(iniName);                                   // Присваиваем
-if(FileExists(iniName))                                            // Если такой файл существует, то...
-{
-JPS(1,"Чтение файла конфигурации...","","","");                         // Логируем о начале процесса чтения файла
-WsaIpAddr = MiuConf->ReadString("WSA","main_ip","0.0.0.0");             // Основной айпишник
+JPS(1,"Чтение файла конфигурации...","","",""); // Логируем о начале процесса чтения файла
+WsaIpAddr = MiuConf->ReadString("WSA","main_ip","0.0.0.0"); // Основной айпишник
 inpu_con_data[0] = WsaIpAddr;
 inpu_con_data[1] = MiuConf->ReadString("INPU","inpu1_port_com1","0000");
 inpu_con_data[2] = MiuConf->ReadString("INPU","inpu1_port_com2","0000");
 } else JPS(3,"Отсутствует файл конфигурации!","","","");
 }
-
-void __fastcall TMainForm::N12Click(TObject *Sender)
-{
-AboutForm->Show();
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TMainForm::close_socketClick(TObject *Sender)
 {
@@ -245,6 +203,7 @@ ksplfrm->Show();
 VOID __fastcall TMainForm::init_Click(TObject *Sender)
 {
 JPS(1,is_operator,is_miu,"Запущен процесс инициализации.","");
+JPS(1,"МиУ загружен из - ","",ExtractFilePath(Application->ExeName),"");
 
   if( Lib >= (HINSTANCE)32 )  // Загружаем библиотеку для мат.моделирования
   {
@@ -258,7 +217,6 @@ JPS(1,is_operator,is_miu,"Запущен процесс инициализации.","");
    JPS(1,"","","Загруженна библиотека МиОП BNO.","");
    Init();
    JPS(1,"","","МиОП BNO инициализирован.",""); }
-
 Config_init(ExtractFilePath(Application->ExeName)+"miu_config.ini");  // Инициализация файла конфигурации
 
 if(md_status->Checked) { // Если выбрана работа с МД
@@ -268,10 +226,9 @@ JPS(1,"","","Начало инициализации модели движения...","");
 #pragma message ("    Подключение библиотеки FlyCore...")\
 #pragma comment(lib, "FlyCore.lib")\
 }
-init_md();
-// Инициализация МД
-
+init_md(); // Инициализация МД
 } // md_status
+
 //---------//
 // 1.1.1. Инициализация Winsock //
 
@@ -301,11 +258,6 @@ char * ipaddress = fdsfd.c_str(); // Актуальный IP адрес
 
  init=true;
  con=true;
-
-if(with_unity->Checked){  // Если введен признак "With Unity"
-unity_server_init ();
-unity_s_h->Enabled=true;
-} // with_unity
 
 JPS(1,"Подготовка начальных параметров СУБК","","","");
 //  Расчет парабол для закона управления
@@ -342,7 +294,7 @@ r_m[29] = 2900;
 r_m[30] = 3000;
 r_m[31] = 5000;
 
-rdc_init(); // Инициализация данных для графиков определения расстояния до цели
+rdc_init(); // Data Initialization for Target Distance Plots
 graphics->Series13->AddXY(rdc_sm_dsm[0],0.5,"",clBlack);
 graphics->Series13->AddXY(rdc_sm_dsm[1],1,"",clBlack);
 graphics->Series13->AddXY(rdc_sm_dsm[2],1.5,"",clBlack);
@@ -362,7 +314,7 @@ graphics->Series13->AddXY(rdc_sm_dsm[15],8,"",clBlack);
 
 int isd = 0;
 
-for(isd; isd<=31; isd++){   // Производим расчет парабол для ЗУ
+for(isd; isd<=31; isd++){   // We calculate parabolas for ЗУ
 v_verch[isd] = sqrt( 2 * ax_verh *(r_m[isd]-200));
 v_b1b2[isd] = sqrt( 2 * ax_b1b2 *(r_m[isd]-200));
 v_k1k2[isd] = sqrt( 2 * ax_k1k2 *(r_m[isd]-200));
@@ -372,9 +324,9 @@ v_sred[isd] = sqrt( 2 * ax_sred *(r_m[isd]-200));
 v_niz[isd] = sqrt( 2 * ax_nijn *(r_m[isd]-200));
 }
 
-// Выставляем начальные признаки для работы СУДН
+// We set the initial signs for work СУДН
 arg_work_pr = 0;
-tResult = 2; // Нет теста А16
+tResult = 2; // no test А16
 /*
   +-------------------------------------+
   |  2. Инициализация обмена с ИнПУ     |
@@ -384,11 +336,11 @@ tResult = 2; // Нет теста А16
   |  2.1. Запуск клиента Сом1 и Сом2    |
   +-------------------------------------+
 */
-if(sps_model->Checked)                  // Если есть признак "Обмен с ИнПУ"
-inpu_com2_connect->Enabled=true;        // Запускаем таймер подключения к ИнПУ
+if(sps_model->Checked)                  // If there is a sign "Exchange with InPU"
+inpu_com2_connect->Enabled=true;        // We start the timer for connecting to the InPU
 else JPS(1,"Внимание: Инициализация без обмена с ИнПУ","","","");
 
-if(init){   // Если есть признак инициализации, то...
+if(init){   // If there is a sign of initialization, then ...
 init_->Enabled=false;
 Button9->Enabled=true;
 Button4->Enabled=true;
@@ -420,7 +372,7 @@ UsoForm->Show();
 
 void __fastcall TMainForm::FormCreate(TObject *Sender)
 {
-ver_num=" 1.0.1.56";              // Переделать - выводить версию из атрибутов
+ver_num="4";              // Переделать - выводить версию из атрибутов
 // --- Выставляем начальное состояние иконок моделей --- //
 ModelStatusPicList->GetBitmap(0, inpu_status_pic->Picture->Bitmap);
 ModelStatusPicList->GetBitmap(0, argon_status_pic->Picture->Bitmap);
@@ -444,16 +396,16 @@ graphics->Show();
 void __fastcall TMainForm::Button9Click(TObject *Sender)
 {
 double q_mks[4], q_tk[4];
-JPS(1,is_operator,is_miu,"Выдана команда - отработка НУ.","");
+JPS(1,is_operator,is_miu,"Выдана команда - отработка НУ. Выбраны НУ "+NU_ID,"");
 
   // НУ для модели КУРСа и БЦВК
   SpsSend->Enabled=true;
   i_takt = 0;
-  dynamics.rs = StrToFloat(EnterNuForm->ro_init->Text);      // Дальность начальная
-  dynamics.sks = StrToFloat(EnterNuForm->ro_dot_init->Text); // Скорость начальная
+  dynamics.rs   = StrToFloat(EnterNuForm->ro_init->Text);    // Дальность начальная
+  dynamics.sks  = StrToFloat(EnterNuForm->ro_dot_init->Text);// Скорость начальная
   dynamics.modV = sqrt(dynamics.sks*dynamics.sks+dynamics.vbok*dynamics.vbok); // Модуль скорости
-  dynamics.omy = StrToFloat(EnterNuForm->Edit63->Text);      // Угловая скорость ЛВ рыскание
-  dynamics.omz = StrToFloat(EnterNuForm->Edit64->Text);      // Угловая скорость ЛВ тангаж
+  dynamics.omy  = StrToFloat(EnterNuForm->Edit63->Text);     // Угловая скорость ЛВ рыскание
+  dynamics.omz  = StrToFloat(EnterNuForm->Edit64->Text);     // Угловая скорость ЛВ тангаж
   dynamics.uomy = 0;                                         // Угол начальный
   dynamics.uomz = 0;                                         // Угол начальный
   dynamics.rasp = StrToFloat(EnterNuForm->tk_toplivo->Text); // Топливо ТПК
@@ -560,7 +512,7 @@ JPS(1,is_operator,is_miu,"Выдана команда - отработка НУ.","");
   NU_temp.vec_tk_TPK[2]=StrToFloat(EnterNuForm->cm_z_tk->Text);
   // Масса ТК
   NU_temp.m_tk=StrToFloat(EnterNuForm->mass_tk->Text);
-  // Массив моментов инерции ТК
+  // Array of moments of inertia ТК
   NU_temp.mi_tk[0][0]=StrToFloat(EnterNuForm->Jxx_tk->Text);
   NU_temp.mi_tk[1][1]=StrToFloat(EnterNuForm->Jyy_tk->Text);
   NU_temp.mi_tk[2][2]=StrToFloat(EnterNuForm->Jzz_tk->Text);
@@ -570,10 +522,10 @@ JPS(1,is_operator,is_miu,"Выдана команда - отработка НУ.","");
   //NU_temp.mi_tk[0][2]=StrToFloat(EnterNuForm->Jxz_tk->Text);
   //NU_temp.mi_tk[1][0]=StrToFloat(EnterNuForm->Jyx_tk->Text);
   //NU_temp.mi_tk[2][1]=StrToFloat(EnterNuForm->Jzy_tk->Text);
-  // Запас топлива ТК
+  // Fuel supply ТК
   NU_temp.nu_com_zapas=StrToFloat(EnterNuForm->tk_toplivo->Text);
 
-  // Режим стабилизации МКС
+  // ISS Stabilization Mode
   if(EnterNuForm->r_st_free->Checked)  NU_temp.r_st_mks=ntohl(0); else
   if(EnterNuForm->r_st_tp->Checked)    NU_temp.r_st_mks=ntohl(1); else
   if(EnterNuForm->r_st_osk->Checked)   NU_temp.r_st_mks=ntohl(2); else
@@ -625,6 +577,7 @@ SpsDataSt.TSpsParam[3] = 0.0;
 NUotr = true; // Добавить обработку начальных условий на соответствие (верефикация)
 
 // выставка начального состояния БС
+// Перенести в УНУ_УСО
 if(USO_Booled[1][2]) USO_Booled[11][9] = false; else USO_Booled[11][9]=true;
 if(USO_Booled[1][3]) USO_Booled[11][10]= false; else USO_Booled[11][10]=true;
 a2_upr = -0.037; // Ускорение в продольном канале
@@ -646,6 +599,7 @@ unsigned long c_c;
 }assa;
 
 StatusBar->Panels->Items[0]->Text="Выдана команда - отработка НУ! Ожидание запуска моделирования...";
+StatusBar->Panels->Items[2]->Text=NU_ID;
 }
 //---------------------------------------------------------------------------
 
@@ -680,7 +634,7 @@ iResult = connect(SPSSocket_ch1, (SOCKADDR *) & clientInPU_COM2, sizeof (clientI
   if (iResult == SOCKET_ERROR)
   {
   qwe++;
-  // Действия по ошибке соеденения
+  // Connection Error Actions
   } else {
 inpu_com2_connect_pr=true;
 inpu_com2_connect->Enabled=false;
@@ -743,7 +697,7 @@ CO_light->Color=StringToColor("0x45607B");
 Cl_blink=false;} else {
 CO_light->Color=clRed;
 Cl_blink=true;
-PlaySound("Data\\Sound\\nept_co.wav", NULL, SND_ASYNC);   // Звук ЦО
+PlaySound("Data\\Sound\\co.wav", NULL, SND_ASYNC);   // Звук ЦО
 }
 }
 }
@@ -757,7 +711,7 @@ Label15->Caption=tResult;   // Результатирующая переменная для проведения внутре
 
 
 USO_Booled[10][7] = dpo_status_bit;
-if(USO_Booled[12][7])YzS1[0]=1;
+if(USO_Booled[12][7])YzS1[0]=1;           // To Argon model
 ///////////////////
 // Обработчик ТА //
 ///////////////////
@@ -819,10 +773,6 @@ void __fastcall TMainForm::N26Click(TObject *Sender)
 {
 BFI_Simvol_form->Show();
 }
-//---------------------------------------------------------------------------
-// Т а к т   А р г о н а//-----+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+--
-//----+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---
-//---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+----
 
 void __fastcall TMainForm::N27Click(TObject *Sender)
 {
@@ -843,7 +793,11 @@ JPS(4,is_operator,is_miu,"ОТЛАДОЧНОЕ - КУРС - Причаливание","");
 
 void __fastcall TMainForm::ChekTSKDTimer(TObject *Sender)
 {
-// Debug timer 
+// Debug timer
+/*
+  Условие: если Моделируемое время == времени ТСКД && B1[12],
+        тогда признак TСКД=1
+*/
 if(OnboardModelTime.TimeString()==data_TSKD.TimeString()&&cw_b1[12]){     // Как лучше опрашивать? Перемена мест влияет?
  pr_TSKD=1;
  ChekTSKD->Enabled=false;
@@ -858,7 +812,6 @@ double _SinO;
  _SinO  = (Max+Min)/2+(Max-Min)/2*sin(t/TimeDiv);
  return _SinO;
 }
-
 
 void __fastcall TMainForm::N28Click(TObject *Sender)
 {
@@ -885,9 +838,6 @@ void __fastcall TMainForm::N30Click(TObject *Sender)
 iss_t_tp->Show();
 }
 //---------------------------------------------------------------------------
-
-
-
 
 void __fastcall TMainForm::N32Click(TObject *Sender)
 {
@@ -942,7 +892,8 @@ PacketHeaderType.PacketID = PacketIDtype(idControl);   // Control Packet
 packett.CodeType=wpControlCodeTypeN(wpIshod);
 //packett.DataType=SoundType(sndEmergency);
 iResult = send(SPSSocket_ch1,(char *)&PacketHeaderType,9, 0  );
-iResult = send(SPSSocket_ch1,(char *)&packett,2, 0  );   }
+iResult = send(SPSSocket_ch1,(char *)&packett,2, 0  );
+}
 }
 //---------------------------------------------------------------------------
 
@@ -1010,9 +961,12 @@ Cl_blink=false;
 
 void __fastcall TMainForm::co_test_btnClick(TObject *Sender)
 {
-double ret_r;
-ret_r = ikv_TwoAlpha(300);
-Label21->Caption=FormatFloat("",ret_r);
+//double ret_r;
+//ret_r = ikv_TwoAlpha(300);
+//Label21->Caption=FormatFloat("",ret_r);
+co_priz=1;
+//CO_light->Color=StringToColor("0x45607B");
+//Cl_blink=false;
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::DebugTimerTimer(TObject *Sender)
@@ -1044,6 +998,101 @@ inpu_1->Show();
 void __fastcall TMainForm::N38Click(TObject *Sender)
 {
 NeptDebug->Show();
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TMainForm::N40Click(TObject *Sender)
+{
+//СПС
+sps_form->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::N22Click(TObject *Sender)
+{
+MDTestForm->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::RadioButton1Click(TObject *Sender)
+{
+JPS(1,is_operator,is_miu,"Управление переключено на: ","УСО");
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::RadioButton2Click(TObject *Sender)
+{
+JPS(1,is_operator,is_miu,"Управление переключено на: ","БЦВК");        
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::RadioButton3Click(TObject *Sender)
+{
+JPS(1,is_operator,is_miu,"Управление переключено на: ","РУД РУО");        
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TMainForm::N35Click(TObject *Sender)
+{
+//рап
+spgsfrm->Show();
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TMainForm::Button6Click(TObject *Sender)
+{
+ych_Rg15[0]=1;        
+}
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::N3Click(TObject *Sender)
+{ // Load TS form
+ts_form->Show();
+}
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::N14Click(TObject *Sender)
+{ // Load TORU form
+toru_pult->Show();
+}
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::N1Click(TObject *Sender)      // Ввод НУ
+{
+EnterNuForm->Show();
+}
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::N15Click(TObject *Sender)     // Параметры КДУ
+{
+KDUform->Show();
+}
+void __fastcall TMainForm::N16Click(TObject *Sender)
+{
+clock_frm->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::N7Click(TObject *Sender)
+{
+JouLogForm->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::N21Click(TObject *Sender)
+{
+BkuC->Show();
+}
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::N12Click(TObject *Sender)
+{
+AboutForm->Show();
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TMainForm::CDN1Click(TObject *Sender)
+{
+CDN_CLOCK->Show();
 }
 //---------------------------------------------------------------------------
 

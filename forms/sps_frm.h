@@ -13,11 +13,11 @@ class Tsps_form : public TForm
 {
 __published:	// IDE-managed Components
         TGroupBox *GroupBox1;
-        TPanel *sps_ro2;
+        TPanel *sps_03;
         TLabel *Label1;
-        TPanel *sps_rco2;
+        TPanel *sps_04;
         TLabel *Label2;
-        TPanel *sps_rh20;
+        TPanel *sps_02;
         TLabel *Label3;
         TPanel *sps_rsa;
         TLabel *Label4;
@@ -25,9 +25,9 @@ __published:	// IDE-managed Components
         TLabel *Label5;
         TPanel *sps_rob;
         TLabel *Label6;
-        TPanel *sps_tsa;
+        TPanel *sps_14;
         TLabel *Label7;
-        TPanel *sps_tbo;
+        TPanel *sps_11;
         TLabel *Label8;
         TPanel *sps_tg;
         TLabel *Label9;
@@ -35,14 +35,14 @@ __published:	// IDE-managed Components
         TLabel *Label10;
         TLabel *Label11;
         TLabel *Label12;
-        TPanel *sps_ro21;
-        TPanel *sps_ro22;
+        TPanel *sps_15;
+        TPanel *sps_16;
         TPanel *sps_ro23;
         TGroupBox *GroupBox3;
         TLabel *Label13;
         TLabel *Label14;
-        TPanel *sps_rkjo;
-        TPanel *sps_pknr;
+        TPanel *sps_17;
+        TPanel *sps_18;
         TGroupBox *GroupBox4;
         TLabel *Label15;
         TPanel *sps_rsu;
@@ -81,8 +81,10 @@ __published:	// IDE-managed Components
         TLabel *Label28;
         TLabel *Label29;
         TPanel *sps_rpo;
-        TPanel *sps_tpo;
+        TPanel *sps_12;
         TTimer *Timer1;
+        TGroupBox *GroupBox9;
+        TLabel *Label32;
         void __fastcall Timer1Timer(TObject *Sender);
 private:	// User declarations
 public:		// User declarations

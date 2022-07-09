@@ -1,6 +1,6 @@
 object otkazy_frm: Totkazy_frm
-  Left = 208
-  Top = 252
+  Left = 141
+  Top = 110
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1054#1090#1082#1072#1079#1099' '#1073#1086#1088#1090#1086#1074#1099#1093' '#1089#1080#1089#1090#1077#1084
